@@ -5,6 +5,7 @@ import aiohttp
 import requests
 from datetime import datetime
 import base64
+from html.parser import HTMLParser
 
 def get(url):
     r = requests.get(url)
@@ -41,7 +42,7 @@ class Information(commands.Cog, name="Information"):
             name_list=""
             for name in names[::-1][:-1]:
                 name1 = name["name"]
-                date = datetime.utcfromtimestamp(int(str(name["changedToAt"])[:-3])).strftime("%Y-%m-%d %H:%M:%S (UTC)") # Prettify and give actual month and time passed @Cubic_dd#9976
+                date = datetime.utcfromtimestamp(int(str(name["changedToAt"])[:-3])).strftime("%Y-%m-%d %H:%M:%S (UTC)") # Prettify and give actual month and time passed
                 name_list += f"**{names.index(name)+1}.** `{name1}` - {date} "+ "\n"
             original = names[0]["name"]
             name_list+=f"**1.** `{original}` - First Username"
@@ -94,12 +95,22 @@ class Information(commands.Cog, name="Information"):
     
     @commands.command()
     async def server(self, ctx, server):
+
+        
         """Request a JAVA Minecraft server for information such as online player count, MOTD and more."""
 
         data = get(f"https://mcapi.us/server/status?ip={server}")
 
         if data["online"] == True:
             embed = discord.Embed(title=f"Java Server: {server}", color=0x00ff00)
+
+            class MyHTMLParser(HTMLParser):
+
+            def handle_data(self, data):
+                print("Encountered some data  :", data)
+
+            parser = MyHTMLParser()
+            parser.feed('<span style="color: #55FF55">Hypixel Network  </span><span style="color: #FF5555">[1.8-1.15]</span>","         <span style="color: #55FFFF"><span style="font-weight: bold;">SPRING SALE </span></span><span style="color: #AAAAAA">- </span><span style="color: #FFAA00"><span style="font-weight: bold;">UP TO </span></span><span style="color: #FF5555"><span style="font-weight: bold;">55% OFF</span></span>')
 
             embed.add_field(name="Description", value=data["motd"]) # need to fix encoding issues
             if data["players"]["now"] > 10:
