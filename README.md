@@ -1,5 +1,7 @@
 # Obsisdion Discord Bot
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9fd7919078424084adb2cf8bd614d300)](https://app.codacy.com/manual/Darkflame72/Obsidion?utm_source=github.com&utm_medium=referral&utm_content=Darkflame72/Obsidion&utm_campaign=Badge_Grade_Settings)
+
 [INVITE LINK](https://discordapp.com/oauth2/authorize?client_id=691589447074054224&scope=bot&permissions=314448) | [SUPPORT SERVER](https://discord.gg/invite/7BRD7s6)
 
 ## About This Bot
