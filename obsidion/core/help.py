@@ -12,7 +12,7 @@ class MyHelpCommand(commands.HelpCommand):
     def __init__(self):
         super().__init__(
             command_attrs={
-                "help": "Shows help about the bot, a command, or a category",
+                "help": "Shows help about the bot, a command, or a category.",
                 "hidden": True,
             }
         )
@@ -46,7 +46,7 @@ class MyHelpCommand(commands.HelpCommand):
         else:
             prefix = self.context.prefix
         embed = await self.generate_embed(self.context, prefix)
-        embed.title = f"Bot Help"
+        embed.title = f"Bot Help Commands:"
         embed.description = "Categories and commands enabled on the bot."
 
         for cog in bot.cogs:
