@@ -50,7 +50,7 @@ class News(commands.Cog):
         if time <= self.last_data:
             return
         # create discord embed
-        description = f"Summary: {latest_post['summary']}"
+        description = _("Summary: {summary}").format(summary=latest_post['summary'])
 
         embed = discord.Embed(
             title=latest_post["title_detail"]["value"]
@@ -64,21 +64,21 @@ class News(commands.Cog):
 
         # add categories
         embed.set_image(url=f"https://minecraft.net{latest_post['imageurl']}")
-        embed.add_field(name="Category", value=latest_post["primarytag"])
-        embed.add_field(name="Publish Date", value=" ".join(latest_post["published"].split(" ")[:4]))
+        embed.add_field(name=_("Category"), value=latest_post["primarytag"])
+        embed.add_field(name=_("Publish Date"), value=" ".join(latest_post["published"].split(" ")[:4]))
 
         # author info
         # embed.set_thumbnail =
         # embed.add_field(name="Author:", value)
 
         # create footer
-        embed.set_footer(text="Article Published")
+        embed.set_footer(text=_("Article Published"))
         embed.timestamp = time
         self.last_data = time
 
         # create title
         embed.set_author(
-            name="New Article on Minecraft.net",
+            name=_("New Article on Minecraft.net"),
             url=f"https://minecraft.net{latest_post['imageurl']}",
             icon_url=(
                 "https://www.minecraft.net/etc.clientlibs/minecraft"
@@ -109,16 +109,16 @@ class News(commands.Cog):
             colour=0x00FF00,
         )
 
-        embed.add_field(name="Name", value=last_release["id"])
-        embed.add_field(name="Package URL", value=f"[Package URL]({last_release['url']})")
-        embed.add_field(name="Minecraft Wiki", value=f"[Minecraft Wiki](https://minecraft.gamepedia.com/Java_Edition_{last_release['id']})")
+        embed.add_field(name=_("Name"), value=last_release["id"])
+        embed.add_field(name=_("Package URL"), value=_("[Package URL]({url})").format(url=last_release['url']))
+        embed.add_field(name=_("Minecraft Wiki"), value=_("[Minecraft Wiki](https://minecraft.gamepedia.com/Java_Edition_{id})").format(id=last_release['id']))
 
-        embed.set_footer(text="Article Published")
+        embed.set_footer(text=_("Article Published"))
         embed.timestamp = time
         self.last_data = time
         # create title
         embed.set_author(
-            name="New Minecraft Java Edition Snapshot",
+            name=_("New Minecraft Java Edition Snapshot"),
             url=f"https://minecraft.gamepedia.com/Java_Edition_{last_release['id']}",
             icon_url=(
                 "https://www.minecraft.net/etc.clientlibs/minecraft"
@@ -148,16 +148,16 @@ class News(commands.Cog):
             colour=0x00FF00,
         )
 
-        embed.add_field(name="Name", value=last_release["id"])
-        embed.add_field(name="Package URL", value=f"[Package URL]({last_release['url']})")
-        embed.add_field(name="Minecraft Wiki", value=f"[Minecraft Wiki](https://minecraft.gamepedia.com/Java_Edition_{last_release['id']})")
+        embed.add_field(name=_("Name"), value=last_release["id"])
+        embed.add_field(name=_("Package URL"), value=_("[Package URL]({url})").format(url=last_release['url']))
+        embed.add_field(name=_("Minecraft Wiki"), value=_("[Minecraft Wiki](https://minecraft.gamepedia.com/Java_Edition_{id})").format(id=last_release['id']))
 
-        embed.set_footer(text="Article Published")
+        embed.set_footer(text=_("Article Published"))
         embed.timestamp = time
         self.last_data = time
         # create title
         embed.set_author(
-            name="New Minecraft Java Edition Snapshot",
+            name=_("New Minecraft Java Edition Snapshot"),
             url=f"https://minecraft.gamepedia.com/Java_Edition_{last_release['id']}",
             icon_url=(
                 "https://www.minecraft.net/etc.clientlibs/minecraft"
