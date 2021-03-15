@@ -58,7 +58,7 @@ class News(commands.Cog):
             .replace("-", " ")
             .upper(),
             description=description,
-            colour=0x00FF00,
+            colour=self.bot.color,
             url=latest_post["id"],
         )
 
@@ -106,7 +106,7 @@ class News(commands.Cog):
             return
 
         embed = discord.Embed(
-            colour=0x00FF00,
+            colour=self.bot.color,
         )
 
         embed.add_field(name=_("Name"), value=last_release["id"])
@@ -132,88 +132,6 @@ class News(commands.Cog):
             await message.publish()
         finally:
             pass
-
-    @commands.command(hidden=True)
-    @commands.is_owner()
-    async def java_releases(self, ctx) -> None:
-        async with self.bot.http_session.get("https://launchermeta.mojang.com/mc/game/version_manifest.json") as resp:
-            data = await resp.json()
-        last_release = data["versions"][0]
-        format = '%Y-%m-%dT%H:%M:%S%z'
-        time = datetime.strptime(last_release["time"], format)
-        # if time <= self.last_data or last_release["type"] != "snapshot":
-        #     return
-
-        embed = discord.Embed(
-            colour=0x00FF00,
-        )
-
-        embed.add_field(name=_("Name"), value=last_release["id"])
-        embed.add_field(name=_("Package URL"), value=_("[Package URL]({url})").format(url=last_release['url']))
-        embed.add_field(name=_("Minecraft Wiki"), value=_("[Minecraft Wiki](https://minecraft.gamepedia.com/Java_Edition_{id})").format(id=last_release['id']))
-
-        embed.set_footer(text=_("Article Published"))
-        embed.timestamp = time
-        self.last_data = time
-        # create title
-        embed.set_author(
-            name=_("New Minecraft Java Edition Snapshot"),
-            url=f"https://minecraft.gamepedia.com/Java_Edition_{last_release['id']}",
-            icon_url=(
-                "https://www.minecraft.net/etc.clientlibs/minecraft"
-                "/clientlibs/main/resources/img/menu/menu-buy--reversed.gif"
-            ),
-        )
-        # send embed
-        await ctx.send(embed=embed)
-        
-
-    @commands.command(hidden=True)
-    @commands.is_owner()
-    async def get_latest_news(self, ctx) -> None:
-        """Get rss media."""
-        async with self.bot.http_session.get(Minecraft_News_RSS) as resp:
-            text = await resp.text()
-        data = feedparser.parse(text)
-
-        # select the most recent post
-        latest_post = data["entries"][0]
-#
-        time = datetime.fromtimestamp(mktime(latest_post["published_parsed"]))
-        description = f"Summary: {latest_post['summary']}"
-
-        embed = discord.Embed(
-            title=latest_post["title_detail"]["value"]
-            .replace("--", ": ")
-            .replace("-", " ")
-            .upper(),
-            description=description,
-            colour=0x00FF00,
-            url=latest_post["id"],
-        )
-
-        # add categories
-        embed.set_image(url=f"https://minecraft.net{latest_post['imageurl']}")
-        embed.add_field(name="Category", value=latest_post["primarytag"])
-        embed.add_field(name="Publish Date", value=" ".join(latest_post["published"].split(" ")[:4]))
-
-        # create footer
-        embed.set_footer(text="Article Published")
-        embed.timestamp = time
-
-        # create title
-        embed.set_author(
-            name="New Article on Minecraft.net",
-            url=f"https://minecraft.net{latest_post['imageurl']}",
-            icon_url=(
-                "https://www.minecraft.net/etc.clientlibs/minecraft"
-                "/clientlibs/main/resources/img/menu/menu-buy--reversed.gif"
-            ),
-        )
-
-        # send embed
-        await ctx.send(embed=embed)
-        await ctx.send(self.last_data)
 
     def cog_unload(self) -> None:
         """Stop news posting tasks on cog unload."""
