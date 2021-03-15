@@ -2,10 +2,6 @@ version: "3.7"
 services:
   bot:
     build: .
-    volumes:
-      # this is for development only as it makes our code accesable from the host pc
-      # remove for production
-      - .:/obsidion
     links:
       - db
       - redis

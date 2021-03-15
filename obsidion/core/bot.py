@@ -77,6 +77,7 @@ class Obsidion(AutoShardedBot):
         self.load_extension("obsidion.cogs.images")
         self.load_extension("obsidion.cogs.info")
         self.load_extension("obsidion.cogs.hypixel")
+        self.load_extension("obsidion.cogs.news")
 
     async def start(self, *args, **kwargs):
         """
