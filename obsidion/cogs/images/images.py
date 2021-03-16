@@ -1,4 +1,5 @@
 """Images cog."""
+import asyncio
 import logging
 
 import discord
@@ -161,50 +162,22 @@ class Images(commands.Cog):
     @commands.command()
     async def avatar(self, ctx: commands.Context, username: str) -> None:
         """Renders a Minecraft players face."""
-        await ctx.channel.trigger_typing()
-        uuid = (await self.bot.mojang_player(username))["uuid"]
-        embed = discord.Embed(
-            description=_(
-                "Here is: `{username}`'s Face! \n "
-                "**[DOWNLOAD](https://visage.surgeplay.com/full/512/{uuid})**"
-            ).format(username=username, uuid=uuid),
-            color=0x00FF00,
-        )
-        embed.set_image(url=f"https://visage.surgeplay.com/face/512/{uuid}")
-
-        await ctx.send(embed=embed)
+        await self.render(ctx, "face", username)
 
     @commands.command()
     async def skull(self, ctx: commands.Context, username: str = None) -> None:
         """Renders a Minecraft players skull."""
-        await ctx.channel.trigger_typing()
-        uuid = (await self.bot.mojang_player(username))["uuid"]
-        embed = discord.Embed(
-            description=_(
-                "Here is: `{username}`'s Skull! \n "
-                "**[DOWNLOAD](https://visage.surgeplay.com/full/512/{uuid})**"
-            ).format(username=username, uuid=uuid),
-            color=0x00FF00,
-        )
-        embed.set_image(url=f"https://visage.surgeplay.com/head/512/{uuid}")
-
-        await ctx.send(embed=embed)
+        await self.render(ctx, "head", username)
 
     @commands.command()
     async def skin(self, ctx: commands.Context, username: str) -> None:
         """Renders a Minecraft players skin."""
-        await ctx.channel.trigger_typing()
-        uuid = (await self.bot.mojang_player(username))["uuid"]
-        embed = discord.Embed(
-            description=_(
-                "Here is: `{username}`'s Skin! \n "
-                "**[DOWNLOAD](https://visage.surgeplay.com/full/512/{uuid})**"
-            ).format(username=username, uuid=uuid),
-            color=0x00FF00,
-        )
-        embed.set_image(url=f"https://visage.surgeplay.com/full/512/{uuid}")
+        await self.render(ctx, "full", username)
 
-        await ctx.send(embed=embed)
+    @commands.command()
+    async def bust(self, ctx: commands.Context, username: str) -> None:
+        """Renders a Minecraft players bust."""
+        await self.render(ctx, "bust", username)
 
     @commands.command()
     async def render(
@@ -213,15 +186,15 @@ class Images(commands.Cog):
         """Renders a Minecraft players skin in 6 different ways.
 
         You can choose from these 6 render types: face,
-        front, frontfull, head, bust & skin.
+        front, full, head, bust & skin.
         """
         await ctx.channel.trigger_typing()
-        renders = ["face", "front", "frontfull", "head", "bust", "skin"]
+        renders = ["face", "front", "frontfull", "head", "bust", "full", "skin"]
         if render_type not in renders:
             await ctx.reply(
                 _(
                     "Please supply a render type. Your "
-                    "options are:\n `face`, `front`, `frontfull`, `head`, `bust`, "
+                    "options are:\n `face`, `front`, `full`, `head`, `bust`, "
                     "`skin` \n Type: ?render <render type> <username>"
                 )
             )
@@ -231,9 +204,9 @@ class Images(commands.Cog):
             description=_(
                 "Here is: `{username}`'s {render_type}! \n "
                 "**[DOWNLOAD](https://visage.surgeplay.com/{render_type_lower}"
-                "/512/{uuid})**"
+                "/512/{uuid})\n[RAW](https://sessionserver.mojang.com/session/minecraft/profile/{uuid})**"
             ).format(
-                userame=username,
+                username=username,
                 render_type=render_type.capitalize(),
                 render_type_lower=render_type,
                 uuid=uuid,
