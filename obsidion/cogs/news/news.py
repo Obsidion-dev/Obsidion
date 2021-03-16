@@ -2,6 +2,7 @@
 import logging
 import json
 from time import mktime
+import pytz
 
 import discord
 from discord.ext import commands
@@ -27,8 +28,8 @@ class News(commands.Cog):
     def __init__(self, bot) -> None:
         """Init."""
         self.bot = bot
-        self.last_media_data = datetime.now()
-        self.last_java_version_data = datetime.now()
+        self.last_media_data = datetime.now(pytz.utc)
+        self.last_java_version_data = datetime.now(pytz.utc)
         self.get_media.start()
         self.get_java_releases.start()
 
@@ -41,13 +42,12 @@ class News(commands.Cog):
 
         # select the most recent post
         latest_post = data["entries"][0]
-        print(latest_post)
 
         # run checks to see wether it should be posted
 
-        time = datetime.fromtimestamp(mktime(latest_post["published_parsed"]))
+        time = datetime.fromtimestamp(mktime(latest_post["published_parsed"]), pytz.utc)
 
-        if time <= self.last_data:
+        if time <= self.last_media_data:
             return
         # create discord embed
         description = _("Summary: {summary}").format(summary=latest_post['summary'])
@@ -74,7 +74,7 @@ class News(commands.Cog):
         # create footer
         embed.set_footer(text=_("Article Published"))
         embed.timestamp = time
-        self.last_data = time
+        self.last_media_data = time
 
         # create title
         embed.set_author(
@@ -102,7 +102,7 @@ class News(commands.Cog):
 
         format = '%Y-%m-%dT%H:%M:%S%z'
         time = datetime.strptime(last_release["time"], format)
-        if time <= self.last_data or last_release["type"] != "snapshot":
+        if time <= self.last_java_version_data or last_release["type"] != "snapshot":
             return
 
         embed = discord.Embed(
@@ -115,7 +115,7 @@ class News(commands.Cog):
 
         embed.set_footer(text=_("Article Published"))
         embed.timestamp = time
-        self.last_data = time
+        self.last_java_version_data = time
         # create title
         embed.set_author(
             name=_("New Minecraft Java Edition Snapshot"),
