@@ -14,7 +14,6 @@ from typing import Optional
 import aiohttp
 import discord
 from discord.ext import commands
-
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
 

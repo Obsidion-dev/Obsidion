@@ -1,14 +1,14 @@
 """Initialise and run the bot."""
 import logging
-from obsidion import _update_event_loop_policy
-from obsidion.core import get_settings
-from obsidion.core.bot import Obsidion
-from obsidion.core.help import Help
 
 from discord import Activity
 from discord import ActivityType
 from discord import AllowedMentions
 from discord import Intents
+from obsidion import _update_event_loop_policy
+from obsidion.core import get_settings
+from obsidion.core.bot import Obsidion
+from obsidion.core.help import Help
 
 _update_event_loop_policy()
 

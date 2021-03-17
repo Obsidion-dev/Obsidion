@@ -4,6 +4,7 @@ import logging
 import sys as _sys
 from importlib.metadata import PackageNotFoundError
 from importlib.metadata import version
+
 from obsidion.core.logging import setup_logging
 
 # Start logging

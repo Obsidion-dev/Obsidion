@@ -6,15 +6,15 @@ import inspect
 import logging
 import os
 import sys
-from obsidion import __version__
-from obsidion.core.i18n import cog_i18n
-from obsidion.core.i18n import Translator
 from typing import Optional
 
 import discord
 from babel import Locale as BabelLocale
 from babel import UnknownLocaleError
 from discord.ext import commands
+from obsidion import __version__
+from obsidion.core.i18n import cog_i18n
+from obsidion.core.i18n import Translator
 
 from . import i18n
 from .utils.chat_formatting import box

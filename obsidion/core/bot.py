@@ -1,24 +1,24 @@
 """Main bot file."""
+import json
+import socket
 import sys
 from enum import IntEnum
 from typing import Optional
-import socket
-import json
 
-import aioredis
 import aiohttp
+import aioredis
 import asyncpg
 import discord
 from discord.ext.commands import AutoShardedBot
 from discord.ext.commands import when_mentioned_or
 
 from .config import get_settings
+from .config import PlayerNotExist
 from .core_commands import Core
 from .events import Events
 from .global_checks import init_global_checks
 from .settings_cache import I18nManager
 from .settings_cache import PrefixManager
-from .config import PlayerNotExist
 
 
 class Obsidion(AutoShardedBot):

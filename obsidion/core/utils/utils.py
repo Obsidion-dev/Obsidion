@@ -1,6 +1,7 @@
 import asyncio
 import contextlib
-from typing import List, Iterable
+from typing import Iterable
+from typing import List
 
 import discord
 

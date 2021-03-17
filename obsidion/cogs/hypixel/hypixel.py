@@ -2,13 +2,11 @@
 import logging
 
 import discord
+from asyncpixel import Hypixel as _Hypixel
 from discord.ext import commands
-
+from obsidion.core import get_settings
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
-from obsidion.core import get_settings
-
-from asyncpixel import Hypixel as _Hypixel
 
 log = logging.getLogger(__name__)
 

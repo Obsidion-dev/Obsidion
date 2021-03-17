@@ -1,5 +1,4 @@
 """Setup images."""
-
 from .images import Images
 
 

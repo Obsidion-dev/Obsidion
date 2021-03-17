@@ -2,9 +2,6 @@ import datetime
 import itertools
 import textwrap
 from io import BytesIO
-from obsidion.core.i18n import get_babel_locale
-from obsidion.core.i18n import get_babel_regional_format
-from obsidion.core.i18n import Translator
 from typing import Iterator
 from typing import List
 from typing import Optional
@@ -15,6 +12,9 @@ from typing import Union
 import discord
 from babel.lists import format_list as babel_list
 from babel.numbers import format_decimal
+from obsidion.core.i18n import get_babel_locale
+from obsidion.core.i18n import get_babel_regional_format
+from obsidion.core.i18n import Translator
 
 _ = Translator("UtilsChatFormatting", __file__)
 
