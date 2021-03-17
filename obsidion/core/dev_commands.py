@@ -49,7 +49,11 @@ class Dev(commands.Cog):
                 f"{ctx.message.author.mention}, :x: {e.__class__.__name__}: {e}"
             )
         else:
-            await ctx.reply(_("The cog `{module}` has been succesfully loaded").format(module=module))
+            await ctx.reply(
+                _("The cog `{module}` has been succesfully loaded").format(
+                    module=module
+                )
+            )
 
     @commands.command()
     @commands.is_owner()
@@ -62,7 +66,11 @@ class Dev(commands.Cog):
                 f"{ctx.message.author.mention}, :x: {e.__class__.__name__}: {e}"
             )
         else:
-            await ctx.reply(_("The cog `{module}` has been succesfully unloaded").format(module=module))
+            await ctx.reply(
+                _("The cog `{module}` has been succesfully unloaded").format(
+                    module=module
+                )
+            )
 
     @commands.command(name="reload")
     @commands.is_owner()
@@ -75,7 +83,11 @@ class Dev(commands.Cog):
                 f"{ctx.message.author.mention}, :x: {e.__class__.__name__}: {e}"
             )
         else:
-            await ctx.reply(_("The cog `{module}` has been succesfully reloaded").format(module=module))
+            await ctx.reply(
+                _("The cog `{module}` has been succesfully reloaded").format(
+                    module=module
+                )
+            )
 
     @staticmethod
     def async_compile(source, filename, mode):

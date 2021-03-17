@@ -23,6 +23,7 @@ _ = Translator("News", __file__)
 Minecraft_News_RSS = "https://www.minecraft.net/en-us/feeds/community-content/rss"
 Categories = ("Minecraft Builds", "News", "Deep Dives", "Guides")
 
+
 @cog_i18n(_)
 class News(commands.Cog):
     def __init__(self, bot) -> None:
@@ -50,7 +51,7 @@ class News(commands.Cog):
         if time <= self.last_media_data:
             return
         # create discord embed
-        description = _("Summary: {summary}").format(summary=latest_post['summary'])
+        description = _("Summary: {summary}").format(summary=latest_post["summary"])
 
         embed = discord.Embed(
             title=latest_post["title_detail"]["value"]
@@ -65,7 +66,10 @@ class News(commands.Cog):
         # add categories
         embed.set_image(url=f"https://minecraft.net{latest_post['imageurl']}")
         embed.add_field(name=_("Category"), value=latest_post["primarytag"])
-        embed.add_field(name=_("Publish Date"), value=" ".join(latest_post["published"].split(" ")[:4]))
+        embed.add_field(
+            name=_("Publish Date"),
+            value=" ".join(latest_post["published"].split(" ")[:4]),
+        )
 
         # author info
         # embed.set_thumbnail =
@@ -96,11 +100,13 @@ class News(commands.Cog):
 
     @tasks.loop(minutes=10)
     async def get_java_releases(self) -> None:
-        async with self.bot.http_session.get("https://launchermeta.mojang.com/mc/game/version_manifest.json") as resp:
+        async with self.bot.http_session.get(
+            "https://launchermeta.mojang.com/mc/game/version_manifest.json"
+        ) as resp:
             data = await resp.json()
         last_release = data["versions"][0]
 
-        format = '%Y-%m-%dT%H:%M:%S%z'
+        format = "%Y-%m-%dT%H:%M:%S%z"
         time = datetime.strptime(last_release["time"], format)
         if time <= self.last_java_version_data or last_release["type"] != "snapshot":
             return
@@ -110,8 +116,16 @@ class News(commands.Cog):
         )
 
         embed.add_field(name=_("Name"), value=last_release["id"])
-        embed.add_field(name=_("Package URL"), value=_("[Package URL]({url})").format(url=last_release['url']))
-        embed.add_field(name=_("Minecraft Wiki"), value=_("[Minecraft Wiki](https://minecraft.gamepedia.com/Java_Edition_{id})").format(id=last_release['id']))
+        embed.add_field(
+            name=_("Package URL"),
+            value=_("[Package URL]({url})").format(url=last_release["url"]),
+        )
+        embed.add_field(
+            name=_("Minecraft Wiki"),
+            value=_(
+                "[Minecraft Wiki](https://minecraft.gamepedia.com/Java_Edition_{id})"
+            ).format(id=last_release["id"]),
+        )
 
         embed.set_footer(text=_("Article Published"))
         embed.timestamp = time
@@ -137,5 +151,3 @@ class News(commands.Cog):
         """Stop news posting tasks on cog unload."""
         self.get_media.cancel()
         self.get_java_releases.cancel()
-
-    
