@@ -4,7 +4,7 @@ import logging
 from datetime import datetime
 from time import mktime
 
-import bs4
+from bs4 import BeautifulSoup
 import discord
 import feedparser
 import pytz
@@ -37,7 +37,8 @@ class News(commands.Cog):
         """Get rss media."""
         async with self.bot.http_session.get(Minecraft_News_RSS) as resp:
             text = await resp.text()
-        data = feedparser.parse(text)
+        data = feedparser.parse(text, "lxml")
+
 
         # select the most recent post
         latest_post = data["entries"][0]
@@ -48,40 +49,41 @@ class News(commands.Cog):
 
         if time <= self.last_media_data:
             return
-        # create discord embed
-        description = _("Summary: {summary}").format(summary=latest_post["summary"])
+
+        async with self.bot.http_session.get(latest_post["id"]) as resp:
+            text = await resp.text()
+        soup = BeautifulSoup(text)
+        author_image = f"https://www.minecraft.net{soup.find('img', id='author-avatar').get('src')}"
+        author = soup.find("dl", class_="attribution__details").dd.string
+        text = soup.find("div", class_="end-with-block").p.text
 
         embed = discord.Embed(
-            title=latest_post["title_detail"]["value"]
-            .replace("--", ": ")
-            .replace("-", " ")
-            .upper(),
-            description=description,
+            title=soup.find("h1").string,
+            description=text,
             colour=self.bot.color,
-            url=latest_post["id"],
+            url=f"https://minecraft.net{latest_post['imageurl']}",
+            thumbnail=author_image,
         )
 
         # add categories
         embed.set_image(url=f"https://minecraft.net{latest_post['imageurl']}")
+        embed.set_thumbnail(url=author_image)
         embed.add_field(name=_("Category"), value=latest_post["primarytag"])
+        embed.add_field(name=_("Author"), value=author)
         embed.add_field(
             name=_("Publish Date"),
             value=" ".join(latest_post["published"].split(" ")[:4]),
         )
 
-        # author info
-        # embed.set_thumbnail =
-        # embed.add_field(name="Author:", value)
-
         # create footer
         embed.set_footer(text=_("Article Published"))
         embed.timestamp = time
-        self.last_media_data = time
+        # self.last_media_data = time
 
         # create title
         embed.set_author(
             name=_("New Article on Minecraft.net"),
-            url=f"https://minecraft.net{latest_post['imageurl']}",
+            url=latest_post["id"],
             icon_url=(
                 "https://www.minecraft.net/etc.clientlibs/minecraft"
                 "/clientlibs/main/resources/img/menu/menu-buy--reversed.gif"
