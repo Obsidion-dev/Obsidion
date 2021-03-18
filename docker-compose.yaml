@@ -7,6 +7,7 @@ services:
       - redis
     env_file:
       - .env
+    restart: on-failure
   db:
     image: postgres:12-alpine
     volumes:
@@ -17,8 +18,10 @@ services:
       POSTGRES_USER: discord
     ports:
       - "5432"
+    restart: on-failure
   redis:
     image: redis:alpine
+    restart: on-failure
 
   pgadmin:
     container_name: pgadmin
@@ -30,6 +33,7 @@ services:
       - "5050:80"
     depends_on:
       - db
+    restart: on-failure
 
 volumes:
   postgresdb:
