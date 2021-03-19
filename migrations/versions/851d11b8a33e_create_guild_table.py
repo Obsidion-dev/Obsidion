@@ -23,8 +23,26 @@ def upgrade():
         sa.Column("prefix", sa.Unicode(200)),
         sa.Column("regional", sa.Unicode(5)),
         sa.Column("locale", sa.Unicode(5)),
+        sa.Column("server", sa.Unicode(200)),
+        sa.Column("news", sa.ARRAY(sa.Unicode(200))),
+    )
+
+    op.create_table(
+        "user",
+        sa.Column("id", sa.BIGINT, primary_key=True),
+        sa.Column("uuid", sa.dialects.postgresql.UUID),
+    )
+
+    op.create_table(
+        "rcon",
+        sa.Column("id", sa.BIGINT, primary_key=True),
+        sa.Column("server", sa.Unicode(200)),
+        sa.Column("password", sa.Unicode(200)),
+        sa.Column("port", sa.BIGINT),
     )
 
 
 def downgrade():
     op.drop_table("guild")
+    op.drop_table("user")
+    op.drop_table("rcon")
