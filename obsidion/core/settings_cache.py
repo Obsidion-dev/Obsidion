@@ -1,6 +1,9 @@
+from obsidion.core.bot import Obsidion
 from typing import List
 from typing import Optional
 from typing import Union
+from typing import Dict
+import json
 
 import discord
 
@@ -137,3 +140,63 @@ class I18nManager:
                 regional_format,
             )
         await self._bot.redis.set(key, regional_format, expire=28800)
+
+
+class RconManager:
+    def __init__(self, bot: Obsidion):
+        self._bot = bot
+
+    async def get_rcon(
+        self, guild: Optional[discord.Guild] = None
+    ) -> Union[Dict[str, Union[str, int]], None]:
+        """Get rcon data."""
+        if guild is None:
+            return None
+        gid = guild.id
+        key = f"rcon_{gid}"
+        redis = await self._bot.redis.exists(key)
+        if redis:
+            rcon = json.load((await self._bot.redis.get(key)).decode("UTF-8"))
+        else:
+            rcon_details = await self._bot.db.fetchrow(
+                "SELECT * FROM rcon WHERE id = $1", gid
+            )
+            rcon = {
+                "server": rcon_details.get("server"),
+                "password": rcon_details.get("password"),
+                "port": rcon_details.get("port"),
+            }
+
+        await self._bot.redis.set(key, json.dump(rcon), expire=28800)
+        return rcon
+
+    async def set_rcon(
+        self, guild: discord.Guild, server: str, password: str, port: int
+    ) -> None:
+        """Set rcon."""
+        gid = guild.id
+
+        key = f"rcon_{gid}"
+        if await self._bot.db.fetch("SELECT * FROM rcon WHERE id = $1", gid):
+            await self._bot.db.execute(
+                "UPDATE rcon SET server = $1, password = $2, port = $3 WHERE id = $4",
+                server,
+                password,
+                port,
+                gid,
+            )
+        else:
+            await self._bot.db.execute(
+                "INSERT INTO guild (id, server, password, port) VALUES ($1, $2, $3, $4)",
+                gid,
+                server,
+                password,
+                port,
+            )
+        rcon = {
+            "server": server,
+            "password": password,
+            "port": port,
+        }
+        await self._bot.redis.set(key, json.dump(rcon), expire=28800)
+
