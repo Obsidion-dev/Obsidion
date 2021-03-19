@@ -73,6 +73,7 @@ COPY --from=builder-base $PYSETUP_PATH $PYSETUP_PATH
 # quicker install as runtime deps are already installed
 COPY ./obsidion /app/obsidion/
 COPY alembic.ini /app/alembic.ini
+COPY start.sh /app/start.sh
 COPY ./migrations /app/migrations
 WORKDIR /app
-CMD ["python", "-m", "obsidion"]
+CMD ["./start.sh"]
