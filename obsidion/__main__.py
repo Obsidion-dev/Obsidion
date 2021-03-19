@@ -47,7 +47,7 @@ def main():
     log.info("Ready to go, spinning up the gears")
     obsidion.run(get_settings().DISCORD_TOKEN)
 
-    log.info("GearBot shutting down, cleaning up")
+    log.info("Obsidion shutting down, cleaning up")
 
     log.info("Cleanup complete")
 
