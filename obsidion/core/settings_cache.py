@@ -141,6 +141,14 @@ class I18nManager:
         await self._bot.redis.set(key, regional_format, expire=28800)
 
 
+class AccountManager:
+    def __init__(self, bot):
+        self._bot = bot
+
+class GuildManager:
+    def __init__(self, bot):
+        self._bot = bot
+
 class RconManager:
     def __init__(self, bot):
         self._bot = bot
