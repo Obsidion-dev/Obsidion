@@ -217,7 +217,7 @@ class Info(commands.Cog):
                 data = await resp.json()
             else:
                 await ctx.reply(_(":x: The bug {bug} was not found.").format(bug=bug))
-            return
+                return
         embed = discord.Embed(
             description=data["fields"]["description"],
             color=self.bot.color,
