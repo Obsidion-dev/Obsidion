@@ -1,4 +1,3 @@
-from obsidion.core.bot import Obsidion
 from typing import List
 from typing import Optional
 from typing import Union
@@ -143,7 +142,7 @@ class I18nManager:
 
 
 class RconManager:
-    def __init__(self, bot: Obsidion):
+    def __init__(self, bot):
         self._bot = bot
 
     async def get_rcon(
