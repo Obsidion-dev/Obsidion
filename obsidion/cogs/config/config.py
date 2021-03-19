@@ -8,10 +8,9 @@ from babel import Locale as BabelLocale
 from babel import UnknownLocaleError
 from discord.ext import commands
 from obsidion import __version__
+from obsidion.core import i18n
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
-
-from obsidion.core import i18n
 from obsidion.core.utils.chat_formatting import pagify
 from obsidion.core.utils.predicates import MessagePredicate
 

@@ -4,10 +4,10 @@ import logging
 from datetime import datetime
 from time import mktime
 
-from bs4 import BeautifulSoup
 import discord
 import feedparser
 import pytz
+from bs4 import BeautifulSoup
 from discord.ext import commands
 from discord.ext import tasks
 from obsidion.core import get_settings
@@ -38,7 +38,6 @@ class News(commands.Cog):
         async with self.bot.http_session.get(Minecraft_News_RSS) as resp:
             text = await resp.text()
         data = feedparser.parse(text, "lxml")
-
 
         # select the most recent post
         latest_post = data["entries"][0]

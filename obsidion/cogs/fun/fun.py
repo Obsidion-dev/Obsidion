@@ -3,6 +3,7 @@ import json
 import logging
 from datetime import datetime
 from random import choice
+
 import discord
 from discord.ext import commands
 from obsidion.core import get_settings
@@ -122,10 +123,20 @@ class Fun(commands.Cog):
             return
         c_choice = choice(options)
         if user_choice == options[options.index(user_choice) - 1]:
-            await ctx.send(_("You chose {user_choice}, I chose {c_choice} I win.").format(user_choice=user_choice, c_choice=c_choice))
+            await ctx.send(
+                _("You chose {user_choice}, I chose {c_choice} I win.").format(
+                    user_choice=user_choice, c_choice=c_choice
+                )
+            )
         elif c_choice == user_choice:
             await ctx.send(
-                _("You chose {user_choice}, I chose {c_choice} looks like we have a tie.").format(user_choice=user_choice, c_choice=c_choice)
+                _(
+                    "You chose {user_choice}, I chose {c_choice} looks like we have a tie."
+                ).format(user_choice=user_choice, c_choice=c_choice)
             )
         else:
-            await ctx.send(_("You chose {user_choice}, I chose {c_choice} you win.").format(user_choice=user_choice, c_choice=c_choice))
+            await ctx.send(
+                _("You chose {user_choice}, I chose {c_choice} you win.").format(
+                    user_choice=user_choice, c_choice=c_choice
+                )
+            )
