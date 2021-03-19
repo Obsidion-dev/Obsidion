@@ -6,11 +6,8 @@ import os
 from importlib.metadata import PackageNotFoundError
 from importlib.metadata import version
 
-# from obsidion.core.logging import setup_logging
-
 # Start logging
 
-# setup_logging()
 logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 
 log = logging.getLogger("obsidion")
