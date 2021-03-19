@@ -1,4 +1,4 @@
-"""create guild table
+"""Create base tables
 
 Revision ID: 851d11b8a33e
 Revises:
@@ -39,6 +39,8 @@ def upgrade():
         sa.Column("server", sa.Unicode(200)),
         sa.Column("password", sa.Unicode(200)),
         sa.Column("port", sa.BIGINT),
+        sa.Column("users", sa.ARRAY(sa.BIGINT)),
+         sa.Column("channel", sa.BIGINT),
     )
 
 

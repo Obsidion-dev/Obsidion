@@ -164,13 +164,15 @@ class RconManager:
                 "server": rcon_details.get("server"),
                 "password": rcon_details.get("password"),
                 "port": rcon_details.get("port"),
+                "users": rcon_details.get("users"),
+                "channel": rcon_details.get("channel"),
             }
 
         await self._bot.redis.set(key, json.dump(rcon), expire=28800)
         return rcon
 
     async def set_rcon(
-        self, guild: discord.Guild, server: str, password: str, port: int
+        self, guild: discord.Guild, server: str, password: str, port: int, users: List[int], channel: int
     ) -> None:
         """Set rcon."""
         gid = guild.id
@@ -178,23 +180,29 @@ class RconManager:
         key = f"rcon_{gid}"
         if await self._bot.db.fetch("SELECT * FROM rcon WHERE id = $1", gid):
             await self._bot.db.execute(
-                "UPDATE rcon SET server = $1, password = $2, port = $3 WHERE id = $4",
+                "UPDATE rcon SET server = $1, password = $2, port = $3, users = $4, channel = $5 WHERE id = $6",
                 server,
                 password,
                 port,
+                users,
+                channel,
                 gid,
             )
         else:
             await self._bot.db.execute(
-                "INSERT INTO guild (id, server, password, port) VALUES ($1, $2, $3, $4)",
+                "INSERT INTO guild (id, server, password, port, users, channel) VALUES ($1, $2, $3, $4, $5,$6)",
                 gid,
                 server,
                 password,
                 port,
+                users,
+                channel
             )
         rcon = {
             "server": server,
             "password": password,
             "port": port,
+            "users": users,
+            "channel": channel
         }
         await self._bot.redis.set(key, json.dump(rcon), expire=28800)
