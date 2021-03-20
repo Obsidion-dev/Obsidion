@@ -213,7 +213,7 @@ class Images(commands.Cog):
                 render_type_lower=render_type,
                 uuid=uuid,
             ),
-            color=0x00FF00,
+            color=self.bot.color,
         )
         embed.set_image(url=f"https://visage.surgeplay.com/{render_type}/512/{uuid}")
 
