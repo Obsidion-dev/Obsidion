@@ -207,6 +207,6 @@ class Config(commands.Cog):
 
     @account.command(name="unlink")
     async def account_unlink(self, ctx: commands.Context) -> None:
-        """Unlink minecraft account to discord account."""
+        """Unlink minecraft account from discord account."""
         await self.bot._account_cache.set_account(ctx.author, None)
         await ctx.reply("Your account has been unlinked from any minecraft account")
