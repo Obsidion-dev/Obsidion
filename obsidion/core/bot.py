@@ -19,6 +19,8 @@ from .events import Events
 from .global_checks import init_global_checks
 from .settings_cache import I18nManager
 from .settings_cache import PrefixManager
+from .settings_cache import AccountManager
+
 
 
 class Obsidion(AutoShardedBot):
@@ -40,6 +42,7 @@ class Obsidion(AutoShardedBot):
 
         self._prefix_cache = PrefixManager(self)
         self._i18n_cache = I18nManager(self)
+        self._account_cache = AccountManager(self)
 
         async def prefix_manager(bot, message):
             prefixes = await self._prefix_cache.get_prefixes(message.guild)
@@ -171,7 +174,7 @@ class Obsidion(AutoShardedBot):
         await self.logout()
         sys.exit(self._shutdown_mode)
 
-    async def mojang_player(self, username: str) -> str:
+    async def mojang_player(self,  user: discord.User, username: Optional[str] = None) -> str:
         """Takes in an mc username and tries to convert it to a mc uuid.
 
         Args:
@@ -181,20 +184,61 @@ class Obsidion(AutoShardedBot):
         Returns:
         str: uuid of player
         """
-        key = f"player_{username}"
+        if username is None:
+            uuid = await self._account_cache.get_account(user)
+            if uuid is None:
+                raise PlayerNotExist()
+        else:
+            username_key = f"username_{username}"
+            if await self.redis.exists(username_key):
+                uuid = (await self.redis.get(username_key)).decode("UTF-8")
+            else:
+                uuid = username
+        print(str(uuid))
+        key = f"player_{str(uuid)}"
         if await self.redis.exists(key):
+            # print(await self.redis.get(key))
             data = json.loads(await self.redis.get(key))
         else:
-            url = f"https://api.ashcon.app/mojang/v2/user/{username}"
+            url = f"https://api.ashcon.app/mojang/v2/user/{str(uuid)}"
             async with self.http_session.get(url) as resp:
                 if resp.status == 200:
                     data = await resp.json()
                 else:
                     data = None
+        if data is not None:
+            uuid = data['uuid']
+        key = f"player_{uuid}"
         await self.redis.set(key, json.dumps(data), expire=28800)
         if data is None:
             raise PlayerNotExist()
+        username_key = f"username_{data['username']}"
+        await self.redis.set(username_key, str(uuid), expire=28800)
         return data
+        # else:
+        #     username_key = f"username_{username}"
+        #     if await self.redis.exists(username_key):
+        #         uuid = await self.redis.get(username_key)
+        #     else:
+        #         uuid = username
+        # key = f"player_{str(uuid)}"
+        # if await self.redis.exists(key):
+        #     print(await self.redis.get(key))
+        #     data = json.loads(await self.redis.get(key))
+        # else:
+        #     url = f"https://api.ashcon.app/mojang/v2/user/{str(uuid)}"
+        #     async with self.http_session.get(url) as resp:
+        #         if resp.status == 200:
+        #             data = await resp.json()
+        #         else:
+        #             data = None
+
+        # await self.redis.set(key, json.dumps(data), expire=28800)
+        # if data is None:
+        #     raise PlayerNotExist()
+        # username_key = f"username_{data['username']}"
+        # await self.redis.set(username_key, str(uuid), expire=28800)
+        # return data
 
 
 class ExitCodes(IntEnum):

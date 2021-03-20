@@ -2,9 +2,11 @@
 import json
 import logging
 from datetime import datetime
+from typing import Optional
 
 import discord
 from discord.ext import commands
+from pydantic.types import NoneBytes
 from obsidion.core import get_settings
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
@@ -23,10 +25,12 @@ class Info(commands.Cog):
     @commands.command(
         aliases=["whois", "p", "names", "namehistory", "pastnames", "namehis"]
     )
-    async def profile(self, ctx: commands.Context, username: str) -> None:
+    async def profile(self, ctx: commands.Context, username: Optional[str] = None) -> None:
         """View a players Minecraft UUID, Username history and skin."""
         await ctx.channel.trigger_typing()
-        profile_info = await self.bot.mojang_player(username)
+        profile_info = await self.bot.mojang_player(ctx.author, username)
+        if username is None:
+            username=profile_info["username"]
         uuid: str = profile_info["uuid"]
         names = profile_info["username_history"]
         h = 0
@@ -38,7 +42,7 @@ class Info(commands.Cog):
 
         name_list = ""
         for name in names[1:]:
-            name_list += f"**{names.index(name)+1}.** `{name['username']}` - {(datetime.strptime(name['changed_at'], '%Y-%m-%dT0%X.000Z')).strftime('%b %d, %Y')}\n"
+            name_list += f"**{names.index(name)+1}.** `{name['username']}` - {(datetime.strptime(name['changed_at'], '%Y-%m-%dT%H:%M:%S.000Z')).strftime('%b %d, %Y')}\n"
         name_list += _("**1.** `{original}` - First Username").format(
             original=names[0]["username"]
         )

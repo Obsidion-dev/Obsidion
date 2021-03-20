@@ -185,3 +185,28 @@ class Config(commands.Cog):
             await ctx.send(_("I lack the permissions to change my own nickname."))
         else:
             await ctx.send(_("Done."))
+
+    @commands.group()
+    async def account(self, ctx: commands.Context) -> None:
+        """Link Minecraft account to Discord account."""
+        if ctx.invoked_subcommand is None:
+            await ctx.send_help(ctx.command)
+
+    @account.command(name="link")
+    async def account_link(self, ctx: commands.Context, username: str) -> None:
+        """Link account to discord account."""
+        await ctx.channel.trigger_typing()
+        profile_info = await self.bot.mojang_player(ctx.author, username)
+        uuid: str = profile_info["uuid"]
+        print("link")
+        print(uuid)
+        print("link")
+        await self.bot._account_cache.set_account(ctx.author, uuid)
+        
+        await ctx.reply(f"Your account has been linked to {username}")
+
+    @account.command(name="unlink")
+    async def account_unlink(self, ctx: commands.Context) -> None:
+        """Unlink minecraft account to discord account."""
+        await self.bot._account_cache.set_account(ctx.author, None)
+        await ctx.reply("Your account has been unlinked from any minecraft account")

@@ -3,7 +3,7 @@ from typing import Dict
 from typing import List
 from typing import Optional
 from typing import Union
-
+from uuid import UUID
 import discord
 
 from .config import get_settings
@@ -145,6 +145,40 @@ class AccountManager:
     def __init__(self, bot):
         self._bot = bot
 
+    async def get_account(self, user: discord.User)-> Union[UUID, None]:
+        uid = user.id
+        key = f"account_{uid}"
+        redis = await self._bot.redis.exists(key)
+        if redis:
+            uuid = json.loads((await self._bot.redis.get(key)).decode("UTF-8"))
+            if uuid is not None:
+                uuid = UUID(uuid)
+        else:
+            uuid = await self._bot.db.fetchval(
+                "SELECT uuid FROM account WHERE id = $1", uid
+            )
+        await self._bot.redis.set(key, json.dumps(str(uuid)), expire=28800)
+        return uuid
+
+    async def set_account(self, user: discord.User, uuid: Optional[UUID]=None)-> None:
+        uid = user.id
+        key = f"account_{uid}"
+        if await self._bot.db.fetch("SELECT uuid FROM account WHERE id = $1", uid):
+            await self._bot.db.execute(
+                "UPDATE account SET uuid = $1 WHERE id = $2",
+                uuid,
+                uid,
+            )
+        else:
+            await self._bot.db.execute(
+                "INSERT INTO account (id, uuid) VALUES ($1, $2)",
+                uid,
+                uuid,
+            )
+        await self._bot.redis.set(key, json.dumps(uuid), expire=28800)
+
+
+
 class GuildManager:
     def __init__(self, bot):
         self._bot = bot
@@ -154,11 +188,9 @@ class RconManager:
         self._bot = bot
 
     async def get_rcon(
-        self, guild: Optional[discord.Guild] = None
+        self, guild: discord.Guild
     ) -> Union[Dict[str, Union[str, int]], None]:
         """Get rcon data."""
-        if guild is None:
-            return None
         gid = guild.id
         key = f"rcon_{gid}"
         redis = await self._bot.redis.exists(key)
