@@ -210,3 +210,21 @@ class Config(commands.Cog):
         """Unlink minecraft account from discord account."""
         await self.bot._account_cache.set_account(ctx.author, None)
         await ctx.reply("Your account has been unlinked from any minecraft account")
+
+    @commands.group()
+    async def serverlink(self, ctx: commands.Context) -> None:
+        """Link Minecraft server to Discord guild."""
+        if ctx.invoked_subcommand is None:
+            await ctx.send_help(ctx.command)
+    
+    @serverlink.command(name="link")
+    async def serverlink_link(self, ctx, server: str) -> None:
+        """Link Minecraft server to Discord guild."""
+        await self.bot._guild_cache.set_server(ctx.guild, server)
+        await ctx.reply(f"Your guild has been linked to {server}")
+
+    @serverlink.command(name="unlink")
+    async def serverlink_unlink(self, ctx: commands.Context) -> None:
+        """Unlink minecraft server from discord guild."""
+        await self.bot._guild_cache.set_server(ctx.guild, None)
+        await ctx.reply("Your guild has been unlinked from any minecraft server")
