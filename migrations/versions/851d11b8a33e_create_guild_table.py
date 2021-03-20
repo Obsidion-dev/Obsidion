@@ -28,7 +28,7 @@ def upgrade():
     )
 
     op.create_table(
-        "user",
+        "account",
         sa.Column("id", sa.BIGINT, primary_key=True),
         sa.Column("uuid", sa.dialects.postgresql.UUID),
     )
@@ -40,11 +40,11 @@ def upgrade():
         sa.Column("password", sa.Unicode(200)),
         sa.Column("port", sa.BIGINT),
         sa.Column("users", sa.ARRAY(sa.BIGINT)),
-         sa.Column("channel", sa.BIGINT),
+        sa.Column("channel", sa.BIGINT),
     )
 
 
 def downgrade():
     op.drop_table("guild")
-    op.drop_table("user")
+    op.drop_table("account")
     op.drop_table("rcon")
