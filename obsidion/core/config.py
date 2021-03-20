@@ -27,10 +27,7 @@ class Settings(BaseSettings):
     HYPIXEL_API_TOKEN: UUID = None
     ACTIVITY: str = "for @Obsidion help"
     DEFAULT_PREFIX: str = "/"
-    NEW_GUILD_CHANNEL: PositiveInt = None
     STACK_TRACE_CHANNEL: PositiveInt = None
-    FEEDBACK_CHANNEL: PositiveInt = None
-    BUG_CHANNEL: PositiveInt = None
     DB: PostgresDsn = None
     REDIS: RedisDsn = None
     DEV: bool = False

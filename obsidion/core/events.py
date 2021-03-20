@@ -4,12 +4,12 @@ from datetime import datetime
 
 import discord
 from discord.ext import commands
-from obsidion.core.config import PlayerNotExist
+from obsidion.core.config import PlayerNotExist, get_settings
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
 
 from .i18n import set_contextual_locales_from_guild
-from .utils.chat_formatting import format_perms_list
+from .utils.chat_formatting import box, format_perms_list, pagify
 from .utils.chat_formatting import humanize_timedelta
 from .utils.chat_formatting import inline
 
@@ -173,5 +173,35 @@ class Events(commands.Cog):
             )
             self.bot._last_exception = exception_log
             await ctx.send(inline(message))
+            destination = self.bot.get_channel(get_settings().STACK_TRACE_CHANNEL)
+            embed = discord.Embed(title="Bug", colour=0x00FF00)
+
+            embed.set_author(name=str(ctx.author), icon_url=ctx.author.avatar_url)
+            embed.add_field(name="Command", value=ctx.command)
+            embed.timestamp = ctx.message.created_at
+
+            if ctx.guild is not None:
+                embed.add_field(
+                    name="Server",
+                    value=f"{ctx.guild.name} (ID: {ctx.guild.id})",
+                    inline=False,
+                )
+
+            embed.add_field(
+                name="Channel",
+                value=f"{ctx.channel} (ID: {ctx.channel.id})",
+                inline=False,
+            )
+            embed.set_footer(text=f"Author ID: {ctx.author.id}")
+
+            await destination.send(embed=embed)
+            for page in pagify(self.bot._last_exception, shorten_by=10):
+                try:
+                    await destination.send(box(page, lang="py"))
+                except discord.HTTPException:
+                    log.warning(
+                        "Could not send traceback to traceback channel use /traceback to get the most recent error"
+                    )
+                    return
         else:
             log.exception(type(error).__name__, exc_info=error)
