@@ -31,7 +31,7 @@ class Settings(BaseSettings):
     DB: PostgresDsn = None
     REDIS: RedisDsn = None
     DEV: bool = False
-    COLOR: Color = None
+    COLOR: Color = "0x00FF00"
 
     class Config:
         """Config for pydantic."""

@@ -32,7 +32,8 @@ class Obsidion(AutoShardedBot):
 
         self._shutdown_mode = ExitCodes.CRITICAL
         self.uptime = None
-        self.color = discord.Embed.Empty
+        color = get_settings().COLOR.as_rgb_tuple()
+        self.color = discord.Color.from_rgb(color[0],color[1],color[2])
         self._last_exception = None
         self._invite = None
         self.redis = None
