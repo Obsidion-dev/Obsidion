@@ -199,7 +199,7 @@ class Config(commands.Cog):
         profile_info = await self.bot.mojang_player(ctx.author, username)
         uuid: str = profile_info["uuid"]
         await self.bot._account_cache.set_account(ctx.author, uuid)
-        
+
         await ctx.reply(f"Your account has been linked to {username}")
 
     @account.command(name="unlink")
@@ -213,7 +213,7 @@ class Config(commands.Cog):
         """Link Minecraft server to Discord guild."""
         if ctx.invoked_subcommand is None:
             await ctx.send_help(ctx.command)
-    
+
     @serverlink.command(name="link")
     async def serverlink_link(self, ctx, server: str) -> None:
         """Link Minecraft server to Discord guild."""

@@ -25,12 +25,14 @@ class Info(commands.Cog):
     @commands.command(
         aliases=["whois", "p", "names", "namehistory", "pastnames", "namehis"]
     )
-    async def profile(self, ctx: commands.Context, username: Optional[str] = None) -> None:
+    async def profile(
+        self, ctx: commands.Context, username: Optional[str] = None
+    ) -> None:
         """View a players Minecraft UUID, Username history and skin."""
         await ctx.channel.trigger_typing()
         profile_info = await self.bot.mojang_player(ctx.author, username)
         if username is None:
-            username=profile_info["username"]
+            username = profile_info["username"]
         uuid: str = profile_info["uuid"]
         names = profile_info["username_history"]
         h = 0

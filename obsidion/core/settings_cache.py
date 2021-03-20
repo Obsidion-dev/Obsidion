@@ -145,7 +145,7 @@ class AccountManager:
     def __init__(self, bot):
         self._bot = bot
 
-    async def get_account(self, user: discord.User)-> Union[UUID, None]:
+    async def get_account(self, user: discord.User) -> Union[UUID, None]:
         uid = user.id
         key = f"account_{uid}"
         redis = await self._bot.redis.exists(key)
@@ -160,7 +160,9 @@ class AccountManager:
         await self._bot.redis.set(key, json.dumps(str(uuid)), expire=28800)
         return uuid
 
-    async def set_account(self, user: discord.User, uuid: Optional[UUID]=None)-> None:
+    async def set_account(
+        self, user: discord.User, uuid: Optional[UUID] = None
+    ) -> None:
         uid = user.id
         key = f"account_{uid}"
         if await self._bot.db.fetch("SELECT uuid FROM account WHERE id = $1", uid):
@@ -176,7 +178,6 @@ class AccountManager:
                 uuid,
             )
         await self._bot.redis.set(key, json.dumps(uuid), expire=28800)
-
 
 
 class GuildManager:
@@ -196,7 +197,9 @@ class GuildManager:
         await self._bot.redis.set(key, json.dumps(server), expire=28800)
         return server
 
-    async def set_server(self, guild: discord.Guild, server: Optional[str]= None) -> Union[str, None]:
+    async def set_server(
+        self, guild: discord.Guild, server: Optional[str] = None
+    ) -> Union[str, None]:
         gid = guild.id
         key = f"server_{gid}"
         if await self._bot.db.fetch("SELECT server FROM guild WHERE id = $1", gid):
@@ -212,6 +215,7 @@ class GuildManager:
                 server,
             )
         await self._bot.redis.set(key, json.dumps(server), expire=28800)
+
 
 class RconManager:
     def __init__(self, bot):
@@ -242,7 +246,13 @@ class RconManager:
         return rcon
 
     async def set_rcon(
-        self, guild: discord.Guild, server: str, password: str, port: int, users: List[int], channel: int
+        self,
+        guild: discord.Guild,
+        server: str,
+        password: str,
+        port: int,
+        users: List[int],
+        channel: int,
     ) -> None:
         """Set rcon."""
         gid = guild.id
@@ -266,13 +276,13 @@ class RconManager:
                 password,
                 port,
                 users,
-                channel
+                channel,
             )
         rcon = {
             "server": server,
             "password": password,
             "port": port,
             "users": users,
-            "channel": channel
+            "channel": channel,
         }
         await self._bot.redis.set(key, json.dump(rcon), expire=28800)

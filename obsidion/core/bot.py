@@ -23,7 +23,6 @@ from .settings_cache import AccountManager
 from .settings_cache import GuildManager
 
 
-
 class Obsidion(AutoShardedBot):
     """Main bot class."""
 
@@ -33,7 +32,7 @@ class Obsidion(AutoShardedBot):
         self._shutdown_mode = ExitCodes.CRITICAL
         self.uptime = None
         color = get_settings().COLOR.as_rgb_tuple()
-        self.color = discord.Color.from_rgb(color[0],color[1],color[2])
+        self.color = discord.Color.from_rgb(color[0], color[1], color[2])
         self._last_exception = None
         self._invite = None
         self.redis = None
@@ -177,7 +176,9 @@ class Obsidion(AutoShardedBot):
         await self.logout()
         sys.exit(self._shutdown_mode)
 
-    async def mojang_player(self,  user: discord.User, username: Optional[str] = None) -> str:
+    async def mojang_player(
+        self, user: discord.User, username: Optional[str] = None
+    ) -> str:
         """Takes in an mc username and tries to convert it to a mc uuid.
 
         Args:
@@ -208,7 +209,7 @@ class Obsidion(AutoShardedBot):
                 else:
                     data = None
         if data is not None:
-            uuid = data['uuid']
+            uuid = data["uuid"]
         key = f"player_{uuid}"
         await self.redis.set(key, json.dumps(data), expire=28800)
         if data is None:
@@ -216,7 +217,8 @@ class Obsidion(AutoShardedBot):
         username_key = f"username_{data['username']}"
         await self.redis.set(username_key, str(uuid), expire=28800)
         return data
-        
+
+
 class ExitCodes(IntEnum):
     # This needs to be an int enum to be used
     # with sys.exit

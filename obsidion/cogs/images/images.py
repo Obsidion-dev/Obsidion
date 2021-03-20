@@ -160,28 +160,32 @@ class Images(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
-    async def avatar(self, ctx: commands.Context, username: Optional[str]=None) -> None:
+    async def avatar(
+        self, ctx: commands.Context, username: Optional[str] = None
+    ) -> None:
         """Renders a Minecraft players face."""
         await self.render(ctx, "face", username)
 
     @commands.command()
-    async def skull(self, ctx: commands.Context, username: Optional[str] = None) -> None:
+    async def skull(
+        self, ctx: commands.Context, username: Optional[str] = None
+    ) -> None:
         """Renders a Minecraft players skull."""
         await self.render(ctx, "head", username)
 
     @commands.command()
-    async def skin(self, ctx: commands.Context, username: Optional[str]=None) -> None:
+    async def skin(self, ctx: commands.Context, username: Optional[str] = None) -> None:
         """Renders a Minecraft players skin."""
         await self.render(ctx, "full", username)
 
     @commands.command()
-    async def bust(self, ctx: commands.Context, username: Optional[str]=None) -> None:
+    async def bust(self, ctx: commands.Context, username: Optional[str] = None) -> None:
         """Renders a Minecraft players bust."""
         await self.render(ctx, "bust", username)
 
     @commands.command()
     async def render(
-        self, ctx: commands.Context, render_type: str, username: Optional[str]=None
+        self, ctx: commands.Context, render_type: str, username: Optional[str] = None
     ) -> None:
         """Renders a Minecraft players skin in 6 different ways.
 
@@ -199,7 +203,7 @@ class Images(commands.Cog):
                 )
             )
             return
-        player_data = (await self.bot.mojang_player(ctx.author, username))
+        player_data = await self.bot.mojang_player(ctx.author, username)
         uuid = player_data["uuid"]
         username = player_data["username"]
         embed = discord.Embed(
