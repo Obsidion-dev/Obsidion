@@ -196,7 +196,7 @@ class Core(commands.Cog):
                 await ctx.send("Shutting down... " + wave + skin)
         await ctx.bot.shutdown()
 
-    @commands.command(name="restart")
+    @commands.command(name="restart", aliases=["reboot"])
     @commands.is_owner()
     async def _restart(self, ctx: commands.Context, silently: bool = False):
         """Attempts to restart Obsidion.
