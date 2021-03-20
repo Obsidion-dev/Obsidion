@@ -84,7 +84,7 @@ class Info(commands.Cog):
                 "Username Changes: `{changes}`\nNamemc: [link]({namemc})\nLegacy: `{legacy}`\nDemo: `{demo}`"
             ).format(
                 changes=len(names) - 1,
-                namemc=f"https://namemc.com/profile{uuid}",
+                namemc=f"https://namemc.com/profile/{uuid}",
                 legacy=profile_info["legacy"] if "legacy" in profile_info else False,
                 demo=profile_info["demo"] if "demo" in profile_info else False,
             ),
