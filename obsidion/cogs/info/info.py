@@ -220,7 +220,7 @@ class Info(commands.Cog):
             if resp.status == 200:
                 data = await resp.json()
             else:
-                await ctx.reply(_(":x: The bug {bug} was not found.").format(bug=bug))
+                await ctx.reply(_("The bug {bug} was not found.").format(bug=bug))
                 return
         embed = discord.Embed(
             description=data["fields"]["description"],
