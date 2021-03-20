@@ -8,6 +8,8 @@ services:
     env_file:
       - .env
     restart: on-failure
+    volumes:
+      - ./obsidion:/app/obsidion
   db:
     image: postgres:12-alpine
     volumes:
