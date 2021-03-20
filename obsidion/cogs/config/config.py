@@ -198,9 +198,6 @@ class Config(commands.Cog):
         await ctx.channel.trigger_typing()
         profile_info = await self.bot.mojang_player(ctx.author, username)
         uuid: str = profile_info["uuid"]
-        print("link")
-        print(uuid)
-        print("link")
         await self.bot._account_cache.set_account(ctx.author, uuid)
         
         await ctx.reply(f"Your account has been linked to {username}")

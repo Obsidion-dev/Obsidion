@@ -199,7 +199,6 @@ class GuildManager:
     async def set_server(self, guild: discord.Guild, server: Optional[str]= None) -> Union[str, None]:
         gid = guild.id
         key = f"server_{gid}"
-        print(server)
         if await self._bot.db.fetch("SELECT server FROM guild WHERE id = $1", gid):
             await self._bot.db.execute(
                 "UPDATE guild SET server = $1 WHERE id = $2",
