@@ -198,7 +198,7 @@ class Images(commands.Cog):
                 )
             )
             return
-        uuid = (await self.bot.mojang_player(username))["uuid"]
+        uuid = (await self.bot.mojang_player(ctx.author, username))["uuid"]
         embed = discord.Embed(
             description=_(
                 "Here is: `{username}`'s {render_type}! \n "
