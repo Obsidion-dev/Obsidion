@@ -1,6 +1,12 @@
 # `python-base` sets up all our shared environment variables
 FROM python:3.8.1-slim-buster as python-base
 
+
+LABEL org.opencontainers.image.authors "Leon Bowie <leon@bowie-co.nz>"
+LABEL org.opencontainers.image.source "https://github.com/Obsidion-dev/obsidion"
+LABEL org.opencontainers.image.description "Minecraft Discord Bot"
+LABEL org.opencontainers.image.licenses "AGPL-3.0+"
+
 # python
 ENV PYTHONUNBUFFERED=1 \
     # prevents python creating .pyc files
