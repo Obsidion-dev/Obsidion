@@ -3,6 +3,7 @@ import json
 import logging
 from datetime import datetime
 from time import mktime
+from typing import Union
 
 import discord
 import feedparser
@@ -28,11 +29,9 @@ class News(commands.Cog):
         self.bot = bot
         self.last_media_data = datetime.now(pytz.utc)
         self.last_java_version_data = datetime.now(pytz.utc)
-        self.get_media.start()
-        self.get_java_releases.start()
+        self.autopost.start()
 
-    @tasks.loop(minutes=10)
-    async def get_media(self) -> None:
+    async def get_media(self) -> Union[discord.Embed, None]:
         """Get rss media."""
         async with self.bot.http_session.get(Minecraft_News_RSS) as resp:
             text = await resp.text()
@@ -46,11 +45,11 @@ class News(commands.Cog):
         time = datetime.fromtimestamp(mktime(latest_post["published_parsed"]), pytz.utc)
 
         if time < self.last_media_data:
-            return
+            return None
 
         async with self.bot.http_session.get(latest_post["id"]) as resp:
             text = await resp.text()
-        soup = BeautifulSoup(text)
+        soup = BeautifulSoup(text, "lxml")
         author_image = f"https://www.minecraft.net{soup.find('img', id='author-avatar').get('src')}"
         author = soup.find("dl", class_="attribution__details").dd.string
         text = soup.find("div", class_="end-with-block").p.text
@@ -88,16 +87,9 @@ class News(commands.Cog):
             ),
         )
 
-        # send embed
-        channel = self.bot.get_channel(725790318938685520)
-        message = await channel.send(embed=embed)
-        try:
-            await message.publish()
-        finally:
-            pass
+        return embed
 
-    @tasks.loop(minutes=10)
-    async def get_java_releases(self) -> None:
+    async def get_java_releases(self) -> Union[discord.Embed, None]:
         async with self.bot.http_session.get(
             "https://launchermeta.mojang.com/mc/game/version_manifest.json"
         ) as resp:
@@ -106,8 +98,8 @@ class News(commands.Cog):
 
         format = "%Y-%m-%dT%H:%M:%S%z"
         time = datetime.strptime(last_release["time"], format)
-        if time < self.last_java_version_data or last_release["type"] != "snapshot":
-            return
+        if time < self.last_java_version_data and last_release["type"] != "snapshot":
+            return None
 
         embed = discord.Embed(
             colour=self.bot.color,
@@ -137,13 +129,41 @@ class News(commands.Cog):
                 "/clientlibs/main/resources/img/menu/menu-buy--reversed.gif"
             ),
         )
+        return embed
+
+    @tasks.loop(minutes=10)
+    async def autopost(self) -> None:
+        posts = await self.bot.db.fetch("SELECT news FROM guild WHERE news IS NOT NULL")
+        channels = {}
+        for server in posts:
+            n = json.loads(server["news"])
+            for key in n.keys():
+                if n[key] is not None:
+                    if key in channels:
+
+                        channels[key]=n[key]
+                    else:
+                        channels[key]=[n[key]]
+                
+        release_embed = await self.get_java_releases()
+        article_embed = await self.get_media()
+        if release_embed is not None and "release" in channels:
         # send embed
-        channel = self.bot.get_channel(725790318938685520)
-        message = await channel.send(embed=embed)
-        try:
-            await message.publish()
-        finally:
-            pass
+            for _channel in channels["release"]:
+                channel = self.bot.get_channel(_channel)
+                message = await channel.send(embed=release_embed)
+                try:
+                    await message.publish()
+                except discord.errors.Forbidden:
+                    pass
+        if article_embed is not None and "article" in channels:
+            for _channel in channels["article"]:
+                channel = self.bot.get_channel(_channel)
+                message = await channel.send(embed=article_embed)
+                try:
+                    await message.publish()
+                except discord.errors.Forbidden:
+                    pass
 
     def cog_unload(self) -> None:
         """Stop news posting tasks on cog unload."""
