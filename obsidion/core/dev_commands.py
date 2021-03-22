@@ -45,7 +45,7 @@ class Dev(commands.Cog):
             self.bot.load_extension(f"obsidion.{module}")
         except commands.ExtensionError as e:
             await ctx.reply(
-                f"{ctx.message.author.mention}, :x: {e.__class__.__name__}: {e}"
+                f"{e.__class__.__name__}: {e}"
             )
         else:
             await ctx.reply(
@@ -62,7 +62,7 @@ class Dev(commands.Cog):
             self.bot.unload_extension(f"obsidion.{module}")
         except commands.ExtensionError as e:
             await ctx.reply(
-                f"{ctx.message.author.mention}, :x: {e.__class__.__name__}: {e}"
+                f"{e.__class__.__name__}: {e}"
             )
         else:
             await ctx.reply(
@@ -79,7 +79,7 @@ class Dev(commands.Cog):
             self.bot.reload_extension(f"obsidion.{module}")
         except commands.ExtensionError as e:
             await ctx.reply(
-                f"{ctx.message.author.mention}, :x: {e.__class__.__name__}: {e}"
+                f"{e.__class__.__name__}: {e}"
             )
         else:
             await ctx.reply(
