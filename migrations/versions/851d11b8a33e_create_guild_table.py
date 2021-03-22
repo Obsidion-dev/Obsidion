@@ -24,7 +24,7 @@ def upgrade():
         sa.Column("regional", sa.Unicode(5)),
         sa.Column("locale", sa.Unicode(5)),
         sa.Column("server", sa.Unicode(200)),
-        sa.Column("news", sa.ARRAY(sa.Unicode(200))),
+        sa.Column("news", sa.JSON),
     )
 
     op.create_table(

@@ -216,6 +216,37 @@ class GuildManager:
             )
         await self._bot.redis.set(key, json.dumps(server), expire=28800)
 
+    async def get_news(self, guild: discord.Guild) -> Union[Dict[str, str], None]:
+        gid = guild.id
+        key = f"news_{gid}"
+        redis = await self._bot.redis.exists(key)
+        if redis:
+            server = json.loads((await self._bot.redis.get(key)))
+        else:
+            server = json.loads(await self._bot.db.fetchval(
+                "SELECT news FROM guild WHERE id = $1", gid
+            ))
+        await self._bot.redis.set(key, json.dumps(server), expire=28800)
+        return server
+
+    async def set_news(self, guild: discord.Guild, news: json = None) -> None:
+        gid = guild.id
+        str_news = json.dumps(news)
+        key = f"news_{gid}"
+        if await self._bot.db.fetch("SELECT news FROM guild WHERE id = $1", gid):
+            await self._bot.db.execute(
+                "UPDATE guild SET news = $1 WHERE id = $2",
+                str_news,
+                gid,
+            )
+        else:
+            await self._bot.db.execute(
+                "INSERT INTO guild (id, news) VALUES ($1, $2)",
+                gid,
+                str_news,
+            )
+        await self._bot.redis.set(key, str_news, expire=28800)
+
 
 class RconManager:
     def __init__(self, bot):

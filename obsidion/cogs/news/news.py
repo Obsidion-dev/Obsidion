@@ -19,7 +19,6 @@ log = logging.getLogger(__name__)
 _ = Translator("News", __file__)
 
 Minecraft_News_RSS = "https://www.minecraft.net/en-us/feeds/community-content/rss"
-Categories = ("Minecraft Builds", "News", "Deep Dives", "Guides")
 
 
 @cog_i18n(_)
