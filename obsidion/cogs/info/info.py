@@ -147,7 +147,7 @@ class Info(commands.Cog):
             inline=False,
         )
         if data["icon"]:
-            url = f"{get_settings().API_URL}/server/motd?server={server_ip}"
+            url = f"{get_settings().API_URL}/server/javaicon?server={server_ip}"
             if port is not None:
                 url += f"&port={port}"
             print(url)
