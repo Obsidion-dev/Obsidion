@@ -1,8 +1,10 @@
 """Images cog."""
+import io
 import json
 import logging
 from datetime import datetime
-from typing import Optional
+from typing import Optional, Tuple
+import base64
 
 import discord
 from discord.ext import commands
@@ -100,6 +102,118 @@ class Info(commands.Cog):
 
         await ctx.send(embed=embed)
 
+    @staticmethod
+    def get_server(ip: str, port: int) -> Tuple[str, Optional[int]]:
+        """Returns the server icon."""
+        if ":" in ip:  # deal with them providing port in string instead of seperate
+            ip, port = ip.split(":")
+            return (ip, int(port))
+        if port:
+            return (ip, port)
+        return (ip, None)
+    
+    @commands.command()
+    async def server(self, ctx, address, port: Optional[int] = None):
+        await ctx.channel.trigger_typing()
+        server_ip, _port = self.get_server(address, port)
+        port = _port if _port else port
+        params = {"server": address} if port is None else {"server": address, "port": port} 
+        async with self.bot.http_session.get(
+            f"{get_settings().API_URL}/server/java", params=params
+        ) as resp:
+            if resp.status == 200:
+                data = await resp.json()
+            else:
+                data = None
+        if data is None:
+            await ctx.send("server could not be reached.")
+            return
+        embed = discord.Embed(title=f"Java Server: {server_ip}", color=0x00FF00)
+        embed.add_field(name="Description", value=data["motd"]["clean"][0])
+
+        embed.add_field(
+            name="Players",
+            value=(
+                f"Online: `{data['players']['online']:,}` \n "
+                f"Maximum: `{data['players']['max']:,}`"
+            ),
+        )
+        embed.add_field(
+            name="Version",
+            value=(
+                f"Java Edition \n Running: `{data['version']}` \n"
+                f"Protocol: `{data['protocol']}`"
+            ),
+            inline=False,
+        )
+        if data["icon"]:
+            url = f"{get_settings().API_URL}/server/motd?server={server_ip}"
+            if port is not None:
+                url += f"&port={port}"
+            print(url)
+            embed.set_thumbnail(
+                url=url
+            )
+        else:
+            embed.set_thumbnail(
+                url=(
+                    "https://media.discordapp.net/attachments/493764139290984459"
+                    "/602058959284863051/unknown.png"
+                )
+            )
+        await ctx.send(embed=embed)
+
+    @commands.command()
+    async def serverpe(self, ctx, address, port: Optional[int] = None):
+        await ctx.channel.trigger_typing()
+        server_ip, _port = self.get_server(address, port)
+        port = _port if _port else port
+        params = {"server": address} if port is None else {"server": address, "port": port} 
+        async with self.bot.http_session.get(
+            f"{get_settings().API_URL}/server/bedrock", params=params
+        ) as resp:
+            if resp.status == 200:
+                data = await resp.json()
+            else:
+                data = None
+        if data is None:
+            await ctx.send("server could not be reached.")
+            return
+        embed = discord.Embed(title=f"Bedrock Server: {server_ip}", color=0x00FF00)
+        embed.add_field(name="Description", value=data["motd"]["clean"][0])
+
+        embed.add_field(
+            name="Players",
+            value=(
+                f"Online: `{data['players']['online']:,}` \n "
+                f"Maximum: `{data['players']['max']:,}`"
+            ),
+        )
+        embed.add_field(
+            name="Version",
+            value=(
+                f"Java Edition \n Running: `{data['version']}` \n"
+                f"Protocol: `{data['protocol']}`"
+            ),
+            inline=False,
+        )
+        if data["icon"]:
+            url = f"{get_settings().API_URL}/server/javaicon?server={server_ip}"
+            if port is not None:
+                url += f"&port={port}"
+            print(url)
+            embed.set_thumbnail(
+                url=url
+            )
+        else:
+            embed.set_thumbnail(
+                url=(
+                    "https://media.discordapp.net/attachments/493764139290984459"
+                    "/602058959284863051/unknown.png"
+                )
+            )
+        await ctx.send(embed=embed)
+    
     @commands.command(aliases=["sales"])
     @commands.cooldown(rate=1, per=5.0, type=commands.BucketType.user)
     async def status(self, ctx: commands.Context) -> None:
