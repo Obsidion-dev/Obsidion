@@ -163,7 +163,7 @@ class Info(commands.Cog):
             )
         await ctx.send(embed=embed)
 
-    @commands.command()
+    #@commands.command()
     async def serverpe(self, ctx, address, port: Optional[int] = None):
         await ctx.channel.trigger_typing()
         server_ip, _port = self.get_server(address, port)
