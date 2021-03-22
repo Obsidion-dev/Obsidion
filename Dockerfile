@@ -1,5 +1,5 @@
 # `python-base` sets up all our shared environment variables
-FROM python:3.8.1-slim-buster as python-base
+FROM python:3.8.8-slim-buster as python-base
 
 
 LABEL org.opencontainers.image.authors "Leon Bowie <leon@bowie-co.nz>"
@@ -19,7 +19,7 @@ ENV PYTHONUNBUFFERED=1 \
     \
     # poetry
     # https://python-poetry.org/docs/configuration/#using-environment-variables
-    POETRY_VERSION=1.0.4 \
+    POETRY_VERSION=1.1.5 \
     # make poetry install to this location
     POETRY_HOME="/opt/poetry" \
     # make poetry create the virtual environment in the project's root
@@ -58,22 +58,6 @@ COPY poetry.lock pyproject.toml ./
 RUN poetry install --no-dev
 
 
-# `development` image is used during development / testing
-FROM python-base as development
-WORKDIR $PYSETUP_PATH
-
-# copy in our built poetry + venv
-COPY --from=builder-base $POETRY_HOME $POETRY_HOME
-COPY --from=builder-base $PYSETUP_PATH $PYSETUP_PATH
-
-# quicker install as runtime deps are already installed
-RUN poetry install
-
-# will become mountpoint of our code
-WORKDIR /app
-
-
-# `production` image used for runtime
 FROM python-base as production
 COPY --from=builder-base $PYSETUP_PATH $PYSETUP_PATH
 # quicker install as runtime deps are already installed
