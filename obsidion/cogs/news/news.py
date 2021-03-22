@@ -98,7 +98,10 @@ class News(commands.Cog):
 
         format = "%Y-%m-%dT%H:%M:%S%z"
         time = datetime.strptime(last_release["time"], format)
-        if time < self.last_java_version_data and last_release["type"] != "snapshot":
+        if time < self.last_java_version_data:
+            return None
+
+        if last_release["type"] != "snapshot":
             return None
 
         embed = discord.Embed(
