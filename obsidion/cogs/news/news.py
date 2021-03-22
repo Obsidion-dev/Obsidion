@@ -45,7 +45,7 @@ class News(commands.Cog):
 
         time = datetime.fromtimestamp(mktime(latest_post["published_parsed"]), pytz.utc)
 
-        if time <= self.last_media_data:
+        if time < self.last_media_data:
             return
 
         async with self.bot.http_session.get(latest_post["id"]) as resp:
@@ -106,7 +106,7 @@ class News(commands.Cog):
 
         format = "%Y-%m-%dT%H:%M:%S%z"
         time = datetime.strptime(last_release["time"], format)
-        if time <= self.last_java_version_data or last_release["type"] != "snapshot":
+        if time < self.last_java_version_data or last_release["type"] != "snapshot":
             return
 
         embed = discord.Embed(
