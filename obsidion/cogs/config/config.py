@@ -59,7 +59,7 @@ class Config(commands.Cog):
     async def leave_server(self, ctx, guild):
         pred = MessagePredicate.yes_or_no(ctx)
         try:
-            await self.bot.wait_for("message", check=pred)
+            await self.bot.wait_for("message", check=pred, timeout=15.0)
         except asyncio.TimeoutError:
             await ctx.send(_("Response timed out."))
             return
@@ -244,7 +244,7 @@ class Config(commands.Cog):
                 )
             )
             try:
-                await self.bot.wait_for("message", check=pred)
+                await self.bot.wait_for("message", check=pred, timeout=15.0)
             except asyncio.TimeoutError:
                 await ctx.send(_("Response timed out."))
                 return
@@ -257,7 +257,7 @@ class Config(commands.Cog):
                 )
                 try:
                     channel: discord.Message = await self.bot.wait_for(
-                        "message", check=channel_check
+                        "message", check=channel_check, timeout=15.0
                     )
                     cat[category] = channel.channel_mentions[0].id
                     embed.add_field(

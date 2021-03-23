@@ -307,9 +307,13 @@ class Dev(commands.Cog):
         )
 
         while True:
-            response = await ctx.bot.wait_for(
-                "message", check=MessagePredicate.regex(r"^`", ctx)
-            )
+            try:
+                response = await ctx.bot.wait_for(
+                    "message", check=MessagePredicate.regex(r"^`", ctx), timeout=60.0
+                )
+            except asyncio.TimeoutError:
+                await ctx.send("Stopping")
+                return
 
             if not self.sessions[ctx.channel.id]:
                 continue
