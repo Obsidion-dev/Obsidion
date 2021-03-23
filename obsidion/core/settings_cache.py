@@ -151,12 +151,19 @@ class AccountManager:
         redis = await self._bot.redis.exists(key)
         if redis:
             uuid = json.loads(await self._bot.redis.get(key))
-            if uuid != "None":
+            print(2)
+            print(uuid)
+            print(type(uuid))
+            if uuid == "None":
+                uuid = None
+            if uuid is not None:
                 uuid = UUID(uuid)
         else:
             uuid = await self._bot.db.fetchval(
                 "SELECT uuid FROM account WHERE id = $1", uid
             )
+            print(1)
+            print(uuid)
         await self._bot.redis.set(key, json.dumps(str(uuid)), expire=28800)
         return uuid
 
