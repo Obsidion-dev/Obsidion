@@ -169,23 +169,6 @@ class Config(commands.Cog):
             ).format(language_code=standardized_locale_name)
         )
 
-    @commands.command()
-    @commands.has_guild_permissions(manage_nicknames=True)
-    @commands.guild_only()
-    async def nickname(self, ctx: commands.Context, *, nickname: str = None):
-        """Sets Obsidion's nickname."""
-        try:
-            if nickname and len(nickname) > 32:
-                await ctx.send(
-                    _("Failed to change nickname. Must be 32 characters or fewer.")
-                )
-                return
-            await ctx.guild.me.edit(nick=nickname)
-        except discord.Forbidden:
-            await ctx.send(_("I lack the permissions to change my own nickname."))
-        else:
-            await ctx.send(_("Done."))
-
     @commands.group()
     async def account(self, ctx: commands.Context) -> None:
         """Link Minecraft account to Discord account."""
