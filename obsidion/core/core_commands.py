@@ -44,7 +44,7 @@ class Core(commands.Cog):
         support_server_url = "https://discord.gg/rnAtymZnzH"
         dpy_repo = "https://github.com/Rapptz/discord.py"
         python_url = "https://www.python.org/"
-        since = datetime.datetime(2020, 3, 23)
+        since = datetime.datetime(2020, 4, 2)
         days_since = (datetime.datetime.utcnow() - since).days
 
         app_info = await self.bot.application_info()
