@@ -251,7 +251,7 @@ class Config(commands.Cog):
             if pred.result is True:
                 await ctx.send(
                     _(
-                        "Which channel would you like this to happen in?"
+                        "Which channel would you like this to happen in? "
                         "Mention the channel, for example #general"
                     )
                 )
