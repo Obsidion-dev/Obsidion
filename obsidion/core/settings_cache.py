@@ -150,8 +150,8 @@ class AccountManager:
         key = f"account_{uid}"
         redis = await self._bot.redis.exists(key)
         if redis:
-            uuid = json.loads((await self._bot.redis.get(key)).decode("UTF-8"))
-            if uuid is not None:
+            uuid = json.loads(await self._bot.redis.get(key))
+            if uuid != "None":
                 uuid = UUID(uuid)
         else:
             uuid = await self._bot.db.fetchval(
