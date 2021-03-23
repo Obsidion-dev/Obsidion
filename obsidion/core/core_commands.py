@@ -1,8 +1,10 @@
 """Core Commands."""
+import asyncio
 import contextlib
 import datetime
 import inspect
 import logging
+from obsidion.core.utils.predicates import MessagePredicate
 import os
 import sys
 
@@ -117,6 +119,52 @@ class Core(commands.Cog):
             )
         )
         await self.leave_server(ctx, ctx.guild)
+
+    @commands.command()
+    @commands.is_owner()
+    async def servers(self, ctx: commands.Context):
+        """Lists and allows Obsidion to leave servers."""
+        guilds = sorted(self.bot.guilds, key=lambda s: s.name.lower())
+        msg = ""
+        responses = []
+        for i, server in enumerate(guilds, 1):
+            msg += "{}: {} (`{}`)\n".format(i, server.name, server.id)
+            responses.append(str(i))
+
+        for page in pagify(msg, ["\n"]):
+            await ctx.send(page)
+
+        query = await ctx.send(_("To leave a server, just type its number."))
+
+        pred = MessagePredicate.contained_in(responses, ctx)
+        try:
+            await self.bot.wait_for("message", check=pred, timeout=15)
+        except asyncio.TimeoutError:
+            try:
+                await query.delete()
+            except discord.errors.NotFound:
+                pass
+        else:
+            guild = guilds[pred.result]
+            await ctx.send(
+                _("Are you sure you want me to leave {}? (yes/no)").format(guild.name)
+            )
+            await self.leave_server(ctx, guild)
+
+    async def leave_server(self, ctx, guild):
+        pred = MessagePredicate.yes_or_no(ctx)
+        try:
+            await self.bot.wait_for("message", check=pred, timeout=15.0)
+        except asyncio.TimeoutError:
+            await ctx.send(_("Response timed out."))
+            return
+        else:
+            if pred.result is True:
+                await ctx.send(_("Alright. Bye :wave:"))
+                log.debug(_("Leaving guild '{}'").format(guild.name))
+                await guild.leave()
+            else:
+                await ctx.send(_("Alright, I'll stay then. :)"))
 
     # Removing this command from forks is a violation of the
     # AGPLv3 under which it is licensed.
