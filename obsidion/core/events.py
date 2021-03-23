@@ -35,7 +35,6 @@ class Events(commands.Cog):
             perms.send_messages = True
             perms.read_messages = True
             perms.embed_links = True
-            perms.
             url = discord.utils.oauth_url(
                 self.bot.user.id,
                 permissions=perms,
