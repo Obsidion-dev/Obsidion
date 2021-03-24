@@ -326,67 +326,68 @@ class Info(commands.Cog):
                 )
             )
 
-    @commands.command()
-    async def mcbug(self, ctx: commands.Context, bug: str) -> None:
-        """Gets info on a bug from bugs.mojang.com."""
-        await ctx.channel.trigger_typing()
-        async with self.bot.http_session.get(
-            f"https://bugs.mojang.com/rest/api/latest/issue/{bug}"
-        ) as resp:
-            if resp.status == 200:
-                data = await resp.json()
-            else:
-                await ctx.reply(_("The bug {bug} was not found.").format(bug=bug))
-                return
-        embed = discord.Embed(
-            description=data["fields"]["description"],
-            color=self.bot.color,
-        )
+    # @commands.command()
+    # async def mcbug(self, ctx: commands.Context, bug: str) -> None:
+    #     """Gets info on a bug from bugs.mojang.com."""
+    #     await ctx.channel.trigger_typing()
+    #     await ctx.send(f"https://bugs.mojang.com/rest/api/latest/issue/{bug}")
+    #     async with self.bot.http_session.get(
+    #         f"https://bugs.mojang.com/rest/api/latest/issue/{bug}"
+    #     ) as resp:
+    #         if resp.status == 200:
+    #             data = await resp.json()
+    #         else:
+    #             await ctx.reply(_("The bug {bug} was not found.").format(bug=bug))
+    #             return
+    #     embed = discord.Embed(
+    #         description=data["fields"]["description"],
+    #         color=self.bot.color,
+    #     )
 
-        embed.set_author(
-            name=f"{data['fields']['project']['name']} - {data['fields']['summary']}",
-            url=f"https://bugs.mojang.com/browse/{bug}",
-        )
+    #     embed.set_author(
+    #         name=f"{data['fields']['project']['name']} - {data['fields']['summary']}",
+    #         url=f"https://bugs.mojang.com/browse/{bug}",
+    #     )
 
-        info = _(
-            "Version: {version}\n"
-            "Reporter: {reporter}\n"
-            "Created: {created}\n"
-            "Votes: {votes}\n"
-            "Updates: {updates}\n"
-            "Watchers: {watched}"
-        ).format(
-            version=data["fields"]["project"]["name"],
-            reporter=data["fields"]["creator"]["displayName"],
-            created=data["fields"]["created"],
-            votes=data["fields"]["votes"]["votes"],
-            updates=data["fields"]["updated"],
-            watched=data["fields"]["watches"]["watchCount"],
-        )
+    #     info = _(
+    #         "Version: {version}\n"
+    #         "Reporter: {reporter}\n"
+    #         "Created: {created}\n"
+    #         "Votes: {votes}\n"
+    #         "Updates: {updates}\n"
+    #         "Watchers: {watched}"
+    #     ).format(
+    #         version=data["fields"]["project"]["name"],
+    #         reporter=data["fields"]["creator"]["displayName"],
+    #         created=data["fields"]["created"],
+    #         votes=data["fields"]["votes"]["votes"],
+    #         updates=data["fields"]["updated"],
+    #         watched=data["fields"]["watches"]["watchCount"],
+    #     )
 
-        details = (
-            f"Type: {data['fields']['issuetype']['name']}\n"
-            f"Status: {data['fields']['status']['name']}\n"
-        )
-        if data["fields"]["resolution"]["name"]:
-            details += _("Resolution: {resolution}\n").format(
-                resolution=data["fields"]["resolution"]["name"]
-            )
-        if "version" in data["fields"]:
-            details += (
-                _("Affected: ")
-                + f"{', '.join(s['name'] for s in data['fields']['versions'])}\n"
-            )
-        if "fixVersions" in data["fields"]:
-            if len(data["fields"]["fixVersions"]) >= 1:
-                details += (
-                    _("Fixed Version: {fixed} + ").format(
-                        fixed=data["fields"]["fixVersions"][0]
-                    )
-                    + f"{len(data['fields']['fixVersions'])}\n"
-                )
+    #     details = (
+    #         f"Type: {data['fields']['issuetype']['name']}\n"
+    #         f"Status: {data['fields']['status']['name']}\n"
+    #     )
+    #     if "name" in data["fields"]["resolution"]:
+    #         details += _("Resolution: {resolution}\n").format(
+    #             resolution=data["fields"]["resolution"]["name"]
+    #         )
+    #     if "version" in data["fields"]:
+    #         details += (
+    #             _("Affected: ")
+    #             + f"{', '.join(s['name'] for s in data['fields']['versions'])}\n"
+    #         )
+    #     if "fixVersions" in data["fields"]:
+    #         if len(data["fields"]["fixVersions"]) >= 1:
+    #             details += (
+    #                 _("Fixed Version: {fixed} + ").format(
+    #                     fixed=data["fields"]["fixVersions"][0]
+    #                 )
+    #                 + f"{len(data['fields']['fixVersions'])}\n"
+    #             )
 
-        embed.add_field(name=_("Information"), value=info)
-        embed.add_field(name=_("Details"), value=details)
+    #     embed.add_field(name=_("Information"), value=info)
+    #     embed.add_field(name=_("Details"), value=details)
 
-        await ctx.send(embed=embed)
+    #     await ctx.send(embed=embed)
