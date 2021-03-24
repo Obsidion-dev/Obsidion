@@ -1,4 +1,5 @@
 """Images cog."""
+from _typeshed import NoneType
 import json
 import logging
 from datetime import datetime
@@ -29,7 +30,32 @@ class News(commands.Cog):
         self.bot = bot
         self.last_media_data = datetime.now(pytz.utc)
         self.last_java_version_data = datetime.now(pytz.utc)
+        self.mojang_service = {}
         self.autopost.start()
+
+    async def get_status(self) -> Union[discord.Embed, None]:
+        async with self.bot.http_session.get(
+            f"{get_settings().API_URL}/mojang/check"
+        ) as resp:
+            if resp.status == 200:
+                data = await resp.json()
+            else:
+                data = None
+
+        embed = discord.Embed("Mojang service downtime")
+        em = 0
+        for service in data:
+            if data[service] != "green" and service not in self.mojang_service:
+                em = 1
+                embed.add_field(name=_("Downtime"), value=service)
+            elif data[service] == "green" and service in self.mojang_service:
+                em = 1
+                embed.add_field(name=_("Back Online"), value=service)
+        if em == 0:
+            return None
+        return embed
+        
+        
 
     async def get_media(self) -> Union[discord.Embed, None]:
         """Get rss media."""
@@ -150,6 +176,7 @@ class News(commands.Cog):
 
         release_embed = await self.get_java_releases()
         article_embed = await self.get_media()
+        status_embed = await self.get_status()
         if release_embed is not None and "release" in channels:
             # send embed
             for _channel in channels["release"]:
@@ -163,6 +190,15 @@ class News(commands.Cog):
             for _channel in channels["article"]:
                 channel = self.bot.get_channel(_channel)
                 message = await channel.send(embed=article_embed)
+                try:
+                    await message.publish()
+                except discord.errors.Forbidden:
+                    pass
+
+        if status_embed is not None and "status" in channels:
+            for _channel in channels["status"]:
+                channel = self.bot.get_channel(_channel)
+                message = await channel.send(embed=status_embed)
                 try:
                     await message.publish()
                 except discord.errors.Forbidden:
