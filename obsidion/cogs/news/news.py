@@ -1,5 +1,4 @@
 """Images cog."""
-from _typeshed import NoneType
 import json
 import logging
 from datetime import datetime
