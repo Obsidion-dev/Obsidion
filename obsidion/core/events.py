@@ -52,8 +52,40 @@ class Events(commands.Cog):
 
         self.bot.uptime = datetime.utcnow()
 
+    @staticmethod
+    async def handle_check_failure(ctx: commands.Context, e: commands.CheckFailure) -> None:
+        """
+        Send an error message in `ctx` for certain types of CheckFailure.
+        The following types are handled:
+        * BotMissingPermissions
+        * BotMissingRole
+        * BotMissingAnyRole
+        * NoPrivateMessage
+        * InWhitelistCheckFailure
+        """
+        print(1)
+        bot_missing_errors = (
+            commands.errors.MissingPermissions,
+            commands.errors.MissingRole,
+            commands.errors.MissingAnyRole,
+        )
+
+        if isinstance(e, bot_missing_errors):
+            missing = [
+                perm.replace("_", " ").replace("guild", "server").title()
+                for perm in e.missing_perms
+            ]
+            if len(missing) > 2:
+                fmt = f"{'**, **'.join(missing[:-1])}, and {missing[-1]}"
+            else:
+                fmt = " and ".join(missing)
+            await ctx.send(
+                f"Sorry, it looks like you don't have the **{fmt}** permission(s) I need to do that."
+            )
+
     @commands.Cog.listener("on_command_error")
     async def on_command_error(self, ctx, error, unhandled_by_cog=False):
+        print(type(error))
         if not unhandled_by_cog:
             if hasattr(ctx.command, "on_error"):
                 return
@@ -98,7 +130,7 @@ class Events(commands.Cog):
         elif isinstance(error, commands.PrivateMessageOnly):
             await ctx.send(("That command is only available in DMs."))
         elif isinstance(error, commands.CheckFailure):
-            pass
+            await self.handle_check_failure(ctx, error)
         elif isinstance(error, commands.CommandOnCooldown):
             if self.bot._bypass_cooldowns and ctx.author.id in self.bot.owner_ids:
                 ctx.command.reset_cooldown(ctx)
