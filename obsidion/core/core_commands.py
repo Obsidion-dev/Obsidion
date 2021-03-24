@@ -43,7 +43,7 @@ class Core(commands.Cog):
         author_repo = "https://github.com/Darkflame72"
         org_repo = "https://github.com/Obsidion-dev"
         obsidion_repo = org_repo + "/Obsidion"
-        support_server_url = "https://discord.gg/rnAtymZnzH"
+        support_server_url = "https://discord.gg/fWxtKFVmaW"
         dpy_repo = "https://github.com/Rapptz/discord.py"
         python_url = "https://www.python.org/"
         since = datetime.datetime(2020, 4, 2)

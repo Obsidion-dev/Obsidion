@@ -41,7 +41,7 @@
   <span> · </span>
   Support: <a href="https://github.com/Obsidion-dev/Obsidion/discussions">Discussions</a>
   <span> & </span>
-  <a href="https://discord.gg/rnAtymZnzH">Discord</a>
+  <a href="https://discord.gg/fWxtKFVmaW">Discord</a>
 </h3>
 
 ## ✨ Features
