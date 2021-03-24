@@ -77,7 +77,7 @@ class Core(commands.Cog):
         embed.add_field(name=("About Obsidion"), value=about, inline=False)
 
         embed.set_footer(
-            text=_("Bringing joy since 23rd March 2020 (over {} days ago!)").format(
+            text=_("Bringing joy since the 2nd of April 2020 (over {} days ago!)").format(
                 days_since
             )
         )
