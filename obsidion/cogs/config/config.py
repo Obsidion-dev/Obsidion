@@ -26,7 +26,7 @@ class Config(commands.Cog):
         self.bot = bot
 
     @commands.command(aliases=["serverprefixes"])
-    @commands.bot_has_guild_permissions(manage_guild=True)
+    @commands.has_guild_permissions(manage_guild=True)
     @commands.guild_only()
     async def prefix(self, ctx: commands.Context, _prefix: Optional[str]):
         """Sets Obsidion's server prefix(es)."""
@@ -40,6 +40,7 @@ class Config(commands.Cog):
     @commands.command()
     @commands.guild_only()
     @commands.has_guild_permissions(manage_guild=True)
+    @commands.guild_only()
     async def locale(self, ctx: commands.Context, language_code: str):
         """
         Changes the bot's locale in this server.
@@ -77,6 +78,7 @@ class Config(commands.Cog):
 
     @commands.command(aliases=["region"])
     @commands.has_guild_permissions(manage_guild=True)
+    @commands.guild_only()
     async def regionalformat(self, ctx: commands.Context, language_code: str = None):
         """
         Changes bot's regional format in this server. This
@@ -146,6 +148,8 @@ class Config(commands.Cog):
         await ctx.reply("Your account has been unlinked from any minecraft account")
 
     @commands.group()
+    @commands.has_guild_permissions(manage_guild=True)
+    @commands.guild_only()
     async def serverlink(self, ctx: commands.Context) -> None:
         """Link Minecraft server to Discord guild."""
         if ctx.invoked_subcommand is None:
@@ -164,6 +168,8 @@ class Config(commands.Cog):
         await ctx.reply("Your guild has been unlinked from any minecraft server")
 
     @commands.group()
+    @commands.has_guild_permissions(manage_guild=True)
+    @commands.guild_only()
     async def autopost(self, ctx: commands.Context) -> None:
         """Link Minecraft account to Discord account."""
         if ctx.invoked_subcommand is None:
