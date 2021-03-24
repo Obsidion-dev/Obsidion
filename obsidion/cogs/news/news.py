@@ -41,7 +41,8 @@ class News(commands.Cog):
             else:
                 data = None
 
-        embed = discord.Embed(title="Mojang service downtime")
+        embed = discord.Embed()
+        embed.set_author(name="Mojang service downtime")
         em = 0
         for service in data:
             if data[service] != "green" and service not in self.mojang_service:
