@@ -44,9 +44,7 @@ class Dev(commands.Cog):
         try:
             self.bot.load_extension(f"obsidion.{module}")
         except commands.ExtensionError as e:
-            await ctx.reply(
-                f"{e.__class__.__name__}: {e}"
-            )
+            await ctx.reply(f"{e.__class__.__name__}: {e}")
         else:
             await ctx.reply(
                 _("The cog `{module}` has been succesfully loaded").format(
@@ -61,9 +59,7 @@ class Dev(commands.Cog):
         try:
             self.bot.unload_extension(f"obsidion.{module}")
         except commands.ExtensionError as e:
-            await ctx.reply(
-                f"{e.__class__.__name__}: {e}"
-            )
+            await ctx.reply(f"{e.__class__.__name__}: {e}")
         else:
             await ctx.reply(
                 _("The cog `{module}` has been succesfully unloaded").format(
@@ -78,9 +74,7 @@ class Dev(commands.Cog):
         try:
             self.bot.reload_extension(f"obsidion.{module}")
         except commands.ExtensionError as e:
-            await ctx.reply(
-                f"{e.__class__.__name__}: {e}"
-            )
+            await ctx.reply(f"{e.__class__.__name__}: {e}")
         else:
             await ctx.reply(
                 _("The cog `{module}` has been succesfully reloaded").format(

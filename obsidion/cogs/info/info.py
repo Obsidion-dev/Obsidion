@@ -111,13 +111,15 @@ class Info(commands.Cog):
         if port:
             return (ip, port)
         return (ip, None)
-    
+
     @commands.command()
     async def server(self, ctx, address, port: Optional[int] = None):
         await ctx.channel.trigger_typing()
         server_ip, _port = self.get_server(address, port)
         port = _port if _port else port
-        params = {"server": address} if port is None else {"server": address, "port": port} 
+        params = (
+            {"server": address} if port is None else {"server": address, "port": port}
+        )
         async with self.bot.http_session.get(
             f"{get_settings().API_URL}/server/java", params=params
         ) as resp:
@@ -151,9 +153,7 @@ class Info(commands.Cog):
             if port is not None:
                 url += f"&port={port}"
             print(url)
-            embed.set_thumbnail(
-                url=url
-            )
+            embed.set_thumbnail(url=url)
         else:
             embed.set_thumbnail(
                 url=(
@@ -163,12 +163,14 @@ class Info(commands.Cog):
             )
         await ctx.send(embed=embed)
 
-    #@commands.command()
+    # @commands.command()
     async def serverpe(self, ctx, address, port: Optional[int] = None):
         await ctx.channel.trigger_typing()
         server_ip, _port = self.get_server(address, port)
         port = _port if _port else port
-        params = {"server": address} if port is None else {"server": address, "port": port} 
+        params = (
+            {"server": address} if port is None else {"server": address, "port": port}
+        )
         async with self.bot.http_session.get(
             f"{get_settings().API_URL}/server/bedrock", params=params
         ) as resp:
@@ -202,9 +204,7 @@ class Info(commands.Cog):
             if port is not None:
                 url += f"&port={port}"
             print(url)
-            embed.set_thumbnail(
-                url=url
-            )
+            embed.set_thumbnail(url=url)
         else:
             embed.set_thumbnail(
                 url=(
@@ -213,7 +213,7 @@ class Info(commands.Cog):
                 )
             )
         await ctx.send(embed=embed)
-    
+
     @commands.command(aliases=["sales"])
     @commands.cooldown(rate=1, per=5.0, type=commands.BucketType.user)
     async def status(self, ctx: commands.Context) -> None:

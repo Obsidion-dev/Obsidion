@@ -168,7 +168,7 @@ class Config(commands.Cog):
         """Link Minecraft account to Discord account."""
         if ctx.invoked_subcommand is None:
             await ctx.send_help(ctx.command)
-    
+
     @autopost.group(name="setup")
     async def autopost_setup(self, ctx: commands.Context) -> None:
         """Autopost Minecraft News"""
@@ -215,7 +215,8 @@ class Config(commands.Cog):
                     )
                     cat[category] = channel.channel_mentions[0].id
                     embed.add_field(
-                        name=category.capitalize(), value=channel.channel_mentions[0].mention
+                        name=category.capitalize(),
+                        value=channel.channel_mentions[0].mention,
                     )
                 except asyncio.TimeoutError:
                     await ctx.send(_("Response timed out."))
@@ -247,12 +248,11 @@ class Config(commands.Cog):
         for category in news.keys():
             if news[category] is not None:
                 embed.add_field(
-                        name=category.capitalize(), value=self.bot.get_channel(news[category]).mention
-                    )
+                    name=category.capitalize(),
+                    value=self.bot.get_channel(news[category]).mention,
+                )
             else:
-                embed.add_field(
-                            name=category.capitalize(), value=news[category]
-                        )
+                embed.add_field(name=category.capitalize(), value=news[category])
         await ctx.send(embed=embed)
 
     @autopost.group(name="test")

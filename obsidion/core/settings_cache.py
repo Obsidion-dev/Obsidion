@@ -230,9 +230,9 @@ class GuildManager:
         if redis:
             server = json.loads((await self._bot.redis.get(key)))
         else:
-            server = json.loads(await self._bot.db.fetchval(
-                "SELECT news FROM guild WHERE id = $1", gid
-            ))
+            server = json.loads(
+                await self._bot.db.fetchval("SELECT news FROM guild WHERE id = $1", gid)
+            )
         await self._bot.redis.set(key, json.dumps(server), expire=28800)
         return server
 

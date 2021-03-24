@@ -144,14 +144,14 @@ class News(commands.Cog):
                 if n[key] is not None:
                     if key in channels:
 
-                        channels[key]=n[key]
+                        channels[key] = n[key]
                     else:
-                        channels[key]=[n[key]]
-                
+                        channels[key] = [n[key]]
+
         release_embed = await self.get_java_releases()
         article_embed = await self.get_media()
         if release_embed is not None and "release" in channels:
-        # send embed
+            # send embed
             for _channel in channels["release"]:
                 channel = self.bot.get_channel(_channel)
                 message = await channel.send(embed=release_embed)
