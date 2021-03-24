@@ -27,7 +27,7 @@ try:
 except PackageNotFoundError:
     __version__ = "unknown"
     log.warning(
-        'Unable to load bot version, using "unkown", '
+        'Unable to load bot version, using "unknown", '
         + "please check your pyproject.toml file"
     )
 
