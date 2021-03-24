@@ -41,7 +41,7 @@ class News(commands.Cog):
             else:
                 data = None
 
-        embed = discord.Embed("Mojang service downtime")
+        embed = discord.Embed(title="Mojang service downtime")
         em = 0
         for service in data:
             if data[service] != "green" and service not in self.mojang_service:
@@ -175,7 +175,7 @@ class News(commands.Cog):
 
         release_embed = await self.get_java_releases()
         article_embed = await self.get_media()
-        status_embed = await self.get_status()
+        # status_embed = await self.get_status()
         if release_embed is not None and "release" in channels:
             # send embed
             for _channel in channels["release"]:
