@@ -44,7 +44,7 @@ def main():
 
     obsidion = Obsidion(**args)
 
-    log.info("Ready to go, spinning up the gears")
+    log.info("Ready to go, building everything")
     obsidion.run(get_settings().DISCORD_TOKEN)
 
     log.info("Obsidion shutting down, cleaning up")
