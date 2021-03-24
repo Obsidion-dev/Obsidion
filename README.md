@@ -64,7 +64,7 @@ To get started add the bot to your discord server.
 
 ### Adding to your server
 
-To add Obsidion to your discord server follow this link: [link](). The default prefix is `/` and you can view a list of commands by running `/help`
+To add Obsidion to your discord server follow this link: [link](https://discord.gg/fWxtKFVmaW). The default prefix is `/` and you can view a list of commands by running `/help`
 
 ## ❗ Code of Conduct
 
