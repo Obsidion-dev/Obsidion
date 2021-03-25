@@ -206,5 +206,4 @@ class News(commands.Cog):
 
     def cog_unload(self) -> None:
         """Stop news posting tasks on cog unload."""
-        self.get_media.cancel()
-        self.get_java_releases.cancel()
+        self.autopost.cancel()
