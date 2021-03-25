@@ -1,5 +1,5 @@
 # `python-base` sets up all our shared environment variables
-FROM python:3.8.8-slim-buster as python-base
+FROM python:3.8.8-buster as python-base
 
 
 LABEL org.opencontainers.image.authors "Leon Bowie <leon@bowie-co.nz>"
