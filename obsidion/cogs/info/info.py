@@ -118,7 +118,7 @@ class Info(commands.Cog):
         if address is None:
             address = await self.bot._guild_cache.get_server(ctx.guild)
         if address is None:
-            await ctx.send("Please provide a server")
+            await ctx.send(_("Please provide a server"))
             return
         server_ip, _port = self.get_server(address, port)
         port = _port if _port else port
@@ -138,23 +138,23 @@ class Info(commands.Cog):
                     data = None
             await self.bot.redis.set(key, json.dumps(data), expire=600)
         if data is None:
-            await ctx.send("server could not be reached.")
+            await ctx.send(_("server could not be reached."))
             return
-        embed = discord.Embed(title=f"Java Server: {server_ip}", color=0x00FF00)
-        embed.add_field(name="Description", value=data["motd"]["clean"][0])
+        embed = discord.Embed(title=_("Java Server: {server_ip}"), color=0x00FF00)
+        embed.add_field(name=_("Description"), value=data["motd"]["clean"][0])
 
         embed.add_field(
             name="Players",
-            value=(
-                f"Online: `{data['players']['online']:,}` \n "
-                f"Maximum: `{data['players']['max']:,}`"
-            ),
+            value=_(
+                "Online: `{data['players']['online']:,}` \n "
+                "Maximum: `{data['players']['max']:,}`"
+            )
         )
         embed.add_field(
-            name="Version",
-            value=(
-                f"Java Edition \n Running: `{data['version']}` \n"
-                f"Protocol: `{data['protocol']}`"
+            name=_("Version"),
+            value=_(
+                "Java Edition \n Running: `{data['version']}` \n"
+                "Protocol: `{data['protocol']}`"
             ),
             inline=False,
         )
