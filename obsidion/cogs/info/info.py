@@ -113,20 +113,30 @@ class Info(commands.Cog):
         return (ip, None)
 
     @commands.command()
-    async def server(self, ctx, address, port: Optional[int] = None):
+    async def server(self, ctx, address: Optional[str] = None, port: Optional[int] = None):
         await ctx.channel.trigger_typing()
+        if address is None:
+            address = await self.bot._guild_cache.get_server(ctx.guild)
+        if address is None:
+            await ctx.send("Please provide a server")
+            return
         server_ip, _port = self.get_server(address, port)
         port = _port if _port else port
-        params = (
-            {"server": address} if port is None else {"server": address, "port": port}
-        )
-        async with self.bot.http_session.get(
-            f"{get_settings().API_URL}/server/java", params=params
-        ) as resp:
-            if resp.status == 200:
-                data = await resp.json()
-            else:
-                data = None
+        key = f"server_{server_ip}:{port}"
+        if await self.bot.redis.exists(key):
+            data = json.loads(await self.bot.redis.get(key))
+        else:
+            params = (
+                {"server": address} if port is None else {"server": address, "port": port}
+            )
+            async with self.bot.http_session.get(
+                f"{get_settings().API_URL}/server/java", params=params
+            ) as resp:
+                if resp.status == 200:
+                    data = await resp.json()
+                else:
+                    data = None
+            await self.bot.redis.set(key, json.dumps(data), expire=600)
         if data is None:
             await ctx.send("server could not be reached.")
             return
