@@ -38,3 +38,14 @@ class Hypixel(commands.Cog):
         )
         embed.timestamp = ctx.message.created_at
         await ctx.send(embed=embed)
+    @commands.command()
+    async def boosters(self, ctx:commands.Context) -> None:
+        """Get the current boosters online."""
+        await ctx.channel.trigger_typing()
+        data = await self.hypixel.boosters()
+        embed = discord.Embed(title=_("Boosters"), description=_(f"Total Boosters online: {len(data.boosters)}"), colour=self.bot.color)
+        embed.set_author(name=_("Hypixel"), url="https://hypixel.net/forums/skyblock.157/", icon_url="https://hypixel.net/favicon-32x32.png")
+        embed.set_thumbnail(url="https://hypixel.net/styles/hypixel-v2/images/header-logo.png")
+        embed.timestamp = ctx.message.created_at
+
+        await ctx.send(embed=embed)
