@@ -23,7 +23,7 @@ pydantic = {extras = ["dotenv"], version = "^1.7.3"}
 python = "^3.8"
 uvloop = "^0.14.0"
 SQLAlchemy = "1.4.0b1"
-asyncpixel = "^1.0.1"
+asyncpixel = {git = "https://github.com/Obsidion-dev/asyncpixel.git", branch = "main"}
 psycopg2-binary = "^2.8.6"
 beautifulsoup4 = "^4.9.3"
 discord-py-slash-command = "^1.0.9"
