@@ -60,3 +60,18 @@ class Hypixel(commands.Cog):
         embed.timestamp = ctx.message.created_at
 
         await ctx.send(embed=embed)
+    @commands.command()
+    async def skyblocknews(self, ctx: commands.Context) -> None:
+        """Get current news for skyblock."""
+        await ctx.channel.trigger_typing()
+        data = await self.hypixel.news()
+        embed = discord.Embed(title=_("Skyblock News"), description=_(f"There are currently {len(data)} news articles."), colour=self.bot.color)
+        embed.set_author(name=_("Hypixel"), url="https://hypixel.net/forums/skyblock.157/", icon_url="https://hypixel.net/favicon-32x32.png")
+        embed.set_thumbnail(url="https://hypixel.net/styles/hypixel-v2/images/header-logo.png")
+
+        for i in range(len(data)):
+            embed.add_field(name=_(f"{data[i].title}"), value=f"[{data[i].text}]({data[i].link})")
+
+        embed.timestamp = ctx.message.created_at
+
+        await ctx.send(embed=embed)
