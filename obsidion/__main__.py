@@ -9,6 +9,8 @@ from obsidion import _update_event_loop_policy
 from obsidion.core import get_settings
 from obsidion.core.bot import Obsidion
 from obsidion.core.help import Help
+from discord_slash import SlashCommand
+from discord_slash import SlashContext
 
 _update_event_loop_policy()
 
@@ -45,6 +47,8 @@ def main():
     obsidion = Obsidion(**args)
 
     log.info("Ready to go, building everything")
+    slash = SlashCommand(obsidion, sync_commands=True, sync_on_cog_reload=True)
+    log.info("Initialised slash commands")
     obsidion.run(get_settings().DISCORD_TOKEN)
 
     log.info("Obsidion shutting down, cleaning up")

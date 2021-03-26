@@ -52,8 +52,13 @@ class Events(commands.Cog):
 
         self.bot.uptime = datetime.utcnow()
 
+    @commands.Cog.listener("on_slash_command_error")
+    async def _on_slash_command_error(self, ctx, ex) -> None:
+        print(1)
+        await self.handle_check_failure(ctx, ex)
+
     @staticmethod
-    async def handle_check_failure(ctx: commands.Context, e: commands.CheckFailure) -> None:
+    async def handle_check_failure(ctx: commands.Context, e) -> None:
         """
         Send an error message in `ctx` for certain types of CheckFailure.
         The following types are handled:
