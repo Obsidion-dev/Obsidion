@@ -75,3 +75,27 @@ class Hypixel(commands.Cog):
         embed.timestamp = ctx.message.created_at
 
         await ctx.send(embed=embed)
+    @commands.command()
+    async def playerstatus(self, ctx: commands.Context, username: str) -> None:
+        """Get the current status of an online player."""
+        await ctx.channel.trigger_typing()
+        
+        player_data = await self.bot.mojang_player(ctx.author, username)
+        uuid = player_data["uuid"]
+
+        data = await self.hypixel.player_status(uuid)
+
+        if data.online == False:
+            await ctx.send("That player is not currently online.")
+            return
+        else:
+            embed = discord.Embed(title=_("Player Status"), description=_(f"Current status of Player {username}"), colour=self.bot.color)
+            embed.set_author(name=_("Hypixel"), url="https://hypixel.net/forums/skyblock.157/", icon_url="https://hypixel.net/favicon-32x32.png")
+            embed.set_thumbnail(url=f"https://visage.surgeplay.com/bust/{uuid}")
+            
+            embed.add_field(name=_("Current game: "), value=_(f"{data.game_type.CleanName}"))
+            embed.add_field(name=_("Current game mode: "), value=_(f"{data.mode}"))
+
+            embed.timestamp = ctx.message.created_at
+
+        await ctx.send(embed=embed)
