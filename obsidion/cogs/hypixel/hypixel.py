@@ -1,5 +1,6 @@
 """Images cog."""
 import logging
+import datetime
 
 import discord
 from asyncpixel import Hypixel as _Hypixel
@@ -7,6 +8,7 @@ from discord.ext import commands
 from obsidion.core import get_settings
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
+from obsidion.core.utils.chat_formatting import humanize_timedelta
 
 log = logging.getLogger(__name__)
 
@@ -99,3 +101,34 @@ class Hypixel(commands.Cog):
             embed.timestamp = ctx.message.created_at
 
         await ctx.send(embed=embed)
+    @commands.command()
+    async def playerfriends(self, ctx: commands.Context, username: str) -> None:
+        """Get the current friends of a player."""
+        await ctx.channel.trigger_typing()
+        player_data = await self.bot.mojang_player(ctx.author, username)
+        uuid = player_data["uuid"]
+        
+        data = await self.hypixel.player_friends(uuid)
+
+        embed = discord.Embed(title=_("Player Friends"), description=_(f"Current Friends for {username}"), colour=self.bot.color)
+        embed.set_author(name=_("Hypixel"), url="https://hypixel.net/forums/skyblock.157/", icon_url="https://hypixel.net/favicon-32x32.png")
+        embed.set_thumbnail(url=f"https://visage.surgeplay.com/bust/{uuid}")
+        embed.timestamp = ctx.message.created_at
+
+
+        for i in range(len(data)):
+            if data[i].uuid_receiver == uuid:
+                friendUsername = await self.bot.mojang_player(ctx.author, data[i].uuid_sender)
+            else:
+                friendUsername = await self.bot.mojang_player(ctx.author, data[i].uuid_receiver)
+            
+            friendUsername = friendUsername["username"]
+            
+            delta = datetime.datetime.now(tz=datetime.timezone.utc) - data[i].started
+            friendStarted = humanize_timedelta(timedelta=delta)
+            friendStartedSplit = friendStarted.split(", ")
+            friendStarted = friendStartedSplit[0] + ", " + friendStartedSplit[1]
+
+            embed.add_field(name=_(f"{friendUsername}"), value =_(f"Been friends for {friendStarted}"))
+
+        await ctx.send(embed=embed)  
