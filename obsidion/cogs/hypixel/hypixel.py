@@ -9,6 +9,7 @@ from obsidion.core import get_settings
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
 from obsidion.core.utils.chat_formatting import humanize_timedelta
+from typing import Optional
 
 log = logging.getLogger(__name__)
 
@@ -78,7 +79,7 @@ class Hypixel(commands.Cog):
 
         await ctx.send(embed=embed)
     @commands.command()
-    async def playerstatus(self, ctx: commands.Context, username: str) -> None:
+    async def playerstatus(self, ctx: commands.Context, username: Optional[str] = None) -> None:
         """Get the current status of an online player."""
         await ctx.channel.trigger_typing()
         
@@ -102,7 +103,7 @@ class Hypixel(commands.Cog):
 
         await ctx.send(embed=embed)
     @commands.command()
-    async def playerfriends(self, ctx: commands.Context, username: str) -> None:
+    async def playerfriends(self, ctx: commands.Context, username: Optional[str] = None) -> None:
         """Get the current friends of a player."""
         await ctx.channel.trigger_typing()
         player_data = await self.bot.mojang_player(ctx.author, username)
@@ -117,7 +118,7 @@ class Hypixel(commands.Cog):
 
 
         for i in range(len(data)):
-            if data[i].uuid_receiver == uuid:
+            if str(data[i].uuid_receiver) == str(uuid):
                 friendUsername = await self.bot.mojang_player(ctx.author, data[i].uuid_sender)
             else:
                 friendUsername = await self.bot.mojang_player(ctx.author, data[i].uuid_receiver)
