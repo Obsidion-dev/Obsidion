@@ -27,6 +27,7 @@ asyncpixel = {git = "https://github.com/Obsidion-dev/asyncpixel.git", branch = "
 psycopg2-binary = "^2.8.6"
 beautifulsoup4 = "^4.9.3"
 discord-py-slash-command = "^1.0.9"
+dpymenus = "^1.3.1"
 
 [tool.poetry.dev-dependencies]
 Pygments = "^2.7.2"

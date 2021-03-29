@@ -1,6 +1,7 @@
 """Images cog."""
 import logging
 import datetime
+from dpymenus import Page, PaginatedMenu
 
 import discord
 from asyncpixel import Hypixel as _Hypixel
@@ -9,6 +10,7 @@ from obsidion.core import get_settings
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
 from obsidion.core.utils.chat_formatting import humanize_timedelta
+from obsidion.core.utils.utils import divide_array
 from typing import Optional
 
 log = logging.getLogger(__name__)
@@ -132,4 +134,28 @@ class Hypixel(commands.Cog):
 
             embed.add_field(name=_(f"{friendUsername}"), value =_(f"Been friends for {friendStarted}"))
 
-        await ctx.send(embed=embed)  
+        await ctx.send(embed=embed)
+    @commands.command()
+    async def bazaar(self, ctx: commands.Context) -> None:
+        """Get Bazaar NPC stats."""
+        await ctx.channel.trigger_typing()
+
+        menu = PaginatedMenu(ctx)
+        data = await self.hypixel.bazaar()
+        split = list(divide_array(data.bazaar_items, 15))
+        pagesend = []
+
+        for bazaarloop in range(len(split)):
+            pagebazaar = Page(title=_("Bazaar NPC Stats"), description=_(f"Page {bazaarloop + 1} of {(len(split) + 1)}"), color=self.bot.color)
+            pagebazaar.set_author(name=_("Hypixel"), icon_url="https://hypixel.net/favicon-32x32.png")
+            pagebazaar.set_thumbnail(url="https://hypixel.net/styles/hypixel-v2/images/header-logo.png")
+            for item in range(len(split[bazaarloop])):
+                name = split[bazaarloop][item].product_id.replace("_", " ").title()
+                sellprice = round(split[bazaarloop][item].quick_status.sell_price)
+                buyprice = round(split[bazaarloop][item].quick_status.buy_price)
+                pagebazaar.add_field(name=name, value=_(f"Sell Price: {sellprice} \n Buy Price: {buyprice}"))
+            pagesend.append(pagebazaar)
+        
+        menu.add_pages(pagesend)
+
+        await menu.open()
