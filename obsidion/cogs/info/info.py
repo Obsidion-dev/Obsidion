@@ -237,7 +237,6 @@ class Info(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command(aliases=["sales"])
-    @commands.cooldown(rate=1, per=5.0, type=commands.BucketType.user)
     async def status(self, ctx) -> None:
         """Check the status of all the Mojang services."""
         await ctx.channel.trigger_typing()
@@ -292,7 +291,6 @@ class Info(commands.Cog):
         await self.status(ctx)
 
     @commands.command()
-    @commands.cooldown(rate=1, per=1.0, type=commands.BucketType.user)
     async def wiki(self, ctx, *, query: str) -> None:
         """Get an article from the minecraft wiki."""
         await ctx.channel.trigger_typing()
