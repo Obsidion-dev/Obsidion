@@ -12,6 +12,7 @@ from obsidion.core.i18n import Translator
 from obsidion.core.utils.chat_formatting import humanize_timedelta
 from obsidion.core.utils.utils import divide_array
 from typing import Optional
+from discord_slash import cog_ext
 
 log = logging.getLogger(__name__)
 
@@ -26,7 +27,7 @@ class Hypixel(commands.Cog):
         self.hypixel = _Hypixel(get_settings().HYPIXEL_API_TOKEN)
 
     @commands.command()
-    async def watchdogstats(self, ctx: commands.Context) -> None:
+    async def watchdogstats(self, ctx) -> None:
         """Get the current watchdog statistics."""
         await ctx.channel.trigger_typing()
         data = await self.hypixel.watchdog_stats()
@@ -44,8 +45,13 @@ class Hypixel(commands.Cog):
         embed.timestamp = ctx.message.created_at
         await ctx.send(embed=embed)
 
+    @cog_ext.cog_slash(name="watchdogstats")
+    async def slash_watchdogstats(self, ctx):
+        await ctx.defer()
+        await self.watchdogstats(ctx)
+
     @commands.command()
-    async def boosters(self, ctx: commands.Context) -> None:
+    async def boosters(self, ctx) -> None:
         """Get the current boosters online."""
         await ctx.channel.trigger_typing()
         data = await self.hypixel.boosters()
@@ -66,8 +72,13 @@ class Hypixel(commands.Cog):
 
         await ctx.send(embed=embed)
 
+    @cog_ext.cog_slash(name="boosters")
+    async def slash_boosters(self, ctx):
+        await ctx.defer()
+        await self.boosters(ctx)
+
     @commands.command()
-    async def playercount(self, ctx: commands.Context) -> None:
+    async def playercount(self, ctx) -> None:
         """Get the current players online."""
         await ctx.channel.trigger_typing()
         data = await self.hypixel.player_count()
@@ -88,8 +99,13 @@ class Hypixel(commands.Cog):
 
         await ctx.send(embed=embed)
 
+    @cog_ext.cog_slash(name="playercount")
+    async def slash_playercount(self, ctx):
+        await ctx.defer()
+        await self.playercount(ctx)
+
     @commands.command()
-    async def skyblocknews(self, ctx: commands.Context) -> None:
+    async def skyblocknews(self, ctx) -> None:
         """Get current news for skyblock."""
         await ctx.channel.trigger_typing()
         data = await self.hypixel.news()
@@ -116,9 +132,14 @@ class Hypixel(commands.Cog):
 
         await ctx.send(embed=embed)
 
+    @cog_ext.cog_slash(name="skyblocknews")
+    async def slash_skyblocknews(self, ctx):
+        await ctx.defer()
+        await self.skyblocknews(ctx)
+
     @commands.command()
     async def playerstatus(
-        self, ctx: commands.Context, username: Optional[str] = None
+        self, ctx, username: Optional[str] = None
     ) -> None:
         """Get the current status of an online player."""
         await ctx.channel.trigger_typing()
@@ -153,9 +174,14 @@ class Hypixel(commands.Cog):
 
         await ctx.send(embed=embed)
 
+    @cog_ext.cog_slash(name="playerstatus")
+    async def slash_playerstatus(self, ctx, username=None):
+        await ctx.defer()
+        await self.playerstatus(ctx,username)
+
     @commands.command()
     async def playerfriends(
-        self, ctx: commands.Context, username: Optional[str] = None
+        self, ctx, username: Optional[str] = None
     ) -> None:
         """Get the current friends of a player."""
         await ctx.channel.trigger_typing()
@@ -201,8 +227,13 @@ class Hypixel(commands.Cog):
 
         await ctx.send(embed=embed)
 
+    @cog_ext.cog_slash(name="playerfriends")
+    async def slash_playerfriends(self, ctx, username=None):
+        await ctx.defer()
+        await self.playerfriends(ctx,username)
+
     @commands.command()
-    async def bazaar(self, ctx: commands.Context) -> None:
+    async def bazaar(self, ctx) -> None:
         """Get Bazaar NPC stats."""
         await ctx.channel.trigger_typing()
 
@@ -238,8 +269,13 @@ class Hypixel(commands.Cog):
 
         await menu.open()
 
+    @cog_ext.cog_slash(name="bazaar")
+    async def slash_bazaar(self, ctx):
+        await ctx.defer()
+        await self.bazaar(ctx)
+
     @commands.command()
-    async def auctions(self, ctx: commands.Context) -> None:
+    async def auctions(self, ctx) -> None:
         """Get the first 30 auctions."""
 
         await ctx.channel.trigger_typing()
@@ -279,3 +315,8 @@ class Hypixel(commands.Cog):
         menu.add_pages(pagesend)
 
         await menu.open()
+
+    @cog_ext.cog_slash(name="auctions")
+    async def slash_auctions(self, ctx):
+        await ctx.defer()
+        await self.auctions(ctx)

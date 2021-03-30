@@ -6,7 +6,6 @@ from random import choice
 
 import discord
 from discord.ext import commands
-from obsidion.core import get_settings
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
 from discord_slash import cog_ext
@@ -67,17 +66,22 @@ class Fun(commands.Cog):
         self.bot = bot
 
     @commands.command(aliases=["villagerspeak", "villagerspeech", "hmm"])
-    async def villager(self, ctx: commands.Context, *, speech: str) -> None:
+    async def villager(self, ctx, *, speech: str) -> None:
         """Hmm hm hmmm Hm hmmm hmm."""
         split = speech.split(" ")
         sentence = ""
         for _ in split:
             sentence += " " + choice(("hmm", "hm", "hmmm"))
         response = sentence.strip()
-        await ctx.reply(response)
+        await ctx.send(response)
+
+    @cog_ext.cog_slash(name="villager")
+    async def slash_villager(self, ctx,  *, speech: str):
+        await ctx.defer()
+        await self.villager(ctx, speech)
 
     @commands.command()
-    async def enchant(self, ctx: commands.Context, *, msg: str) -> None:
+    async def enchant(self, ctx, *, msg: str) -> None:
         """Enchant a message."""
         response = ""
         for letter in msg:
@@ -87,8 +91,13 @@ class Fun(commands.Cog):
                 response += letter
         await ctx.send(f"{ctx.message.author.mention}, `{response}`")
 
+    @cog_ext.cog_slash(name="enchant")
+    async def slash_enchant(self, ctx,  *, msg: str):
+        await ctx.defer()
+        await self.enchant(ctx, msg)
+
     @commands.command()
-    async def unenchant(self, ctx: commands.Context, *, msg: str) -> None:
+    async def unenchant(self, ctx, *, msg: str) -> None:
         """Disenchant a message."""
         response = ""
         for letter in msg:
@@ -97,6 +106,11 @@ class Fun(commands.Cog):
             else:
                 response += letter
         await ctx.send(f"{ctx.message.author.mention}, `{response}`")
+
+    @cog_ext.cog_slash(name="unenchant")
+    async def slash_unenchant(self, ctx,  *, msg: str):
+        await ctx.defer()
+        await self.unenchant(ctx, msg)
 
     @commands.command()
     async def creeper(self, ctx) -> None:
@@ -109,7 +123,7 @@ class Fun(commands.Cog):
         await self.creeper(ctx)
 
     @commands.command()
-    async def rps(self, ctx: commands.Context, user_choice: str = None) -> None:
+    async def rps(self, ctx, user_choice: str = None) -> None:
         """Play Rock Paper Shears."""
         options = ["rock", "paper", "shears"]
         if not user_choice or user_choice not in options:

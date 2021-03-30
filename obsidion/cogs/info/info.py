@@ -353,6 +353,12 @@ class Info(commands.Cog):
                 )
             )
 
+    @cog_ext.cog_slash(name="wiki")
+    async def slash_wiki(self, ctx, query: str):
+        await ctx.defer()
+        await self.wiki(ctx, query)
+
+
     # @commands.command()
     # async def mcbug(self, ctx, bug: str) -> None:
     #     """Gets info on a bug from bugs.mojang.com."""

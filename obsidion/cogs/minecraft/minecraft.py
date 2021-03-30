@@ -1,14 +1,9 @@
 """Minecraft cog."""
-import json
 import logging
-from datetime import datetime
-from random import choice
-
-import discord
 from discord.ext import commands
-from obsidion.core import get_settings
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
+from discord_slash import cog_ext
 
 log = logging.getLogger(__name__)
 
@@ -22,7 +17,7 @@ class Minecraft(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def tick2second(self, ctx: commands.Context, ticks: int) -> None:
+    async def tick2second(self, ctx, ticks: int) -> None:
         """Convert seconds to tick."""
         seconds = ticks / 20
         await ctx.send(
@@ -31,8 +26,13 @@ class Minecraft(commands.Cog):
             )
         )
 
+    @cog_ext.cog_slash(name="tick2second")
+    async def slash_tick2second(self, ctx, ticks: int):
+        await ctx.defer()
+        await self.tick2second(ctx, ticks)
+
     @commands.command()
-    async def second2tick(self, ctx: commands.Context, seconds: float) -> None:
+    async def second2tick(self, ctx, seconds: float) -> None:
         """Convert ticks to seconds."""
         ticks = seconds * 20
         await ctx.send(
@@ -40,11 +40,21 @@ class Minecraft(commands.Cog):
                 ticks=ticks, seconds=seconds
             )
         )
+    
+    @cog_ext.cog_slash(name="second2tick")
+    async def slash_second2tick(self, ctx, seconds: float):
+        await ctx.defer()
+        await self.second2tick(ctx, seconds)
 
     @commands.command()
-    async def seed(self, ctx: commands.Context, *, text: str) -> None:
+    async def seed(self, ctx, *, text: str) -> None:
         """Convert text to minecraft numerical seed."""
         h = 0
         for c in text:
             h = (31 * h + ord(c)) & 0xFFFFFFFF
         await ctx.send(((h + 0x80000000) & 0xFFFFFFFF) - 0x80000000)
+
+    @cog_ext.cog_slash(name="seed")
+    async def slash_seed(self, ctx, *, text: str):
+        await ctx.defer()
+        await self.seed(ctx, text)
