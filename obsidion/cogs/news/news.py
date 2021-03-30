@@ -99,7 +99,7 @@ class News(commands.Cog):
         # create footer
         embed.set_footer(text=_("Article Published"))
         embed.timestamp = time
-        # self.last_media_data = time
+        self.last_media_data = time
 
         # create title
         embed.set_author(
