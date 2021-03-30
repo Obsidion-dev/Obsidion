@@ -14,10 +14,11 @@ from obsidion import __version__
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
 
-from . import i18n
 from .utils.chat_formatting import box
 from .utils.chat_formatting import humanize_timedelta
 from .utils.chat_formatting import pagify
+from discord_slash import cog_ext
+
 
 log = logging.getLogger("obsidion")
 
@@ -282,3 +283,9 @@ class Core(commands.Cog):
                     return
         else:
             await ctx.send(_("No exception has occurred yet."))
+
+    @cog_ext.cog_slash(name="help")
+    async def slash_help(self, ctx, command=None):
+        await ctx.defer()
+        await ctx.send_help(command)
+    

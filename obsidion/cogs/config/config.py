@@ -13,6 +13,7 @@ from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
 from obsidion.core.utils.chat_formatting import pagify
 from obsidion.core.utils.predicates import MessagePredicate
+from discord_slash import cog_ext, SlashContext
 
 log = logging.getLogger(__name__)
 
@@ -30,6 +31,19 @@ class Config(commands.Cog):
     @commands.guild_only()
     async def prefix(self, ctx: commands.Context, _prefix: Optional[str]):
         """Sets Obsidion's server prefix(es)."""
+        if not _prefix:
+            await ctx.bot.set_prefixes(guild=ctx.guild)
+            await ctx.send(_("Guild prefixes have been reset."))
+            return
+        await ctx.bot.set_prefixes(guild=ctx.guild, prefix=_prefix)
+        await ctx.send(_("Prefix set."))
+
+    @cog_ext.cog_slash(name="prefix")
+    @commands.has_guild_permissions(manage_guild=True)
+    @commands.guild_only()
+    async def prefix(self, ctx, _prefix: Optional[str]):
+        """Sets Obsidion's server prefix(es)."""
+        await ctx.respond()
         if not _prefix:
             await ctx.bot.set_prefixes(guild=ctx.guild)
             await ctx.send(_("Guild prefixes have been reset."))

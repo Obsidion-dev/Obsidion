@@ -9,6 +9,8 @@ from discord.ext import commands
 from obsidion.core import get_settings
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
+from discord_slash import cog_ext
+
 
 log = logging.getLogger(__name__)
 
@@ -97,23 +99,20 @@ class Fun(commands.Cog):
         await ctx.send(f"{ctx.message.author.mention}, `{response}`")
 
     @commands.command()
-    async def creeper(self, ctx: commands.Context) -> None:
+    async def creeper(self, ctx) -> None:
         """Aw man."""
         await ctx.send("Aw man")
+
+    @cog_ext.cog_slash(name="creeper")
+    async def slash_creeper(self, ctx):
+        await ctx.defer()
+        await self.creeper(ctx)
 
     @commands.command()
     async def rps(self, ctx: commands.Context, user_choice: str = None) -> None:
         """Play Rock Paper Shears."""
         options = ["rock", "paper", "shears"]
-        if not user_choice:
-            await ctx.send(
-                _(
-                    "That is an invalid option can you please choose from "
-                    "rock, paper or shears"
-                )
-            )
-            return
-        if user_choice and user_choice not in options:
+        if not user_choice or user_choice not in options:
             await ctx.send(
                 _(
                     "That is an invalid option can you please choose from "
@@ -140,3 +139,8 @@ class Fun(commands.Cog):
                     user_choice=user_choice, c_choice=c_choice
                 )
             )
+            
+    @cog_ext.cog_slash(name="rps")
+    async def slash_rps(self, ctx, user_choice:str=None):
+        await ctx.defer()
+        await self.creeper(ctx, user_choice)

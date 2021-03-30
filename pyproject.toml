@@ -26,7 +26,6 @@ SQLAlchemy = "1.4.0b1"
 asyncpixel = {git = "https://github.com/Obsidion-dev/asyncpixel.git", branch = "main"}
 psycopg2-binary = "^2.8.6"
 beautifulsoup4 = "^4.9.3"
-discord-py-slash-command = "^1.0.9"
 
 [tool.poetry.dev-dependencies]
 Pygments = "^2.7.2"
