@@ -146,7 +146,7 @@ class Hypixel(commands.Cog):
         pagesend = []
 
         for bazaarloop in range(len(split)):
-            pagebazaar = Page(title=_("Bazaar NPC Stats"), description=_(f"Page {bazaarloop + 1} of {(len(split) + 1)}"), color=self.bot.color)
+            pagebazaar = Page(title=_("Bazaar NPC Stats"), description=_(f"Page {bazaarloop + 1} of {(len(split))}"), color=self.bot.color)
             pagebazaar.set_author(name=_("Hypixel"), icon_url="https://hypixel.net/favicon-32x32.png")
             pagebazaar.set_thumbnail(url="https://hypixel.net/styles/hypixel-v2/images/header-logo.png")
             for item in range(len(split[bazaarloop])):
@@ -157,21 +157,22 @@ class Hypixel(commands.Cog):
             pagesend.append(pagebazaar)
         
         menu.add_pages(pagesend)
+        menu.set_timeout(90)
 
         await menu.open()
     @commands.command()
     async def auctions(self, ctx: commands.Context) -> None:
-        """Get the current auctions for the player."""
+        """Get the first 30 auctions."""
 
         await ctx.channel.trigger_typing()
         data = await self.hypixel.auctions()
         menu = PaginatedMenu(ctx)
-        split = list(divide_array(data.auctions, 15))
+        split = list(divide_array(data.auctions, 9))
         auctionitems = split[:3]
         pagesend = []
 
         for auctionsloop in range(len(auctionitems)):
-            pageauctions = Page(title=_("Current Auctions"), description=_(f"Page {auctionsloop + 1} of {(len(auctionitems) + 1)}"), color=self.bot.color)
+            pageauctions = Page(title=_("Current Auctions"), description=_(f"Page {auctionsloop + 1} of {(len(auctionitems))}"), color=self.bot.color)
             pageauctions.set_author(name=_("Hypixel"), icon_url="https://hypixel.net/favicon-32x32.png")
             pageauctions.set_thumbnail(url="https://hypixel.net/styles/hypixel-v2/images/header-logo.png")
             for item in range(len(auctionitems[auctionsloop])):
