@@ -153,8 +153,36 @@ class Hypixel(commands.Cog):
                 name = split[bazaarloop][item].product_id.replace("_", " ").title()
                 sellprice = round(split[bazaarloop][item].quick_status.sell_price)
                 buyprice = round(split[bazaarloop][item].quick_status.buy_price)
-                pagebazaar.add_field(name=name, value=_(f"Sell Price: {sellprice} \n Buy Price: {buyprice}"))
+                pagebazaar.add_field(name=_(name), value=_(f"Sell Price: {sellprice} \n Buy Price: {buyprice}"))
             pagesend.append(pagebazaar)
+        
+        menu.add_pages(pagesend)
+
+        await menu.open()
+    @commands.command()
+    async def auctions(self, ctx: commands.Context) -> None:
+        """Get the current auctions for the player."""
+
+        await ctx.channel.trigger_typing()
+        data = await self.hypixel.auctions()
+        menu = PaginatedMenu(ctx)
+        split = list(divide_array(data.auctions, 15))
+        auctionitems = split[:3]
+        pagesend = []
+
+        for auctionsloop in range(len(auctionitems)):
+            pageauctions = Page(title=_("Current Auctions"), description=_(f"Page {auctionsloop + 1} of {(len(auctionitems) + 1)}"), color=self.bot.color)
+            pageauctions.set_author(name=_("Hypixel"), icon_url="https://hypixel.net/favicon-32x32.png")
+            pageauctions.set_thumbnail(url="https://hypixel.net/styles/hypixel-v2/images/header-logo.png")
+            for item in range(len(auctionitems[auctionsloop])):
+                name = auctionitems[auctionsloop][item].item_name
+                category = auctionitems[auctionsloop][item].category
+                tier = auctionitems[auctionsloop][item].tier
+                start_bid = auctionitems[auctionsloop][item].starting_bid
+                won = auctionitems[auctionsloop][item].claimed
+                highest_bid = auctionitems[auctionsloop][item].highest_bid_amount
+                pageauctions.add_field(name=_(name), value=_(f"Item Category: {category} \n Item Tier: {tier} \n Starting Bid: {start_bid} \n Item Won: {won} \n Highest Bid: {highest_bid}"))
+            pagesend.append(pageauctions)
         
         menu.add_pages(pagesend)
 
