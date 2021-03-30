@@ -1,6 +1,7 @@
 """Images cog."""
 import logging
 import datetime
+from dpymenus import Page, PaginatedMenu
 
 import discord
 from asyncpixel import Hypixel as _Hypixel
@@ -9,6 +10,8 @@ from obsidion.core import get_settings
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
 from obsidion.core.utils.chat_formatting import humanize_timedelta
+from obsidion.core.utils.utils import divide_array
+from typing import Optional
 
 log = logging.getLogger(__name__)
 
@@ -78,7 +81,7 @@ class Hypixel(commands.Cog):
 
         await ctx.send(embed=embed)
     @commands.command()
-    async def playerstatus(self, ctx: commands.Context, username: str) -> None:
+    async def playerstatus(self, ctx: commands.Context, username: Optional[str] = None) -> None:
         """Get the current status of an online player."""
         await ctx.channel.trigger_typing()
         
@@ -102,7 +105,7 @@ class Hypixel(commands.Cog):
 
         await ctx.send(embed=embed)
     @commands.command()
-    async def playerfriends(self, ctx: commands.Context, username: str) -> None:
+    async def playerfriends(self, ctx: commands.Context, username: Optional[str] = None) -> None:
         """Get the current friends of a player."""
         await ctx.channel.trigger_typing()
         player_data = await self.bot.mojang_player(ctx.author, username)
@@ -117,7 +120,7 @@ class Hypixel(commands.Cog):
 
 
         for i in range(len(data)):
-            if data[i].uuid_receiver == uuid:
+            if str(data[i].uuid_receiver) == str(uuid):
                 friendUsername = await self.bot.mojang_player(ctx.author, data[i].uuid_sender)
             else:
                 friendUsername = await self.bot.mojang_player(ctx.author, data[i].uuid_receiver)
@@ -131,4 +134,57 @@ class Hypixel(commands.Cog):
 
             embed.add_field(name=_(f"{friendUsername}"), value =_(f"Been friends for {friendStarted}"))
 
-        await ctx.send(embed=embed)  
+        await ctx.send(embed=embed)
+    @commands.command()
+    async def bazaar(self, ctx: commands.Context) -> None:
+        """Get Bazaar NPC stats."""
+        await ctx.channel.trigger_typing()
+
+        menu = PaginatedMenu(ctx)
+        data = await self.hypixel.bazaar()
+        split = list(divide_array(data.bazaar_items, 15))
+        pagesend = []
+
+        for bazaarloop in range(len(split)):
+            pagebazaar = Page(title=_("Bazaar NPC Stats"), description=_(f"Page {bazaarloop + 1} of {(len(split))}"), color=self.bot.color)
+            pagebazaar.set_author(name=_("Hypixel"), icon_url="https://hypixel.net/favicon-32x32.png")
+            pagebazaar.set_thumbnail(url="https://hypixel.net/styles/hypixel-v2/images/header-logo.png")
+            for item in range(len(split[bazaarloop])):
+                name = split[bazaarloop][item].product_id.replace("_", " ").title()
+                sellprice = round(split[bazaarloop][item].quick_status.sell_price)
+                buyprice = round(split[bazaarloop][item].quick_status.buy_price)
+                pagebazaar.add_field(name=_(name), value=_(f"Sell Price: {sellprice} \n Buy Price: {buyprice}"))
+            pagesend.append(pagebazaar)
+        
+        menu.add_pages(pagesend)
+        menu.set_timeout(90)
+
+        await menu.open()
+    @commands.command()
+    async def auctions(self, ctx: commands.Context) -> None:
+        """Get the first 30 auctions."""
+
+        await ctx.channel.trigger_typing()
+        data = await self.hypixel.auctions()
+        menu = PaginatedMenu(ctx)
+        split = list(divide_array(data.auctions, 9))
+        auctionitems = split[:3]
+        pagesend = []
+
+        for auctionsloop in range(len(auctionitems)):
+            pageauctions = Page(title=_("Current Auctions"), description=_(f"Page {auctionsloop + 1} of {(len(auctionitems))}"), color=self.bot.color)
+            pageauctions.set_author(name=_("Hypixel"), icon_url="https://hypixel.net/favicon-32x32.png")
+            pageauctions.set_thumbnail(url="https://hypixel.net/styles/hypixel-v2/images/header-logo.png")
+            for item in range(len(auctionitems[auctionsloop])):
+                name = auctionitems[auctionsloop][item].item_name
+                category = auctionitems[auctionsloop][item].category
+                tier = auctionitems[auctionsloop][item].tier
+                start_bid = auctionitems[auctionsloop][item].starting_bid
+                won = auctionitems[auctionsloop][item].claimed
+                highest_bid = auctionitems[auctionsloop][item].highest_bid_amount
+                pageauctions.add_field(name=_(name), value=_(f"Item Category: {category} \n Item Tier: {tier} \n Starting Bid: {start_bid} \n Item Won: {won} \n Highest Bid: {highest_bid}"))
+            pagesend.append(pageauctions)
+        
+        menu.add_pages(pagesend)
+
+        await menu.open()
