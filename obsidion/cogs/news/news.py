@@ -54,8 +54,6 @@ class News(commands.Cog):
         if em == 0:
             return None
         return embed
-        
-        
 
     async def get_media(self) -> Union[discord.Embed, None]:
         """Get rss media."""

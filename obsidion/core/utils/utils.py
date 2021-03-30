@@ -70,6 +70,7 @@ async def send_interactive(
                         await query.delete()
     return ret
 
+
 def divide_array(l, n):
     for i in range(0, len(l), n):
-        yield l[i:i + n]
+        yield l[i : i + n]

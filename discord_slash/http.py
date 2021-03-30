@@ -8,13 +8,16 @@ from . import error
 
 class CustomRoute(Route):
     """discord.py's Route but changed ``BASE`` to use at slash command."""
+
     BASE = "https://discord.com/api/v8"
 
 
 class SlashCommandRequest:
     def __init__(self, logger, _discord, application_id):
         self.logger = logger
-        self._discord: typing.Union[discord.Client, discord.AutoShardedClient] = _discord
+        self._discord: typing.Union[
+            discord.Client, discord.AutoShardedClient
+        ] = _discord
         self._application_id = application_id
 
     @property
@@ -30,7 +33,7 @@ class SlashCommandRequest:
         :param guild_id: ID of the guild to set the commands on. Pass `None` for the global scope.
         """
         return self.command_request(
-            method="PUT", guild_id = guild_id, json = slash_commands
+            method="PUT", guild_id=guild_id, json=slash_commands
         )
 
     def remove_slash_command(self, guild_id, cmd_id):
@@ -67,7 +70,7 @@ class SlashCommandRequest:
         :return: JSON Response of the request.
         """
         base = {"name": cmd_name, "description": description, "options": options or []}
-        return self.command_request(json=base, method="POST", guild_id = guild_id)
+        return self.command_request(json=base, method="POST", guild_id=guild_id)
 
     def command_request(self, method, guild_id, url_ending="", **kwargs):
         r"""
@@ -102,7 +105,7 @@ class SlashCommandRequest:
     def post_initial_response(self, _resp, interaction_id, token):
         """
         Sends an initial "POST" response to the Discord API.
-         
+
         :param _resp: Command response.
         :type _resp: dict
         :param interaction_id: Interaction ID.
@@ -111,7 +114,9 @@ class SlashCommandRequest:
         """
         return self.command_response(token, False, "POST", interaction_id, json=_resp)
 
-    def command_response(self, token, use_webhook, method, interaction_id= None, url_ending = "", **kwargs):
+    def command_response(
+        self, token, use_webhook, method, interaction_id=None, url_ending="", **kwargs
+    ):
         """
         Sends a command response to discord (POST, PATCH, DELETE)
 
@@ -124,8 +129,14 @@ class SlashCommandRequest:
         :return: Coroutine
         """
         if not use_webhook and not interaction_id:
-            raise error.IncorrectFormat("Internal Error! interaction_id must be set if use_webhook is False")
-        req_url = f"/webhooks/{self.application_id}/{token}" if use_webhook else f"/interactions/{interaction_id}/{token}/callback"
+            raise error.IncorrectFormat(
+                "Internal Error! interaction_id must be set if use_webhook is False"
+            )
+        req_url = (
+            f"/webhooks/{self.application_id}/{token}"
+            if use_webhook
+            else f"/interactions/{interaction_id}/{token}/callback"
+        )
         req_url += url_ending
         route = CustomRoute(method, req_url)
         return self._discord.http.request(route, **kwargs)
@@ -137,7 +148,12 @@ class SlashCommandRequest:
         for x in range(len(files)):
             name = f"file{x if len(files) > 1 else ''}"
             sel = files[x]
-            form.add_field(name, sel.fp, filename=sel.filename, content_type="application/octet-stream")
+            form.add_field(
+                name,
+                sel.fp,
+                filename=sel.filename,
+                content_type="application/octet-stream",
+            )
         return self.command_response(token, True, "POST", data=form, files=files)
 
     def edit(self, _resp, token, message_id="@original"):
@@ -151,8 +167,9 @@ class SlashCommandRequest:
         :return: Coroutine
         """
         req_url = f"/messages/{message_id}"
-        return self.command_response(token, True, "PATCH", url_ending = req_url, json=_resp)
-
+        return self.command_response(
+            token, True, "PATCH", url_ending=req_url, json=_resp
+        )
 
     def delete(self, token, message_id="@original"):
         """
@@ -163,5 +180,4 @@ class SlashCommandRequest:
         :return: Coroutine
         """
         req_url = f"/messages/{message_id}"
-        return self.command_response(token, True, "DELETE", url_ending = req_url)
-
+        return self.command_response(token, True, "DELETE", url_ending=req_url)

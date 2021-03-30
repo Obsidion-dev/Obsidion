@@ -78,9 +78,9 @@ class Core(commands.Cog):
         embed.add_field(name=("About Obsidion"), value=about, inline=False)
 
         embed.set_footer(
-            text=_("Bringing joy since the 2nd of April 2020 (over {} days ago!)").format(
-                days_since
-            )
+            text=_(
+                "Bringing joy since the 2nd of April 2020 (over {} days ago!)"
+            ).format(days_since)
         )
         await ctx.send(embed=embed)
 
@@ -288,4 +288,3 @@ class Core(commands.Cog):
     async def slash_help(self, ctx, command=None):
         await ctx.defer()
         await ctx.send_help(command)
-    

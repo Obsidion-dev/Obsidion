@@ -22,6 +22,7 @@ class CommandObject:
     :ivar connector: Kwargs connector of the command.
     :ivar __commands_checks__: Check of the command.
     """
+
     def __init__(self, name, cmd):  # Let's reuse old command formatting.
         self.name = name.lower()
         self.func = cmd["func"]
@@ -34,7 +35,7 @@ class CommandObject:
         # Since this isn't inherited from `discord.ext.commands.Command`, discord.py's check decorator will
         # add checks at this var.
         self.__commands_checks__ = []
-        if hasattr(self.func, '__commands_checks__'):
+        if hasattr(self.func, "__commands_checks__"):
             self.__commands_checks__ = self.func.__commands_checks__
 
     async def invoke(self, *args, **kwargs):
@@ -78,7 +79,10 @@ class CommandObject:
         :type ctx: .context.SlashContext
         :return: bool
         """
-        res = [bool(x(ctx)) if not iscoroutinefunction(x) else bool(await x(ctx)) for x in self.__commands_checks__]
+        res = [
+            bool(x(ctx)) if not iscoroutinefunction(x) else bool(await x(ctx))
+            for x in self.__commands_checks__
+        ]
         return False not in res
 
 
@@ -97,8 +101,9 @@ class SubcommandObject(CommandObject):
     :ivar base_description: Description of the base command.
     :ivar subcommand_group_description: Description of the subcommand_group.
     """
+
     def __init__(self, sub, base, name, sub_group=None):
-        sub["has_subcommands"] = True # For the inherited class.
+        sub["has_subcommands"] = True  # For the inherited class.
         super().__init__(name, sub)
         self.base = base.lower()
         self.subcommand_group = sub_group.lower() if sub_group else sub_group
@@ -113,6 +118,7 @@ class CogCommandObject(CommandObject):
     .. warning::
         Do not manually init this model.
     """
+
     def __init__(self, *args):
         super().__init__(*args)
         self.cog = None  # Manually set this later.
@@ -138,6 +144,7 @@ class CogSubcommandObject(SubcommandObject):
     .. warning::
         Do not manually init this model.
     """
+
     def __init__(self, *args):
         super().__init__(*args)
         self.cog = None  # Manually set this later.
@@ -160,6 +167,7 @@ class SlashCommandOptionType(IntEnum):
     """
     Equivalent of `ApplicationCommandOptionType <https://discord.com/developers/docs/interactions/slash-commands#applicationcommandoptiontype>`_  in the Discord API.
     """
+
     SUB_COMMAND = 1
     SUB_COMMAND_GROUP = 2
     STRING = 3
@@ -177,18 +185,33 @@ class SlashCommandOptionType(IntEnum):
         :param t: The type or object to get a SlashCommandOptionType for.
         :return: :class:`.model.SlashCommandOptionType` or ``None``
         """
-        if issubclass(t, str): return cls.STRING
-        if issubclass(t, bool): return cls.BOOLEAN
+        if issubclass(t, str):
+            return cls.STRING
+        if issubclass(t, bool):
+            return cls.BOOLEAN
         # The check for bool MUST be above the check for integers as booleans subclass integers
-        if issubclass(t, int): return cls.INTEGER
-        if issubclass(t, discord.abc.User): return cls.USER
-        if issubclass(t, discord.abc.GuildChannel): return cls.CHANNEL
-        if issubclass(t, discord.abc.Role): return cls.ROLE
+        if issubclass(t, int):
+            return cls.INTEGER
+        if issubclass(t, discord.abc.User):
+            return cls.USER
+        if issubclass(t, discord.abc.GuildChannel):
+            return cls.CHANNEL
+        if issubclass(t, discord.abc.Role):
+            return cls.ROLE
 
 
 class SlashMessage(discord.Message):
     """discord.py's :class:`discord.Message` but overridden ``edit`` and ``delete`` to work for slash command."""
-    def __init__(self, *, state, channel, data, _http: http.SlashCommandRequest, interaction_token):
+
+    def __init__(
+        self,
+        *,
+        state,
+        channel,
+        data,
+        _http: http.SlashCommandRequest,
+        interaction_token
+    ):
         # Yes I know it isn't the best way but this makes implementation simple.
         super().__init__(state=state, channel=channel, data=data)
         self._http = _http
@@ -219,8 +242,13 @@ class SlashMessage(discord.Message):
                 _resp["embeds"] = [x.to_dict() for x in embeds]
 
             allowed_mentions = fields.get("allowed_mentions")
-            _resp["allowed_mentions"] = allowed_mentions.to_dict() if allowed_mentions else \
-                self._state.allowed_mentions.to_dict() if self._state.allowed_mentions else {}
+            _resp["allowed_mentions"] = (
+                allowed_mentions.to_dict()
+                if allowed_mentions
+                else self._state.allowed_mentions.to_dict()
+                if self._state.allowed_mentions
+                else {}
+            )
 
             await self._http.edit(_resp, self.__interaction_token, self.id)
 
@@ -240,4 +268,5 @@ class SlashMessage(discord.Message):
                 with suppress(discord.HTTPException):
                     await asyncio.sleep(delay)
                     await self._http.delete(self.__interaction_token, self.id)
+
             self._state.loop.create_task(wrap())

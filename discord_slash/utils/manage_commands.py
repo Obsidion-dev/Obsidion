@@ -7,12 +7,14 @@ from ..model import SlashCommandOptionType
 from collections.abc import Callable
 
 
-async def add_slash_command(bot_id,
-                            bot_token: str,
-                            guild_id,
-                            cmd_name: str,
-                            description: str,
-                            options: list = None):
+async def add_slash_command(
+    bot_id,
+    bot_token: str,
+    guild_id,
+    cmd_name: str,
+    description: str,
+    options: list = None,
+):
     """
     A coroutine that sends a slash command add request to Discord API.
 
@@ -27,27 +29,24 @@ async def add_slash_command(bot_id,
     """
     url = f"https://discord.com/api/v8/applications/{bot_id}"
     url += "/commands" if not guild_id else f"/guilds/{guild_id}/commands"
-    base = {
-        "name": cmd_name,
-        "description": description,
-        "options": options or []
-    }
+    base = {"name": cmd_name, "description": description, "options": options or []}
 
     async with aiohttp.ClientSession() as session:
-        async with session.post(url, headers={"Authorization": f"Bot {bot_token}"}, json=base) as resp:
+        async with session.post(
+            url, headers={"Authorization": f"Bot {bot_token}"}, json=base
+        ) as resp:
             if resp.status == 429:
                 _json = await resp.json()
                 await asyncio.sleep(_json["retry_after"])
-                return await add_slash_command(bot_id, bot_token, guild_id, cmd_name, description, options)
+                return await add_slash_command(
+                    bot_id, bot_token, guild_id, cmd_name, description, options
+                )
             if not 200 <= resp.status < 300:
                 raise RequestFailure(resp.status, await resp.text())
             return await resp.json()
 
 
-async def remove_slash_command(bot_id,
-                               bot_token,
-                               guild_id,
-                               cmd_id):
+async def remove_slash_command(bot_id, bot_token, guild_id, cmd_id):
     """
     A coroutine that sends a slash command remove request to Discord API.
 
@@ -62,7 +61,9 @@ async def remove_slash_command(bot_id,
     url += "/commands" if not guild_id else f"/guilds/{guild_id}/commands"
     url += f"/{cmd_id}"
     async with aiohttp.ClientSession() as session:
-        async with session.delete(url, headers={"Authorization": f"Bot {bot_token}"}) as resp:
+        async with session.delete(
+            url, headers={"Authorization": f"Bot {bot_token}"}
+        ) as resp:
             if resp.status == 429:
                 _json = await resp.json()
                 await asyncio.sleep(_json["retry_after"])
@@ -72,9 +73,7 @@ async def remove_slash_command(bot_id,
             return resp.status
 
 
-async def get_all_commands(bot_id,
-                           bot_token,
-                           guild_id=None):
+async def get_all_commands(bot_id, bot_token, guild_id=None):
     """
     A coroutine that sends a slash command get request to Discord API.
 
@@ -87,7 +86,9 @@ async def get_all_commands(bot_id,
     url = f"https://discord.com/api/v8/applications/{bot_id}"
     url += "/commands" if not guild_id else f"/guilds/{guild_id}/commands"
     async with aiohttp.ClientSession() as session:
-        async with session.get(url, headers={"Authorization": f"Bot {bot_token}"}) as resp:
+        async with session.get(
+            url, headers={"Authorization": f"Bot {bot_token}"}
+        ) as resp:
             if resp.status == 429:
                 _json = await resp.json()
                 await asyncio.sleep(_json["retry_after"])
@@ -97,9 +98,7 @@ async def get_all_commands(bot_id,
             return await resp.json()
 
 
-async def remove_all_commands(bot_id,
-                              bot_token,
-                              guild_ids: typing.List[int] = None):
+async def remove_all_commands(bot_id, bot_token, guild_ids: typing.List[int] = None):
     """
     Remove all slash commands.
 
@@ -117,9 +116,7 @@ async def remove_all_commands(bot_id,
             pass
 
 
-async def remove_all_commands_in(bot_id,
-                                 bot_token,
-                                 guild_id=None):
+async def remove_all_commands_in(bot_id, bot_token, guild_id=None):
     """
     Remove all slash commands in area.
 
@@ -127,26 +124,19 @@ async def remove_all_commands_in(bot_id,
     :param bot_token: Token of the bot.
     :param guild_id: ID of the guild to remove commands. Pass `None` to remove all global commands.
     """
-    commands = await get_all_commands(
-        bot_id,
-        bot_token,
-        guild_id
-    )
+    commands = await get_all_commands(bot_id, bot_token, guild_id)
 
     for x in commands:
-        await remove_slash_command(
-            bot_id,
-            bot_token,
-            guild_id,
-            x['id']
-        )
+        await remove_slash_command(bot_id, bot_token, guild_id, x["id"])
 
 
-def create_option(name: str,
-                  description: str,
-                  option_type: typing.Union[int, type],
-                  required: bool,
-                  choices: list = None) -> dict:
+def create_option(
+    name: str,
+    description: str,
+    option_type: typing.Union[int, type],
+    required: bool,
+    choices: list = None,
+) -> dict:
     """
     Creates option used for creating slash command.
 
@@ -163,25 +153,34 @@ def create_option(name: str,
 
     .. note::
         ``choices`` must either be a list of `option type dicts <https://discord.com/developers/docs/interactions/slash-commands#applicationcommandoptionchoice>`_
-        or a list of single string values. 
+        or a list of single string values.
     """
-    if not isinstance(option_type, int) or isinstance(option_type, bool): #Bool values are a subclass of int
+    if not isinstance(option_type, int) or isinstance(
+        option_type, bool
+    ):  # Bool values are a subclass of int
         original_type = option_type
         option_type = SlashCommandOptionType.from_type(original_type)
         if option_type is None:
-            raise IncorrectType(f"The type {original_type} is not recognized as a type that Discord accepts for slash commands.")
+            raise IncorrectType(
+                f"The type {original_type} is not recognized as a type that Discord accepts for slash commands."
+            )
     choices = choices or []
-    choices = [choice if isinstance(choice, dict) else {"name": choice, "value": choice} for choice in choices]
+    choices = [
+        choice if isinstance(choice, dict) else {"name": choice, "value": choice}
+        for choice in choices
+    ]
     return {
         "name": name,
         "description": description,
         "type": option_type,
         "required": required,
-        "choices": choices
+        "choices": choices,
     }
 
 
-def generate_options(function: Callable, description: str = "No description.", connector: dict = None) -> list:
+def generate_options(
+    function: Callable, description: str = "No description.", connector: dict = None
+) -> list:
     """
     Generates a list of options from the type hints of a command.
     You currently can type hint: str, int, bool, discord.User, discord.Channel, discord.Role
@@ -195,7 +194,7 @@ def generate_options(function: Callable, description: str = "No description.", c
     """
     options = []
     if connector:
-        connector = {y: x for x, y in connector.items()} # Flip connector.
+        connector = {y: x for x, y in connector.items()}  # Flip connector.
     params = iter(inspect.signature(function).parameters.values())
     if next(params).name in ("self", "cls"):
         # Skip 1. (+ 2.) parameter, self/cls and ctx
@@ -205,7 +204,9 @@ def generate_options(function: Callable, description: str = "No description.", c
         required = True
         if isinstance(param.annotation, str):
             # if from __future__ import annotations, then annotations are strings and should be converted back to types
-            param = param.replace(annotation=eval(param.annotation, function.__globals__))
+            param = param.replace(
+                annotation=eval(param.annotation, function.__globals__)
+            )
 
         if param.default is not inspect._empty:
             required = False
@@ -216,9 +217,14 @@ def generate_options(function: Callable, description: str = "No description.", c
                 param = param.replace(annotation=args[0])
                 required = not args[-1] is type(None)
 
-        option_type = SlashCommandOptionType.from_type(param.annotation) or SlashCommandOptionType.STRING
+        option_type = (
+            SlashCommandOptionType.from_type(param.annotation)
+            or SlashCommandOptionType.STRING
+        )
         name = param.name if not connector else connector[param.name]
-        options.append(create_option(name, description or "No Description.", option_type, required))
+        options.append(
+            create_option(name, description or "No Description.", option_type, required)
+        )
 
     return options
 
@@ -231,7 +237,4 @@ def create_choice(value: str, name: str):
     :param name: Name of the choice.
     :return: dict
     """
-    return {
-        "value": value,
-        "name": name
-    }
+    return {"value": value, "name": name}

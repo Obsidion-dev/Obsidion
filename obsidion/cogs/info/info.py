@@ -27,9 +27,7 @@ class Info(commands.Cog):
     @commands.command(
         aliases=["whois", "p", "names", "namehistory", "pastnames", "namehis"]
     )
-    async def profile(
-        self, ctx, username: Optional[str] = None
-    ) -> None:
+    async def profile(self, ctx, username: Optional[str] = None) -> None:
         """View a players Minecraft UUID, Username history and skin."""
         await ctx.channel.trigger_typing()
         profile_info = await self.bot.mojang_player(ctx.author, username)
@@ -103,10 +101,10 @@ class Info(commands.Cog):
         await ctx.send(embed=embed)
 
     @cog_ext.cog_slash(name="profile")
-    async def slash_profile(self, ctx, username: str=None):
+    async def slash_profile(self, ctx, username: str = None):
         await ctx.defer()
-        await self.profile(ctx,username)
-    
+        await self.profile(ctx, username)
+
     @staticmethod
     def get_server(ip: str, port: int) -> Tuple[str, Optional[int]]:
         """Returns the server icon."""
@@ -118,7 +116,9 @@ class Info(commands.Cog):
         return (ip, None)
 
     @commands.command()
-    async def server(self, ctx, address: Optional[str] = None, port: Optional[int] = None):
+    async def server(
+        self, ctx, address: Optional[str] = None, port: Optional[int] = None
+    ):
         """Minecraft server info."""
         await ctx.channel.trigger_typing()
         if address is None:
@@ -133,7 +133,9 @@ class Info(commands.Cog):
             data = json.loads(await self.bot.redis.get(key))
         else:
             params = (
-                {"server": address} if port is None else {"server": address, "port": port}
+                {"server": address}
+                if port is None
+                else {"server": address, "port": port}
             )
             async with self.bot.http_session.get(
                 f"{get_settings().API_URL}/server/java", params=params
@@ -146,22 +148,23 @@ class Info(commands.Cog):
         if data is None:
             await ctx.send(_("server could not be reached."))
             return
-        embed = discord.Embed(title=_("Java Server: {server_ip}").format(server_ip=server_ip), color=0x00FF00)
+        embed = discord.Embed(
+            title=_("Java Server: {server_ip}").format(server_ip=server_ip),
+            color=0x00FF00,
+        )
         embed.add_field(name=_("Description"), value=data["motd"]["clean"][0])
 
         embed.add_field(
             name="Players",
-            value=_(
-                "Online: `{online}` \n "
-                "Maximum: `{maximum}`"
-            ).format(online=data['players']['online'], maximum=data['players']['max'])
+            value=_("Online: `{online}` \n " "Maximum: `{maximum}`").format(
+                online=data["players"]["online"], maximum=data["players"]["max"]
+            ),
         )
         embed.add_field(
             name=_("Version"),
             value=_(
-                "Java Edition \n Running: `{version}` \n"
-                "Protocol: `{protocol}`"
-            ).format(version=data['version'],protocol=data['protocol']),
+                "Java Edition \n Running: `{version}` \n" "Protocol: `{protocol}`"
+            ).format(version=data["version"], protocol=data["protocol"]),
             inline=False,
         )
         if data["icon"]:
@@ -179,9 +182,9 @@ class Info(commands.Cog):
         await ctx.send(embed=embed)
 
     @cog_ext.cog_slash(name="server")
-    async def slash_server(self, ctx, address: str=None, port: int=None):
+    async def slash_server(self, ctx, address: str = None, port: int = None):
         await ctx.defer()
-        await self.server(ctx,address, port)
+        await self.server(ctx, address, port)
 
     # @commands.command()
     async def serverpe(self, ctx, address, port: Optional[int] = None):

@@ -139,8 +139,8 @@ class Fun(commands.Cog):
                     user_choice=user_choice, c_choice=c_choice
                 )
             )
-            
+
     @cog_ext.cog_slash(name="rps")
-    async def slash_rps(self, ctx, user_choice:str=None):
+    async def slash_rps(self, ctx, user_choice: str = None):
         await ctx.defer()
         await self.creeper(ctx, user_choice)
