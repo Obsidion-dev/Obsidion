@@ -61,7 +61,6 @@ class Help(HelpCommand):
     """
 
     def __init__(self, **options):
-        print(12222223)
         self.sort_commands = options.pop("sort_commands", True)
         self.commands_heading = options.pop("commands_heading", "Commands")
         self.dm_help = options.pop("dm_help", False)
