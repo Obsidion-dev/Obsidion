@@ -295,3 +295,107 @@ class Config(commands.Cog):
             if news[category] is not None:
                 channel = self.bot.get_channel(news[category])
                 await channel.send("test")
+
+
+    @commands.group()
+    @commands.has_guild_permissions(manage_guild=True)
+    @commands.guild_only()
+    async def rconconfig(self, ctx) -> None:
+        """Link Minecraft account to Discord account."""
+        if ctx.invoked_subcommand is None:
+            await ctx.send_help(ctx.command)
+
+    @rconconfig.group(name="setup")
+    async def rcon_setup(self, ctx) -> None:
+        """Autopost Minecraft News"""
+        categories = ("release", "snapshot", "article", "outage")
+        cat = {}
+
+        def channel_check(m: discord.Message):
+            channel_mention = True
+            if m.author == ctx.author:
+                if len(m.channel_mentions) != 0:
+                    return True
+                else:
+                    channel_mention = False
+            return False
+
+        embed = discord.Embed(colour=self.bot.color)
+        embed.description = _(
+            "You have completed the automatic posting setup process. "
+            "You can change these settings using /autopost edit"
+        )
+        for category in categories:
+
+            pred = MessagePredicate.yes_or_no(ctx)
+            await ctx.send(
+                _("Would you like automatic posts of new {category}?").format(
+                    category=category
+                )
+            )
+            try:
+                await self.bot.wait_for("message", check=pred, timeout=15.0)
+            except asyncio.TimeoutError:
+                await ctx.send(_("Response timed out."))
+                return
+            if pred.result is True:
+                await ctx.send(
+                    _(
+                        "Which channel would you like this to happen in? "
+                        "Mention the channel, for example #general"
+                    )
+                )
+                try:
+                    channel: discord.Message = await self.bot.wait_for(
+                        "message", check=channel_check, timeout=15.0
+                    )
+                    cat[category] = channel.channel_mentions[0].id
+                    embed.add_field(
+                        name=category.capitalize(),
+                        value=channel.channel_mentions[0].mention,
+                    )
+                except asyncio.TimeoutError:
+                    await ctx.send(_("Response timed out."))
+                    return
+            else:
+                cat[category] = None
+                embed.add_field(name=category.capitalize(), value="None")
+                await ctx.send(_("Ok."))
+        await ctx.send("Completed automatic posting setup")
+
+        await self.bot._guild_cache.set_news(ctx.guild, cat)
+        await ctx.send(embed=embed)
+
+    @rconconfig.group(name="edit")
+    async def rcon_edit(self, ctx) -> None:
+        """Autopost Minecraft News"""
+        categories = ("release", "snapshot", "article", "outage")
+        cat = {}
+
+    @rconconfig.group(name="settings")
+    async def rcon_settings(self, ctx) -> None:
+        """Autopost Minecraft News"""
+        news = await self.bot._guild_cache.get_news(ctx.guild)
+        embed = discord.Embed(colour=self.bot.color)
+        embed.description = _(
+            "You have completed the automatic posting setup process. "
+            "You can change these settings using /autopost edit"
+        )
+        for category in news.keys():
+            if news[category] is not None:
+                embed.add_field(
+                    name=category.capitalize(),
+                    value=self.bot.get_channel(news[category]).mention,
+                )
+            else:
+                embed.add_field(name=category.capitalize(), value=news[category])
+        await ctx.send(embed=embed)
+
+    @rconconfig.group(name="test")
+    async def rcon_test(self, ctx) -> None:
+        """Autopost Minecraft News"""
+        news = await self.bot._guild_cache.get_news(ctx.guild)
+        for category in news.keys():
+            if news[category] is not None:
+                channel = self.bot.get_channel(news[category])
+                await channel.send("test")

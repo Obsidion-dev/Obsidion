@@ -34,12 +34,19 @@ class Core(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def ping(self, ctx: commands.Context):
+    async def ping(self, ctx):
         """Pong."""
-        await ctx.send("Pong.")
+        await ctx.send(_("Pong! ({latency}ms)").format(latency=self.bot.latency*1000))
+
+    @cog_ext.cog_slash(name="ping", description="View bot latency.")
+    async def slash_ping(self, ctx):
+        """View bot latency."""
+        await ctx.defer()
+        await self.ping(ctx)
+
 
     @commands.command()
-    async def info(self, ctx: commands.Context):
+    async def info(self, ctx):
         """Shows info about Obsidion."""
         author_repo = "https://github.com/Darkflame72"
         org_repo = "https://github.com/Obsidion-dev"
@@ -84,8 +91,14 @@ class Core(commands.Cog):
         )
         await ctx.send(embed=embed)
 
+    @cog_ext.cog_slash(name="info",description="View info about Spacebot.")
+    async def slash_info(self, ctx):
+        """Shows info about Spacebot."""
+        await ctx.defer()
+        await self.info(ctx)
+
     @commands.command()
-    async def uptime(self, ctx: commands.Context):
+    async def uptime(self, ctx):
         """Shows Obsidion's uptime."""
         since = ctx.bot.uptime.strftime("%Y-%m-%d %H:%M:%S")
         delta = datetime.datetime.utcnow() - self.bot.uptime
@@ -96,8 +109,14 @@ class Core(commands.Cog):
             )
         )
 
+    @cog_ext.cog_slash(name="uptime",description="View Spacebot's uptime.")
+    async def slash_uptime(self, ctx):
+        """Shows Spacebot's uptime."""
+        await ctx.defer()
+        await self.uptime(ctx)
+
     @commands.command()
-    async def invite(self, ctx: commands.Context) -> None:
+    async def invite(self, ctx) -> None:
         """Invite the bot to your server."""
         embed = discord.Embed(
             description=_(
@@ -109,10 +128,16 @@ class Core(commands.Cog):
 
         await ctx.send(embed=embed)
 
+    @cog_ext.cog_slash(name="invite",description="Invite the bot to your server.")
+    async def slash_invite(self, ctx) -> None:
+        """Invite the bot to your server."""
+        await ctx.defer()
+        await self.invite(ctx)
+
     @commands.command()
     @commands.guild_only()
     @commands.is_owner()
-    async def leave(self, ctx: commands.Context):
+    async def leave(self, ctx):
         """Leaves the current server."""
         await ctx.send(
             _("Are you sure you want me to leave the current server? (yes/no)").format(
@@ -123,7 +148,7 @@ class Core(commands.Cog):
 
     @commands.command()
     @commands.is_owner()
-    async def servers(self, ctx: commands.Context):
+    async def servers(self, ctx):
         """Lists and allows Obsidion to leave servers."""
         guilds = sorted(self.bot.guilds, key=lambda s: s.name.lower())
         msg = ""
@@ -172,7 +197,7 @@ class Core(commands.Cog):
     # Otherwise interfering with the ability for this command
     # to be accessible is also a violation.
     @commands.command(name="licenseinfo", aliases=["license"])
-    async def license_info_command(self, ctx: commands.Context):
+    async def license_info_command(self, ctx):
         """
         Get info about Obsidion's licenses.
         """
@@ -191,8 +216,14 @@ class Core(commands.Cog):
 
         await ctx.send(embed=embed)
 
+    @cog_ext.cog_slash(name="licenseinfo",description="Invite the bot to your server.")
+    async def slash_licenseinfo(self, ctx):
+        """Leaves the current server."""
+        await ctx.defer()
+        await self.license_info_command(ctx)
+
     @commands.command()
-    async def source(self, ctx: commands.Context, *, command: str = None) -> None:
+    async def source(self, ctx, *, command: str = None) -> None:
         """Displays my full source code or for a specific command.
 
         To display the source code of a subcommand you can separate it by
@@ -234,9 +265,15 @@ class Core(commands.Cog):
         )
         await ctx.send(final_url)
 
+    @cog_ext.cog_slash(name="source",description="Displays my full source code or for a specific command.")
+    async def slash_source(self, ctx, source: str = None):
+        """Displays my full source code or for a specific command."""
+        await ctx.defer()
+        await self.source(ctx, source)
+
     @commands.command(name="shutdown")
     @commands.is_owner()
-    async def _shutdown(self, ctx: commands.Context, silently: bool = False):
+    async def _shutdown(self, ctx, silently: bool = False):
         """Shuts down the bot."""
         wave = "\N{WAVING HAND SIGN}"
         skin = "\N{EMOJI MODIFIER FITZPATRICK TYPE-3}"
@@ -247,7 +284,7 @@ class Core(commands.Cog):
 
     @commands.command(name="restart", aliases=["reboot"])
     @commands.is_owner()
-    async def _restart(self, ctx: commands.Context, silently: bool = False):
+    async def _restart(self, ctx, silently: bool = False):
         """Attempts to restart Obsidion.
 
         Makes Obsidion quit with exit code 26.
@@ -260,7 +297,7 @@ class Core(commands.Cog):
 
     @commands.command()
     @commands.is_owner()
-    async def traceback(self, ctx: commands.Context, public: bool = False):
+    async def traceback(self, ctx, public: bool = False):
         """Sends to the owner the last command exception that has occurred.
 
         If public (yes is specified), it will be sent to the chat instead."""

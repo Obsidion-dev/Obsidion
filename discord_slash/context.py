@@ -232,6 +232,20 @@ class SlashContext:
         else:
             return resp
 
+    async def reply(self,
+        content: str = "",
+        *,
+        embed: discord.Embed = None,
+        embeds: typing.List[discord.Embed] = None,
+        tts: bool = False,
+        file: discord.File = None,
+        files: typing.List[discord.File] = None,
+        allowed_mentions: discord.AllowedMentions = None,
+        hidden: bool = False,
+        delete_after: float = None
+    ):
+        await self.send(content, embed=embed, embeds=embeds, tts=tts, file=file, files=files, allowed_mentions=allowed_mentions, hidden=hidden, delete_after=delete_after)
+
     async def send_help(self, command=None):
         """send_help(entity=<bot>)
         |coro|

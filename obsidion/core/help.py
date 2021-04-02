@@ -154,7 +154,6 @@ class Help(HelpCommand):
         Returns:
             HelpQueryNotFound: command not found.
         """
-        print(7)
         choices = await self.get_all_help_choices()
         result = process.extractBests(
             string, choices, scorer=fuzz.ratio, score_cutoff=60
