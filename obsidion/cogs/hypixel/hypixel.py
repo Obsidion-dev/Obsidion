@@ -188,3 +188,22 @@ class Hypixel(commands.Cog):
         menu.add_pages(pagesend)
 
         await menu.open()
+    @commands.command()
+    async def guild(self, ctx: commands.Context, guildname: str) -> None:
+        """Get's guild info by guild name."""
+        await ctx.channel.trigger_typing()
+        data = await self.hypixel.guild_by_name(guildname)
+        menu = PaginatedMenu(ctx)
+        
+        embed = discord.Embed(title=_("Guild Info"), description=_(f"Guild info for {guildname}"), colour=self.bot.color)
+        embed.set_author(name=_("Hypixel"), url="https://hypixel.net/forums/skyblock.157/", icon_url="https://hypixel.net/favicon-32x32.png")
+        embed.set_thumbnail(url="https://hypixel.net/styles/hypixel-v2/images/header-logo.png")
+        embed.add_field(name=_("Guild Name: "), value=_(data.id))
+        embed.add_field(name=_("Guild Name: "), value=_(data.name))
+        embed.add_field(name=_("Guild Description: "), value=_(data.description))
+        embed.add_field(name=_("Guild Tag: "), value=_(data.tag))
+        embed.add_field(name=_("Guild Experience Points: "), value=_(data.exp))
+        embed.add_field(name=_("Joinable: "), value=_(data.joinable))
+        embed.add_field(name=_("Public: "),value=_(data.publicly_listed))
+
+        await ctx.send(embed=embed)
