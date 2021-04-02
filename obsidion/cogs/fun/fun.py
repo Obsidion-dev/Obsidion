@@ -3,6 +3,7 @@ import json
 import logging
 from datetime import datetime
 from random import choice
+from discord_slash.utils.manage_commands import create_option, create_choice
 
 import discord
 from discord.ext import commands
@@ -75,8 +76,15 @@ class Fun(commands.Cog):
         response = sentence.strip()
         await ctx.send(response)
 
-    @cog_ext.cog_slash(name="villager")
-    async def slash_villager(self, ctx,  *, speech: str):
+    @cog_ext.cog_slash(name="villager", options=[
+            create_option(
+                name="text",
+                description="Text to translate.",
+                option_type=3,
+                required=True,
+            )
+        ],)
+    async def slash_villager(self, ctx, *, speech: str):
         await ctx.defer()
         await self.villager(ctx, speech)
 
@@ -91,8 +99,18 @@ class Fun(commands.Cog):
                 response += letter
         await ctx.send(f"{ctx.message.author.mention}, `{response}`")
 
-    @cog_ext.cog_slash(name="enchant")
-    async def slash_enchant(self, ctx,  *, msg: str):
+    @cog_ext.cog_slash(
+        name="enchant",
+        options=[
+            create_option(
+                name="text",
+                description="Text to enchant.",
+                option_type=3,
+                required=True,
+            )
+        ],
+    )
+    async def slash_enchant(self, ctx, *, msg: str):
         await ctx.defer()
         await self.enchant(ctx, msg)
 
@@ -107,8 +125,19 @@ class Fun(commands.Cog):
                 response += letter
         await ctx.send(f"{ctx.message.author.mention}, `{response}`")
 
-    @cog_ext.cog_slash(name="unenchant")
-    async def slash_unenchant(self, ctx,  *, msg: str):
+    @cog_ext.cog_slash(
+        name="unenchant",
+        options=[
+            create_option(
+                name="text",
+                description="Text to unenchant.",
+                option_type=3,
+                required=True,
+            )
+        ],
+    )
+    async def slash_unenchant(self, ctx, *, msg: str):
+        """Disenchant a message."""
         await ctx.defer()
         await self.unenchant(ctx, msg)
 
@@ -119,6 +148,7 @@ class Fun(commands.Cog):
 
     @cog_ext.cog_slash(name="creeper")
     async def slash_creeper(self, ctx):
+        """Aw man."""
         await ctx.defer()
         await self.creeper(ctx)
 
@@ -154,7 +184,23 @@ class Fun(commands.Cog):
                 )
             )
 
-    @cog_ext.cog_slash(name="rps")
-    async def slash_rps(self, ctx, user_choice: str = None):
+    @cog_ext.cog_slash(
+        name="rps",
+        options=[
+            create_option(
+                name="choice",
+                description="Rock paper or shears",
+                option_type=3,
+                required=True,
+                choices=[
+                    create_choice(name="Rock", value="rock"),
+                    create_choice(name="Paper", value="paper"),
+                    create_choice(name="Shears", value="shears"),
+                ],
+            )
+        ],
+    )
+    async def slash_rps(self, ctx, user_choice: str):
+        """Play Rock Paper Shears"""
         await ctx.defer()
-        await self.creeper(ctx, user_choice)
+        await self.rps(ctx, user_choice)

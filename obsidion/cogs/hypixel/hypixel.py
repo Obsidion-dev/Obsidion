@@ -13,6 +13,8 @@ from obsidion.core.utils.chat_formatting import humanize_timedelta
 from obsidion.core.utils.utils import divide_array
 from typing import Optional
 from discord_slash import cog_ext
+from discord_slash.utils.manage_commands import create_option
+
 
 log = logging.getLogger(__name__)
 
@@ -47,6 +49,7 @@ class Hypixel(commands.Cog):
 
     @cog_ext.cog_slash(name="watchdogstats")
     async def slash_watchdogstats(self, ctx):
+        """Get the current watchdog statistics."""
         await ctx.defer()
         await self.watchdogstats(ctx)
 
@@ -74,6 +77,7 @@ class Hypixel(commands.Cog):
 
     @cog_ext.cog_slash(name="boosters")
     async def slash_boosters(self, ctx):
+        """Get the current boosters online."""
         await ctx.defer()
         await self.boosters(ctx)
 
@@ -101,6 +105,7 @@ class Hypixel(commands.Cog):
 
     @cog_ext.cog_slash(name="playercount")
     async def slash_playercount(self, ctx):
+        """Get the current players online."""
         await ctx.defer()
         await self.playercount(ctx)
 
@@ -134,6 +139,7 @@ class Hypixel(commands.Cog):
 
     @cog_ext.cog_slash(name="skyblocknews")
     async def slash_skyblocknews(self, ctx):
+        """Get current news for skyblock."""
         await ctx.defer()
         await self.skyblocknews(ctx)
 
@@ -174,8 +180,16 @@ class Hypixel(commands.Cog):
 
         await ctx.send(embed=embed)
 
-    @cog_ext.cog_slash(name="playerstatus")
+    @cog_ext.cog_slash(name="playerstatus",options=[
+            create_option(
+                name="username",
+                description="Username of account defaults to linked account.",
+                option_type=3,
+                required=False,
+            )
+        ],)
     async def slash_playerstatus(self, ctx, username=None):
+        """Get the current status of an online player."""
         await ctx.defer()
         await self.playerstatus(ctx,username)
 
@@ -227,8 +241,16 @@ class Hypixel(commands.Cog):
 
         await ctx.send(embed=embed)
 
-    @cog_ext.cog_slash(name="playerfriends")
+    @cog_ext.cog_slash(name="playerfriends",options=[
+            create_option(
+                name="username",
+                description="Username of account defaults to linked account.",
+                option_type=3,
+                required=False,
+            )
+        ],)
     async def slash_playerfriends(self, ctx, username=None):
+        """Get the current friends of a player."""
         await ctx.defer()
         await self.playerfriends(ctx,username)
 
@@ -271,6 +293,7 @@ class Hypixel(commands.Cog):
 
     @cog_ext.cog_slash(name="bazaar")
     async def slash_bazaar(self, ctx):
+        """Get Bazaar NPC stats."""
         await ctx.defer()
         await self.bazaar(ctx)
 
@@ -318,5 +341,6 @@ class Hypixel(commands.Cog):
 
     @cog_ext.cog_slash(name="auctions")
     async def slash_auctions(self, ctx):
+        """Get the first 30 auctions."""
         await ctx.defer()
         await self.auctions(ctx)

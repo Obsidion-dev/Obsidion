@@ -763,7 +763,7 @@ class SlashCommand:
             else:
                 not_kwargs = True
             if not_kwargs:
-                await ctx.respond()
+                # await ctx.defer()
                 await func.invoke(ctx, *args)
         except Exception as ex:
             await self.on_slash_command_error(ctx, ex)

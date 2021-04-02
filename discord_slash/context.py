@@ -294,50 +294,8 @@ class SlashContext:
         except CommandError as e:
             await cmd.on_help_command_error(self, e)
 
-    # @property
-    # def valid(self):
-    #     """:class:`bool`: Checks if the invocation context is valid to be invoked with."""
-    #     return self.prefix is not None and self.command is not None
-
-    # async def _get_channel(self):
-    #     return self.channel
-
-    # @property
-    # def cog(self):
-    #     """Optional[:class:`.Cog`]: Returns the cog associated with this context's command. None if it does not exist."""
-
-    #     if self.command is None:
-    #         return None
-    #     return self.command.cog
-
-    # @discord.utils.cached_property
-    # def guild(self):
-    #     """Optional[:class:`.Guild`]: Returns the guild associated with this context's command. None if not available."""
-    #     return self.message.guild
-
-    # @discord.utils.cached_property
-    # def channel(self):
-    #     """Union[:class:`.abc.Messageable`]: Returns the channel associated with this context's command.
-    #     Shorthand for :attr:`.Message.channel`.
-    #     """
-    #     return self.message.channel
-
-    # @discord.utils.cached_property
-    # def author(self):
-    #     """Union[:class:`~discord.User`, :class:`.Member`]:
-    #     Returns the author associated with this context's command. Shorthand for :attr:`.Message.author`
-    #     """
-    #     return self.message.author
-
-    @discord.utils.cached_property
     def me(self):
         """Union[:class:`.Member`, :class:`.ClientUser`]:
         Similar to :attr:`.Guild.me` except it may return the :class:`.ClientUser` in private message contexts.
         """
         return self.guild.me if self.guild is not None else self.bot.user
-
-    # @property
-    # def voice_client(self):
-    #     r"""Optional[:class:`.VoiceProtocol`]: A shortcut to :attr:`.Guild.voice_client`\, if applicable."""
-    #     g = self.guild
-    #     return g.voice_client if g else None

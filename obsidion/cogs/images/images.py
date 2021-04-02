@@ -9,6 +9,8 @@ from obsidion.core import get_settings
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
 from discord_slash import cog_ext
+from discord_slash.utils.manage_commands import create_option
+
 
 
 log = logging.getLogger(__name__)
@@ -168,8 +170,16 @@ class Images(commands.Cog):
         """Renders a Minecraft players face."""
         await self.render(ctx, "face", username)
 
-    @cog_ext.cog_slash(name="avatar")
+    @cog_ext.cog_slash(name="avatar",options=[
+            create_option(
+                name="username",
+                description="Username of account defaults to linked account.",
+                option_type=3,
+                required=False,
+            )
+        ],)
     async def slash_avatar(self, ctx, username: str = None):
+        """Renders a Minecraft players face."""
         await ctx.defer()
         await self.avatar(ctx, username)
 
@@ -180,8 +190,16 @@ class Images(commands.Cog):
         """Renders a Minecraft players skull."""
         await self.render(ctx, "head", username)
 
-    @cog_ext.cog_slash(name="skull")
+    @cog_ext.cog_slash(name="skull",options=[
+            create_option(
+                name="username",
+                description="Username of account defaults to linked account.",
+                option_type=3,
+                required=False,
+            )
+        ],)
     async def slash_skull(self, ctx, username: str = None):
+        """Renders a Minecraft players skull."""
         await ctx.defer()
         await self.skull(ctx, username)
 
@@ -190,8 +208,16 @@ class Images(commands.Cog):
         """Renders a Minecraft players skin."""
         await self.render(ctx, "full", username)
 
-    @cog_ext.cog_slash(name="skin")
+    @cog_ext.cog_slash(name="skin",options=[
+            create_option(
+                name="username",
+                description="Username of account defaults to linked account.",
+                option_type=3,
+                required=False,
+            )
+        ],)
     async def slash_skin(self, ctx, username: str = None):
+        """Renders a Minecraft players skin."""
         await ctx.defer()
         await self.skin(ctx, username)
 
@@ -200,8 +226,16 @@ class Images(commands.Cog):
         """Renders a Minecraft players bust."""
         await self.render(ctx, "bust", username)
 
-    @cog_ext.cog_slash(name="bust")
+    @cog_ext.cog_slash(name="bust",options=[
+            create_option(
+                name="username",
+                description="Username of account defaults to linked account.",
+                option_type=3,
+                required=False,
+            )
+        ],)
     async def slash_bust(self, ctx, username: str = None):
+        """Renders a Minecraft players bust."""
         await ctx.defer()
         await self.bust(ctx, username)
 
@@ -245,7 +279,15 @@ class Images(commands.Cog):
 
         await ctx.send(embed=embed)
 
-    @cog_ext.cog_slash(name="render")
+    @cog_ext.cog_slash(name="render",options=[
+            create_option(
+                name="username",
+                description="Username of account defaults to linked account.",
+                option_type=3,
+                required=False,
+            )
+        ],)
     async def slash_render(self, ctx, render_type: str, username: str = None):
+        """Renders a Minecraft players skin in 6 different ways."""
         await ctx.defer()
         await self.render(ctx, render_type, username)

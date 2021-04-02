@@ -4,6 +4,7 @@ from discord.ext import commands
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
 from discord_slash import cog_ext
+from discord_slash.utils.manage_commands import create_option
 
 log = logging.getLogger(__name__)
 
@@ -26,7 +27,14 @@ class Minecraft(commands.Cog):
             )
         )
 
-    @cog_ext.cog_slash(name="tick2second")
+    @cog_ext.cog_slash(name="tick2second",options=[
+            create_option(
+                name="ticks",
+                description="Amount of seconds in that amount of ticks.",
+                option_type=4,
+                required=True,
+            )
+        ],)
     async def slash_tick2second(self, ctx, ticks: int):
         await ctx.defer()
         await self.tick2second(ctx, ticks)
@@ -41,7 +49,14 @@ class Minecraft(commands.Cog):
             )
         )
     
-    @cog_ext.cog_slash(name="second2tick")
+    @cog_ext.cog_slash(name="second2tick",options=[
+            create_option(
+                name="seconds",
+                description="Amount of ticks in that amount of seconds.",
+                option_type=4,
+                required=True,
+            )
+        ],)
     async def slash_second2tick(self, ctx, seconds: float):
         await ctx.defer()
         await self.second2tick(ctx, seconds)
@@ -54,7 +69,14 @@ class Minecraft(commands.Cog):
             h = (31 * h + ord(c)) & 0xFFFFFFFF
         await ctx.send(((h + 0x80000000) & 0xFFFFFFFF) - 0x80000000)
 
-    @cog_ext.cog_slash(name="seed")
+    @cog_ext.cog_slash(name="seed",options=[
+            create_option(
+                name="seed",
+                description="Seed in text format to see numerical representation",
+                option_type=3,
+                required=True,
+            )
+        ],)
     async def slash_seed(self, ctx, *, text: str):
         await ctx.defer()
         await self.seed(ctx, text)

@@ -12,6 +12,7 @@ from obsidion.core import get_settings
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
 from discord_slash import cog_ext
+from discord_slash.utils.manage_commands import create_option
 
 log = logging.getLogger(__name__)
 
@@ -100,7 +101,14 @@ class Info(commands.Cog):
 
         await ctx.send(embed=embed)
 
-    @cog_ext.cog_slash(name="profile")
+    @cog_ext.cog_slash(name="profile",options=[
+            create_option(
+                name="username",
+                description="Username of player defaults to your linked username.",
+                option_type=3,
+                required=False,
+            )
+        ],)
     async def slash_profile(self, ctx, username: str = None):
         await ctx.defer()
         await self.profile(ctx, username)
@@ -181,7 +189,20 @@ class Info(commands.Cog):
             )
         await ctx.send(embed=embed)
 
-    @cog_ext.cog_slash(name="server")
+    @cog_ext.cog_slash(name="server",options=[
+            create_option(
+                name="address",
+                description="Address of server defaults to your linked server.",
+                option_type=3,
+                required=False,
+            ),
+            create_option(
+                name="port",
+                description="port of server defaults to that of your linked server.",
+                option_type=3,
+                required=False,
+            )
+        ],)
     async def slash_server(self, ctx, address: str = None, port: int = None):
         await ctx.defer()
         await self.server(ctx, address, port)
@@ -351,7 +372,14 @@ class Info(commands.Cog):
                 )
             )
 
-    @cog_ext.cog_slash(name="wiki")
+    @cog_ext.cog_slash(name="wiki",options=[
+            create_option(
+                name="query",
+                description="Thing to look up.",
+                option_type=3,
+                required=True,
+            )
+        ],)
     async def slash_wiki(self, ctx, query: str):
         await ctx.defer()
         await self.wiki(ctx, query)
