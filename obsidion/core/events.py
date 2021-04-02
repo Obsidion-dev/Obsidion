@@ -54,7 +54,8 @@ class Events(commands.Cog):
 
     @commands.Cog.listener("on_slash_command_error")
     async def _on_slash_command_error(self, ctx, ex) -> None:
-        print(1)
+        print(ex)
+        # print(ex.original)
         await self.handle_check_failure(ctx, ex)
 
     @staticmethod

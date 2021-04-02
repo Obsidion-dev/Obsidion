@@ -54,8 +54,6 @@ class News(commands.Cog):
         if em == 0:
             return None
         return embed
-        
-        
 
     async def get_media(self) -> Union[discord.Embed, None]:
         """Get rss media."""
@@ -101,7 +99,7 @@ class News(commands.Cog):
         # create footer
         embed.set_footer(text=_("Article Published"))
         embed.timestamp = time
-        # self.last_media_data = time
+        self.last_media_data = time
 
         # create title
         embed.set_author(

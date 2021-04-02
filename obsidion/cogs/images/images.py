@@ -8,6 +8,10 @@ from discord.ext import commands
 from obsidion.core import get_settings
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
+from discord_slash import cog_ext
+from discord_slash.utils.manage_commands import create_option
+
+
 
 log = logging.getLogger(__name__)
 
@@ -22,7 +26,7 @@ class Images(commands.Cog):
 
     @commands.command()
     async def achievement(
-        self, ctx: commands.Context, block_name: str, title: str, *, text: str
+        self, ctx, block_name: str, title: str, *, text: str
     ) -> None:
         """Create your very own custom Minecraft achievements."""
         text = text.replace(" ", "%20")
@@ -40,7 +44,7 @@ class Images(commands.Cog):
     @commands.command()
     async def sign(
         self,
-        ctx: commands.Context,
+        ctx,
         *,
         text: str,
     ) -> None:
@@ -62,7 +66,7 @@ class Images(commands.Cog):
         await ctx.send(embed=embed)
 
     # @commads.command()
-    async def book(self, ctx: commands.Context):
+    async def book(self, ctx):
         pass
         embed = discord.Embed(color=self.bot.color)
         embed.set_author(
@@ -76,7 +80,7 @@ class Images(commands.Cog):
         await ctx.send(embed=embed)
 
     # @commads.command()
-    async def death(self, ctx: commands.Context):
+    async def death(self, ctx):
         pass
         embed = discord.Embed(color=self.bot.color)
         embed.set_author(
@@ -90,7 +94,7 @@ class Images(commands.Cog):
         await ctx.send(embed=embed)
 
     # @commads.command()
-    async def splashscreen(self, ctx: commands.Context):
+    async def splashscreen(self, ctx):
         pass
         embed = discord.Embed(color=self.bot.color)
         embed.set_author(
@@ -104,7 +108,7 @@ class Images(commands.Cog):
         await ctx.send(embed=embed)
 
     # @commads.command()
-    async def motd(self, ctx: commands.Context):
+    async def motd(self, ctx):
         pass
         embed = discord.Embed(color=self.bot.color)
         embed.set_author(
@@ -118,7 +122,7 @@ class Images(commands.Cog):
         await ctx.send(embed=embed)
 
     # @commads.command()
-    async def recipie(self, ctx: commands.Context):
+    async def recipie(self, ctx):
         pass
         embed = discord.Embed(color=self.bot.color)
         embed.set_author(
@@ -132,7 +136,7 @@ class Images(commands.Cog):
         await ctx.send(embed=embed)
 
     # @commads.command()
-    async def banner(self, ctx: commands.Context):
+    async def banner(self, ctx):
         pass
         embed = discord.Embed(color=self.bot.color)
         embed.set_author(
@@ -146,7 +150,7 @@ class Images(commands.Cog):
         await ctx.send(embed=embed)
 
     # @commads.command()
-    async def image(self, ctx: commands.Context):
+    async def image(self, ctx):
         pass
         embed = discord.Embed(color=self.bot.color)
         embed.set_author(
@@ -161,31 +165,83 @@ class Images(commands.Cog):
 
     @commands.command()
     async def avatar(
-        self, ctx: commands.Context, username: Optional[str] = None
+        self, ctx, username: Optional[str] = None
     ) -> None:
         """Renders a Minecraft players face."""
         await self.render(ctx, "face", username)
 
+    @cog_ext.cog_slash(name="avatar",options=[
+            create_option(
+                name="username",
+                description="Username of account defaults to linked account.",
+                option_type=3,
+                required=False,
+            )
+        ],)
+    async def slash_avatar(self, ctx, username: str = None):
+        """Renders a Minecraft players face."""
+        await ctx.defer()
+        await self.avatar(ctx, username)
+
     @commands.command()
     async def skull(
-        self, ctx: commands.Context, username: Optional[str] = None
+        self, ctx, username: Optional[str] = None
     ) -> None:
         """Renders a Minecraft players skull."""
         await self.render(ctx, "head", username)
 
+    @cog_ext.cog_slash(name="skull",options=[
+            create_option(
+                name="username",
+                description="Username of account defaults to linked account.",
+                option_type=3,
+                required=False,
+            )
+        ],)
+    async def slash_skull(self, ctx, username: str = None):
+        """Renders a Minecraft players skull."""
+        await ctx.defer()
+        await self.skull(ctx, username)
+
     @commands.command()
-    async def skin(self, ctx: commands.Context, username: Optional[str] = None) -> None:
+    async def skin(self, ctx, username: Optional[str] = None) -> None:
         """Renders a Minecraft players skin."""
         await self.render(ctx, "full", username)
 
+    @cog_ext.cog_slash(name="skin",options=[
+            create_option(
+                name="username",
+                description="Username of account defaults to linked account.",
+                option_type=3,
+                required=False,
+            )
+        ],)
+    async def slash_skin(self, ctx, username: str = None):
+        """Renders a Minecraft players skin."""
+        await ctx.defer()
+        await self.skin(ctx, username)
+
     @commands.command()
-    async def bust(self, ctx: commands.Context, username: Optional[str] = None) -> None:
+    async def bust(self, ctx, username: Optional[str] = None) -> None:
         """Renders a Minecraft players bust."""
         await self.render(ctx, "bust", username)
 
+    @cog_ext.cog_slash(name="bust",options=[
+            create_option(
+                name="username",
+                description="Username of account defaults to linked account.",
+                option_type=3,
+                required=False,
+            )
+        ],)
+    async def slash_bust(self, ctx, username: str = None):
+        """Renders a Minecraft players bust."""
+        await ctx.defer()
+        await self.bust(ctx, username)
+
     @commands.command()
     async def render(
-        self, ctx: commands.Context, render_type: str, username: Optional[str] = None
+        self, ctx, render_type: str, username: Optional[str] = None
     ) -> None:
         """Renders a Minecraft players skin in 6 different ways.
 
@@ -222,3 +278,16 @@ class Images(commands.Cog):
         embed.set_image(url=f"https://visage.surgeplay.com/{render_type}/512/{uuid}")
 
         await ctx.send(embed=embed)
+
+    @cog_ext.cog_slash(name="render",options=[
+            create_option(
+                name="username",
+                description="Username of account defaults to linked account.",
+                option_type=3,
+                required=False,
+            )
+        ],)
+    async def slash_render(self, ctx, render_type: str, username: str = None):
+        """Renders a Minecraft players skin in 6 different ways."""
+        await ctx.defer()
+        await self.render(ctx, render_type, username)

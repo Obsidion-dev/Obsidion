@@ -8,10 +8,11 @@ import base64
 
 import discord
 from discord.ext import commands
-from pydantic.types import NoneBytes
 from obsidion.core import get_settings
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
+from discord_slash import cog_ext
+from discord_slash.utils.manage_commands import create_option
 
 log = logging.getLogger(__name__)
 
@@ -27,9 +28,7 @@ class Info(commands.Cog):
     @commands.command(
         aliases=["whois", "p", "names", "namehistory", "pastnames", "namehis"]
     )
-    async def profile(
-        self, ctx: commands.Context, username: Optional[str] = None
-    ) -> None:
+    async def profile(self, ctx, username: Optional[str] = None) -> None:
         """View a players Minecraft UUID, Username history and skin."""
         await ctx.channel.trigger_typing()
         profile_info = await self.bot.mojang_player(ctx.author, username)
@@ -102,6 +101,18 @@ class Info(commands.Cog):
 
         await ctx.send(embed=embed)
 
+    @cog_ext.cog_slash(name="profile",options=[
+            create_option(
+                name="username",
+                description="Username of player defaults to your linked username.",
+                option_type=3,
+                required=False,
+            )
+        ],)
+    async def slash_profile(self, ctx, username: str = None):
+        await ctx.defer()
+        await self.profile(ctx, username)
+
     @staticmethod
     def get_server(ip: str, port: int) -> Tuple[str, Optional[int]]:
         """Returns the server icon."""
@@ -113,7 +124,10 @@ class Info(commands.Cog):
         return (ip, None)
 
     @commands.command()
-    async def server(self, ctx, address: Optional[str] = None, port: Optional[int] = None):
+    async def server(
+        self, ctx, address: Optional[str] = None, port: Optional[int] = None
+    ):
+        """Minecraft server info."""
         await ctx.channel.trigger_typing()
         if address is None:
             address = await self.bot._guild_cache.get_server(ctx.guild)
@@ -127,7 +141,9 @@ class Info(commands.Cog):
             data = json.loads(await self.bot.redis.get(key))
         else:
             params = (
-                {"server": address} if port is None else {"server": address, "port": port}
+                {"server": address}
+                if port is None
+                else {"server": address, "port": port}
             )
             async with self.bot.http_session.get(
                 f"{get_settings().API_URL}/server/java", params=params
@@ -140,29 +156,29 @@ class Info(commands.Cog):
         if data is None:
             await ctx.send(_("server could not be reached."))
             return
-        embed = discord.Embed(title=_("Java Server: {server_ip}"), color=0x00FF00)
+        embed = discord.Embed(
+            title=_("Java Server: {server_ip}").format(server_ip=server_ip),
+            color=0x00FF00,
+        )
         embed.add_field(name=_("Description"), value=data["motd"]["clean"][0])
 
         embed.add_field(
             name="Players",
-            value=_(
-                "Online: `{data['players']['online']:,}` \n "
-                "Maximum: `{data['players']['max']:,}`"
-            )
+            value=_("Online: `{online}` \n " "Maximum: `{maximum}`").format(
+                online=data["players"]["online"], maximum=data["players"]["max"]
+            ),
         )
         embed.add_field(
             name=_("Version"),
             value=_(
-                "Java Edition \n Running: `{data['version']}` \n"
-                "Protocol: `{data['protocol']}`"
-            ),
+                "Java Edition \n Running: `{version}` \n" "Protocol: `{protocol}`"
+            ).format(version=data["version"], protocol=data["protocol"]),
             inline=False,
         )
         if data["icon"]:
             url = f"{get_settings().API_URL}/server/javaicon?server={server_ip}"
             if port is not None:
                 url += f"&port={port}"
-            print(url)
             embed.set_thumbnail(url=url)
         else:
             embed.set_thumbnail(
@@ -172,6 +188,24 @@ class Info(commands.Cog):
                 )
             )
         await ctx.send(embed=embed)
+
+    @cog_ext.cog_slash(name="server",options=[
+            create_option(
+                name="address",
+                description="Address of server defaults to your linked server.",
+                option_type=3,
+                required=False,
+            ),
+            create_option(
+                name="port",
+                description="port of server defaults to that of your linked server.",
+                option_type=3,
+                required=False,
+            )
+        ],)
+    async def slash_server(self, ctx, address: str = None, port: int = None):
+        await ctx.defer()
+        await self.server(ctx, address, port)
 
     # @commands.command()
     async def serverpe(self, ctx, address, port: Optional[int] = None):
@@ -213,7 +247,6 @@ class Info(commands.Cog):
             url = f"{get_settings().API_URL}/server/javaicon?server={server_ip}"
             if port is not None:
                 url += f"&port={port}"
-            print(url)
             embed.set_thumbnail(url=url)
         else:
             embed.set_thumbnail(
@@ -225,8 +258,7 @@ class Info(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command(aliases=["sales"])
-    @commands.cooldown(rate=1, per=5.0, type=commands.BucketType.user)
-    async def status(self, ctx: commands.Context) -> None:
+    async def status(self, ctx) -> None:
         """Check the status of all the Mojang services."""
         await ctx.channel.trigger_typing()
         async with self.bot.http_session.get(
@@ -274,9 +306,13 @@ class Info(commands.Cog):
 
         await ctx.send(embed=embed)
 
+    @cog_ext.cog_slash(name="status")
+    async def slash_status(self, ctx):
+        await ctx.defer()
+        await self.status(ctx)
+
     @commands.command()
-    @commands.cooldown(rate=1, per=1.0, type=commands.BucketType.user)
-    async def wiki(self, ctx: commands.Context, *, query: str) -> None:
+    async def wiki(self, ctx, *, query: str) -> None:
         """Get an article from the minecraft wiki."""
         await ctx.channel.trigger_typing()
 
@@ -336,8 +372,21 @@ class Info(commands.Cog):
                 )
             )
 
+    @cog_ext.cog_slash(name="wiki",options=[
+            create_option(
+                name="query",
+                description="Thing to look up.",
+                option_type=3,
+                required=True,
+            )
+        ],)
+    async def slash_wiki(self, ctx, query: str):
+        await ctx.defer()
+        await self.wiki(ctx, query)
+
+
     # @commands.command()
-    # async def mcbug(self, ctx: commands.Context, bug: str) -> None:
+    # async def mcbug(self, ctx, bug: str) -> None:
     #     """Gets info on a bug from bugs.mojang.com."""
     #     await ctx.channel.trigger_typing()
     #     await ctx.send(f"https://bugs.mojang.com/rest/api/latest/issue/{bug}")

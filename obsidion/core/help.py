@@ -22,6 +22,7 @@ class HelpQueryNotFound(ValueError):
 
     def __init__(self, arg: str, possible_matches: dict = None) -> None:
         """Init."""
+        print(9)
         super().__init__(arg)
         self.possible_matches = possible_matches
 
@@ -90,6 +91,7 @@ class Help(HelpCommand):
 
         Options and choices are case sensitive.
         """
+        print(1)
         # first get all commands including subcommands and full command name aliases
         choices = set()
         for command in await self.filter_commands(self.context.bot.walk_commands()):
@@ -118,10 +120,12 @@ class Help(HelpCommand):
 
     async def subcommand_not_found(self, command, string: str) -> "HelpQueryNotFound":
         """Redirects the error to `command_not_found`."""
+        print(5)
         return await self.command_not_found(f"{command.qualified_name} {string}")
 
     async def send_error_message(self, error: HelpQueryNotFound) -> None:
         """Send the error message to the channel."""
+        print(6)
         self.embed.colour = discord.Colour.red()
         self.embed.title = str(error)
 
@@ -133,7 +137,7 @@ class Help(HelpCommand):
         self.embed.set_author(name="Obsidion Help", icon_url=ctx.me.avatar_url)
         ending = self.get_ending_note()
         if ending:
-            self.embed.set_footer(text=self.get_ending_note())
+            self.embed.set_footer(text=ending)
 
         if getattr(error, "possible_matches", None):
             matches = "\n".join(f"`{match}`" for match in error.possible_matches)
@@ -160,8 +164,7 @@ class Help(HelpCommand):
     async def send_embed(self):
         """A helper utility to send the page output
         from :attr:`paginator` to the destination."""
-        destination = self.get_destination()
-        await destination.send(embed=self.embed)
+        await self.context.send(embed=self.embed)
 
     def get_opening_note(self):
         """Returns help command's opening note.
@@ -193,7 +196,7 @@ class Help(HelpCommand):
         :class:`str`
             The help command ending note.
         """
-        command_name = self.invoked_with
+        command_name = self.context.invoked_with
         return (
             "Use {0}{1} [command] for more info on a command.\n"
             "You can also use {0}{1} [category] for more info on a category.".format(
@@ -252,15 +255,6 @@ class Help(HelpCommand):
             inline=False,
         )
 
-    def get_destination(self):
-        ctx = self.context
-        if self.dm_help is True:
-            return ctx.author
-        elif self.dm_help is None and len(self.paginator) > self.dm_help_threshold:
-            return ctx.author
-        else:
-            return ctx.channel
-
     async def prepare_help_command(self, ctx, command):
         self.embed.color = ctx.bot.color
         await super().prepare_help_command(ctx, command)
@@ -300,10 +294,9 @@ class Help(HelpCommand):
         bot = self.context.bot
         if bot.description:
             self.embed.title = bot.description
-
         ending = self.get_ending_note()
         if ending:
-            self.embed.set_footer(text=self.get_ending_note())
+            self.embed.set_footer(text=ending)
 
         if cog.description:
             self.embed.description = cog.description
@@ -318,11 +311,9 @@ class Help(HelpCommand):
             )
             for command in filtered:
                 self.add_subcommand_formatting(command)
-
         await self.send_embed()
 
     async def send_group_help(self, group):
-
         if group.help:
             self.embed.description = group.help
         self.embed.add_field(
@@ -331,7 +322,7 @@ class Help(HelpCommand):
         )
         ending = self.get_ending_note()
         if ending:
-            self.embed.set_footer(text=self.get_ending_note())
+            self.embed.set_footer(text=ending)
         self.add_command_formatting(group)
         filtered = await self.filter_commands(group.commands, sort=self.sort_commands)
         if filtered:
@@ -352,7 +343,7 @@ class Help(HelpCommand):
         )
         ending = self.get_ending_note()
         if ending:
-            self.embed.set_footer(text=self.get_ending_note())
+            self.embed.set_footer(text=ending)
         self.add_command_formatting(command)
         self.embed.set_author(
             name=f"Obsidion {command.qualified_name} Help",
