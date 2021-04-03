@@ -1,5 +1,5 @@
 """Info."""
-from .rcon import NewRcons
+from .rcon import Rcon
 
 
 def setup(bot) -> None:
