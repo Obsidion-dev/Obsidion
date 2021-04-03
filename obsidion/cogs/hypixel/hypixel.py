@@ -344,13 +344,12 @@ class Hypixel(commands.Cog):
         """Get the first 30 auctions."""
         await ctx.defer()
         await self.auctions(ctx)
-        
+
     @commands.command()
     async def guild(self, ctx: commands.Context, guildname: str) -> None:
         """Get's guild info by guild name."""
         await ctx.channel.trigger_typing()
         data = await self.hypixel.guild_by_name(guildname)
-        menu = PaginatedMenu(ctx)
         
         embed = discord.Embed(title=_("Guild Info"), description=_(f"Guild info for {guildname}"), colour=self.bot.color)
         embed.set_author(name=_("Hypixel"), url="https://hypixel.net/forums/skyblock.157/", icon_url="https://hypixel.net/favicon-32x32.png")
@@ -365,4 +364,34 @@ class Hypixel(commands.Cog):
 
         await ctx.send(embed=embed)
 
+    @commands.command()
+    async def leaderboards(self, ctx: commands.Context) -> None:
+        """Get current hypixel leaderboards"""
+        await ctx.channel.trigger_typing()
 
+        data = await self.hypixel.leaderboards()
+        menu = PaginatedMenu(ctx)
+        pagesend= []
+        pagenumber = 1
+
+        for i in data:
+            if data[i]:
+                pageleader = Page(title=_(f"Current Hypixel Leaderboards for {data[i][0].title}"), description=_(f"Page {pagenumber} of {len(data)}"), color=self.bot.color)
+                pageleader.set_author(name=_("Hypixel"), icon_url="https://hypixel.net/favicon-32x32.png")
+                pageleader.set_thumbnail(url="https://hypixel.net/styles/hypixel-v2/images/header-logo.png")
+                leaderstring = ""
+
+                for leader in range(len(data[i][0].leaders)):
+                    player_data = await self.bot.mojang_player(ctx.author, data[i][0].leaders[leader])
+                    username = player_data["username"]
+                    leaderstring += f"{username} \n"
+                pageleader.add_field(name=_(f"Top {len(data[i][0].leaders)} Leaderboard"), value=_(leaderstring))
+
+                pagesend.append(pageleader)
+                pagenumber += 1
+                
+        menu.add_pages(pagesend)
+        menu.set_timeout(90)
+        menu.allow_multisession()
+
+        await menu.open()
