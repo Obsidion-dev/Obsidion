@@ -5,6 +5,9 @@ import logging
 from datetime import datetime
 from typing import Optional, Tuple
 import base64
+import pytz
+from time import mktime
+
 
 import discord
 from discord.ext import commands
@@ -13,6 +16,8 @@ from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
 from discord_slash import cog_ext
 from discord_slash.utils.manage_commands import create_option
+import feedparser
+
 
 log = logging.getLogger(__name__)
 
@@ -514,3 +519,21 @@ class Info(commands.Cog):
                     "Released: `{}`"
                 ).format(releases=len(_version)-1, id=_version[-1].id, released=datetime.strptime(_version[-1]["releaseTime"], format)))
         return embed
+
+    @commands.command()
+    async def new(self, ctx):
+        await ctx.channel.trigger_typing()
+        async with self.bot.http_session.get("https://www.minecraft.net/en-us/feeds/community-content/rss") as resp:
+            text = await resp.text()
+        data = feedparser.parse(text, "lxml")["entries"][:12]
+        embed=discord.Embed(colour=self.bot.color)
+        for post in data:
+            time = datetime.fromtimestamp(mktime(post["published_parsed"]), pytz.utc)
+            format = "%d %m %Y"
+            time = datetime.strftime(time, format)
+            embed.add_field(name=post["title"],value=(
+                "Category: `{category}`"
+                "Published: `{pub}`"
+                "[Article Link]({link})"
+            ).format(category=data["primarytag"],pub=time,link=post["id"]))
+        await ctx.send(embed=embed)
