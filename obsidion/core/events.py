@@ -38,8 +38,8 @@ class Events(commands.Cog):
             url = discord.utils.oauth_url(
                 self.bot.user.id,
                 permissions=perms,
+                redirect_uri="https://discord.obsidion-dev.com",
                 scopes=("bot", "applications.commands"),
-                redirect_uri="https://discord.obsidion-dev.com"
             )
             self.bot._invite = url
 
