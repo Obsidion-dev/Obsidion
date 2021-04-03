@@ -88,6 +88,7 @@ class Obsidion(AutoShardedBot):
         self.load_extension("obsidion.cogs.fun")
         self.load_extension("obsidion.cogs.minecraft")
         self.load_extension("obsidion.cogs.config")
+        self.load_extension("obsidion.cogs.rcon")
 
     async def start(self, *args, **kwargs):
         """
