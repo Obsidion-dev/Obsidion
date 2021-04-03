@@ -364,6 +364,12 @@ class Hypixel(commands.Cog):
 
         await ctx.send(embed=embed)
 
+    @cog_ext.cog_slash(name="guild")
+    async def slash_auctions(self, ctx, guildname=None):
+        """Get's guild info by guild name."""
+        await ctx.defer()
+        await self.guild(ctx, guildname)
+
     @commands.command()
     async def leaderboards(self, ctx: commands.Context) -> None:
         """Get current hypixel leaderboards"""
@@ -395,3 +401,9 @@ class Hypixel(commands.Cog):
         menu.allow_multisession()
 
         await menu.open()
+    
+    @cog_ext.cog_slash(name="leaderboards")
+    async def slash_auctions(self, ctx):
+        """Get's guild info by guild name."""
+        await ctx.defer()
+        await self.leaderboards(ctx)
