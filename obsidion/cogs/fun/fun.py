@@ -3,6 +3,7 @@ import json
 import logging
 from datetime import datetime
 from random import choice
+from typing import List
 from discord_slash.utils.manage_commands import create_option, create_choice
 
 import discord
@@ -65,6 +66,62 @@ class Fun(commands.Cog):
     def __init__(self, bot) -> None:
         """Init."""
         self.bot = bot
+        self.pvp_mes = self.load_from_file("pvp")
+        self.kill_mes = self.load_from_file("kill")
+        self.build_ideas_mes = self.load_from_file("build_ideas")
+
+    @staticmethod
+    def load_from_file(file: str) -> List[str]:
+        """Load text from file.
+        Args:
+            file (str): file name
+        Returns:
+            List[str]: list of input
+        """
+        with open(f"obsidion/cogs/fun/resources/{file}.txt") as f:
+            content = f.readlines()
+        return [x.strip() for x in content]
+
+    @commands.command(aliases=["idea", "bidea"])
+    async def buildidea(self, ctx) -> None:
+        """Get an idea for a new idea."""
+        await ctx.send(
+            _("Here is something cool to build: {b_idea}.").format(b_idea=choice(self.build_ideas_mes))
+        )
+
+    @commands.command(aliases=["idea", "bidea"])
+    async def buildidea(self, ctx) -> None:
+        """Get an idea for a new idea."""
+        await ctx.send(
+            _("Here is something cool to build: {b_idea}.").format(b_idea=choice(self.build_ideas_mes))
+        )
+
+    @commands.command(aliases=["slay"])
+    async def kill(
+        self,
+        ctx,
+        member=None
+    ) -> None:
+        """Kill that pesky friend in a fun and stylish way."""
+        await ctx.send(choice(self.kill_mes).replace("member", member))
+
+    @commands.command(aliases=["battle"])
+    async def pvp(
+        self,
+        ctx,
+        member1,
+        member2= None,
+    ) -> None:
+        """Duel someone."""
+        if not member2:
+            member2 = ctx.message.author.mention
+
+        await ctx.send(
+            choice(self.pvp_mes)
+            .replace("member1", member1)
+            .replace("member2", member2)
+        )
+
 
     @commands.command(aliases=["villagerspeak", "villagerspeech", "hmm"])
     async def villager(self, ctx, *, speech: str) -> None:

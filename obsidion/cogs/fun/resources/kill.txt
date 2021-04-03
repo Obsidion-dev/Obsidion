@@ -1,0 +1,14 @@
+member was shot by a skeleton using a bow.
+member was struck by lightning.
+member turned into dust.
+member was ripped apart by a Vex.
+member tripped too hard and died.
+member was squashed by a falling block.
+member was killed by gravity.
+member failed at killing a Creeper.
+member had one to many speed potions.
+member was ripped apart by a Spider Jockey.
+member fell in lava 
+member tried to swim in lava 
+member died whilst fighting a drowned army 
+member was massacred by a horde of zombies 
