@@ -67,7 +67,8 @@ class Rcon(commands.Cog):
         await self.say(ctx, message)
 
     async def rcon(self, ctx) -> AsyncRCON:
-        data = await self.bot._guild_cache.get_rcon(ctx.guild.id)
+        data = await self.bot._rcon_cache.get_rcon(ctx.guild.id)
+        if ctx.author.roles
         _rcon = AsyncRCON(data["address"], data["port"], data["password"])
         await _rcon.open_connection()
 

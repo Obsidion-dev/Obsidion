@@ -39,7 +39,7 @@ def upgrade():
         sa.Column("server", sa.Unicode(200)),
         sa.Column("password", sa.Unicode(200)),
         sa.Column("port", sa.BIGINT),
-        sa.Column("users", sa.ARRAY(sa.BIGINT)),
+        sa.Column("roles", sa.ARRAY(sa.BIGINT)),
         sa.Column("channel", sa.BIGINT),
     )
 
