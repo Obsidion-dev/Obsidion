@@ -101,14 +101,17 @@ class Info(commands.Cog):
 
         await ctx.send(embed=embed)
 
-    @cog_ext.cog_slash(name="profile",options=[
+    @cog_ext.cog_slash(
+        name="profile",
+        options=[
             create_option(
                 name="username",
                 description="Username of player defaults to your linked username.",
                 option_type=3,
                 required=False,
             )
-        ],)
+        ],
+    )
     async def slash_profile(self, ctx, username: str = None):
         await ctx.defer()
         await self.profile(ctx, username)
@@ -189,7 +192,9 @@ class Info(commands.Cog):
             )
         await ctx.send(embed=embed)
 
-    @cog_ext.cog_slash(name="server",options=[
+    @cog_ext.cog_slash(
+        name="server",
+        options=[
             create_option(
                 name="address",
                 description="Address of server defaults to your linked server.",
@@ -201,8 +206,9 @@ class Info(commands.Cog):
                 description="port of server defaults to that of your linked server.",
                 option_type=3,
                 required=False,
-            )
-        ],)
+            ),
+        ],
+    )
     async def slash_server(self, ctx, address: str = None, port: int = None):
         await ctx.defer()
         await self.server(ctx, address, port)
@@ -372,18 +378,20 @@ class Info(commands.Cog):
                 )
             )
 
-    @cog_ext.cog_slash(name="wiki",options=[
+    @cog_ext.cog_slash(
+        name="wiki",
+        options=[
             create_option(
                 name="query",
                 description="Thing to look up.",
                 option_type=3,
                 required=True,
             )
-        ],)
+        ],
+    )
     async def slash_wiki(self, ctx, query: str):
         await ctx.defer()
         await self.wiki(ctx, query)
-
 
     # @commands.command()
     # async def mcbug(self, ctx, bug: str) -> None:
@@ -450,3 +458,47 @@ class Info(commands.Cog):
     #     embed.add_field(name=_("Details"), value=details)
 
     #     await ctx.send(embed=embed)
+
+    @commands.command()
+    async def version(self, ctx, version=None):
+        await ctx.channel.trigger_typing()
+        async with self.bot.http_session.get(
+            "https://launchermeta.mojang.com/mc/game/version_manifest.json"
+        ) as resp:
+            data = await resp.json()
+        last_release = data["versions"][0]
+        id2version = {}
+        versions = {}
+
+        for _version in reversed(data["versions"]):
+            id2version[_version["id"]] = _version
+            if "." in _version["id"]:
+                version_num = "".join(_version["id"].split(".")[:1])
+                if version_num in versions:
+                    versions[version_num] = versions[version_num].append(_version)
+                else:
+                    version[version_num] = [version]
+        embed = discord.Embed(
+            colour=self.bot.color,
+        )
+        format = "%Y-%m-%dT%H:%M:%S%z"
+        if version is not None:
+            if version not in id2version:
+                await ctx.send(_("Version is invalid."))
+            version_data = id2version[version]
+            embed.set_author(
+                name=_("Minecraft Java Edition {version}").format(version=version),
+                url=_("https://minecraft.gamepedia.com/Java_Edition_{version}").format(
+                    version=version
+                ),
+                icon_url=(
+                "https://www.minecraft.net/etc.clientlibs/minecraft"
+                "/clientlibs/main/resources/img/menu/menu-buy--reversed.gif"
+            ),
+            )
+            embed.add_field(name=version, value=_(
+                "Type: `{type}`\nRelease: `{released}`\nPackage URL: `{package_url}`\nMinecraft Wiki: {version}"
+            ).format(type=version_data["type"], released = datetime.strptime(version_data["releaseTime"], format), package_url=version_data["url"]))
+        else:
+            for _version in 
+        return embed
