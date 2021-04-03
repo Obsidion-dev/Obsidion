@@ -41,10 +41,10 @@ class Rcon(commands.Cog):
 
         _rcon.close()
 
-    @cog_ext.cog_slash(name="say")
+    @cog_ext.cog_slash(name="cmd")
     async def slash_command(self, ctx, *, command):
         await ctx.defer()
-        await self.say(ctx, command)
+        await self.cmd(ctx, command)
 
     @commands.command()
     async def say(self, ctx, *, message):
