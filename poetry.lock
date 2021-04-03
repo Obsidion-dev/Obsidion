@@ -119,22 +119,15 @@ test = ["pycodestyle (>=2.5.0,<2.6.0)", "flake8 (>=3.7.9,<3.8.0)", "uvloop (>=0.
 
 [[package]]
 name = "asyncpixel"
-version = "1.0.7"
+version = "1.0.8"
 description = "Asyncpixel"
 category = "main"
 optional = false
-python-versions = "^3.7"
-develop = false
+python-versions = ">=3.7,<4.0"
 
 [package.dependencies]
-aiohttp = "^3.6.2"
-pydantic = "^1.7.3"
-
-[package.source]
-type = "git"
-url = "https://github.com/Obsidion-dev/asyncpixel.git"
-reference = "main"
-resolved_reference = "54c206b0aa5e25da28321c4333c31f438e3c69c1"
+aiohttp = ">=3.6.2,<4.0.0"
+pydantic = ">=1.7.3,<2.0.0"
 
 [[package]]
 name = "asyncrcon"
@@ -1126,7 +1119,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "13ee1591adb102e92dc63822f6b9d65f93a54b179fce513179d51da50f5e1cdc"
+content-hash = "6235022a5ba187628c4a7f1e97e8d9e3ced83f443a9566896dc4d279918c5782"
 
 [metadata.files]
 aiodns = [
@@ -1227,7 +1220,10 @@ asyncpg = [
     {file = "asyncpg-0.21.0-cp38-cp38-win_amd64.whl", hash = "sha256:823eca36108bd64a8600efe7bbf1230aa00f2defa3be42852f3b61ab40cf1226"},
     {file = "asyncpg-0.21.0.tar.gz", hash = "sha256:53cb2a0eb326f61e34ef4da2db01d87ce9c0ebe396f65a295829df334e31863f"},
 ]
-asyncpixel = []
+asyncpixel = [
+    {file = "asyncpixel-1.0.8-py3-none-any.whl", hash = "sha256:d03ff750b12339de1945aa7591ef7dc8f8157150ebc88fa1f5b9ca67617e9207"},
+    {file = "asyncpixel-1.0.8.tar.gz", hash = "sha256:b660600d1af0f39c5cb4082b8f70290b271531b97d1b1f32737f90f4de8e2b69"},
+]
 asyncrcon = [
     {file = "asyncrcon-1.1.4-py3-none-any.whl", hash = "sha256:fe748aa25980859399b4638f6ad7d1166bca45efb495fa3963ae1c84e30ed752"},
     {file = "asyncrcon-1.1.4.tar.gz", hash = "sha256:3c8600bf76a7888687520c712414e5a2f521bb9648f3504980968445c052d57c"},
