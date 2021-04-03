@@ -500,5 +500,17 @@ class Info(commands.Cog):
                 "Type: `{type}`\nRelease: `{released}`\nPackage URL: `{package_url}`\nMinecraft Wiki: {version}"
             ).format(type=version_data["type"], released = datetime.strptime(version_data["releaseTime"], format), package_url=version_data["url"]))
         else:
-            for _version in 
+            embed.set_author(
+                name=_("Minecraft Java Edition Versions"),
+                icon_url=(
+                "https://www.minecraft.net/etc.clientlibs/minecraft"
+                "/clientlibs/main/resources/img/menu/menu-buy--reversed.gif"
+            )),
+            for _version in version:
+                embed.add_filed(name=_version[0].id, value=_(
+                    "Releases: `{releases}`"
+                    "**Latest Version**"
+                    "ID: `{id}`"
+                    "Released: `{}`"
+                ).format(releases=len(_version)-1, id=_version[-1].id, released=datetime.strptime(_version[-1]["releaseTime"], format)))
         return embed
