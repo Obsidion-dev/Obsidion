@@ -127,11 +127,23 @@ class Fun(commands.Cog):
     async def villager(self, ctx, *, speech: str) -> None:
         """Hmm hm hmmm Hm hmmm hmm."""
         split = speech.split(" ")
+        last_was_alpha = False
         sentence = ""
         for _ in split:
             sentence += " " + choice(("hmm", "hm", "hmmm"))
-        response = sentence.strip()
-        await ctx.send(response)
+        for char in speech:
+            if char.isalpha():
+                if not last_was_alpha:
+                    if char.isupper(): sentence += "H"
+                    else: sentence += "h"
+                else:
+                    if char.isupper(): sentence += "M"
+                    else: sentence += "m"
+                last_was_alpha = True
+            else:
+                sentence += char
+                last_was_alpha = False
+        await ctx.send(sentence)
 
     @cog_ext.cog_slash(name="villager", options=[
             create_option(
