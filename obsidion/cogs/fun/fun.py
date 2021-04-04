@@ -69,10 +69,20 @@ class fun(commands.Cog):
     @commands.cooldown(rate=1, per=1.0, type=commands.BucketType.user)
     async def villager(self, ctx: commands.Context, *, speech: str):
         """Convert english to Villager speech hmm."""
-        split = speech.split(" ")
+        last_was_alpha = False
         sentence = ""
-        for _ in split:
-            sentence += " hmm"
+        for char in speech:
+            if char.isalpha():
+                if not last_was_alpha:
+                    if char.isupper(): sentence += "H"
+                    else: sentence += "h"
+                else:
+                    if char.isupper(): sentence += "M"
+                    else: sentence += "m"
+                last_was_alpha = True
+            else:
+                sentence += char
+                last_was_alpha = False
         response = sentence.strip()
         await ctx.send(f"{ctx.message.author.mention}, `{response}`")
 
