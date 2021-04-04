@@ -86,9 +86,14 @@ class Events(commands.Cog):
                 fmt = f"{'**, **'.join(missing[:-1])}, and {missing[-1]}"
             else:
                 fmt = " and ".join(missing)
-            await ctx.send(
-                f"Sorry, it looks like you don't have the **{fmt}** permission(s) I need to do that."
-            )
+            if len(missing) > 1:
+                await ctx.send(
+                    f"Sorry, it looks like you don't have the **{fmt}** permissions I need to do that."
+                )
+            else:
+                await ctx.send(
+                    f"Sorry, it looks like you don't have the **{fmt}** permissions I need to do that."
+                )
 
     @commands.Cog.listener("on_command_error")
     async def on_command_error(self, ctx, error, unhandled_by_cog=False):
