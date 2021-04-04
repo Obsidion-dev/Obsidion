@@ -20,6 +20,9 @@ class Minecraft(commands.Cog):
     @commands.command()
     async def tick2second(self, ctx, ticks: int) -> None:
         """Convert seconds to tick."""
+        if ticks <= 0:
+            await ctx.send("Input must be greater then 0")
+            return
         seconds = ticks / 20
         await ctx.send(
             _("It takes {seconds} second for {ticks} to happen.").format(
@@ -42,6 +45,9 @@ class Minecraft(commands.Cog):
     @commands.command()
     async def second2tick(self, ctx, seconds: float) -> None:
         """Convert ticks to seconds."""
+        if seconds <= 0:
+            await ctx.send("Input must be greater then 0")
+            return
         ticks = seconds * 20
         await ctx.send(
             _("There are {ticks} ticks in {seconds} seconds").format(
@@ -64,6 +70,12 @@ class Minecraft(commands.Cog):
     @commands.command()
     async def seed(self, ctx, *, text: str) -> None:
         """Convert text to minecraft numerical seed."""
+        try:
+            int(text)
+            await ctx.send(int(text))
+            return
+        except ValueError:
+            pass
         h = 0
         for c in text:
             h = (31 * h + ord(c)) & 0xFFFFFFFF

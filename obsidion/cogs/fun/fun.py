@@ -100,7 +100,7 @@ class Fun(commands.Cog):
     async def kill(
         self,
         ctx,
-        member=None
+        member
     ) -> None:
         """Kill that pesky friend in a fun and stylish way."""
         await ctx.send(choice(self.kill_mes).replace("member", member))
