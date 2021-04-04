@@ -152,6 +152,9 @@ class Fun(commands.Cog):
                     last_was_h = False
                 sentence += char
                 last_was_alpha = False
+        # Just in case the final letter would've been an 'H', add a final 'm'
+        if last_was_h:
+            sentence += "m"
         # Done
         await ctx.send(sentence.strip())
 
