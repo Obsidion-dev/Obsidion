@@ -6,13 +6,13 @@ Obsidion helps out a number of Discord guilds.
 
 Reporting Policy
 
-While transparency is always a good thing, when another user's data is potentially at risk its usually better to keep things private until the issue has been fixed and the risk eliminated. For this reason, we ask that you do not publically detail any security vulnerabilities to anyone except the Obsidion core team until the issue has been confirmed to be fixed and deployed.
+While transparency is always a good thing, when another user's data is potentially at risk its usually better to keep things private until the issue has been fixed and the risk eliminated. For this reason, we ask that you do not publicly detail any security vulnerabilities to anyone except the Obsidion core team until the issue has been confirmed to be fixed and deployed.
 
 We go by a 30 day disclosure policy. Once that timeframe is up and if for some reason the bug has not been fixed, the reporter holds all rights to disclose the bug publicly with no restrictions.
 
 Issues can, and will, be disclosed sooner if they are fixed before then and there is confirmation that no risk remains to any user from the bug. Please keep in mind that it might include some time where we inform people who are running their own instance of the bot and choose to receive notifications will be informed first so they can quietly patch their instances before any information is made public.
 
-The reporter holds all rights to the bug they find, no NDAs or other blanket covering will ever occur. All that is required is to wait the required 30 days (unless the team gives you permission to disclose sooner).
+The reporter holds all rights to the bug they find, no NDAs (non disclosure agreement) or other blanket covering will ever occur. All that is required is to wait the required 30 days (unless the team gives you permission to disclose sooner).
 
 Please ensure that any testing and reports are made based off the latest version of the code. Updates are frequent, so ensure that you are on the latest commit.
 

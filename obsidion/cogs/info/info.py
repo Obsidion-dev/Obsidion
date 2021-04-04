@@ -124,7 +124,7 @@ class Info(commands.Cog):
     @staticmethod
     def get_server(ip: str, port: int) -> Tuple[str, Optional[int]]:
         """Returns the server icon."""
-        if ":" in ip:  # deal with them providing port in string instead of seperate
+        if ":" in ip:  # deal with them providing port in string instead of separate
             ip, port = ip.split(":")
             return (ip, int(port))
         if port:
@@ -521,7 +521,7 @@ class Info(commands.Cog):
         return embed
 
     @commands.command()
-    async def new(self, ctx):
+    async def news(self, ctx):
         await ctx.channel.trigger_typing()
         async with self.bot.http_session.get("https://www.minecraft.net/en-us/feeds/community-content/rss") as resp:
             text = await resp.text()
