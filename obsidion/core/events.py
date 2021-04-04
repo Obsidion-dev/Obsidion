@@ -88,11 +88,11 @@ class Events(commands.Cog):
                 fmt = " and ".join(missing)
             if len(missing) > 1:
                 await ctx.send(
-                    f"Sorry, it looks like you don't have the **{fmt}** permissions I need to do that."
+                    _("Sorry, it looks like you don't have the **{fmt}** permissions I need to do that.").format(fmt=fmt)
                 )
             else:
                 await ctx.send(
-                    f"Sorry, it looks like you don't have the **{fmt}** permissions I need to do that."
+                    _("Sorry, it looks like you don't have the **{fmt}** permission I need to do that.").format(fmt=fmt)
                 )
 
     @commands.Cog.listener("on_command_error")
