@@ -122,7 +122,7 @@ class Images(commands.Cog):
         await ctx.send(embed=embed)
 
     # @commads.command()
-    async def recipie(self, ctx):
+    async def recipe(self, ctx):
         pass
         embed = discord.Embed(color=self.bot.color)
         embed.set_author(
@@ -130,7 +130,7 @@ class Images(commands.Cog):
         )
         embed.set_image(
             url=(
-                f"{get_settings().API_URL}/images/recipie?line1={line1}&line2={line2}&line3={line3}&line4={line4}"
+                f"{get_settings().API_URL}/images/recipe?line1={line1}&line2={line2}&line3={line3}&line4={line4}"
             )
         )
         await ctx.send(embed=embed)
