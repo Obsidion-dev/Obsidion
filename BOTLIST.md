@@ -18,7 +18,7 @@ The `Fun` category contains commands that provide entertainment in fun and engag
 
 ### Images
 
-The `Images` category has commands that let you create some cool images and view skinsview skins and achievements
+The `Images` category has commands that let you create some cool images and view skin and achievements
 
 ### Miscellaneous
 
