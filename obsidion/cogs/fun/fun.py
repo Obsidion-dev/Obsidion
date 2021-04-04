@@ -127,20 +127,33 @@ class Fun(commands.Cog):
     async def villager(self, ctx, *, speech: str) -> None:
         """Hmm hm hmmm Hm hmmm hmm."""
         last_was_alpha = False
+        last_was_h = False
         sentence = ""
         for char in speech:
+            # Alphabetical letter -- Replace with 'Hmm'
             if char.isalpha():
+                # First letter
                 if not last_was_alpha:
                     if char.isupper(): sentence += "H"
                     else: sentence += "h"
+                    last_was_h = True
+                # Non-first letter
                 else:
                     if char.isupper(): sentence += "M"
                     else: sentence += "m"
+                    last_was_h = False
+                # Remember if last alphabetical for next potential 'M'
                 last_was_alpha = True
+            # Non-alphabetical letters -- Do not replace
             else:
+                if last_was_h:
+                    # Add an m to prevent H's without M's
+                    sentence += "m"
+                    last_was_h = False
                 sentence += char
                 last_was_alpha = False
-        await ctx.send(sentence)
+        # Done
+        await ctx.send(sentence.strip())
 
     @cog_ext.cog_slash(name="villager", options=[
             create_option(
