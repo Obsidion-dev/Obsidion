@@ -21,7 +21,6 @@ from .settings_cache import I18nManager
 from .settings_cache import PrefixManager
 from .settings_cache import AccountManager
 from .settings_cache import GuildManager
-from .settings_cache import RconManager
 
 
 class Obsidion(AutoShardedBot):
@@ -46,7 +45,6 @@ class Obsidion(AutoShardedBot):
         self._i18n_cache = I18nManager(self)
         self._account_cache = AccountManager(self)
         self._guild_cache = GuildManager(self)
-        self._rcon_cache = RconManager(self)
 
         async def prefix_manager(bot, message):
             prefixes = await self._prefix_cache.get_prefixes(message.guild)
@@ -88,7 +86,6 @@ class Obsidion(AutoShardedBot):
         self.load_extension("obsidion.cogs.fun")
         self.load_extension("obsidion.cogs.minecraft")
         self.load_extension("obsidion.cogs.config")
-        self.load_extension("obsidion.cogs.rcon")
 
     async def start(self, *args, **kwargs):
         """
