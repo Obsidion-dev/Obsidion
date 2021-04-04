@@ -1,4 +1,7 @@
 <p align="center">
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
   <a href="https://obsidion-dev.com.com">
     <img alt="Obsidion-dev" src="https://obsidion-dev.com/img/Bot%20Profile.png" width="60" />
   </a>
@@ -89,3 +92,23 @@ If you have a question or would like to talk with other Obsidion users, please h
 [Discord chatroom](https://discord.gg/rnAtymZnzH)
 
 ![Discord Shield](https://discordapp.com/api/guilds/695008516590534758/widget.png?style=shield)
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/LeeSpork"><img src="https://avatars.githubusercontent.com/u/24984194?v=4?s=100" width="100px;" alt=""/><br /><sub><b>LeeSpork</b></sub></a><br /><a href="https://github.com/Obsidion-dev/Obsidion/commits?author=LeeSpork" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
