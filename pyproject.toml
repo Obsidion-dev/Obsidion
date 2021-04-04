@@ -21,7 +21,7 @@ lxml = "^4.5.2"
 mcsrvstats = "^0.1.1"
 pydantic = {extras = ["dotenv"], version = "^1.7.3"}
 python = "^3.8"
-uvloop = "^0.14.0"
+uvloop = "^0.15.2"
 SQLAlchemy = "1.4.0b1"
 psycopg2-binary = "^2.8.6"
 beautifulsoup4 = "^4.9.3"
