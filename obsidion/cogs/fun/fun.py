@@ -126,11 +126,8 @@ class Fun(commands.Cog):
     @commands.command(aliases=["villagerspeak", "villagerspeech", "hmm"])
     async def villager(self, ctx, *, speech: str) -> None:
         """Hmm hm hmmm Hm hmmm hmm."""
-        split = speech.split(" ")
         last_was_alpha = False
         sentence = ""
-        for _ in split:
-            sentence += " " + choice(("hmm", "hm", "hmmm"))
         for char in speech:
             if char.isalpha():
                 if not last_was_alpha:
