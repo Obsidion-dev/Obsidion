@@ -4,14 +4,8 @@
 /obsidion/cogs/hypixel/* @AjayACST
 /obsidion/cogs/servers/* @AjayACST
 
-# CI
-/noxfile.py @Darkflame72
-.github/* @Darkflame72
-.darglint @Darkflame72
-codecov.yml @Darkflame72
-mypy.ini @Darkflame72
-.flake8 @Darkflame72
-.pre-commit-config.yaml @Darkflame72
+#fun text files
+/obsidion/cogs/fun/resources/* @Cubicdd
 
 *.po
 @AbhishekACST
