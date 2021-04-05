@@ -20,55 +20,55 @@ class Facts(commands.Cog):
         """Init."""
         self.bot = bot
 
-    @commands.command()
+    # @commands.command()
     async def block(self, ctx, id: Union[str, int]):
         pass
 
-    @commands.command()
+    # @commands.command()
     async def item(self, ctx, id: Union[str, int]):
         pass
 
-    @commands.command()
+    # @commands.command()
     async def mob(self, ctx, id: Union[str, int]):
         pass
 
-    @commands.command()
+    # @commands.command()
     async def structure(self, ctx, id: Union[str, int]):
         pass
 
-    @commands.command()
+    # @commands.command()
     async def biome(self, ctx, id: Union[str, int]):
         pass
 
-    @commands.command()
+    # @commands.command()
     async def update(self, ctx, id: Union[str, int]):
         pass
 
-    @commands.command()
+    # @commands.command()
     async def trivia(self, ctx, id: Union[str, int]):
         pass
 
-    @commands.command()
+    # @commands.command()
     async def fact(self, ctx, id: Union[str, int]):
         pass
 
-    @commands.command()
+    # @commands.command()
     async def effect(self, ctx, id: Union[str, int]):
         pass
 
-    @commands.command()
+    # @commands.command()
     async def advancement(self, ctx, id: Union[str, int]):
         pass
 
-    @commands.command()
+    # @commands.command()
     async def potion(self, ctx, id: Union[str, int]):
         pass
 
-    @commands.command()
+    # @commands.command()
     async def image(self, ctx, id: Union[str, int]):
         pass
 
-    @commands.command()
+    # @commands.command()
     async def gamemode(self, ctx, id: Union[str, int]):
         pass
 
