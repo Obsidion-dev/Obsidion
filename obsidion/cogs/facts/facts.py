@@ -72,6 +72,6 @@ class Facts(commands.Cog):
     async def gamemode(self, ctx, id: Union[str, int]):
         pass
 
-    @commands.command()
+    # @commands.command()
     async def difficulty(self, ctx, id: Union[str, int]):
         pass
