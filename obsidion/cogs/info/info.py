@@ -166,7 +166,7 @@ class Info(commands.Cog):
             return
         embed = discord.Embed(
             title=_("Java Server: {server_ip}").format(server_ip=server_ip),
-            color=0x00FF00,
+            color=self.bot.color,
         )
         embed.add_field(name=_("Description"), value=data["motd"]["clean"][0])
 
@@ -218,11 +218,9 @@ class Info(commands.Cog):
         await ctx.defer()
         await self.server(ctx, address, port)
 
-    # @commands.command()
+    @commands.command()
     async def serverpe(self, ctx, address, port: Optional[int] = None):
         await ctx.channel.trigger_typing()
-        server_ip, _port = self.get_server(address, port)
-        port = _port if _port else port
         params = (
             {"server": address} if port is None else {"server": address, "port": port}
         )
@@ -232,41 +230,55 @@ class Info(commands.Cog):
             if resp.status == 200:
                 data = await resp.json()
             else:
-                data = None
-        if data is None:
-            await ctx.send("server could not be reached.")
-            return
-        embed = discord.Embed(title=f"Bedrock Server: {server_ip}", color=0x00FF00)
-        embed.add_field(name="Description", value=data["motd"]["clean"][0])
+                await ctx.send("Server could not be reached.")
+                return
+        embed = discord.Embed(title=_("Bedrock Server: {address}").format(address=address), color=self.bot.color)
+        embed.add_field(name=_("Description"), value="\n".join(data["motd"]))
 
         embed.add_field(
-            name="Players",
-            value=(
-                f"Online: `{data['players']['online']:,}` \n "
-                f"Maximum: `{data['players']['max']:,}`"
-            ),
+            name=_("Players"),
+            value=_(
+                "Online: `{player_count}` \n "
+                "Maximum: `{player_max}`"
+            ).format(player_count=data["player_count"], player_max=data["player_max"]),
         )
         embed.add_field(
-            name="Version",
-            value=(
-                f"Java Edition \n Running: `{data['version']}` \n"
-                f"Protocol: `{data['protocol']}`"
-            ),
+            name=_("Version"),
+            value=_(
+                "Bedrock Edition \n Running: `{version}` \n"
+                "Protocol: `{protocol}`"
+            ).format(version=data['protocol_version'],protocol=data['protocol_name']),
             inline=False,
         )
-        if data["icon"]:
-            url = f"{get_settings().API_URL}/server/javaicon?server={server_ip}"
-            if port is not None:
-                url += f"&port={port}"
-            embed.set_thumbnail(url=url)
-        else:
-            embed.set_thumbnail(
-                url=(
-                    "https://media.discordapp.net/attachments/493764139290984459"
-                    "/602058959284863051/unknown.png"
-                )
-            )
+        embed.add_field(
+            name=_("Info"),
+            value=_(
+                "Gamemode: `{gamemode}` \n"
+                "Latency: `{latency}`"
+            ).format(version=data['gamemode'],protocol=data['latency']),
+        )
         await ctx.send(embed=embed)
+
+    @cog_ext.cog_slash(
+        name="server",
+        options=[
+            create_option(
+                name="address",
+                description="Address of server defaults to your linked server.",
+                option_type=3,
+                required=True,
+            ),
+            create_option(
+                name="port",
+                description="port of server defaults to that of your linked server.",
+                option_type=3,
+                required=False,
+            ),
+        ],
+    )
+    async def slash_server(self, ctx, address: str, port: int = None):
+        await ctx.defer()
+        await self.serverpe(ctx, address, port)
 
     @commands.command(aliases=["sales"])
     async def status(self, ctx) -> None:
