@@ -131,7 +131,7 @@ class Info(commands.Cog):
             return (ip, port)
         return (ip, None)
 
-    @commands.command()
+    @commands.command(aliases=["servers", "s"])
     async def server(
         self, ctx, address: Optional[str] = None, port: Optional[int] = None
     ):

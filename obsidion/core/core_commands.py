@@ -148,7 +148,7 @@ class Core(commands.Cog):
 
     @commands.command()
     @commands.is_owner()
-    async def servers(self, ctx):
+    async def leave_servers(self, ctx):
         """Lists and allows Obsidion to leave servers."""
         guilds = sorted(self.bot.guilds, key=lambda s: s.name.lower())
         msg = ""
