@@ -22,6 +22,17 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "AjayACST",
+      "name": "AjayACST",
+      "avatar_url": "https://avatars.githubusercontent.com/u/35202521?v=4",
+      "profile": "https://quirky.codes/",
+      "contributions": [
+        "maintenance",
+        "code",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
