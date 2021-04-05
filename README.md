@@ -101,6 +101,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/LeeSpork"><img src="https://avatars.githubusercontent.com/u/24984194?v=4?s=100" width="100px;" alt=""/><br /><sub><b>LeeSpork</b></sub></a><br /><a href="https://github.com/Obsidion-dev/Obsidion/commits?author=LeeSpork" title="Code">💻</a></td>
     <td align="center"><a href="https://crafty.gg"><img src="https://avatars.githubusercontent.com/u/36730086?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tj</b></sub></a><br /><a href="https://github.com/Obsidion-dev/Obsidion/commits?author=talle117" title="Code">💻</a></td>
+    <td align="center"><a href="https://quirky.codes/"><img src="https://avatars.githubusercontent.com/u/35202521?v=4?s=100" width="100px;" alt=""/><br /><sub><b>AjayACST</b></sub></a><br /><a href="#maintenance-AjayACST" title="Maintenance">🚧</a> <a href="https://github.com/Obsidion-dev/Obsidion/commits?author=AjayACST" title="Code">💻</a> <a href="https://github.com/Obsidion-dev/Obsidion/issues?q=author%3AAjayACST" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
