@@ -86,6 +86,7 @@ class Obsidion(AutoShardedBot):
         self.load_extension("obsidion.cogs.fun")
         self.load_extension("obsidion.cogs.minecraft")
         self.load_extension("obsidion.cogs.config")
+        self.load_extension("obsidion.cogs.facts")
 
     async def start(self, *args, **kwargs):
         """
@@ -173,7 +174,7 @@ class Obsidion(AutoShardedBot):
         else:
             self._shutdown_mode = ExitCodes.RESTART
 
-        await self.logout()
+        await self.close()
         sys.exit(self._shutdown_mode)
 
     async def mojang_player(

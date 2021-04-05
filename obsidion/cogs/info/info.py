@@ -410,71 +410,71 @@ class Info(commands.Cog):
         await ctx.defer()
         await self.wiki(ctx, query)
 
-    # @commands.command()
-    # async def mcbug(self, ctx, bug: str) -> None:
-    #     """Gets info on a bug from bugs.mojang.com."""
-    #     await ctx.channel.trigger_typing()
-    #     await ctx.send(f"https://bugs.mojang.com/rest/api/latest/issue/{bug}")
-    #     async with self.bot.http_session.get(
-    #         f"https://bugs.mojang.com/rest/api/latest/issue/{bug}"
-    #     ) as resp:
-    #         if resp.status == 200:
-    #             data = await resp.json()
-    #         else:
-    #             await ctx.reply(_("The bug {bug} was not found.").format(bug=bug))
-    #             return
-    #     embed = discord.Embed(
-    #         description=data["fields"]["description"],
-    #         color=self.bot.color,
-    #     )
+    @commands.command()
+    async def mcbug(self, ctx, bug: str) -> None:
+        """Gets info on a bug from bugs.mojang.com."""
+        await ctx.channel.trigger_typing()
+        await ctx.send(f"https://bugs.mojang.com/rest/api/latest/issue/{bug}")
+        async with self.bot.http_session.get(
+            f"https://bugs.mojang.com/rest/api/latest/issue/{bug}"
+        ) as resp:
+            if resp.status == 200:
+                data = await resp.json()
+            else:
+                await ctx.reply(_("The bug {bug} was not found.").format(bug=bug))
+                return
+        embed = discord.Embed(
+            description=data["fields"]["description"],
+            color=self.bot.color,
+        )
 
-    #     embed.set_author(
-    #         name=f"{data['fields']['project']['name']} - {data['fields']['summary']}",
-    #         url=f"https://bugs.mojang.com/browse/{bug}",
-    #     )
+        embed.set_author(
+            name=f"{data['fields']['project']['name']} - {data['fields']['summary']}",
+            url=f"https://bugs.mojang.com/browse/{bug}",
+        )
 
-    #     info = _(
-    #         "Version: {version}\n"
-    #         "Reporter: {reporter}\n"
-    #         "Created: {created}\n"
-    #         "Votes: {votes}\n"
-    #         "Updates: {updates}\n"
-    #         "Watchers: {watched}"
-    #     ).format(
-    #         version=data["fields"]["project"]["name"],
-    #         reporter=data["fields"]["creator"]["displayName"],
-    #         created=data["fields"]["created"],
-    #         votes=data["fields"]["votes"]["votes"],
-    #         updates=data["fields"]["updated"],
-    #         watched=data["fields"]["watches"]["watchCount"],
-    #     )
+        info = _(
+            "Version: {version}\n"
+            "Reporter: {reporter}\n"
+            "Created: {created}\n"
+            "Votes: {votes}\n"
+            "Updates: {updates}\n"
+            "Watchers: {watched}"
+        ).format(
+            version=data["fields"]["project"]["name"],
+            reporter=data["fields"]["creator"]["displayName"],
+            created=data["fields"]["created"],
+            votes=data["fields"]["votes"]["votes"],
+            updates=data["fields"]["updated"],
+            watched=data["fields"]["watches"]["watchCount"],
+        )
 
-    #     details = (
-    #         f"Type: {data['fields']['issuetype']['name']}\n"
-    #         f"Status: {data['fields']['status']['name']}\n"
-    #     )
-    #     if "name" in data["fields"]["resolution"]:
-    #         details += _("Resolution: {resolution}\n").format(
-    #             resolution=data["fields"]["resolution"]["name"]
-    #         )
-    #     if "version" in data["fields"]:
-    #         details += (
-    #             _("Affected: ")
-    #             + f"{', '.join(s['name'] for s in data['fields']['versions'])}\n"
-    #         )
-    #     if "fixVersions" in data["fields"]:
-    #         if len(data["fields"]["fixVersions"]) >= 1:
-    #             details += (
-    #                 _("Fixed Version: {fixed} + ").format(
-    #                     fixed=data["fields"]["fixVersions"][0]
-    #                 )
-    #                 + f"{len(data['fields']['fixVersions'])}\n"
-    #             )
+        details = (
+            f"Type: {data['fields']['issuetype']['name']}\n"
+            f"Status: {data['fields']['status']['name']}\n"
+        )
+        if "name" in data["fields"]["resolution"]:
+            details += _("Resolution: {resolution}\n").format(
+                resolution=data["fields"]["resolution"]["name"]
+            )
+        if "version" in data["fields"]:
+            details += (
+                _("Affected: ")
+                + f"{', '.join(s['name'] for s in data['fields']['versions'])}\n"
+            )
+        if "fixVersions" in data["fields"]:
+            if len(data["fields"]["fixVersions"]) >= 1:
+                details += (
+                    _("Fixed Version: {fixed} + ").format(
+                        fixed=data["fields"]["fixVersions"][0]
+                    )
+                    + f"{len(data['fields']['fixVersions'])}\n"
+                )
 
-    #     embed.add_field(name=_("Information"), value=info)
-    #     embed.add_field(name=_("Details"), value=details)
+        embed.add_field(name=_("Information"), value=info)
+        embed.add_field(name=_("Details"), value=details)
 
-    #     await ctx.send(embed=embed)
+        await ctx.send(embed=embed)
 
     @commands.command()
     async def version(self, ctx, version=None):
@@ -483,18 +483,19 @@ class Info(commands.Cog):
             "https://launchermeta.mojang.com/mc/game/version_manifest.json"
         ) as resp:
             data = await resp.json()
-        last_release = data["versions"][0]
         id2version = {}
         versions = {}
 
         for _version in reversed(data["versions"]):
             id2version[_version["id"]] = _version
-            if "." in _version["id"]:
-                version_num = "".join(_version["id"].split(".")[:1])
+            if _version["type"] == "release":
+                version_num = ".".join(_version["id"].split(".")[:2])
                 if version_num in versions:
-                    versions[version_num] = versions[version_num].append(_version)
+                    _updated = versions[version_num]
+                    _updated.append(_version)
+                    versions[version_num] = _updated
                 else:
-                    version[version_num] = [version]
+                    versions[version_num] = [_version]
         embed = discord.Embed(
             colour=self.bot.color,
         )
@@ -502,6 +503,7 @@ class Info(commands.Cog):
         if version is not None:
             if version not in id2version:
                 await ctx.send(_("Version is invalid."))
+                return
             version_data = id2version[version]
             embed.set_author(
                 name=_("Minecraft Java Edition {version}").format(version=version),
@@ -514,8 +516,8 @@ class Info(commands.Cog):
             ),
             )
             embed.add_field(name=version, value=_(
-                "Type: `{type}`\nRelease: `{released}`\nPackage URL: `{package_url}`\nMinecraft Wiki: {version}"
-            ).format(type=version_data["type"], released = datetime.strptime(version_data["releaseTime"], format), package_url=version_data["url"]))
+                "Type: `{type}`\nRelease: `{released}`\nPackage URL: [link]({package_url})\nMinecraft Wiki: [link]({wiki})"
+            ).format(type=version_data["type"], released = datetime.strptime(version_data["releaseTime"], format), package_url=version_data["url"], wiki="https://minecraft.gamepedia.com/Java_Edition_{_version}"))
         else:
             embed.set_author(
                 name=_("Minecraft Java Edition Versions"),
@@ -523,14 +525,15 @@ class Info(commands.Cog):
                 "https://www.minecraft.net/etc.clientlibs/minecraft"
                 "/clientlibs/main/resources/img/menu/menu-buy--reversed.gif"
             )),
-            for _version in version:
-                embed.add_filed(name=_version[0].id, value=_(
-                    "Releases: `{releases}`"
-                    "**Latest Version**"
-                    "ID: `{id}`"
-                    "Released: `{}`"
-                ).format(releases=len(_version)-1, id=_version[-1].id, released=datetime.strptime(_version[-1]["releaseTime"], format)))
-        return embed
+            for _version in reversed(versions):
+                embed.add_field(name=_version, value=_(
+                    "Releases: `{releases}`\n"
+                    "**Latest Version**\n"
+                    "ID: `{id}`\n"
+                    "Released: `{released}`\n"
+                    "Wiki: [link]({link})"
+                ).format(releases=len(versions[_version]), id=versions[_version][-1]["id"], released=datetime.strptime(versions[_version][-1]["releaseTime"], format), link=f"https://minecraft.gamepedia.com/Java_Edition_{_version}"))
+        await ctx.send(embed=embed)
 
     @commands.command()
     async def news(self, ctx):
@@ -544,8 +547,8 @@ class Info(commands.Cog):
             format = "%d %m %Y"
             time = datetime.strftime(time, format)
             embed.add_field(name=post["title"],value=(
-                "Category: `{category}`"
-                "Published: `{pub}`"
+                "Category: `{category}`\n"
+                "Published: `{pub}`\n"
                 "[Article Link]({link})"
-            ).format(category=data["primarytag"],pub=time,link=post["id"]))
+            ).format(category=post["primarytag"],pub=time,link=post["id"]))
         await ctx.send(embed=embed)
