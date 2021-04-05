@@ -39,7 +39,7 @@ class News(commands.Cog):
             if resp.status == 200:
                 data = await resp.json()
             else:
-                data = None
+                return None
 
         embed = discord.Embed()
         embed.set_author(name="Mojang service downtime")

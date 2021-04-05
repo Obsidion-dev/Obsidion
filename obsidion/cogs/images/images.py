@@ -24,7 +24,7 @@ class Images(commands.Cog):
         """Init."""
         self.bot = bot
 
-    @commands.command()
+    # @commands.command()
     async def achievement(
         self, ctx, block_name: str, title: str, *, text: str
     ) -> None:
@@ -41,7 +41,7 @@ class Images(commands.Cog):
         )
         await ctx.send(embed=embed)
 
-    @commands.command()
+    # @commands.command()
     async def sign(
         self,
         ctx,
