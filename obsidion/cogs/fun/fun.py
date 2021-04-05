@@ -126,37 +126,51 @@ class Fun(commands.Cog):
     @commands.command(aliases=["villagerspeak", "villagerspeech", "hmm"])
     async def villager(self, ctx, *, speech: str) -> None:
         """Hmm hm hmmm Hm hmmm hmm."""
-        last_was_alpha = False
-        last_was_h = False
+        last_was_alpha = False # Used to detect the start of a word
+        last_was_h = False # Used to prevent 'H's without 'm's
+        last_was_lower_m = False # Used to make "HmmHmm" instead of "HmmMmm"
         sentence = ""
+        
         for char in speech:
-            # Alphabetical letter -- Replace with 'Hmm'
-            if char.isalpha():
-                # First letter
-                if not last_was_alpha:
-                    if char.isupper(): sentence += "H"
-                    else: sentence += "h"
+            
+            if char.isalpha(): # Alphabetical letter -- Replace with 'Hmm'
+                
+                if not last_was_alpha: # First letter of alphabetical string
+                    sentence += "H" if char.isupper() else "h"
                     last_was_h = True
-                # Non-first letter
-                else:
-                    if char.isupper(): sentence += "M"
-                    else: sentence += "m"
-                    last_was_h = False
-                # Remember if last alphabetical for next potential 'M'
-                last_was_alpha = True
-            # Non-alphabetical letters -- Do not replace
-            else:
+                    last_was_lower_m = False
+                
+                else: # Non-first letter
+                    if not char.isupper():
+                        sentence += "m"
+                        last_was_lower_m = True
+                        last_was_h = False
+                    else:
+                        # Use an 'H' instead to allow CamelCase 'HmmHmm's
+                        if last_was_lower_m:
+                            sentence += "H"
+                            last_was_h = True
+                        else:
+                            sentence += "M"
+                            last_was_h = False
+                        last_was_lower_m = False
+                
+                last_was_alpha = True # Remember for next potential 'M'
+            
+            else: # Non-alphabetical letters -- Do not replace
+                # Add an m after 'H's without 'm's
                 if last_was_h:
-                    # Add an m to prevent H's without M's
                     sentence += "m"
                     last_was_h = False
+                # Add non-letter character without changing it
                 sentence += char
                 last_was_alpha = False
-        # Just in case the final letter would've been an 'H', add a final 'm'
-        if last_was_h:
-            sentence += "m"
+        
+        # If the laster character is an H, add a final 'm'
+        if last_was_h: sentence += "m"
+        
         # Done
-        await ctx.send(sentence.strip())
+        await ctx.send(sentence)
 
     @cog_ext.cog_slash(name="villager", options=[
             create_option(
@@ -169,6 +183,7 @@ class Fun(commands.Cog):
     async def slash_villager(self, ctx, *, speech: str):
         await ctx.defer()
         await self.villager(ctx, speech)
+
 
     @commands.command()
     async def enchant(self, ctx, *, msg: str) -> None:
