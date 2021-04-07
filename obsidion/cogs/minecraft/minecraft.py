@@ -23,7 +23,11 @@ class Minecraft(commands.Cog):
         if ticks <= 0:
             await ctx.send("Input must be greater then 0")
             return
-        seconds = ticks / 20
+        try:
+            seconds = ticks / 20
+        except OverflowError:
+            await ctx.send("Input too big.")
+            return
         await ctx.send(
             _("It takes {seconds} second for {ticks} to happen.").format(
                 seconds=seconds, ticks=ticks
