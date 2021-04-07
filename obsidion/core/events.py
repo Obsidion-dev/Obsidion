@@ -97,7 +97,6 @@ class Events(commands.Cog):
 
     @commands.Cog.listener("on_command_error")
     async def on_command_error(self, ctx, error, unhandled_by_cog=False):
-        print(type(error))
         if not unhandled_by_cog:
             if hasattr(ctx.command, "on_error"):
                 return
