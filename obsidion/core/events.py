@@ -97,6 +97,7 @@ class Events(commands.Cog):
 
     @commands.Cog.listener("on_command_error")
     async def on_command_error(self, ctx, error, unhandled_by_cog=False):
+        print(type(error))
         if not unhandled_by_cog:
             if hasattr(ctx.command, "on_error"):
                 return
@@ -191,7 +192,10 @@ class Events(commands.Cog):
                     ).format(type=error.per.name)
             await ctx.send(msg)
         elif isinstance(error, commands.CommandInvokeError):
-            if isinstance(error.original, PlayerNotExist):
+            if isinstance(error.original, discord.errors.HTTPException):
+                if error.original.code == 50035:
+                    await ctx.send("Invalid input, too long.")
+            elif isinstance(error.original, PlayerNotExist):
                 await ctx.reply(
                     _(
                         "The user does not exist, please check wether the username is correct."
