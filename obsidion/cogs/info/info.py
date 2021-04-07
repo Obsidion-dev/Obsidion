@@ -410,7 +410,7 @@ class Info(commands.Cog):
         await ctx.defer()
         await self.wiki(ctx, query)
 
-    @commands.command()
+    #@commands.command()
     async def mcbug(self, ctx, bug: str) -> None:
         """Gets info on a bug from bugs.mojang.com."""
         await ctx.channel.trigger_typing()
