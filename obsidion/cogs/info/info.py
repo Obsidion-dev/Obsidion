@@ -340,7 +340,7 @@ class Info(commands.Cog):
         await ctx.channel.trigger_typing()
 
         def generate_payload(query: str) -> dict:
-            """Generate the payload for Gamepedia based on a query string."""
+            """Generate the payload for fandom based on a query string."""
             payload = {
                 "action": "query",
                 "titles": query.replace(" ", "_"),
@@ -353,7 +353,7 @@ class Info(commands.Cog):
             }
             return payload
 
-        base_url = "https://minecraft.gamepedia.com/api.php"
+        base_url = "https://minecraft.fandom.com/api.php"
         footer_icon = (
             "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53"
             "/Wikimedia-logo.png/600px-Wikimedia-logo.png"
@@ -371,7 +371,7 @@ class Info(commands.Cog):
             page = result["query"]["pages"][-1]
             title = page["title"]
             description = page["extract"].strip().replace("\n", "\n\n")
-            url = f"https://minecraft.gamepedia.com/{title.replace(' ', '_')}"
+            url = f"https://minecraft.fandom.com/{title.replace(' ', '_')}"
 
             if len(description) > 1500:
                 description = description[:1500].strip()
@@ -390,7 +390,7 @@ class Info(commands.Cog):
 
         except KeyError:
             await ctx.reply(
-                _("I'm sorry, I couldn't find \"{query}\" on Gamepedia").format(
+                _("I'm sorry, I couldn't find \"{query}\" on fandom").format(
                     query=query
                 )
             )
@@ -507,9 +507,7 @@ class Info(commands.Cog):
             version_data = id2version[version]
             embed.set_author(
                 name=_("Minecraft Java Edition {version}").format(version=version),
-                url=_("https://minecraft.gamepedia.com/Java_Edition_{version}").format(
-                    version=version
-                ),
+                url=f"https://minecraft.fandom.com/Java_Edition_{version}",
                 icon_url=(
                 "https://www.minecraft.net/etc.clientlibs/minecraft"
                 "/clientlibs/main/resources/img/menu/menu-buy--reversed.gif"
@@ -517,7 +515,7 @@ class Info(commands.Cog):
             )
             embed.add_field(name=version, value=_(
                 "Type: `{type}`\nRelease: `{released}`\nPackage URL: [link]({package_url})\nMinecraft Wiki: [link]({wiki})"
-            ).format(type=version_data["type"], released = datetime.strptime(version_data["releaseTime"], format), package_url=version_data["url"], wiki="https://minecraft.gamepedia.com/Java_Edition_{_version}"))
+            ).format(type=version_data["type"], released = datetime.strptime(version_data["releaseTime"], format), package_url=version_data["url"], wiki="https://minecraft.fandom.com/Java_Edition_{_version}"))
         else:
             embed.set_author(
                 name=_("Minecraft Java Edition Versions"),
@@ -532,7 +530,7 @@ class Info(commands.Cog):
                     "ID: `{id}`\n"
                     "Released: `{released}`\n"
                     "Wiki: [link]({link})"
-                ).format(releases=len(versions[_version]), id=versions[_version][-1]["id"], released=datetime.strptime(versions[_version][-1]["releaseTime"], format), link=f"https://minecraft.gamepedia.com/Java_Edition_{_version}"))
+                ).format(releases=len(versions[_version]), id=versions[_version][-1]["id"], released=datetime.strptime(versions[_version][-1]["releaseTime"], format), link=f"https://minecraft.fandom.com/Java_Edition_{_version}"))
         await ctx.send(embed=embed)
 
     @commands.command()
