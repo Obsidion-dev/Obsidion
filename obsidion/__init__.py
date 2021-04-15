@@ -3,8 +3,6 @@ import asyncio as _asyncio
 import logging
 import os
 import sys as _sys
-from importlib.metadata import PackageNotFoundError
-from importlib.metadata import version
 
 # Start logging
 
@@ -21,15 +19,8 @@ __all__ = [
     "_update_event_loop_policy",
 ]
 
-try:
-    __version__ = version(__name__)
-    log.info("Succesfully loaded bot version: %s", __version__)
-except PackageNotFoundError:
-    __version__ = "unknown"
-    log.warning(
-        'Unable to load bot version, using "unknown", '
-        + "please check your pyproject.toml file"
-    )
+__version__ = "1.0.0"
+log.info("Succesfully loaded bot version: %s", __version__)
 
 # check wether the bot can run
 if _sys.version_info < MIN_PYTHON_VERSION:
@@ -53,7 +44,7 @@ def _update_event_loop_policy() -> None:
         try:
             import uvloop as _uvloop
         except ImportError:
-            log.info(
+            log.warning(
                 "Unable to set event loop to use uvloop, using slower default instead."
             )
             pass
