@@ -81,7 +81,6 @@ class Core(commands.Cog):
         embed.add_field(name="Python", value=python_version)
         embed.add_field(name="discord.py", value=dpy_version)
         embed.add_field(name=("Obsidion version"), value=obsidion_version)
-        embed.add_field(name=("Docker hub image"), value=obsidion_version)
         embed.add_field(name=("About Obsidion"), value=about, inline=False)
 
         embed.set_footer(
