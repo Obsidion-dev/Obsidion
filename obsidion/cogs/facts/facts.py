@@ -7,6 +7,8 @@ from discord.ext import commands
 from obsidion.core import get_settings
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
+from discord_slash import cog_ext
+from discord_slash.utils.manage_commands import create_option
 
 log = logging.getLogger(__name__)
 
@@ -49,9 +51,27 @@ class Facts(commands.Cog):
         embed.add_field(name=_("harvestTools"), value="\n".join(data["harvestTools"]))
         await ctx.send(embed=embed)
 
-    # @commands.command()
-    async def item(self, ctx, id: Union[str, int]):
-        pass
+    @cog_ext.cog_slash(
+        name="block",
+        options=[
+            create_option(
+                name="name",
+                description="Name of block.",
+                option_type=3,
+                required=True,
+            ),
+            create_option(
+                name="version",
+                description="Minecraft version.",
+                option_type=3,
+                required=False,
+            ),
+        ],
+    )
+    async def slash_block(self, ctx, name: str, version: str = "1.16.5"):
+        await ctx.defer()
+        await self.block(ctx, name, version)
+
 
     @commands.command()
     async def entity(self, ctx, name: str,  version: Optional[str] = "1.16.5"):
@@ -77,6 +97,27 @@ class Facts(commands.Cog):
         embed.add_field(name=_("type"), value=data["type"])
         embed.add_field(name=_("category"), value=data["category"])
         await ctx.send(embed=embed)
+
+    @cog_ext.cog_slash(
+        name="entity",
+        options=[
+            create_option(
+                name="name",
+                description="Name of entity.",
+                option_type=3,
+                required=True,
+            ),
+            create_option(
+                name="version",
+                description="Minecraft version.",
+                option_type=3,
+                required=False,
+            ),
+        ],
+    )
+    async def slash_entity(self, ctx, name: str, version: str = "1.16.5"):
+        await ctx.defer()
+        await self.entity(ctx, name, version)
 
     @commands.command()
     async def biome(self, ctx, name: str, version: Optional[str] = "1.16.5"):
@@ -111,6 +152,27 @@ class Facts(commands.Cog):
         embed.add_field(name=_("Precipitation"), value=data["precipitation"])
         await ctx.send(embed=embed)
 
+    @cog_ext.cog_slash(
+        name="biome",
+        options=[
+            create_option(
+                name="name",
+                description="Name of biome.",
+                option_type=3,
+                required=True,
+            ),
+            create_option(
+                name="version",
+                description="Minecraft version.",
+                option_type=3,
+                required=False,
+            ),
+        ],
+    )
+    async def slash_biome(self, ctx, name: str, version: str = "1.16.5"):
+        await ctx.defer()
+        await self.biome(ctx, name, version)
+
     @commands.command()
     async def effect(self, ctx, name: str, version: Optional[str] = "1.16.5"):
         params = (
@@ -134,25 +196,24 @@ class Facts(commands.Cog):
         embed.add_field(name=_("type"), value=data["type"])
         await ctx.send(embed=embed)
 
-    @commands.command()
-    async def recipedata(self, ctx, name: str, version: Optional[str] = "1.16.5"):
-        params = (
-                {"name": name.capitalize(),"version": version}
-            )
-        async with self.bot.http_session.get(
-            f"{get_settings().API_URL}/info/effect", params=params
-        ) as resp:
-            if resp.status == 200:
-                data = await resp.json()
-            else:
-                await ctx.send("Could not find biome")
-                return
-    
-        embed = discord.Embed(colour=self.bot.color)
-        embed.set_author(
-                name=data["displayName"],
-                url=f"https://minecraft.fandom.com/{name}")
-        embed.add_field(name=_("Display Name"), value=data["displayName"])
-        embed.add_field(name=_("ID"), value=data["id"])
-        embed.add_field(name=_("type"), value=data["type"])
-        await ctx.send(embed=embed)
+    @cog_ext.cog_slash(
+        name="effect",
+        options=[
+            create_option(
+                name="name",
+                description="Name of effect.",
+                option_type=3,
+                required=True,
+            ),
+            create_option(
+                name="version",
+                description="Minecraft version.",
+                option_type=3,
+                required=False,
+            ),
+        ],
+    )
+    async def slash_effect(self, ctx, name: str, version: str = "1.16.5"):
+        await ctx.defer()
+        await self.effect(ctx, name, version)
+
