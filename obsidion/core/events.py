@@ -194,6 +194,7 @@ class Events(commands.Cog):
             if isinstance(error.original, discord.errors.HTTPException):
                 if error.original.code == 50035:
                     await ctx.send("Invalid input, too long.")
+                    return
             elif isinstance(error.original, PlayerNotExist):
                 await ctx.reply(
                     _(
