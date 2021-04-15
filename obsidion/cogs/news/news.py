@@ -41,7 +41,7 @@ class News(commands.Cog):
             else:
                 return None
 
-        embed = discord.Embed()
+        embed = discord.Embed(colour=self.bot.color)
         embed.set_author(name="Mojang service downtime")
         em = 0
         for service in data:
@@ -68,7 +68,10 @@ class News(commands.Cog):
 
         time = datetime.fromtimestamp(mktime(latest_post["published_parsed"]), pytz.utc)
 
-        if time < self.last_media_data:
+        if time <= self.last_media_data:
+            print(time)
+            print(self.last_media_data)
+            print(2)
             return None
 
         async with self.bot.http_session.get(latest_post["id"]) as resp:
@@ -122,7 +125,10 @@ class News(commands.Cog):
 
         format = "%Y-%m-%dT%H:%M:%S%z"
         time = datetime.strptime(last_release["time"], format)
-        if time < self.last_java_version_data:
+        if time <= self.last_java_version_data:
+            print(time)
+            print(self.last_java_version_data)
+            print(1)
             return None
 
         if last_release["type"] != "snapshot":
@@ -140,7 +146,7 @@ class News(commands.Cog):
         embed.add_field(
             name=_("Minecraft Wiki"),
             value=_(
-                "[Minecraft Wiki](https://minecraft.gamepedia.com/Java_Edition_{id})"
+                "[Minecraft Wiki](https://minecraft.fandom.com/Java_Edition_{id})"
             ).format(id=last_release["id"]),
         )
 
@@ -150,7 +156,7 @@ class News(commands.Cog):
         # create title
         embed.set_author(
             name=_("New Minecraft Java Edition Snapshot"),
-            url=f"https://minecraft.gamepedia.com/Java_Edition_{last_release['id']}",
+            url=f"https://minecraft.fandom.com/Java_Edition_{last_release['id']}",
             icon_url=(
                 "https://www.minecraft.net/etc.clientlibs/minecraft"
                 "/clientlibs/main/resources/img/menu/menu-buy--reversed.gif"
