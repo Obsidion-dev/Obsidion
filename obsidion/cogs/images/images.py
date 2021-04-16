@@ -24,7 +24,7 @@ class Images(commands.Cog):
         """Init."""
         self.bot = bot
 
-    # @commands.command()
+    @commands.command()
     async def achievement(
         self, ctx, block_name: str, title: str, *, text: str
     ) -> None:
@@ -61,104 +61,6 @@ class Images(commands.Cog):
         embed.set_image(
             url=(
                 f"{get_settings().API_URL}/images/sign?line1={line1}&line2={line2}&line3={line3}&line4={line4}"
-            )
-        )
-        await ctx.send(embed=embed)
-
-    # @commads.command()
-    async def book(self, ctx):
-        pass
-        embed = discord.Embed(color=self.bot.color)
-        embed.set_author(
-            name=_("Obsidion Sign Generator"), icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=(
-                f"{get_settings().API_URL}/images/sign?line1={line1}&line2={line2}&line3={line3}&line4={line4}"
-            )
-        )
-        await ctx.send(embed=embed)
-
-    # @commads.command()
-    async def death(self, ctx):
-        pass
-        embed = discord.Embed(color=self.bot.color)
-        embed.set_author(
-            name=_("Obsidion Sign Generator"), icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=(
-                f"{get_settings().API_URL}/images/death?line1={line1}&line2={line2}&line3={line3}&line4={line4}"
-            )
-        )
-        await ctx.send(embed=embed)
-
-    # @commads.command()
-    async def splashscreen(self, ctx):
-        pass
-        embed = discord.Embed(color=self.bot.color)
-        embed.set_author(
-            name=_("Obsidion Sign Generator"), icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=(
-                f"{get_settings().API_URL}/images/splashscreen?line1={line1}&line2={line2}&line3={line3}&line4={line4}"
-            )
-        )
-        await ctx.send(embed=embed)
-
-    # @commads.command()
-    async def motd(self, ctx):
-        pass
-        embed = discord.Embed(color=self.bot.color)
-        embed.set_author(
-            name=_("Obsidion Sign Generator"), icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=(
-                f"{get_settings().API_URL}/images/motd?line1={line1}&line2={line2}&line3={line3}&line4={line4}"
-            )
-        )
-        await ctx.send(embed=embed)
-
-    # @commads.command()
-    async def recipe(self, ctx):
-        pass
-        embed = discord.Embed(color=self.bot.color)
-        embed.set_author(
-            name=_("Obsidion Sign Generator"), icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=(
-                f"{get_settings().API_URL}/images/recipe?line1={line1}&line2={line2}&line3={line3}&line4={line4}"
-            )
-        )
-        await ctx.send(embed=embed)
-
-    # @commads.command()
-    async def banner(self, ctx):
-        pass
-        embed = discord.Embed(color=self.bot.color)
-        embed.set_author(
-            name=_("Obsidion Sign Generator"), icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=(
-                f"{get_settings().API_URL}/images/banner?line1={line1}&line2={line2}&line3={line3}&line4={line4}"
-            )
-        )
-        await ctx.send(embed=embed)
-
-    # @commads.command()
-    async def image(self, ctx):
-        pass
-        embed = discord.Embed(color=self.bot.color)
-        embed.set_author(
-            name=_("Obsidion Sign Generator"), icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=(
-                f"{get_settings().API_URL}/images/image?line1={line1}&line2={line2}&line3={line3}&line4={line4}"
             )
         )
         await ctx.send(embed=embed)
