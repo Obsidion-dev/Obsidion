@@ -1,5 +1,4 @@
 """Obsidion Minecraft Discord Bot."""
-import asyncio as _asyncio
 import logging
 import os
 import sys as _sys
@@ -49,5 +48,5 @@ def _update_event_loop_policy() -> None:
             )
             pass
         else:
+            _uvloop.install()
             log.info("Set event loop to use uvloop")
-            _asyncio.set_event_loop_policy(_uvloop.EventLoopPolicy())
