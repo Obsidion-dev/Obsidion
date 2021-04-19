@@ -3,7 +3,7 @@ import io
 import json
 import logging
 from datetime import datetime
-from typing import Optional, Tuple
+from typing import Optional, Tuple, Union
 import base64
 import pytz
 from time import mktime
@@ -14,7 +14,7 @@ from discord.ext import commands
 from obsidion.core import get_settings
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
-from discord_slash import cog_ext
+from discord_slash import cog_ext, SlashContext
 from discord_slash.utils.manage_commands import create_option
 import feedparser
 
@@ -33,7 +33,7 @@ class Info(commands.Cog):
     @commands.command(
         aliases=["whois", "p", "names", "namehistory", "pastnames", "namehis"]
     )
-    async def profile(self, ctx, username: Optional[str] = None) -> None:
+    async def profile(self, ctx: Union[commands.Context, SlashContext], username: Optional[str] = None) -> None:
         """View a players Minecraft UUID, Username history and skin."""
         await ctx.channel.trigger_typing()
         profile_info = await self.bot.mojang_player(ctx.author, username)
@@ -117,7 +117,7 @@ class Info(commands.Cog):
             )
         ],
     )
-    async def slash_profile(self, ctx, username: str = None):
+    async def slash_profile(self, ctx: SlashContext, username: str = None) -> None:
         await ctx.defer()
         await self.profile(ctx, username)
 
@@ -133,7 +133,7 @@ class Info(commands.Cog):
 
     @commands.command(aliases=["servers", "s"])
     async def server(
-        self, ctx, address: Optional[str] = None, port: Optional[int] = None
+        self, ctx: Union[commands.Context, SlashContext], address: Optional[str] = None, port: Optional[int] = None
     ):
         """Minecraft server info."""
         await ctx.channel.trigger_typing()
@@ -214,12 +214,12 @@ class Info(commands.Cog):
             ),
         ],
     )
-    async def slash_server(self, ctx, address: str = None, port: int = None):
+    async def slash_server(self, ctx: SlashContext, address: str = None, port: int = None) -> None:
         await ctx.defer()
         await self.server(ctx, address, port)
 
     @commands.command()
-    async def serverpe(self, ctx, address, port: Optional[int] = None):
+    async def serverpe(self, ctx: Union[commands.Context, SlashContext], address: str, port: Optional[int] = None) -> None:
         await ctx.channel.trigger_typing()
         params = (
             {"server": address} if port is None else {"server": address, "port": port}
@@ -276,12 +276,12 @@ class Info(commands.Cog):
             ),
         ],
     )
-    async def slash_server(self, ctx, address: str, port: int = None):
+    async def slash_server(self, ctx: SlashContext, address: str, port: int = None) -> None:
         await ctx.defer()
         await self.serverpe(ctx, address, port)
 
     @commands.command(aliases=["sales"])
-    async def status(self, ctx) -> None:
+    async def status(self, ctx: Union[commands.Context, SlashContext]) -> None:
         """Check the status of all the Mojang services."""
         await ctx.channel.trigger_typing()
         async with self.bot.http_session.get(
@@ -330,12 +330,12 @@ class Info(commands.Cog):
         await ctx.send(embed=embed)
 
     @cog_ext.cog_slash(name="status")
-    async def slash_status(self, ctx):
+    async def slash_status(self, ctx: SlashContext) -> None:
         await ctx.defer()
         await self.status(ctx)
 
     @commands.command()
-    async def wiki(self, ctx, *, query: str) -> None:
+    async def wiki(self, ctx: Union[commands.Context, SlashContext], *, query: str) -> None:
         """Get an article from the minecraft wiki."""
         await ctx.channel.trigger_typing()
 
@@ -406,12 +406,12 @@ class Info(commands.Cog):
             )
         ],
     )
-    async def slash_wiki(self, ctx, query: str):
+    async def slash_wiki(self, ctx: SlashContext, query: str) -> None:
         await ctx.defer()
         await self.wiki(ctx, query)
 
     #@commands.command()
-    async def mcbug(self, ctx, bug: str) -> None:
+    async def mcbug(self, ctx: Union[commands.Context, SlashContext], bug: str) -> None:
         """Gets info on a bug from bugs.mojang.com."""
         await ctx.channel.trigger_typing()
         await ctx.send(f"https://bugs.mojang.com/rest/api/latest/issue/{bug}")
@@ -477,7 +477,7 @@ class Info(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
-    async def version(self, ctx, version=None):
+    async def version(self, ctx: Union[commands.Context, SlashContext], version: Optional[str]=None) -> None:
         await ctx.channel.trigger_typing()
         async with self.bot.http_session.get(
             "https://launchermeta.mojang.com/mc/game/version_manifest.json"
@@ -534,7 +534,7 @@ class Info(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
-    async def news(self, ctx):
+    async def news(self, ctx: Union[commands.Context, SlashContext]) -> None:
         await ctx.channel.trigger_typing()
         async with self.bot.http_session.get("https://www.minecraft.net/en-us/feeds/community-content/rss") as resp:
             text = await resp.text()
