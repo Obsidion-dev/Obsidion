@@ -3,14 +3,14 @@ import json
 import logging
 from datetime import datetime
 from random import choice
-from typing import List
+from typing import List, Union
 from discord_slash.utils.manage_commands import create_option, create_choice
 
 import discord
 from discord.ext import commands
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
-from discord_slash import cog_ext
+from discord_slash import cog_ext, SlashContext
 
 
 log = logging.getLogger(__name__)

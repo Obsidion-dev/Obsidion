@@ -1,7 +1,7 @@
 """Images cog."""
 import asyncio
 import logging
-from typing import Optional
+from typing import Optional, Union
 
 import discord
 from babel import Locale as BabelLocale
@@ -31,7 +31,7 @@ class Config(commands.Cog):
     @commands.command(aliases=["serverprefixes"])
     @commands.has_guild_permissions(manage_guild=True)
     @commands.guild_only()
-    async def prefix(self, ctx, _prefix: Optional[str]):
+    async def prefix(self, ctx: Union[commands.Context, SlashContext], _prefix: Optional[str]):
         """Sets Obsidion's server prefix(es)."""
         if not _prefix:
             await ctx.bot.set_prefixes(guild=ctx.guild)
@@ -43,7 +43,7 @@ class Config(commands.Cog):
     @cog_ext.cog_slash(name="prefix")
     @commands.has_guild_permissions(manage_guild=True)
     @commands.guild_only()
-    async def slash_prefix(self, ctx, _prefix: Optional[str]):
+    async def slash_prefix(self, ctx: SlashContext, _prefix: Optional[str]) -> None:
         """Sets Obsidion's server prefix(es)."""
         await ctx.defer()
         await self.prefix(_prefix)
@@ -51,7 +51,7 @@ class Config(commands.Cog):
     @commands.command()
     @commands.guild_only()
     @commands.has_guild_permissions(manage_guild=True)
-    async def locale(self, ctx, language_code: str):
+    async def locale(self, ctx: Union[commands.Context, SlashContext], language_code: str):
         """
         Changes the bot's locale in this server.
 
@@ -89,7 +89,7 @@ class Config(commands.Cog):
     @cog_ext.cog_slash(name="locale")
     @commands.has_guild_permissions(manage_guild=True)
     @commands.guild_only()
-    async def slash_locale(self, ctx, language_code: str):
+    async def slash_locale(self, ctx: SlashContext, language_code: str) -> None:
         """Changes the bot's locale in this server."""
         await ctx.defer()
         await self.locale(language_code)
@@ -97,7 +97,7 @@ class Config(commands.Cog):
     @commands.command(aliases=["region"])
     @commands.has_guild_permissions(manage_guild=True)
     @commands.guild_only()
-    async def regionalformat(self, ctx, language_code: str = None):
+    async def regionalformat(self, ctx: Union[commands.Context, SlashContext], language_code: str = None) -> None:
         """
         Changes bot's regional format in this server. This
         is used for formatting date, time and numbers.
@@ -146,19 +146,19 @@ class Config(commands.Cog):
     @cog_ext.cog_slash(name="regionalformat")
     @commands.has_guild_permissions(manage_guild=True)
     @commands.guild_only()
-    async def slash_regionalformat(self, ctx, language_code: str = None):
+    async def slash_regionalformat(self, ctx: SlashContext, language_code: str = None) -> None:
         """Changes bot's regional format in this server."""
         await ctx.defer()
         await self.regionalformat(language_code)
 
     @commands.group()
-    async def account(self, ctx) -> None:
+    async def account(self, ctx: commands.Context) -> None:
         """Link Minecraft account to Discord account."""
         if ctx.invoked_subcommand is None:
             await ctx.send_help(ctx.command)
 
     @account.command(name="link")
-    async def account_link(self, ctx, username: str) -> None:
+    async def account_link(self, ctx: commands.Context, username: str) -> None:
         """Link account to discord account."""
         await ctx.channel.trigger_typing()
         profile_info = await self.bot.mojang_player(ctx.author, username)
@@ -168,7 +168,7 @@ class Config(commands.Cog):
         await ctx.reply(f"Your account has been linked to {username}")
 
     @account.command(name="unlink")
-    async def account_unlink(self, ctx) -> None:
+    async def account_unlink(self, ctx: commands.Context) -> None:
         """Unlink minecraft account from discord account."""
         await self.bot._account_cache.set_account(ctx.author, None)
         await ctx.reply("Your account has been unlinked from any minecraft account")
@@ -176,19 +176,19 @@ class Config(commands.Cog):
     @commands.group()
     @commands.has_guild_permissions(manage_guild=True)
     @commands.guild_only()
-    async def serverlink(self, ctx) -> None:
+    async def serverlink(self, ctx: commands.Context) -> None:
         """Link Minecraft server to Discord guild."""
         if ctx.invoked_subcommand is None:
             await ctx.send_help(ctx.command)
 
     @serverlink.command(name="link")
-    async def serverlink_link(self, ctx, server: str) -> None:
+    async def serverlink_link(self, ctx:commands.Context, server: str) -> None:
         """Link Minecraft server to Discord guild."""
         await self.bot._guild_cache.set_server(ctx.guild, server)
         await ctx.reply(f"Your guild has been linked to {server}")
 
     @serverlink.command(name="unlink")
-    async def serverlink_unlink(self, ctx) -> None:
+    async def serverlink_unlink(self, ctx: commands.Context) -> None:
         """Unlink minecraft server from discord guild."""
         await self.bot._guild_cache.set_server(ctx.guild, None)
         await ctx.reply("Your guild has been unlinked from any minecraft server")
@@ -196,13 +196,13 @@ class Config(commands.Cog):
     @commands.group()
     @commands.has_guild_permissions(manage_guild=True)
     @commands.guild_only()
-    async def autopost(self, ctx) -> None:
+    async def autopost(self, ctx: commands.Context) -> None:
         """Link Minecraft account to Discord account."""
         if ctx.invoked_subcommand is None:
             await ctx.send_help(ctx.command)
 
     @autopost.group(name="setup")
-    async def autopost_setup(self, ctx) -> None:
+    async def autopost_setup(self, ctx: commands.Context) -> None:
         """Autopost Minecraft News"""
         categories = ("release", "snapshot", "article", "outage")
         cat = {}
@@ -263,13 +263,14 @@ class Config(commands.Cog):
         await ctx.send(embed=embed)
 
     @autopost.group(name="edit")
-    async def autopost_edit(self, ctx) -> None:
+    async def autopost_edit(self, ctx: Union[commands.Context, SlashContext]) -> None:
         """Autopost Minecraft News"""
         categories = ("release", "snapshot", "article", "outage")
         cat = {}
+        await ctx.send("TODO")
 
     @autopost.group(name="settings")
-    async def autopost_settings(self, ctx) -> None:
+    async def autopost_settings(self, ctx: commands.Context) -> None:
         """Autopost Minecraft News"""
         news = await self.bot._guild_cache.get_news(ctx.guild)
         embed = discord.Embed(colour=self.bot.color)
@@ -288,10 +289,10 @@ class Config(commands.Cog):
         await ctx.send(embed=embed)
 
     @autopost.group(name="test")
-    async def autopost_test(self, ctx) -> None:
+    async def autopost_test(self, ctx: commands.Context) -> None:
         """Autopost Minecraft News"""
         news = await self.bot._guild_cache.get_news(ctx.guild)
         for category in news.keys():
             if news[category] is not None:
                 channel = self.bot.get_channel(news[category])
-                await channel.send("test")
+                await channel.send(_("Testing autopot of {category}.").format(category=category))

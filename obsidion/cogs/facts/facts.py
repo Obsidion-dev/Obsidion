@@ -7,7 +7,7 @@ from discord.ext import commands
 from obsidion.core import get_settings
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
-from discord_slash import cog_ext
+from discord_slash import cog_ext, SlashContext
 from discord_slash.utils.manage_commands import create_option
 
 log = logging.getLogger(__name__)
@@ -22,7 +22,7 @@ class Facts(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def block(self, ctx, name: str, version: Optional[str] = "1.16.5"):
+    async def block(self, ctx: Union[SlashContext, commands.Context], name: str, version: Optional[str] = "1.16.5") -> None:
         params = (
                 {"name_id": name,"version": version}
             )
@@ -68,13 +68,13 @@ class Facts(commands.Cog):
             ),
         ],
     )
-    async def slash_block(self, ctx, name: str, version: str = "1.16.5"):
+    async def slash_block(self, ctx: SlashContext, name: str, version: str = "1.16.5") -> None:
         await ctx.defer()
         await self.block(ctx, name, version)
 
 
     @commands.command()
-    async def entity(self, ctx, name: str,  version: Optional[str] = "1.16.5"):
+    async def entity(self, ctx: Union[SlashContext, commands.Context], name: str,  version: Optional[str] = "1.16.5") -> None:
         params = (
                 {"name": name,"version": version}
             )
@@ -115,12 +115,12 @@ class Facts(commands.Cog):
             ),
         ],
     )
-    async def slash_entity(self, ctx, name: str, version: str = "1.16.5"):
+    async def slash_entity(self, ctx: SlashContext, name: str, version: str = "1.16.5") -> None:
         await ctx.defer()
         await self.entity(ctx, name, version)
 
     @commands.command()
-    async def biome(self, ctx, name: str, version: Optional[str] = "1.16.5"):
+    async def biome(self, ctx: Union[SlashContext, commands.Context], name: str, version: Optional[str] = "1.16.5") -> None:
         params = (
                 {"name": name,"version": version}
             )
@@ -169,12 +169,12 @@ class Facts(commands.Cog):
             ),
         ],
     )
-    async def slash_biome(self, ctx, name: str, version: str = "1.16.5"):
+    async def slash_biome(self, ctx: SlashContext, name: str, version: str = "1.16.5") -> None:
         await ctx.defer()
         await self.biome(ctx, name, version)
 
     @commands.command()
-    async def effect(self, ctx, name: str, version: Optional[str] = "1.16.5"):
+    async def effect(self, ctx: Union[SlashContext, commands.Context], name: str, version: Optional[str] = "1.16.5") -> None:
         params = (
                 {"name": name.capitalize(),"version": version}
             )
@@ -213,7 +213,7 @@ class Facts(commands.Cog):
             ),
         ],
     )
-    async def slash_effect(self, ctx, name: str, version: str = "1.16.5"):
+    async def slash_effect(self, ctx: SlashContext, name: str, version: str = "1.16.5") -> None:
         await ctx.defer()
         await self.effect(ctx, name, version)
 
