@@ -4,6 +4,7 @@ from typing import List
 from typing import Optional
 from typing import Union
 from uuid import UUID
+
 import discord
 
 from .config import get_settings

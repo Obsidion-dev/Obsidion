@@ -1,14 +1,17 @@
 import copy
 import logging
 import typing
-import discord
-from inspect import iscoroutinefunction, getdoc
 from contextlib import suppress
+from inspect import getdoc
+from inspect import iscoroutinefunction
+
+import discord
 from discord.ext import commands
+
+from . import context
+from . import error
 from . import http
 from . import model
-from . import error
-from . import context
 from .utils import manage_commands
 
 

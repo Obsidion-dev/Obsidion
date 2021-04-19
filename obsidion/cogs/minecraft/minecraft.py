@@ -1,11 +1,13 @@
 """Minecraft cog."""
 import logging
+from typing import Union
+
 from discord.ext import commands
+from discord_slash import cog_ext
+from discord_slash import SlashContext
+from discord_slash.utils.manage_commands import create_option
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
-from discord_slash import cog_ext, SlashContext
-from discord_slash.utils.manage_commands import create_option
-from typing import Union
 
 log = logging.getLogger(__name__)
 
@@ -19,7 +21,9 @@ class Minecraft(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def tick2second(self, ctx: Union[commands.Context, SlashContext], ticks: int) -> None:
+    async def tick2second(
+        self, ctx: Union[commands.Context, SlashContext], ticks: int
+    ) -> None:
         """Convert seconds to tick."""
         if ticks <= 0:
             await ctx.send("Input must be greater then 0")
@@ -35,20 +39,25 @@ class Minecraft(commands.Cog):
             )
         )
 
-    @cog_ext.cog_slash(name="tick2second",options=[
+    @cog_ext.cog_slash(
+        name="tick2second",
+        options=[
             create_option(
                 name="ticks",
                 description="Amount of seconds in that amount of ticks.",
                 option_type=4,
                 required=True,
             )
-        ],)
+        ],
+    )
     async def slash_tick2second(self, ctx: SlashContext, ticks: int) -> None:
         await ctx.defer()
         await self.tick2second(ctx, ticks)
 
     @commands.command()
-    async def second2tick(self, ctx: Union[commands.Context, SlashContext], seconds: float) -> None:
+    async def second2tick(
+        self, ctx: Union[commands.Context, SlashContext], seconds: float
+    ) -> None:
         """Convert ticks to seconds."""
         if seconds <= 0:
             await ctx.send("Input must be greater then 0")
@@ -59,21 +68,26 @@ class Minecraft(commands.Cog):
                 ticks=ticks, seconds=seconds
             )
         )
-    
-    @cog_ext.cog_slash(name="second2tick",options=[
+
+    @cog_ext.cog_slash(
+        name="second2tick",
+        options=[
             create_option(
                 name="seconds",
                 description="Amount of ticks in that amount of seconds.",
                 option_type=4,
                 required=True,
             )
-        ],)
+        ],
+    )
     async def slash_second2tick(self, ctx: SlashContext, seconds: float) -> None:
         await ctx.defer()
         await self.second2tick(ctx, seconds)
 
     @commands.command()
-    async def seed(self, ctx: Union[commands.Context, SlashContext], *, text: str) -> None:
+    async def seed(
+        self, ctx: Union[commands.Context, SlashContext], *, text: str
+    ) -> None:
         """Convert text to minecraft numerical seed."""
         try:
             int(text)
@@ -86,14 +100,17 @@ class Minecraft(commands.Cog):
             h = (31 * h + ord(c)) & 0xFFFFFFFF
         await ctx.send(((h + 0x80000000) & 0xFFFFFFFF) - 0x80000000)
 
-    @cog_ext.cog_slash(name="seed",options=[
+    @cog_ext.cog_slash(
+        name="seed",
+        options=[
             create_option(
                 name="seed",
                 description="Seed in text format to see numerical representation",
                 option_type=3,
                 required=True,
             )
-        ],)
+        ],
+    )
     async def slash_seed(self, ctx: SlashContext, *, text: str) -> None:
         await ctx.defer()
         await self.seed(ctx, text)

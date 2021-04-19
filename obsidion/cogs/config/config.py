@@ -1,20 +1,22 @@
 """Images cog."""
 import asyncio
 import logging
-from typing import Optional, Union
+from typing import Optional
+from typing import Union
 
 import discord
 from babel import Locale as BabelLocale
 from babel import UnknownLocaleError
 from discord.ext import commands
+from discord_slash import cog_ext
+from discord_slash import SlashContext
+from discord_slash.utils.manage_commands import create_option
 from obsidion import __version__
 from obsidion.core import i18n
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
 from obsidion.core.utils.chat_formatting import pagify
 from obsidion.core.utils.predicates import MessagePredicate
-from discord_slash import cog_ext, SlashContext
-from discord_slash.utils.manage_commands import create_option
 
 
 log = logging.getLogger(__name__)
@@ -31,7 +33,9 @@ class Config(commands.Cog):
     @commands.command(aliases=["serverprefixes"])
     @commands.has_guild_permissions(manage_guild=True)
     @commands.guild_only()
-    async def prefix(self, ctx: Union[commands.Context, SlashContext], _prefix: Optional[str]):
+    async def prefix(
+        self, ctx: Union[commands.Context, SlashContext], _prefix: Optional[str]
+    ):
         """Sets Obsidion's server prefix(es)."""
         if not _prefix:
             await ctx.bot.set_prefixes(guild=ctx.guild)
@@ -51,7 +55,9 @@ class Config(commands.Cog):
     @commands.command()
     @commands.guild_only()
     @commands.has_guild_permissions(manage_guild=True)
-    async def locale(self, ctx: Union[commands.Context, SlashContext], language_code: str):
+    async def locale(
+        self, ctx: Union[commands.Context, SlashContext], language_code: str
+    ):
         """
         Changes the bot's locale in this server.
 
@@ -97,7 +103,9 @@ class Config(commands.Cog):
     @commands.command(aliases=["region"])
     @commands.has_guild_permissions(manage_guild=True)
     @commands.guild_only()
-    async def regionalformat(self, ctx: Union[commands.Context, SlashContext], language_code: str = None) -> None:
+    async def regionalformat(
+        self, ctx: Union[commands.Context, SlashContext], language_code: str = None
+    ) -> None:
         """
         Changes bot's regional format in this server. This
         is used for formatting date, time and numbers.
@@ -146,7 +154,9 @@ class Config(commands.Cog):
     @cog_ext.cog_slash(name="regionalformat")
     @commands.has_guild_permissions(manage_guild=True)
     @commands.guild_only()
-    async def slash_regionalformat(self, ctx: SlashContext, language_code: str = None) -> None:
+    async def slash_regionalformat(
+        self, ctx: SlashContext, language_code: str = None
+    ) -> None:
         """Changes bot's regional format in this server."""
         await ctx.defer()
         await self.regionalformat(language_code)
@@ -182,7 +192,7 @@ class Config(commands.Cog):
             await ctx.send_help(ctx.command)
 
     @serverlink.command(name="link")
-    async def serverlink_link(self, ctx:commands.Context, server: str) -> None:
+    async def serverlink_link(self, ctx: commands.Context, server: str) -> None:
         """Link Minecraft server to Discord guild."""
         await self.bot._guild_cache.set_server(ctx.guild, server)
         await ctx.reply(f"Your guild has been linked to {server}")
@@ -295,4 +305,6 @@ class Config(commands.Cog):
         for category in news.keys():
             if news[category] is not None:
                 channel = self.bot.get_channel(news[category])
-                await channel.send(_("Testing autopot of {category}.").format(category=category))
+                await channel.send(
+                    _("Testing autopot of {category}.").format(category=category)
+                )

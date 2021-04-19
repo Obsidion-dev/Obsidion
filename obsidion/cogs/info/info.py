@@ -1,22 +1,24 @@
 """Images cog."""
+import base64
 import io
 import json
 import logging
 from datetime import datetime
-from typing import Optional, Tuple, Union
-import base64
-import pytz
 from time import mktime
-
+from typing import Optional
+from typing import Tuple
+from typing import Union
 
 import discord
+import feedparser
+import pytz
 from discord.ext import commands
+from discord_slash import cog_ext
+from discord_slash import SlashContext
+from discord_slash.utils.manage_commands import create_option
 from obsidion.core import get_settings
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
-from discord_slash import cog_ext, SlashContext
-from discord_slash.utils.manage_commands import create_option
-import feedparser
 
 
 log = logging.getLogger(__name__)
@@ -33,7 +35,9 @@ class Info(commands.Cog):
     @commands.command(
         aliases=["whois", "p", "names", "namehistory", "pastnames", "namehis"]
     )
-    async def profile(self, ctx: Union[commands.Context, SlashContext], username: Optional[str] = None) -> None:
+    async def profile(
+        self, ctx: Union[commands.Context, SlashContext], username: Optional[str] = None
+    ) -> None:
         """View a players Minecraft UUID, Username history and skin."""
         await ctx.channel.trigger_typing()
         profile_info = await self.bot.mojang_player(ctx.author, username)
@@ -133,7 +137,10 @@ class Info(commands.Cog):
 
     @commands.command(aliases=["servers", "s"])
     async def server(
-        self, ctx: Union[commands.Context, SlashContext], address: Optional[str] = None, port: Optional[int] = None
+        self,
+        ctx: Union[commands.Context, SlashContext],
+        address: Optional[str] = None,
+        port: Optional[int] = None,
     ):
         """Minecraft server info."""
         await ctx.channel.trigger_typing()
@@ -214,12 +221,19 @@ class Info(commands.Cog):
             ),
         ],
     )
-    async def slash_server(self, ctx: SlashContext, address: str = None, port: int = None) -> None:
+    async def slash_server(
+        self, ctx: SlashContext, address: str = None, port: int = None
+    ) -> None:
         await ctx.defer()
         await self.server(ctx, address, port)
 
     @commands.command()
-    async def serverpe(self, ctx: Union[commands.Context, SlashContext], address: str, port: Optional[int] = None) -> None:
+    async def serverpe(
+        self,
+        ctx: Union[commands.Context, SlashContext],
+        address: str,
+        port: Optional[int] = None,
+    ) -> None:
         await ctx.channel.trigger_typing()
         params = (
             {"server": address} if port is None else {"server": address, "port": port}
@@ -232,30 +246,30 @@ class Info(commands.Cog):
             else:
                 await ctx.send("Server could not be reached.")
                 return
-        embed = discord.Embed(title=_("Bedrock Server: {address}").format(address=address), color=self.bot.color)
+        embed = discord.Embed(
+            title=_("Bedrock Server: {address}").format(address=address),
+            color=self.bot.color,
+        )
         embed.add_field(name=_("Description"), value="\n".join(data["motd"]))
 
         embed.add_field(
             name=_("Players"),
-            value=_(
-                "Online: `{player_count}` \n "
-                "Maximum: `{player_max}`"
-            ).format(player_count=data["player_count"], player_max=data["player_max"]),
+            value=_("Online: `{player_count}` \n " "Maximum: `{player_max}`").format(
+                player_count=data["player_count"], player_max=data["player_max"]
+            ),
         )
         embed.add_field(
             name=_("Version"),
             value=_(
-                "Bedrock Edition \n Running: `{version}` \n"
-                "Protocol: `{protocol}`"
-            ).format(version=data['protocol_version'],protocol=data['protocol_name']),
+                "Bedrock Edition \n Running: `{version}` \n" "Protocol: `{protocol}`"
+            ).format(version=data["protocol_version"], protocol=data["protocol_name"]),
             inline=False,
         )
         embed.add_field(
             name=_("Info"),
-            value=_(
-                "Gamemode: `{gamemode}` \n"
-                "Latency: `{latency}`"
-            ).format(version=data['gamemode'],protocol=data['latency']),
+            value=_("Gamemode: `{gamemode}` \n" "Latency: `{latency}`").format(
+                version=data["gamemode"], protocol=data["latency"]
+            ),
         )
         await ctx.send(embed=embed)
 
@@ -276,7 +290,9 @@ class Info(commands.Cog):
             ),
         ],
     )
-    async def slash_server(self, ctx: SlashContext, address: str, port: int = None) -> None:
+    async def slash_server(
+        self, ctx: SlashContext, address: str, port: int = None
+    ) -> None:
         await ctx.defer()
         await self.serverpe(ctx, address, port)
 
@@ -335,7 +351,9 @@ class Info(commands.Cog):
         await self.status(ctx)
 
     @commands.command()
-    async def wiki(self, ctx: Union[commands.Context, SlashContext], *, query: str) -> None:
+    async def wiki(
+        self, ctx: Union[commands.Context, SlashContext], *, query: str
+    ) -> None:
         """Get an article from the minecraft wiki."""
         await ctx.channel.trigger_typing()
 
@@ -410,7 +428,7 @@ class Info(commands.Cog):
         await ctx.defer()
         await self.wiki(ctx, query)
 
-    #@commands.command()
+    # @commands.command()
     async def mcbug(self, ctx: Union[commands.Context, SlashContext], bug: str) -> None:
         """Gets info on a bug from bugs.mojang.com."""
         await ctx.channel.trigger_typing()
@@ -477,7 +495,9 @@ class Info(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
-    async def version(self, ctx: Union[commands.Context, SlashContext], version: Optional[str]=None) -> None:
+    async def version(
+        self, ctx: Union[commands.Context, SlashContext], version: Optional[str] = None
+    ) -> None:
         await ctx.channel.trigger_typing()
         async with self.bot.http_session.get(
             "https://launchermeta.mojang.com/mc/game/version_manifest.json"
@@ -509,44 +529,68 @@ class Info(commands.Cog):
                 name=_("Minecraft Java Edition {version}").format(version=version),
                 url=f"https://minecraft.fandom.com/Java_Edition_{version}",
                 icon_url=(
-                "https://www.minecraft.net/etc.clientlibs/minecraft"
-                "/clientlibs/main/resources/img/menu/menu-buy--reversed.gif"
-            ),
+                    "https://www.minecraft.net/etc.clientlibs/minecraft"
+                    "/clientlibs/main/resources/img/menu/menu-buy--reversed.gif"
+                ),
             )
-            embed.add_field(name=version, value=_(
-                "Type: `{type}`\nRelease: `{released}`\nPackage URL: [link]({package_url})\nMinecraft Wiki: [link]({wiki})"
-            ).format(type=version_data["type"], released = datetime.strptime(version_data["releaseTime"], format), package_url=version_data["url"], wiki="https://minecraft.fandom.com/Java_Edition_{_version}"))
+            embed.add_field(
+                name=version,
+                value=_(
+                    "Type: `{type}`\nRelease: `{released}`\nPackage URL: [link]({package_url})\nMinecraft Wiki: [link]({wiki})"
+                ).format(
+                    type=version_data["type"],
+                    released=datetime.strptime(version_data["releaseTime"], format),
+                    package_url=version_data["url"],
+                    wiki="https://minecraft.fandom.com/Java_Edition_{_version}",
+                ),
+            )
         else:
             embed.set_author(
                 name=_("Minecraft Java Edition Versions"),
                 icon_url=(
-                "https://www.minecraft.net/etc.clientlibs/minecraft"
-                "/clientlibs/main/resources/img/menu/menu-buy--reversed.gif"
-            )),
+                    "https://www.minecraft.net/etc.clientlibs/minecraft"
+                    "/clientlibs/main/resources/img/menu/menu-buy--reversed.gif"
+                ),
+            ),
             for _version in reversed(versions):
-                embed.add_field(name=_version, value=_(
-                    "Releases: `{releases}`\n"
-                    "**Latest Version**\n"
-                    "ID: `{id}`\n"
-                    "Released: `{released}`\n"
-                    "Wiki: [link]({link})"
-                ).format(releases=len(versions[_version]), id=versions[_version][-1]["id"], released=datetime.strptime(versions[_version][-1]["releaseTime"], format), link=f"https://minecraft.fandom.com/Java_Edition_{_version}"))
+                embed.add_field(
+                    name=_version,
+                    value=_(
+                        "Releases: `{releases}`\n"
+                        "**Latest Version**\n"
+                        "ID: `{id}`\n"
+                        "Released: `{released}`\n"
+                        "Wiki: [link]({link})"
+                    ).format(
+                        releases=len(versions[_version]),
+                        id=versions[_version][-1]["id"],
+                        released=datetime.strptime(
+                            versions[_version][-1]["releaseTime"], format
+                        ),
+                        link=f"https://minecraft.fandom.com/Java_Edition_{_version}",
+                    ),
+                )
         await ctx.send(embed=embed)
 
     @commands.command()
     async def news(self, ctx: Union[commands.Context, SlashContext]) -> None:
         await ctx.channel.trigger_typing()
-        async with self.bot.http_session.get("https://www.minecraft.net/en-us/feeds/community-content/rss") as resp:
+        async with self.bot.http_session.get(
+            "https://www.minecraft.net/en-us/feeds/community-content/rss"
+        ) as resp:
             text = await resp.text()
         data = feedparser.parse(text, "lxml")["entries"][:12]
-        embed=discord.Embed(colour=self.bot.color)
+        embed = discord.Embed(colour=self.bot.color)
         for post in data:
             time = datetime.fromtimestamp(mktime(post["published_parsed"]), pytz.utc)
             format = "%d %m %Y"
             time = datetime.strftime(time, format)
-            embed.add_field(name=post["title"],value=(
-                "Category: `{category}`\n"
-                "Published: `{pub}`\n"
-                "[Article Link]({link})"
-            ).format(category=post["primarytag"],pub=time,link=post["id"]))
+            embed.add_field(
+                name=post["title"],
+                value=(
+                    "Category: `{category}`\n"
+                    "Published: `{pub}`\n"
+                    "[Article Link]({link})"
+                ).format(category=post["primarytag"], pub=time, link=post["id"]),
+            )
         await ctx.send(embed=embed)

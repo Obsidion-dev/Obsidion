@@ -1,13 +1,17 @@
-import typing
 import asyncio
-import discord
+import typing
 from contextlib import suppress
+
+import discord
 from discord.ext import commands
-from . import http
-from . import error
-from . import model
-from discord.ext.commands.core import Group, Command, wrap_callback
+from discord.ext.commands.core import Command
+from discord.ext.commands.core import Group
+from discord.ext.commands.core import wrap_callback
 from discord.ext.commands.errors import CommandError
+
+from . import error
+from . import http
+from . import model
 
 
 class SlashContext:
@@ -232,7 +236,8 @@ class SlashContext:
         else:
             return resp
 
-    async def reply(self,
+    async def reply(
+        self,
         content: str = "",
         *,
         embed: discord.Embed = None,
@@ -244,7 +249,17 @@ class SlashContext:
         hidden: bool = False,
         delete_after: float = None
     ):
-        await self.send(content, embed=embed, embeds=embeds, tts=tts, file=file, files=files, allowed_mentions=allowed_mentions, hidden=hidden, delete_after=delete_after)
+        await self.send(
+            content,
+            embed=embed,
+            embeds=embeds,
+            tts=tts,
+            file=file,
+            files=files,
+            allowed_mentions=allowed_mentions,
+            hidden=hidden,
+            delete_after=delete_after,
+        )
 
     async def send_help(self, command=None):
         """send_help(entity=<bot>)

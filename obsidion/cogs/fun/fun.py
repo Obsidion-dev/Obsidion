@@ -3,14 +3,17 @@ import json
 import logging
 from datetime import datetime
 from random import choice
-from typing import List, Union
-from discord_slash.utils.manage_commands import create_option, create_choice
+from typing import List
+from typing import Union
 
 import discord
 from discord.ext import commands
+from discord_slash import cog_ext
+from discord_slash import SlashContext
+from discord_slash.utils.manage_commands import create_choice
+from discord_slash.utils.manage_commands import create_option
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
-from discord_slash import cog_ext, SlashContext
 
 
 log = logging.getLogger(__name__)
@@ -86,22 +89,22 @@ class Fun(commands.Cog):
     async def buildidea(self, ctx) -> None:
         """Get an idea for a new idea."""
         await ctx.send(
-            _("Here is something cool to build: {b_idea}.").format(b_idea=choice(self.build_ideas_mes))
+            _("Here is something cool to build: {b_idea}.").format(
+                b_idea=choice(self.build_ideas_mes)
+            )
         )
 
     @commands.command(aliases=["idea", "bidea"])
     async def buildidea(self, ctx) -> None:
         """Get an idea for a new idea."""
         await ctx.send(
-            _("Here is something cool to build: {b_idea}.").format(b_idea=choice(self.build_ideas_mes))
+            _("Here is something cool to build: {b_idea}.").format(
+                b_idea=choice(self.build_ideas_mes)
+            )
         )
 
     @commands.command(aliases=["slay"])
-    async def kill(
-        self,
-        ctx,
-        member
-    ) -> None:
+    async def kill(self, ctx, member) -> None:
         """Kill that pesky friend in a fun and stylish way."""
         await ctx.send(choice(self.kill_mes).replace("member", member))
 
@@ -110,37 +113,34 @@ class Fun(commands.Cog):
         self,
         ctx,
         member1,
-        member2= None,
+        member2=None,
     ) -> None:
         """Duel someone."""
         if not member2:
             member2 = ctx.message.author.mention
 
         await ctx.send(
-            choice(self.pvp_mes)
-            .replace("member1", member1)
-            .replace("member2", member2)
+            choice(self.pvp_mes).replace("member1", member1).replace("member2", member2)
         )
-
 
     @commands.command(aliases=["villagerspeak", "villagerspeech", "hmm"])
     async def villager(self, ctx, *, speech: str) -> None:
         """Hmm hm hmmm Hm hmmm hmm."""
-        last_was_alpha = False # Used to detect the start of a word
-        last_was_h = False # Used to prevent 'H's without 'm's
-        last_was_lower_m = False # Used to make "HmmHmm" instead of "HmmMmm"
+        last_was_alpha = False  # Used to detect the start of a word
+        last_was_h = False  # Used to prevent 'H's without 'm's
+        last_was_lower_m = False  # Used to make "HmmHmm" instead of "HmmMmm"
         sentence = ""
-        
+
         for char in speech:
-            
-            if char.isalpha(): # Alphabetical letter -- Replace with 'Hmm'
-                
-                if not last_was_alpha: # First letter of alphabetical string
+
+            if char.isalpha():  # Alphabetical letter -- Replace with 'Hmm'
+
+                if not last_was_alpha:  # First letter of alphabetical string
                     sentence += "H" if char.isupper() else "h"
                     last_was_h = True
                     last_was_lower_m = False
-                
-                else: # Non-first letter
+
+                else:  # Non-first letter
                     if not char.isupper():
                         sentence += "m"
                         last_was_lower_m = True
@@ -154,10 +154,10 @@ class Fun(commands.Cog):
                             sentence += "M"
                             last_was_h = False
                         last_was_lower_m = False
-                
-                last_was_alpha = True # Remember for next potential 'M'
-            
-            else: # Non-alphabetical letters -- Do not replace
+
+                last_was_alpha = True  # Remember for next potential 'M'
+
+            else:  # Non-alphabetical letters -- Do not replace
                 # Add an m after 'H's without 'm's
                 if last_was_h:
                     sentence += "m"
@@ -165,25 +165,28 @@ class Fun(commands.Cog):
                 # Add non-letter character without changing it
                 sentence += char
                 last_was_alpha = False
-        
+
         # If the laster character is an H, add a final 'm'
-        if last_was_h: sentence += "m"
-        
+        if last_was_h:
+            sentence += "m"
+
         # Done
         await ctx.send(sentence)
 
-    @cog_ext.cog_slash(name="villager", options=[
+    @cog_ext.cog_slash(
+        name="villager",
+        options=[
             create_option(
                 name="text",
                 description="Text to translate.",
                 option_type=3,
                 required=True,
             )
-        ],)
+        ],
+    )
     async def slash_villager(self, ctx, *, speech: str):
         await ctx.defer()
         await self.villager(ctx, speech)
-
 
     @commands.command()
     async def enchant(self, ctx, *, msg: str) -> None:

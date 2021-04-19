@@ -1,10 +1,13 @@
-import typing
-import inspect
 import asyncio
-import aiohttp
-from ..error import RequestFailure, IncorrectType
-from ..model import SlashCommandOptionType
+import inspect
+import typing
 from collections.abc import Callable
+
+import aiohttp
+
+from ..error import IncorrectType
+from ..error import RequestFailure
+from ..model import SlashCommandOptionType
 
 
 async def add_slash_command(

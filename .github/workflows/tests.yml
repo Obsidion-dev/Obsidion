@@ -70,4 +70,3 @@ jobs:
       - name: Run Nox
         run: |
           nox --force-color --python=${{ matrix.python-version }}
-

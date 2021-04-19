@@ -4,21 +4,23 @@ import contextlib
 import datetime
 import inspect
 import logging
-from obsidion.core.utils.predicates import MessagePredicate
 import os
 import sys
-from typing import Optional, Union
+from typing import Optional
+from typing import Union
 
 import discord
 from discord.ext import commands
+from discord_slash import cog_ext
+from discord_slash import SlashContext
 from obsidion import __version__
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
+from obsidion.core.utils.predicates import MessagePredicate
 
 from .utils.chat_formatting import box
 from .utils.chat_formatting import humanize_timedelta
 from .utils.chat_formatting import pagify
-from discord_slash import cog_ext, SlashContext
 
 
 log = logging.getLogger("obsidion")
@@ -37,14 +39,13 @@ class Core(commands.Cog):
     @commands.command()
     async def ping(self, ctx: Union[commands.Context, SlashContext]) -> None:
         """Pong."""
-        await ctx.send(_("Pong! ({latency}ms)").format(latency=self.bot.latency*1000))
+        await ctx.send(_("Pong! ({latency}ms)").format(latency=self.bot.latency * 1000))
 
     @cog_ext.cog_slash(name="ping", description="View bot latency.")
     async def slash_ping(self, ctx: SlashContext) -> None:
         """View bot latency."""
         await ctx.defer()
         await self.ping(ctx)
-
 
     @commands.command()
     async def info(self, ctx: Union[commands.Context, SlashContext]) -> None:
@@ -91,14 +92,14 @@ class Core(commands.Cog):
         )
         await ctx.send(embed=embed)
 
-    @cog_ext.cog_slash(name="info",description="View info about Obsidion.")
+    @cog_ext.cog_slash(name="info", description="View info about Obsidion.")
     async def slash_info(self, ctx: SlashContext) -> None:
         """Shows info about Obsidion."""
         await ctx.defer()
         await self.info(ctx)
 
     @commands.command()
-    async def uptime(self, ctx: Union[commands.Context, SlashContext])-> None:
+    async def uptime(self, ctx: Union[commands.Context, SlashContext]) -> None:
         """Shows Obsidion's uptime."""
         since = ctx.bot.uptime.strftime("%Y-%m-%d %H:%M:%S")
         delta = datetime.datetime.utcnow() - self.bot.uptime
@@ -109,7 +110,7 @@ class Core(commands.Cog):
             )
         )
 
-    @cog_ext.cog_slash(name="uptime",description="View Obsidion's uptime.")
+    @cog_ext.cog_slash(name="uptime", description="View Obsidion's uptime.")
     async def slash_uptime(self, ctx: SlashContext) -> None:
         """Shows Obsidion's uptime."""
         await ctx.defer()
@@ -128,7 +129,7 @@ class Core(commands.Cog):
 
         await ctx.send(embed=embed)
 
-    @cog_ext.cog_slash(name="invite",description="Invite the bot to your server.")
+    @cog_ext.cog_slash(name="invite", description="Invite the bot to your server.")
     async def slash_invite(self, ctx: SlashContext) -> None:
         """Invite the bot to your server."""
         await ctx.defer()
@@ -197,7 +198,9 @@ class Core(commands.Cog):
     # Otherwise interfering with the ability for this command
     # to be accessible is also a violation.
     @commands.command(name="licenseinfo", aliases=["license"])
-    async def license_info_command(self, ctx: Union[commands.Context, SlashContext]) -> None:
+    async def license_info_command(
+        self, ctx: Union[commands.Context, SlashContext]
+    ) -> None:
         """
         Get info about Obsidion's licenses.
         """
@@ -216,14 +219,19 @@ class Core(commands.Cog):
 
         await ctx.send(embed=embed)
 
-    @cog_ext.cog_slash(name="licenseinfo",description="Invite the bot to your server.")
+    @cog_ext.cog_slash(name="licenseinfo", description="Invite the bot to your server.")
     async def slash_licenseinfo(self, ctx: SlashContext) -> None:
         """Leaves the current server."""
         await ctx.defer()
         await self.license_info_command(ctx)
 
     @commands.command()
-    async def source(self, ctx: Union[commands.Context, SlashContext], *, command: Optional[str] = None) -> None:
+    async def source(
+        self,
+        ctx: Union[commands.Context, SlashContext],
+        *,
+        command: Optional[str] = None,
+    ) -> None:
         """Displays my full source code or for a specific command.
 
         To display the source code of a subcommand you can separate it by
@@ -265,7 +273,10 @@ class Core(commands.Cog):
         )
         await ctx.send(final_url)
 
-    @cog_ext.cog_slash(name="source",description="Displays my full source code or for a specific command.")
+    @cog_ext.cog_slash(
+        name="source",
+        description="Displays my full source code or for a specific command.",
+    )
     async def slash_source(self, ctx: SlashContext, source: str = None) -> None:
         """Displays my full source code or for a specific command."""
         await ctx.defer()

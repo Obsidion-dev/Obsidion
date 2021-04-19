@@ -86,7 +86,7 @@ A Bunker with emergency supplies
 Multiple Indian Teepee Camps around your world
 Flying Saucer
 Tennis Courts
-A large dragon 
+A large dragon
 Enderman farm
 Helicopter Pads (and some with helicopters on them)
 Military Missile Silo
@@ -147,7 +147,7 @@ Random tents littered around a large forest
 Ninja School
 Pagoda
 Church
-Zombie Pigmen Farm 
+Zombie Pigmen Farm
 Ghast Farm
 Blaze Farm
 Painting Gallery
@@ -162,8 +162,8 @@ Train Station
 Neanderthal cave
 Streets with working traffic lights
 Sniper towers scattered across the world
-Abandoned Mineshaft        
-Ruined city 
+Abandoned Mineshaft
+Ruined city
 Gun Map (CSGO)
 Magic School
 Gotham
@@ -176,7 +176,7 @@ Griffin Statue
 Basilisk
 Ent army
 Massive bee hive that you can enter
-A massive guitar that you can live in 
+A massive guitar that you can live in
 Villager Execution Room
 Obsidian Castle
 Shopping Mall
@@ -198,7 +198,7 @@ Village in the Savanna
 Penguin
 Space Station
 Clown statue that fires TNT out of its head or eyes every so often
-Hogwarts Castle 
+Hogwarts Castle
 World War 1  battle field
 World War 2  battle field
 Hockey Field
@@ -225,9 +225,9 @@ Apartments
 Cafe
 Butcher
 Water Park
-Wraith Prison 
+Wraith Prison
 Azkaban Jail (from Harry Potter)
-Plitvice Lakes National Park, Croatia 
+Plitvice Lakes National Park, Croatia
 Giant Buddha Statue
 Village on stilts in the ocean
 Inuit Village
@@ -239,7 +239,7 @@ Four in a row game (manual or redstone controlled)
 Massive Typewriter
 Massive Ship in a Bottle
 Cleopatra's Palace (look at Cleopatra's Palace)
-Babylonia 
+Babylonia
 NASA Space Shuttle
 Minas Tirith (Lord of the Rings)
 Mirror's Edge
@@ -262,10 +262,10 @@ Aztec Temple
 Stonehenge
 Ancient Arabic Castle
 Agario (http://agario) in Minecraft
-Frogger game        
-Flying Pirate Ships that shoot TNT    
+Frogger game
+Flying Pirate Ships that shoot TNT
 Cannon Minigame (Two ships with TNT cannons First to kill the other team wins)
-Elytra Tunnel    
+Elytra Tunnel
 Elytra Watchtowers where you can fly from tower to tower
 PVP Arena that, when you start, fires good and bad lingering potions around the map
 Noughts and Crosses
@@ -311,10 +311,10 @@ Artificial Beach
 Sauna
 Lemonade Stand
 Replica of the Pride Rock from Lion King
-Chandelier using end rods 
+Chandelier using end rods
 Bathroom
 Grand Hall
-A massive nose 
+A massive nose
 A big village face
 Supermarket
 Chorus Fruit Farm
@@ -377,9 +377,9 @@ A tree field haunted by ghosts
 Wither powered Tree Farm
 Partially Working Gym
 Thorns Mob Farm (mobs are killed by hitting you because you wear the Thorns enchantment)
-Working Thermometer 
+Working Thermometer
 Temple of Nyancat
-Ice Skating Rink for Boats 
+Ice Skating Rink for Boats
 Banner Factory
 House of Cards
 Massive Dice Statue
@@ -397,7 +397,7 @@ A Bandit School
 Port Arthur
 Mewtwo Statue
 Card Tower
-AFL Field 
+AFL Field
 Cricket Field
 Pixel Art of the Dinner Scene from Lady and the Tramp (Click HERE)
 Jade Palace from Kung Fu Panda
@@ -407,7 +407,7 @@ Mendenhall Ice Caves
 Habitat 67  (Montreal, Canada)
 A massive minecart item transfer system
 A mobile storage room
-Sky City 
+Sky City
 Underground City
 Hang gliding stations
 Chinese Traditional Garden
@@ -432,7 +432,7 @@ CD Player (Which has a hidden jukebox to put "CD's" into)
 Giant Handbag Maze
 Game of Twister
 Power Outlets which you can attach redstone to so you can 'charge' things
-An Urn sitting on top of a fireplace    
+An Urn sitting on top of a fireplace
 An Urn room storing the ashes of Gods
 A path connecting all the different places in the world
 Sock Shop
@@ -466,7 +466,7 @@ A massive  Pack Sculpture
 A massive Bicep sculpture
 SpongeBob SquarePants
 SpongeBob's Pineapple
-Patrick's house (from spongebob) 
+Patrick's house (from spongebob)
 U-Boat
 Skyscraper that goes to the clouds
 Dodge the flaming arrows game with villagers
@@ -484,8 +484,8 @@ Massive Origami Crane
 Massive Origami Fish
 Massive Origami Gallery
 The Big Red Car from the Wiggles
-Shulker Box Unloader    
-Shulker Box Loader    
+Shulker Box Unloader
+Shulker Box Loader
 A system that gives you different "kits" (in shulker boxes) of items
 A shulker box wall
 A building made of shulker boxes
@@ -574,18 +574,18 @@ A necromancer mermaid statue surrounded by undead mermaids
 Gas Station
 Prehistoric Pet Store
 A forest of crystal formations
-A massive rowing machine (ergo) 
+A massive rowing machine (ergo)
 Shipping Container yard with tripwires that activate noteblock songs
 Market Place below ground
 Redstone 3D Printer
 Statue of Liberty
 Your School Campus
-Your favourite song using noteblocks 
+Your favourite song using noteblocks
 A secret underwater tunnel system starting at a village well which has puzzles, rooms and breathing spots
 A rollercoaster which takes you through a zoo
 Your School Campus
 Km Rowing Race Course
-Underground Castle 
+Underground Castle
 A World Tree (It has to be massive)
 A birdcage with birds in it (chickens for now, but eventually hopefully other birds)
 A Welcome Sign
@@ -627,7 +627,7 @@ Coffin Store
 Miniature City
 Slime block Trampoline
 Truck Yard
-Bike RaceTrack 
+Bike RaceTrack
 Underground train track with traps
 Castle filled with traps
 Radio Station

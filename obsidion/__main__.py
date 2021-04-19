@@ -5,12 +5,12 @@ from discord import Activity
 from discord import ActivityType
 from discord import AllowedMentions
 from discord import Intents
+from discord_slash import SlashCommand
+from discord_slash import SlashContext
 from obsidion import _update_event_loop_policy
 from obsidion.core import get_settings
 from obsidion.core.bot import Obsidion
 from obsidion.core.help import Help
-from discord_slash import SlashCommand
-from discord_slash import SlashContext
 
 _update_event_loop_policy()
 

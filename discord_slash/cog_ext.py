@@ -1,6 +1,8 @@
-import typing
 import inspect
-from .model import CogCommandObject, CogSubcommandObject
+import typing
+
+from .model import CogCommandObject
+from .model import CogSubcommandObject
 from .utils import manage_commands
 
 

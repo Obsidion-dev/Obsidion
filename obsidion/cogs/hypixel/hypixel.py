@@ -1,19 +1,20 @@
 """Images cog."""
-import logging
 import datetime
-from dpymenus import Page, PaginatedMenu
+import logging
+from typing import Optional
 
 import discord
 from asyncpixel import Hypixel as _Hypixel
 from discord.ext import commands
+from discord_slash import cog_ext
+from discord_slash.utils.manage_commands import create_option
+from dpymenus import Page
+from dpymenus import PaginatedMenu
 from obsidion.core import get_settings
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
 from obsidion.core.utils.chat_formatting import humanize_timedelta
 from obsidion.core.utils.utils import divide_array
-from typing import Optional
-from discord_slash import cog_ext
-from discord_slash.utils.manage_commands import create_option
 
 
 log = logging.getLogger(__name__)
@@ -144,9 +145,7 @@ class Hypixel(commands.Cog):
         await self.skyblocknews(ctx)
 
     @commands.command()
-    async def playerstatus(
-        self, ctx, username: Optional[str] = None
-    ) -> None:
+    async def playerstatus(self, ctx, username: Optional[str] = None) -> None:
         """Get the current status of an online player."""
         await ctx.channel.trigger_typing()
 
@@ -180,23 +179,24 @@ class Hypixel(commands.Cog):
 
         await ctx.send(embed=embed)
 
-    @cog_ext.cog_slash(name="playerstatus",options=[
+    @cog_ext.cog_slash(
+        name="playerstatus",
+        options=[
             create_option(
                 name="username",
                 description="Username of account defaults to linked account.",
                 option_type=3,
                 required=False,
             )
-        ],)
+        ],
+    )
     async def slash_playerstatus(self, ctx, username=None):
         """Get the current status of an online player."""
         await ctx.defer()
-        await self.playerstatus(ctx,username)
+        await self.playerstatus(ctx, username)
 
     @commands.command()
-    async def playerfriends(
-        self, ctx, username: Optional[str] = None
-    ) -> None:
+    async def playerfriends(self, ctx, username: Optional[str] = None) -> None:
         """Get the current friends of a player."""
         await ctx.channel.trigger_typing()
         player_data = await self.bot.mojang_player(ctx.author, username)
@@ -241,18 +241,21 @@ class Hypixel(commands.Cog):
 
         await ctx.send(embed=embed)
 
-    @cog_ext.cog_slash(name="playerfriends",options=[
+    @cog_ext.cog_slash(
+        name="playerfriends",
+        options=[
             create_option(
                 name="username",
                 description="Username of account defaults to linked account.",
                 option_type=3,
                 required=False,
             )
-        ],)
+        ],
+    )
     async def slash_playerfriends(self, ctx, username=None):
         """Get the current friends of a player."""
         await ctx.defer()
-        await self.playerfriends(ctx,username)
+        await self.playerfriends(ctx, username)
 
     @commands.command()
     async def bazaar(self, ctx) -> None:
@@ -350,17 +353,27 @@ class Hypixel(commands.Cog):
         """Get's guild info by guild name."""
         await ctx.channel.trigger_typing()
         data = await self.hypixel.guild_by_name(guildname)
-        
-        embed = discord.Embed(title=_("Guild Info"), description=_(f"Guild info for {guildname}"), colour=self.bot.color)
-        embed.set_author(name=_("Hypixel"), url="https://hypixel.net/forums/skyblock.157/", icon_url="https://hypixel.net/favicon-32x32.png")
-        embed.set_thumbnail(url="https://hypixel.net/styles/hypixel-v2/images/header-logo.png")
+
+        embed = discord.Embed(
+            title=_("Guild Info"),
+            description=_(f"Guild info for {guildname}"),
+            colour=self.bot.color,
+        )
+        embed.set_author(
+            name=_("Hypixel"),
+            url="https://hypixel.net/forums/skyblock.157/",
+            icon_url="https://hypixel.net/favicon-32x32.png",
+        )
+        embed.set_thumbnail(
+            url="https://hypixel.net/styles/hypixel-v2/images/header-logo.png"
+        )
         embed.add_field(name=_("Guild Name: "), value=_(data.id))
         embed.add_field(name=_("Guild Name: "), value=_(data.name))
         embed.add_field(name=_("Guild Description: "), value=_(data.description))
         embed.add_field(name=_("Guild Tag: "), value=_(data.tag))
         embed.add_field(name=_("Guild Experience Points: "), value=_(data.exp))
         embed.add_field(name=_("Joinable: "), value=_(data.joinable))
-        embed.add_field(name=_("Public: "),value=_(data.publicly_listed))
+        embed.add_field(name=_("Public: "), value=_(data.publicly_listed))
 
         await ctx.send(embed=embed)
 
@@ -377,31 +390,44 @@ class Hypixel(commands.Cog):
 
         data = await self.hypixel.leaderboards()
         menu = PaginatedMenu(ctx)
-        pagesend= []
+        pagesend = []
         pagenumber = 1
 
         for i in data:
             if data[i]:
-                pageleader = Page(title=_(f"Current Hypixel Leaderboards for {data[i][0].title}"), description=_(f"Page {pagenumber} of {len(data)}"), color=self.bot.color)
-                pageleader.set_author(name=_("Hypixel"), icon_url="https://hypixel.net/favicon-32x32.png")
-                pageleader.set_thumbnail(url="https://hypixel.net/styles/hypixel-v2/images/header-logo.png")
+                pageleader = Page(
+                    title=_(f"Current Hypixel Leaderboards for {data[i][0].title}"),
+                    description=_(f"Page {pagenumber} of {len(data)}"),
+                    color=self.bot.color,
+                )
+                pageleader.set_author(
+                    name=_("Hypixel"), icon_url="https://hypixel.net/favicon-32x32.png"
+                )
+                pageleader.set_thumbnail(
+                    url="https://hypixel.net/styles/hypixel-v2/images/header-logo.png"
+                )
                 leaderstring = ""
 
                 for leader in range(len(data[i][0].leaders)):
-                    player_data = await self.bot.mojang_player(ctx.author, data[i][0].leaders[leader])
+                    player_data = await self.bot.mojang_player(
+                        ctx.author, data[i][0].leaders[leader]
+                    )
                     username = player_data["username"]
                     leaderstring += f"{username} \n"
-                pageleader.add_field(name=_(f"Top {len(data[i][0].leaders)} Leaderboard"), value=_(leaderstring))
+                pageleader.add_field(
+                    name=_(f"Top {len(data[i][0].leaders)} Leaderboard"),
+                    value=_(leaderstring),
+                )
 
                 pagesend.append(pageleader)
                 pagenumber += 1
-                
+
         menu.add_pages(pagesend)
         menu.set_timeout(90)
         menu.allow_multisession()
 
         await menu.open()
-    
+
     @cog_ext.cog_slash(name="leaderboards")
     async def slash_auctions(self, ctx):
         """Get's guild info by guild name."""

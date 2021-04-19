@@ -8,7 +8,7 @@ member was killed by gravity.
 member failed at killing a Creeper.
 member had one to many speed potions.
 member was ripped apart by a Spider Jockey.
-member fell in lava 
-member tried to swim in lava 
-member died whilst fighting a drowned army 
-member was massacred by a horde of zombies 
+member fell in lava
+member tried to swim in lava
+member died whilst fighting a drowned army
+member was massacred by a horde of zombies

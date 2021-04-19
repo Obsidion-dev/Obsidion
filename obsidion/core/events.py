@@ -4,14 +4,17 @@ from datetime import datetime
 
 import discord
 from discord.ext import commands
-from obsidion.core.config import PlayerNotExist, get_settings
+from obsidion.core.config import get_settings
+from obsidion.core.config import PlayerNotExist
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
 
 from .i18n import set_contextual_locales_from_guild
-from .utils.chat_formatting import box, format_perms_list, pagify
+from .utils.chat_formatting import box
+from .utils.chat_formatting import format_perms_list
 from .utils.chat_formatting import humanize_timedelta
 from .utils.chat_formatting import inline
+from .utils.chat_formatting import pagify
 
 
 log = logging.getLogger("obsidion")
@@ -88,11 +91,15 @@ class Events(commands.Cog):
                 fmt = " and ".join(missing)
             if len(missing) > 1:
                 await ctx.send(
-                    _("Sorry, it looks like you don't have the **{fmt}** permissions I need to do that.").format(fmt=fmt)
+                    _(
+                        "Sorry, it looks like you don't have the **{fmt}** permissions I need to do that."
+                    ).format(fmt=fmt)
                 )
             else:
                 await ctx.send(
-                    _("Sorry, it looks like you don't have the **{fmt}** permission I need to do that.").format(fmt=fmt)
+                    _(
+                        "Sorry, it looks like you don't have the **{fmt}** permission I need to do that."
+                    ).format(fmt=fmt)
                 )
 
     @commands.Cog.listener("on_command_error")

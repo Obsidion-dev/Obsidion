@@ -17,10 +17,10 @@ from .config import PlayerNotExist
 from .core_commands import Core
 from .events import Events
 from .global_checks import init_global_checks
-from .settings_cache import I18nManager
-from .settings_cache import PrefixManager
 from .settings_cache import AccountManager
 from .settings_cache import GuildManager
+from .settings_cache import I18nManager
+from .settings_cache import PrefixManager
 
 
 class Obsidion(AutoShardedBot):

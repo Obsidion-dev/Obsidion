@@ -135,7 +135,7 @@ class Dev(commands.Cog):
 
     @commands.command()
     @commands.is_owner()
-    async def debug(self, ctx, *, code):
+    async def debug(self, ctx: commands.Context, *, code: str):
         """Evaluate a statement of python code.
 
         The bot will always respond with the return value of the code.
@@ -190,7 +190,7 @@ class Dev(commands.Cog):
 
     @commands.command(name="eval")
     @commands.is_owner()
-    async def _eval(self, ctx, *, body: str):
+    async def _eval(self, ctx: commands.Context, *, body: str):
         """Execute asynchronous code.
 
         This command wraps code into the body of an async function and then
@@ -257,7 +257,7 @@ class Dev(commands.Cog):
 
     @commands.group(invoke_without_command=True)
     @commands.is_owner()
-    async def repl(self, ctx):  # noqa C901
+    async def repl(self, ctx: commands.Context):  # noqa C901
         """Open an interactive REPL.
 
         The REPL will only recognise code as messages which start with a

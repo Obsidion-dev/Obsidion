@@ -1,10 +1,12 @@
 import asyncio
-import discord
-from enum import IntEnum
 from contextlib import suppress
+from enum import IntEnum
 from inspect import iscoroutinefunction
-from . import http
+
+import discord
+
 from . import error
+from . import http
 
 
 class CommandObject:
