@@ -1,14 +1,13 @@
 """Images cog."""
-import asyncio
 import logging
-from typing import Optional
+from typing import Optional, Union
 
 import discord
 from discord.ext import commands
 from obsidion.core import get_settings
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
-from discord_slash import cog_ext
+from discord_slash import cog_ext,SlashContext
 from discord_slash.utils.manage_commands import create_option
 
 
@@ -26,7 +25,7 @@ class Images(commands.Cog):
 
     @commands.command()
     async def achievement(
-        self, ctx, block_name: str, title: str, *, text: str
+        self, ctx: Union[commands.Context, SlashContext], block_name: str, title: str, *, text: str
     ) -> None:
         """Create your very own custom Minecraft achievements."""
         text = text.replace(" ", "%20")
@@ -44,7 +43,7 @@ class Images(commands.Cog):
     # @commands.command()
     async def sign(
         self,
-        ctx,
+        ctx: Union[commands.Context, SlashContext],
         *,
         text: str,
     ) -> None:
@@ -67,7 +66,7 @@ class Images(commands.Cog):
 
     @commands.command()
     async def avatar(
-        self, ctx, username: Optional[str] = None
+        self, ctx: Union[commands.Context, SlashContext], username: Optional[str] = None
     ) -> None:
         """Renders a Minecraft players face."""
         await self.render(ctx, "face", username)
@@ -80,14 +79,14 @@ class Images(commands.Cog):
                 required=False,
             )
         ],)
-    async def slash_avatar(self, ctx, username: str = None):
+    async def slash_avatar(self, ctx: SlashContext, username: str = None) -> None:
         """Renders a Minecraft players face."""
         await ctx.defer()
         await self.avatar(ctx, username)
 
     @commands.command()
     async def skull(
-        self, ctx, username: Optional[str] = None
+        self, ctx: Union[commands.Context, SlashContext], username: Optional[str] = None
     ) -> None:
         """Renders a Minecraft players skull."""
         await self.render(ctx, "head", username)
@@ -100,13 +99,13 @@ class Images(commands.Cog):
                 required=False,
             )
         ],)
-    async def slash_skull(self, ctx, username: str = None):
+    async def slash_skull(self, ctx: SlashContext, username: str = None) -> None:
         """Renders a Minecraft players skull."""
         await ctx.defer()
         await self.skull(ctx, username)
 
     @commands.command()
-    async def skin(self, ctx, username: Optional[str] = None) -> None:
+    async def skin(self, ctx: Union[commands.Context, SlashContext], username: Optional[str] = None) -> None:
         """Renders a Minecraft players skin."""
         await self.render(ctx, "full", username)
 
@@ -118,13 +117,13 @@ class Images(commands.Cog):
                 required=False,
             )
         ],)
-    async def slash_skin(self, ctx, username: str = None):
+    async def slash_skin(self: SlashContext, ctx, username: str = None) -> None:
         """Renders a Minecraft players skin."""
         await ctx.defer()
         await self.skin(ctx, username)
 
     @commands.command()
-    async def bust(self, ctx, username: Optional[str] = None) -> None:
+    async def bust(self, ctx: Union[commands.Context, SlashContext], username: Optional[str] = None) -> None:
         """Renders a Minecraft players bust."""
         await self.render(ctx, "bust", username)
 
@@ -136,14 +135,14 @@ class Images(commands.Cog):
                 required=False,
             )
         ],)
-    async def slash_bust(self, ctx, username: str = None):
+    async def slash_bust(self, ctx: SlashContext, username: str = None) -> None:
         """Renders a Minecraft players bust."""
         await ctx.defer()
         await self.bust(ctx, username)
 
     @commands.command()
     async def render(
-        self, ctx, render_type: str, username: Optional[str] = None
+        self, ctx: Union[commands.Context, SlashContext], render_type: str, username: Optional[str] = None
     ) -> None:
         """Renders a Minecraft players skin in 6 different ways.
 
@@ -167,8 +166,8 @@ class Images(commands.Cog):
         embed = discord.Embed(
             description=_(
                 "Here is: `{username}`'s {render_type}! \n "
-                "**[DOWNLOAD](https://visage.surgeplay.com/{render_type_lower}"
-                "/512/{uuid})\n[RAW](https://sessionserver.mojang.com/session/minecraft/profile/{uuid})**"
+                "**[DOWNLOAD](https://visage.surgeplay.com/{render_type}/512/{uuid}"
+                "/512/{uuid})\n[RAW](https://visage.surgeplay.com/{render_type}/512/{uuid})**"
             ).format(
                 username=username,
                 render_type=render_type.capitalize(),
@@ -189,7 +188,7 @@ class Images(commands.Cog):
                 required=False,
             )
         ],)
-    async def slash_render(self, ctx, render_type: str, username: str = None):
+    async def slash_render(self, ctx: SlashContext, render_type: str, username: str = None) -> None:
         """Renders a Minecraft players skin in 6 different ways."""
         await ctx.defer()
         await self.render(ctx, render_type, username)
