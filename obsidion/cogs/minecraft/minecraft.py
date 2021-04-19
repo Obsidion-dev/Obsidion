@@ -3,8 +3,9 @@ import logging
 from discord.ext import commands
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
-from discord_slash import cog_ext
+from discord_slash import cog_ext, SlashContext
 from discord_slash.utils.manage_commands import create_option
+from typing import Union
 
 log = logging.getLogger(__name__)
 
@@ -18,7 +19,7 @@ class Minecraft(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def tick2second(self, ctx, ticks: int) -> None:
+    async def tick2second(self, ctx: Union[commands.Context, SlashContext], ticks: int) -> None:
         """Convert seconds to tick."""
         if ticks <= 0:
             await ctx.send("Input must be greater then 0")
@@ -42,12 +43,12 @@ class Minecraft(commands.Cog):
                 required=True,
             )
         ],)
-    async def slash_tick2second(self, ctx, ticks: int):
+    async def slash_tick2second(self, ctx: SlashContext, ticks: int) -> None:
         await ctx.defer()
         await self.tick2second(ctx, ticks)
 
     @commands.command()
-    async def second2tick(self, ctx, seconds: float) -> None:
+    async def second2tick(self, ctx: Union[commands.Context, SlashContext], seconds: float) -> None:
         """Convert ticks to seconds."""
         if seconds <= 0:
             await ctx.send("Input must be greater then 0")
@@ -67,12 +68,12 @@ class Minecraft(commands.Cog):
                 required=True,
             )
         ],)
-    async def slash_second2tick(self, ctx, seconds: float):
+    async def slash_second2tick(self, ctx: SlashContext, seconds: float) -> None:
         await ctx.defer()
         await self.second2tick(ctx, seconds)
 
     @commands.command()
-    async def seed(self, ctx, *, text: str) -> None:
+    async def seed(self, ctx: Union[commands.Context, SlashContext], *, text: str) -> None:
         """Convert text to minecraft numerical seed."""
         try:
             int(text)
@@ -93,6 +94,6 @@ class Minecraft(commands.Cog):
                 required=True,
             )
         ],)
-    async def slash_seed(self, ctx, *, text: str):
+    async def slash_seed(self, ctx: SlashContext, *, text: str) -> None:
         await ctx.defer()
         await self.seed(ctx, text)
