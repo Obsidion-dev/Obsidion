@@ -2,7 +2,6 @@ import json
 from typing import Dict
 from typing import List
 from typing import Optional
-from typing import TYPE_CHECKING
 from typing import Union
 from uuid import UUID
 
@@ -11,12 +10,9 @@ import discord
 from .config import get_settings
 
 
-if TYPE_CHECKING:
-    from obsidion.core.bot import Obsidion
-
 
 class PrefixManager:
-    def __init__(self, bot: Obsidion) -> None:
+    def __init__(self, bot) -> None:
         self._bot = bot
 
     async def get_prefixes(self, guild: Optional[discord.Guild] = None) -> List[str]:
@@ -63,7 +59,7 @@ class PrefixManager:
 
 
 class I18nManager:
-    def __init__(self, bot: Obsidion) -> None:
+    def __init__(self, bot) -> None:
         self._bot = bot
 
     async def get_locale(self, guild: Union[discord.Guild, None]) -> str:
@@ -148,7 +144,7 @@ class I18nManager:
 
 
 class AccountManager:
-    def __init__(self, bot: Obsidion):
+    def __init__(self, bot):
         self._bot = bot
 
     async def get_account(self, user: discord.User) -> Union[UUID, None]:
@@ -189,7 +185,7 @@ class AccountManager:
 
 
 class GuildManager:
-    def __init__(self, bot: Obsidion) -> None:
+    def __init__(self, bot) -> None:
         self._bot = bot
 
     async def get_server(self, guild: discord.Guild) -> Union[str, None]:

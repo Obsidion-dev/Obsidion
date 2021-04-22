@@ -9,7 +9,7 @@ if TYPE_CHECKING:
     from obsidion.core.bot import Obsidion
 
 
-def init_global_checks(bot: Obsidion):
+def init_global_checks(bot):
     """Initiate global checks."""
 
     @bot.check_once

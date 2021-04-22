@@ -90,7 +90,7 @@ async def get_locale_from_guild(bot, guild: Optional[discord.Guild]) -> str:
 
     Parameters
     ----------
-    bot: Obsidion
+    bot
          The bot's instance.
     guild: Optional[discord.Guild]
          The guild contextual locale is set for.
@@ -110,7 +110,7 @@ async def get_regional_format_from_guild(bot, guild: Optional[discord.Guild]) ->
 
     Parameters
     ----------
-    bot: Obsidion
+    bot
          The bot's instance.
     guild: Optional[discord.Guild]
          The guild contextual locale is set for.
@@ -132,7 +132,7 @@ async def set_contextual_locales_from_guild(
 
     Parameters
     ----------
-    bot: Obsidion
+    bot
          The bot's instance.
     guild: Optional[discord.Guild]
          The guild contextual locale is set for.
