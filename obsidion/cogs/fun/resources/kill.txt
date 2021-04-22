@@ -1,14 +1,57 @@
 member was shot by a skeleton using a bow.
-member was struck by lightning.
-member turned into dust.
-member was ripped apart by a Vex.
-member tripped too hard and died.
-member was squashed by a falling block.
-member was killed by gravity.
-member failed at killing a Creeper.
-member had one to many speed potions.
-member was ripped apart by a Spider Jockey.
-member fell in lava
-member tried to swim in lava
-member died whilst fighting a drowned army
-member was massacred by a horde of zombies
+ member was struck by lightning.
+ member turned into dust.
+ member was ripped apart by a Vex.
+ member was ripped apart by a vex.
+ member tripped too hard and died.
+ member was squashed by a falling block.
+ member was killed by gravity.
+ member failed at killing a Creeper.
+ member failed at killing a creeper.
+ member had one to many speed potions.
+ member was ripped apart by a Spider Jockey.
+ member fell in lava 
+ member tried to swim in lava 
+ member died whilst fighting a drowned army 
+ member was massacred by a horde of zombies 
+ member was ripped apart by a spider jockey.
+ member fell in lava.
+ member tried to swim in lava.
+ member died whilst fighting a drowned army.
+ member was massacred by a horde of zombies.
+ member lost an arm-wrestling match with an iron golem.
+ member forgot to place down torches.
+ member was squashed by a piston door.
+ member mined straight down.
+ member slipped and fell.
+ member tried to hug a creeper.
+ member was knocked off a cliff.
+ member's elytra ran out of durability.
+ member used one too many ender pearls.
+ member was swarmed by silverfish.
+ member went up in flames.
+ member tried to steal from a bastion.
+ member withered away.
+ member forgot their gold armor.
+ member had their nether portal broken by a ghast.
+ member walked into a cactus.
+ member forgot to surface for air.
+ member was dragged down by drowned.
+ member was cursed by a witch.
+ member encountered a vindicator.
+ member sought out the warden.
+ member ran out of food.
+ member got lost in a nether fortress.
+ member negleted to sleep.
+ member blew themselves up.
+ member miscaculated the tnt's blast radius.
+ member made a mistake with their tnt cannon.
+ member got kicked for flying.
+ member glitched through the world border.
+ member fell into a zombie spawner.
+ member had a staring contest with an enderman.
+ member placed down too many sweet berries.
+ member got hit by a shulker.
+ member drank a potion of harming.
+ member was ravaged by ravagers.
+ member neglected to clear Bad Omen.
