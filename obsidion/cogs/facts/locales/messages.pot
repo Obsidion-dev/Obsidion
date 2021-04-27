@@ -1,0 +1,98 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2021-04-28 00:02+1200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+
+#: obsidion/cogs/facts/facts.py:46 obsidion/cogs/facts/facts.py:102
+#: obsidion/cogs/facts/facts.py:163 obsidion/cogs/facts/facts.py:217
+msgid "Display Name"
+msgstr ""
+
+#: obsidion/cogs/facts/facts.py:47 obsidion/cogs/facts/facts.py:103
+#: obsidion/cogs/facts/facts.py:166 obsidion/cogs/facts/facts.py:218
+msgid "ID"
+msgstr ""
+
+#: obsidion/cogs/facts/facts.py:48
+msgid "Stack Size"
+msgstr ""
+
+#: obsidion/cogs/facts/facts.py:49
+msgid "hardness"
+msgstr ""
+
+#: obsidion/cogs/facts/facts.py:50
+msgid "diggable"
+msgstr ""
+
+#: obsidion/cogs/facts/facts.py:51
+msgid "transparent"
+msgstr ""
+
+#: obsidion/cogs/facts/facts.py:52
+msgid "filterLight"
+msgstr ""
+
+#: obsidion/cogs/facts/facts.py:53
+msgid "emitLight"
+msgstr ""
+
+#: obsidion/cogs/facts/facts.py:54
+msgid "material"
+msgstr ""
+
+#: obsidion/cogs/facts/facts.py:55
+msgid "resistance"
+msgstr ""
+
+#: obsidion/cogs/facts/facts.py:56
+msgid "harvestTools"
+msgstr ""
+
+#: obsidion/cogs/facts/facts.py:104
+msgid "width"
+msgstr ""
+
+#: obsidion/cogs/facts/facts.py:105
+msgid "height"
+msgstr ""
+
+#: obsidion/cogs/facts/facts.py:106 obsidion/cogs/facts/facts.py:219
+msgid "type"
+msgstr ""
+
+#: obsidion/cogs/facts/facts.py:107
+msgid "category"
+msgstr ""
+
+#: obsidion/cogs/facts/facts.py:164
+msgid "Category"
+msgstr ""
+
+#: obsidion/cogs/facts/facts.py:165
+msgid "Dimension"
+msgstr ""
+
+#: obsidion/cogs/facts/facts.py:167
+msgid "Temperature"
+msgstr ""
+
+#: obsidion/cogs/facts/facts.py:168
+msgid "Colour"
+msgstr ""
+
+#: obsidion/cogs/facts/facts.py:169
+msgid "Rainfall"
+msgstr ""
+
+#: obsidion/cogs/facts/facts.py:170
+msgid "Precipitation"
+msgstr ""
