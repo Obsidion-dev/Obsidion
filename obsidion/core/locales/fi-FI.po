@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: obsidion\n"
 "POT-Creation-Date: 2021-04-28 00:01+1200\n"
-"PO-Revision-Date: 2021-04-27 12:10\n"
+"PO-Revision-Date: 2021-04-27 12:38\n"
 "Last-Translator: \n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr "Pong!"
 
 #: obsidion/core/core_commands.py:47
 msgid "Pong! ({latency}ms)"
-msgstr ""
+msgstr "Pong ({latency}ms)"
 
 #: obsidion/core/core_commands.py:57
 #, docstring
@@ -46,7 +46,7 @@ msgstr "Tämä botti on [Obsidion, avoimen lähdekoodin botti] ilmentymä, jonka
 
 #: obsidion/core/core_commands.py:94
 msgid "Bringing joy since the 2nd of April 2020 (over {} days ago!)"
-msgstr ""
+msgstr "Iloinen ilo sitten 2. Huhtikuuta 2020 (yli {} päivää sitten!)"
 
 #: obsidion/core/core_commands.py:108
 #, docstring
@@ -77,12 +77,12 @@ msgstr "Jättää nykyisen palvelimen."
 
 #: obsidion/core/core_commands.py:149
 msgid "Are you sure you want me to leave the current server? (yes/no)"
-msgstr ""
+msgstr "Haluatko varmasti, että jätän nykyisen palvelimen? (kyllä/ei)"
 
 #: obsidion/core/core_commands.py:158
 #, docstring
 msgid "Lists and allows Obsidion to leave servers."
-msgstr ""
+msgstr "Lists sallii Obsidionin jättää palvelimia."
 
 #: obsidion/core/core_commands.py:171
 msgid "To leave a server, just type its number."
@@ -120,7 +120,8 @@ msgstr "\n"
 #: obsidion/core/core_commands.py:218
 msgid "This bot is an instance of the Obsidion Discord Bot.\n"
 "Obsidion is an open source application made available to the public and licensed under the GNU AGPL v3. The full text of this license is available to you at <https://github.com/Obsidion-dev/Obsidion/blob/main/LICENSE>"
-msgstr ""
+msgstr "Tämä robotti on esimerkki Obsidion Discord Bot.\n"
+"Obsidion on avoin lähdesovellus, joka on julkisesti saatavilla ja lisensoitu GNU AGPL v3 :n nojalla. Tämän lisenssin koko teksti on käytettävissä osoitteessa <https://github.com/Obsidion-dev/Obsidion/blob/main/LICENSE>"
 
 #: obsidion/core/core_commands.py:244
 #, docstring
@@ -146,7 +147,10 @@ msgid "Attempts to restart Obsidion.\n\n"
 "        Makes Obsidion quit with exit code 26.\n"
 "        The restart is not guaranteed: it must be dealt\n"
 "        with by the process manager in use."
-msgstr ""
+msgstr "Yritys aloittaa uudelleen Obsidion.\n\n"
+"        Panee Obsidion lopettamaan poistumiskoodin 26.\n"
+"        Uudelleenaloitusta ei ole taattu: se on käsiteltävä\n"
+"        , jonka prosessipäällikkö käyttää."
 
 #: obsidion/core/core_commands.py:323
 #, docstring
@@ -303,15 +307,15 @@ msgstr "Tärkeitä botin tapahtumia."
 
 #: obsidion/core/events.py:92
 msgid "Sorry, it looks like you don't have the **{fmt}** permissions I need to do that."
-msgstr ""
+msgstr "Anteeksi, näyttää siltä, että sinulla ei ole **{fmt}** käyttöoikeuksia, jotka minun täytyy tehdä."
 
 #: obsidion/core/events.py:98
 msgid "Sorry, it looks like you don't have the **{fmt}** permission I need to do that."
-msgstr ""
+msgstr "Anteeksi, näyttää siltä, että sinulla ei ole \"{fmt}\" - lupaa."
 
 #: obsidion/core/events.py:119
 msgid "`{user_input}` is not a valid value for `{command}`"
-msgstr ""
+msgstr "\"{user_input}\" ei ole kelvollinen arvo \"{command}\""
 
 #: obsidion/core/events.py:136
 msgid "I require the {permission} permission to execute that command."
@@ -319,7 +323,7 @@ msgstr "Tarvitsen {permission} luvan suorittaa tuo komento."
 
 #: obsidion/core/events.py:140
 msgid "I require {permission_list} permissions to execute that command."
-msgstr ""
+msgstr "Vaadin {permission_list} lupaa tämän komennon toteutukseen."
 
 #: obsidion/core/events.py:157
 msgid "This command is on cooldown. Try again in {delay}."
@@ -355,9 +359,9 @@ msgstr "Liian moni käyttää tätä komentoa. Sitä voidaan käyttää vain ker
 
 #: obsidion/core/events.py:205
 msgid "The user does not exist, please check wether the username is correct."
-msgstr ""
+msgstr "Käyttäjää ei ole, tarkista, onko käyttäjätunnus oikein."
 
 #: obsidion/core/events.py:215
 msgid "Error in command '{command}'. It has been recorded and should be fixed soon."
-msgstr ""
+msgstr "Virhe komennossa \"{command}\". Se on kirjattu ja se pitäisi korjata pian."
 
