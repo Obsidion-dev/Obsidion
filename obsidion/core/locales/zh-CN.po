@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: obsidion\n"
 "POT-Creation-Date: 2021-04-28 00:01+1200\n"
-"PO-Revision-Date: 2021-04-27 12:09\n"
+"PO-Revision-Date: 2021-04-27 12:38\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr "好的"
 
 #: obsidion/core/core_commands.py:47
 msgid "Pong! ({latency}ms)"
-msgstr ""
+msgstr "Pong ! ({latency}ms)"
 
 #: obsidion/core/core_commands.py:57
 #, docstring
@@ -46,7 +46,7 @@ msgstr "此 bot 是由 [Darkflame72]({}) 创建的 [Obsidion，开放式源代�
 
 #: obsidion/core/core_commands.py:94
 msgid "Bringing joy since the 2nd of April 2020 (over {} days ago!)"
-msgstr ""
+msgstr "自2020年4月2日以来带来欢乐 ({ } 天前!)"
 
 #: obsidion/core/core_commands.py:108
 #, docstring
@@ -77,12 +77,12 @@ msgstr "离开当前服务器。"
 
 #: obsidion/core/core_commands.py:149
 msgid "Are you sure you want me to leave the current server? (yes/no)"
-msgstr ""
+msgstr "确定要我离开当前服务器吗 ? ( 是 / 否)"
 
 #: obsidion/core/core_commands.py:158
 #, docstring
 msgid "Lists and allows Obsidion to leave servers."
-msgstr ""
+msgstr "列出并允许 Obsidion 离开服务器。"
 
 #: obsidion/core/core_commands.py:171
 msgid "To leave a server, just type its number."
@@ -120,7 +120,8 @@ msgstr "\n"
 #: obsidion/core/core_commands.py:218
 msgid "This bot is an instance of the Obsidion Discord Bot.\n"
 "Obsidion is an open source application made available to the public and licensed under the GNU AGPL v3. The full text of this license is available to you at <https://github.com/Obsidion-dev/Obsidion/blob/main/LICENSE>"
-msgstr ""
+msgstr "该机器人是 Obsidion Discord Bot的实例。\n"
+"Obsidion 是一个开放式源代码应用程序，可供公众使用，并根据 GNU AGPL v3 获得许可。 此许可证的完整文本在 <https://github.com/Obsidion-dev/Obsidion/blob/main/LICENSE> 提供给您"
 
 #: obsidion/core/core_commands.py:244
 #, docstring
@@ -146,7 +147,10 @@ msgid "Attempts to restart Obsidion.\n\n"
 "        Makes Obsidion quit with exit code 26.\n"
 "        The restart is not guaranteed: it must be dealt\n"
 "        with by the process manager in use."
-msgstr ""
+msgstr "尝试重新启动 Obsidion。\n\n"
+"        使 Obsidion 退出，退出代码为 26。\n"
+"        未保证重新启动 : 必须由正在使用的进程管理器处理\n"
+"。"
 
 #: obsidion/core/core_commands.py:323
 #, docstring
@@ -214,7 +218,23 @@ msgid "Evaluate a statement of python code.\n\n"
 "            commands - discord.ext.commands\n"
 "            _        - The result of the last dev command.\n"
 "        "
-msgstr ""
+msgstr "评估 python 代码的语句。\n\n"
+"        机器人将始终以代码的返回值进行响应。\n"
+"        如果代码的返回值是一个 coroutine，那么将等待\n"
+"        ，结果将是 bot的响应。\n\n"
+"        注: 只能对一个语句进行求值。 使用特定限制的\n"
+"        关键字( 例如，收益率 ) 将导致语法错误。 对于多个\n"
+"        行或异步代码，请参阅 [p]repl 或 [p]eval。\n\n"
+"        环境变量:\n"
+"            ctx - 命令调用上下文\n"
+"            bot - bot 对象\n"
+"            通道 - 当前通道对象\n"
+"            作者 - 命令作者的成员对象\n"
+"            消息 - 命令的消息对象\n"
+"            discord - disord.py 库\n"
+"            命令 - disord.ext.command\n"
+"            _ - 最后一个 dev 命令的结果。\n"
+"        "
 
 #: obsidion/core/dev_commands.py:196
 #, docstring
@@ -234,7 +254,22 @@ msgid "Execute asynchronous code.\n\n"
 "            commands - discord.ext.commands\n"
 "            _        - The result of the last dev command.\n"
 "        "
-msgstr ""
+msgstr "执行异步代码。\n\n"
+"        此命令将代码合并到异步函数的主体中，然后\n"
+"        调用并等待它。 Bot 将以打印至\n"
+"        标准输出的任何内容以及函数的返回值进行响应。\n\n"
+"        代码可以在代码块内，也可以是内联代码，也可以不包含在代码块中，\n"
+"        它们未混合，并且格式正确。\n\n"
+"        环境变量:\n"
+"            ctx - 命令调用上下文\n"
+"            bot - bot 对象\n"
+"            通道 - 当前通道对象\n"
+"            作者 - 命令作者的成员对象\n"
+"            消息 - 命令的消息对象\n"
+"            discord - disord.py 库\n"
+"            命令 - disord.ext.command\n"
+"            _ - 最后一个 dev 命令的结果。\n"
+"        "
 
 #: obsidion/core/dev_commands.py:263
 #, docstring
@@ -305,15 +340,15 @@ msgstr "重要的机器人事件。"
 
 #: obsidion/core/events.py:92
 msgid "Sorry, it looks like you don't have the **{fmt}** permissions I need to do that."
-msgstr ""
+msgstr "抱歉，看起来您没有我需要的 **{fmt}** 许可权。"
 
 #: obsidion/core/events.py:98
 msgid "Sorry, it looks like you don't have the **{fmt}** permission I need to do that."
-msgstr ""
+msgstr "对不起，看来你没有我需要的 **{fmt}** 的许可。"
 
 #: obsidion/core/events.py:119
 msgid "`{user_input}` is not a valid value for `{command}`"
-msgstr ""
+msgstr "\"{user_input}\" 不是 \"{command} \" 的有效值"
 
 #: obsidion/core/events.py:136
 msgid "I require the {permission} permission to execute that command."
@@ -321,7 +356,7 @@ msgstr "我需要 {permission} 许可权才能执行该命令。"
 
 #: obsidion/core/events.py:140
 msgid "I require {permission_list} permissions to execute that command."
-msgstr ""
+msgstr "我需要 {permission_list} 个许可权才能执行该命令。"
 
 #: obsidion/core/events.py:157
 msgid "This command is on cooldown. Try again in {delay}."
@@ -357,9 +392,9 @@ msgstr "使用此命令的人员过多。 它只能同时使用一次 {type} 次
 
 #: obsidion/core/events.py:205
 msgid "The user does not exist, please check wether the username is correct."
-msgstr ""
+msgstr "用户不存在，请检查用户名是否正确。"
 
 #: obsidion/core/events.py:215
 msgid "Error in command '{command}'. It has been recorded and should be fixed soon."
-msgstr ""
+msgstr "命令中出错 '{command}已记录并应尽快固定。"
 
