@@ -1,0 +1,105 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: obsidion\n"
+"POT-Creation-Date: 2021-04-28 00:02+1200\n"
+"PO-Revision-Date: 2021-04-27 12:36\n"
+"Last-Translator: \n"
+"Language-Team: Arabic\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+"X-Crowdin-Project: obsidion\n"
+"X-Crowdin-Project-ID: 437658\n"
+"X-Crowdin-Language: ar\n"
+"X-Crowdin-File: /reformat/cogs/facts/locales/messages.pot\n"
+"X-Crowdin-File-ID: 72\n"
+"Language: ar_SA\n"
+
+#: obsidion/cogs/facts/facts.py:46 obsidion/cogs/facts/facts.py:102
+#: obsidion/cogs/facts/facts.py:163 obsidion/cogs/facts/facts.py:217
+msgid "Display Name"
+msgstr "اسم العرض"
+
+#: obsidion/cogs/facts/facts.py:47 obsidion/cogs/facts/facts.py:103
+#: obsidion/cogs/facts/facts.py:166 obsidion/cogs/facts/facts.py:218
+msgid "ID"
+msgstr "الكود"
+
+#: obsidion/cogs/facts/facts.py:48
+msgid "Stack Size"
+msgstr "حجم المجموعة"
+
+#: obsidion/cogs/facts/facts.py:49
+msgid "hardness"
+msgstr "صلابة"
+
+#: obsidion/cogs/facts/facts.py:50
+msgid "diggable"
+msgstr "قابل للبدء"
+
+#: obsidion/cogs/facts/facts.py:51
+msgid "transparent"
+msgstr "شفاف"
+
+#: obsidion/cogs/facts/facts.py:52
+msgid "filterLight"
+msgstr "ضوء-فاتح"
+
+#: obsidion/cogs/facts/facts.py:53
+msgid "emitLight"
+msgstr "emitخفيفة"
+
+#: obsidion/cogs/facts/facts.py:54
+msgid "material"
+msgstr "المواد"
+
+#: obsidion/cogs/facts/facts.py:55
+msgid "resistance"
+msgstr "مقاومة"
+
+#: obsidion/cogs/facts/facts.py:56
+msgid "harvestTools"
+msgstr "أدوات الحصاد"
+
+#: obsidion/cogs/facts/facts.py:104
+msgid "width"
+msgstr "العرض"
+
+#: obsidion/cogs/facts/facts.py:105
+msgid "height"
+msgstr "الارتفاع"
+
+#: obsidion/cogs/facts/facts.py:106 obsidion/cogs/facts/facts.py:219
+msgid "type"
+msgstr "نوع"
+
+#: obsidion/cogs/facts/facts.py:107
+msgid "category"
+msgstr "التصنيف"
+
+#: obsidion/cogs/facts/facts.py:164
+msgid "Category"
+msgstr "الفئة"
+
+#: obsidion/cogs/facts/facts.py:165
+msgid "Dimension"
+msgstr "البعد"
+
+#: obsidion/cogs/facts/facts.py:167
+msgid "Temperature"
+msgstr "درجة الحرارة"
+
+#: obsidion/cogs/facts/facts.py:168
+msgid "Colour"
+msgstr "اللون"
+
+#: obsidion/cogs/facts/facts.py:169
+msgid "Rainfall"
+msgstr "الأمطار"
+
+#: obsidion/cogs/facts/facts.py:170
+msgid "Precipitation"
+msgstr "الترسيب"
+
