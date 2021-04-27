@@ -61,7 +61,9 @@ class Hypixel(commands.Cog):
         data = await self.hypixel.boosters()
         embed = discord.Embed(
             title=_("Boosters"),
-            description=_(f"Total Boosters online: {len(data.boosters)}"),
+            description=_("Total Boosters online: {lenboosters}").format(
+                lenboosters=len(data.boosters)
+            ),
             colour=self.bot.color,
         )
         embed.set_author(
@@ -89,7 +91,7 @@ class Hypixel(commands.Cog):
         data = await self.hypixel.player_count()
         embed = discord.Embed(
             title=_("Players Online"),
-            description=_(f"Total players online: {data}"),
+            description=_("Total players online: {data}").format(data=data),
             colour=self.bot.color,
         )
         embed.set_author(
@@ -117,7 +119,9 @@ class Hypixel(commands.Cog):
         data = await self.hypixel.news()
         embed = discord.Embed(
             title=_("Skyblock News"),
-            description=_(f"There are currently {len(data)} news articles."),
+            description=_("There are currently {lendata} news articles.").format(
+                lendata=len(data)
+            ),
             colour=self.bot.color,
         )
         embed.set_author(
@@ -131,7 +135,8 @@ class Hypixel(commands.Cog):
 
         for i in range(len(data)):
             embed.add_field(
-                name=_(f"{data[i].title}"), value=f"[{data[i].text}]({data[i].link})"
+                name=_("{title}").format(title=data[i].title),
+                value=f"[{data[i].text}]({data[i].link})",
             )
 
         embed.timestamp = ctx.message.created_at
@@ -160,7 +165,9 @@ class Hypixel(commands.Cog):
         else:
             embed = discord.Embed(
                 title=_("Player Status"),
-                description=_(f"Current status of Player {username}"),
+                description=_("Current status of Player {username}").format(
+                    username=username
+                ),
                 colour=self.bot.color,
             )
             embed.set_author(
@@ -171,9 +178,12 @@ class Hypixel(commands.Cog):
             embed.set_thumbnail(url=f"https://visage.surgeplay.com/bust/{uuid}")
 
             embed.add_field(
-                name=_("Current game: "), value=_(f"{data.game_type.CleanName}")
+                name=_("Current game: "),
+                value=_("{gamename}").format(gamename=data.game_type.CleanName),
             )
-            embed.add_field(name=_("Current game mode: "), value=_(f"{data.mode}"))
+            embed.add_field(
+                name=_("Current game mode: "), value=_("{mode}").format(mode=data.mode)
+            )
 
             embed.timestamp = ctx.message.created_at
 
@@ -206,7 +216,7 @@ class Hypixel(commands.Cog):
 
         embed = discord.Embed(
             title=_("Player Friends"),
-            description=_(f"Current Friends for {username}"),
+            description=_("Current Friends for {username}").format(username=username),
             colour=self.bot.color,
         )
         embed.set_author(
@@ -235,8 +245,10 @@ class Hypixel(commands.Cog):
             friendstarted = friendstartedsplit[0] + ", " + friendstartedsplit[1]
 
             embed.add_field(
-                name=_(f"{friendusername}"),
-                value=_(f"Been friends for {friendstarted}"),
+                name=friendusername,
+                value=_("Been friends for {friendstarted}").format(
+                    friendstarted=friendstarted
+                ),
             )
 
         await ctx.send(embed=embed)
@@ -270,7 +282,9 @@ class Hypixel(commands.Cog):
         for bazaarloop in range(len(split)):
             pagebazaar = Page(
                 title=_("Bazaar NPC Stats"),
-                description=_(f"Page {bazaarloop + 1} of {(len(split))}"),
+                description=_("Page {pg} of {total}").format(
+                    pg=bazaarloop + 1, total=len(split)
+                ),
                 color=self.bot.color,
             )
             pagebazaar.set_author(
@@ -285,7 +299,9 @@ class Hypixel(commands.Cog):
                 buyprice = round(split[bazaarloop][item].quick_status.buy_price)
                 pagebazaar.add_field(
                     name=_(name),
-                    value=_(f"Sell Price: {sellprice} \n Buy Price: {buyprice}"),
+                    value=_("Sell Price: {sellprice} \n Buy Price: {buyprice}").format(
+                        sellprice=sellprice, buyprice=buyprice
+                    ),
                 )
             pagesend.append(pagebazaar)
 
@@ -314,7 +330,9 @@ class Hypixel(commands.Cog):
         for auctionsloop in range(len(auctionitems)):
             pageauctions = Page(
                 title=_("Current Auctions"),
-                description=_(f"Page {auctionsloop + 1} of {(len(auctionitems))}"),
+                description=_("Page {pg} of {total}").format(
+                    pg=auctionsloop + 1, total=len(auctionitems)
+                ),
                 color=self.bot.color,
             )
             pageauctions.set_author(
@@ -333,7 +351,13 @@ class Hypixel(commands.Cog):
                 pageauctions.add_field(
                     name=_(name),
                     value=_(
-                        f"Item Category: {category} \n Item Tier: {tier} \n Starting Bid: {start_bid} \n Item Won: {won} \n Highest Bid: {highest_bid}"
+                        "Item Category: {category} \n Item Tier: {tier} \n Starting Bid: {start_bid} \n Item Won: {won} \n Highest Bid: {highest_bid}"
+                    ).format(
+                        category=category,
+                        tier=tier,
+                        start_bid=start_bid,
+                        won=won,
+                        highest_bid=highest_bid,
                     ),
                 )
             pagesend.append(pageauctions)
@@ -356,7 +380,7 @@ class Hypixel(commands.Cog):
 
         embed = discord.Embed(
             title=_("Guild Info"),
-            description=_(f"Guild info for {guildname}"),
+            description=_("Guild info for {guildname}").format(guildname=guildname),
             colour=self.bot.color,
         )
         embed.set_author(
@@ -396,8 +420,12 @@ class Hypixel(commands.Cog):
         for i in data:
             if data[i]:
                 pageleader = Page(
-                    title=_(f"Current Hypixel Leaderboards for {data[i][0].title}"),
-                    description=_(f"Page {pagenumber} of {len(data)}"),
+                    title=_("Current Hypixel Leaderboards for {title}").format(
+                        title=data[i][0].title
+                    ),
+                    description=_("Page {pagenumber} of {total}").format(
+                        pagenumber=pagenumber, total=data[i][0].title
+                    ),
                     color=self.bot.color,
                 )
                 pageleader.set_author(
@@ -415,7 +443,7 @@ class Hypixel(commands.Cog):
                     username = player_data["username"]
                     leaderstring += f"{username} \n"
                 pageleader.add_field(
-                    name=_(f"Top {len(data[i][0].leaders)} Leaderboard"),
+                    name=_("Top {leader} Leaderboard").format(leader=data[i][0].title),
                     value=_(leaderstring),
                 )
 
@@ -425,6 +453,8 @@ class Hypixel(commands.Cog):
         menu.add_pages(pagesend)
         menu.set_timeout(90)
         menu.allow_multisession()
+
+        await ctx.send("Here")
 
         await menu.open()
 
