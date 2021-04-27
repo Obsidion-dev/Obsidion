@@ -10,7 +10,6 @@ services:
     restart: on-failure
     volumes:
       - ./obsidion:/app/obsidion
-      # - ./discord_slash:/app/discord_slash
   db:
     image: postgres:12-alpine
     volumes:
