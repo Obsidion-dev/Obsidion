@@ -9,7 +9,7 @@ import traceback
 import types
 from contextlib import redirect_stdout
 from copy import copy
-from typing import Optional
+from typing import Any, Iterator, Optional
 
 import aiohttp
 import discord
@@ -83,7 +83,7 @@ class Dev(commands.Cog):
             )
 
     @staticmethod
-    def async_compile(source, filename, mode):
+    def async_compile(source, filename, mode:str) -> Any:
         """Async Compile."""
         return compile(
             source, filename, mode, flags=ast.PyCF_ALLOW_TOP_LEVEL_AWAIT, optimize=0
@@ -100,7 +100,7 @@ class Dev(commands.Cog):
         return coro
 
     @staticmethod
-    def cleanup_code(content):
+    def cleanup_code(content: str) -> str:
         """Automatically removes code blocks from the code."""
         # remove ```py\n```
         if content.startswith("```") and content.endswith("```"):
@@ -110,7 +110,7 @@ class Dev(commands.Cog):
         return content.strip("` \n")
 
     @staticmethod
-    def get_syntax_error(e):
+    def get_syntax_error(e: SyntaxError) -> str:
         """Format a syntax error to send to the user.
 
         Returns a string representation of the error formatted as a codeblock.
@@ -123,7 +123,7 @@ class Dev(commands.Cog):
         )
 
     @staticmethod
-    def get_pages(msg: str):
+    def get_pages(msg: str) -> Iterator[str]:
         """Pagify the given message for output to the user."""
         return pagify(msg, delims=["\n", " "], priority=True, shorten_by=10)
 
@@ -131,11 +131,11 @@ class Dev(commands.Cog):
     def sanitize_output(ctx: commands.Context, input_: str) -> str:
         """Hides the bot's token from a string."""
         token = ctx.bot.http.token
-        return re.sub(re.escape(token), "[EXPUNGED]", input_, re.I)
+        return str(re.sub(re.escape(token), "[EXPUNGED]", input_, re.I))
 
     @commands.command()
     @commands.is_owner()
-    async def debug(self, ctx: commands.Context, *, code: str):
+    async def debug(self, ctx: commands.Context, *, code: str) -> None:
         """Evaluate a statement of python code.
 
         The bot will always respond with the return value of the code.
@@ -190,7 +190,7 @@ class Dev(commands.Cog):
 
     @commands.command(name="eval")
     @commands.is_owner()
-    async def _eval(self, ctx: commands.Context, *, body: str):
+    async def _eval(self, ctx: commands.Context, *, body: str) -> None:
         """Execute asynchronous code.
 
         This command wraps code into the body of an async function and then
@@ -257,7 +257,7 @@ class Dev(commands.Cog):
 
     @commands.group(invoke_without_command=True)
     @commands.is_owner()
-    async def repl(self, ctx: commands.Context):  # noqa C901
+    async def repl(self, ctx: commands.Context) -> None:
         """Open an interactive REPL.
 
         The REPL will only recognise code as messages which start with a
@@ -370,7 +370,7 @@ class Dev(commands.Cog):
                 await ctx.send(("Unexpected error: `{}`").format(e))
 
     @repl.command(aliases=["resume"])
-    async def pause(self, ctx, toggle: Optional[bool] = None):
+    async def pause(self, ctx: commands.Context, toggle: Optional[bool] = None) -> None:
         """Pauses/resumes the REPL running in the current channel"""
         if ctx.channel.id not in self.sessions:
             await ctx.send(
@@ -389,7 +389,7 @@ class Dev(commands.Cog):
 
     @commands.command()
     @commands.is_owner()
-    async def mock(self, ctx, user: discord.Member, *, command):
+    async def mock(self, ctx: commands.Context, user: discord.Member, *, command: str) -> None:
         """Mock another user invoking a command.
 
         The prefix must not be entered.
@@ -402,7 +402,7 @@ class Dev(commands.Cog):
 
     @commands.command(name="mockmsg")
     @commands.is_owner()
-    async def mock_msg(self, ctx, user: discord.Member, *, content: str):
+    async def mock_msg(self, ctx: commands.Context, user: discord.Member, *, content: str) -> None:
         """Dispatch a message event as if it were sent by a different user.
 
         Only reads the raw content of the message. Attachments, embeds etc. are

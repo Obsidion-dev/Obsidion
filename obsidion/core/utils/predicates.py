@@ -18,7 +18,7 @@ _CHAN_MENTION_RE = re.compile(r"<#([0-9]{15,21})>$")
 _ROLE_MENTION_RE = re.compile(r"<@&([0-9]{15,21})>$")
 
 
-class MessagePredicate(Callable[[discord.Message], bool]):
+class MessagePredicate():
     """A simple collection of predicates for message events.
 
     These predicates intend to help simplify checks in message events
@@ -65,7 +65,7 @@ class MessagePredicate(Callable[[discord.Message], bool]):
         self, predicate: Callable[["MessagePredicate", discord.Message], bool]
     ) -> None:
         self._pred: Callable[["MessagePredicate", discord.Message], bool] = predicate
-        self.result = None
+        self.result: Optional[Union[bool, int, float]] = None
 
     def __call__(self, message: discord.Message) -> bool:
         return self._pred(self, message)

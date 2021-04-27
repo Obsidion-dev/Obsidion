@@ -3,7 +3,7 @@ import json
 import logging
 from datetime import datetime
 from time import mktime
-from typing import Union
+from typing import Dict, Union
 
 import discord
 import feedparser
@@ -29,7 +29,7 @@ class News(commands.Cog):
         self.bot = bot
         self.last_media_data = datetime.now(pytz.utc)
         self.last_java_version_data = datetime.now(pytz.utc)
-        self.mojang_service = {}
+        self.mojang_service: Dict[str, str] = {}
         self.autopost.start()
 
     async def get_status(self) -> Union[discord.Embed, None]:

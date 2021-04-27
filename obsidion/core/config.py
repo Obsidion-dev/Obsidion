@@ -22,16 +22,16 @@ class PlayerNotExist(Exception):
 class Settings(BaseSettings):
     """Bot config settings."""
 
-    DISCORD_TOKEN: str = None
-    API_URL: HttpUrl = "https://api.obsidion-dev.com/api/v1"
-    HYPIXEL_API_TOKEN: UUID = None
+    DISCORD_TOKEN: str
+    API_URL: HttpUrl
+    HYPIXEL_API_TOKEN: UUID
     ACTIVITY: str = "for @Obsidion help"
-    DEFAULT_PREFIX: str = "/"
-    STACK_TRACE_CHANNEL: PositiveInt = None
-    DB: PostgresDsn = None
-    REDIS: RedisDsn = None
+    DEFAULT_PREFIX: str = "mc?"
+    STACK_TRACE_CHANNEL: PositiveInt
+    DB: PostgresDsn
+    REDIS: RedisDsn
     DEV: bool = False
-    COLOR: Color = "0x00FF00"
+    COLOR: Color = Color("0x00FF00")
 
     class Config:
         """Config for pydantic."""

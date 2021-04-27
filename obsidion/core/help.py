@@ -1,4 +1,5 @@
 import itertools
+from typing import Dict
 
 import discord
 from discord.ext.commands import Command
@@ -20,9 +21,8 @@ class HelpQueryNotFound(ValueError):
     matched command names and values are the likeness match scores.
     """
 
-    def __init__(self, arg: str, possible_matches: dict = None) -> None:
+    def __init__(self, arg: str, possible_matches: Dict[str, int]) -> None:
         """Init."""
-        print(9)
         super().__init__(arg)
         self.possible_matches = possible_matches
 
@@ -91,7 +91,6 @@ class Help(HelpCommand):
 
         Options and choices are case sensitive.
         """
-        print(1)
         # first get all commands including subcommands and full command name aliases
         choices = set()
         for command in await self.filter_commands(self.context.bot.walk_commands()):
@@ -118,14 +117,12 @@ class Help(HelpCommand):
         )
         return choices
 
-    async def subcommand_not_found(self, command, string: str) -> "HelpQueryNotFound":
+    async def subcommand_not_found(self, command, string: str) -> HelpQueryNotFound:
         """Redirects the error to `command_not_found`."""
-        print(5)
         return await self.command_not_found(f"{command.qualified_name} {string}")
 
     async def send_error_message(self, error: HelpQueryNotFound) -> None:
         """Send the error message to the channel."""
-        print(6)
         self.embed.colour = discord.Colour.red()
         self.embed.title = str(error)
 

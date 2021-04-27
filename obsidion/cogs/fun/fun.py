@@ -94,15 +94,6 @@ class Fun(commands.Cog):
             )
         )
 
-    @commands.command(aliases=["idea", "bidea"])
-    async def buildidea(self, ctx) -> None:
-        """Get an idea for a new idea."""
-        await ctx.send(
-            _("Here is something cool to build: {b_idea}.").format(
-                b_idea=choice(self.build_ideas_mes)
-            )
-        )
-
     @commands.command(aliases=["slay"])
     async def kill(self, ctx, member) -> None:
         """Kill that pesky friend in a fun and stylish way."""
@@ -197,7 +188,7 @@ class Fun(commands.Cog):
                 response += minecraft[alphabet.index(letter)]
             else:
                 response += letter
-        await ctx.send(f"{ctx.message.author.mention}, `{response}`")
+        await ctx.send(response)
 
     @cog_ext.cog_slash(
         name="enchant",

@@ -270,11 +270,11 @@ def pagify(
             this_page_len -= in_text.count("@here", 0, page_length) + in_text.count(
                 "@everyone", 0, page_length
             )
-        closest_delim = (in_text.rfind(d, 1, this_page_len) for d in delims)
+        _closest_delim = (in_text.rfind(d, 1, this_page_len) for d in delims)
         if priority:
-            closest_delim = next((x for x in closest_delim if x > 0), -1)
+            closest_delim = next((x for x in _closest_delim if x > 0), -1)
         else:
-            closest_delim = max(closest_delim)
+            closest_delim = max(_closest_delim)
         closest_delim = closest_delim if closest_delim != -1 else this_page_len
         if escape_mass_mentions:
             to_send = escape(in_text[:closest_delim], mass_mentions=True)
@@ -501,10 +501,9 @@ def humanize_timedelta(
         The function was called with neither a number of seconds nor a timedelta object
     """
 
-    try:
-        obj = seconds if seconds is not None else timedelta.total_seconds()
-    except AttributeError:
+    if timedelta is None or seconds is None:
         raise ValueError("You must provide either a timedelta or a number of seconds")
+    obj = seconds if seconds is not None else timedelta.total_seconds()
 
     seconds = int(obj)
     periods = [

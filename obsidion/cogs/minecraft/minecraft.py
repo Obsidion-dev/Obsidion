@@ -91,14 +91,14 @@ class Minecraft(commands.Cog):
         """Convert text to minecraft numerical seed."""
         try:
             int(text)
-            await ctx.send(int(text))
+            await ctx.send(str(int(text)))
             return
         except ValueError:
             pass
         h = 0
         for c in text:
             h = (31 * h + ord(c)) & 0xFFFFFFFF
-        await ctx.send(((h + 0x80000000) & 0xFFFFFFFF) - 0x80000000)
+        await ctx.send(str(((h + 0x80000000) & 0xFFFFFFFF) - 0x80000000))
 
     @cog_ext.cog_slash(
         name="seed",

@@ -17,7 +17,7 @@ _update_event_loop_policy()
 log = logging.getLogger("obsidion")
 
 
-def main():
+def main() -> None:
     """Main initialisation script."""
     # So no one can abuse the bot to mass mention
     allowed_mentions = AllowedMentions(everyone=False, roles=False, users=True)

@@ -5,7 +5,7 @@ import json
 import logging
 from datetime import datetime
 from time import mktime
-from typing import Optional
+from typing import Any, Dict, Optional
 from typing import Tuple
 from typing import Union
 
@@ -126,11 +126,12 @@ class Info(commands.Cog):
         await self.profile(ctx, username)
 
     @staticmethod
-    def get_server(ip: str, port: int) -> Tuple[str, Optional[int]]:
+    def get_server(ip: str, port: Optional[int] = None) -> Tuple[str, Optional[int]]:
         """Returns the server icon."""
         if ":" in ip:  # deal with them providing port in string instead of separate
-            ip, port = ip.split(":")
-            return (ip, int(port))
+            address, port = ip.split(":")
+            port = int(port)
+            return (address, port)
         if port:
             return (ip, port)
         return (ip, None)
@@ -235,7 +236,7 @@ class Info(commands.Cog):
         port: Optional[int] = None,
     ) -> None:
         await ctx.channel.trigger_typing()
-        params = (
+        params: Dict[str, Union[str, int]] = (
             {"server": address} if port is None else {"server": address, "port": port}
         )
         async with self.bot.http_session.get(
@@ -274,7 +275,7 @@ class Info(commands.Cog):
         await ctx.send(embed=embed)
 
     @cog_ext.cog_slash(
-        name="server",
+        name="serverpe",
         options=[
             create_option(
                 name="address",
@@ -290,7 +291,7 @@ class Info(commands.Cog):
             ),
         ],
     )
-    async def slash_server(
+    async def slash_serverpe(
         self, ctx: SlashContext, address: str, port: int = None
     ) -> None:
         await ctx.defer()
@@ -504,7 +505,7 @@ class Info(commands.Cog):
         ) as resp:
             data = await resp.json()
         id2version = {}
-        versions = {}
+        versions: Dict[str, Any] = {}
 
         for _version in reversed(data["versions"]):
             id2version[_version["id"]] = _version
@@ -582,9 +583,8 @@ class Info(commands.Cog):
         data = feedparser.parse(text, "lxml")["entries"][:12]
         embed = discord.Embed(colour=self.bot.color)
         for post in data:
-            time = datetime.fromtimestamp(mktime(post["published_parsed"]), pytz.utc)
             format = "%d %m %Y"
-            time = datetime.strftime(time, format)
+            time = datetime.strftime(datetime.fromtimestamp(mktime(post["published_parsed"]), pytz.utc), format)
             embed.add_field(
                 name=post["title"],
                 value=(

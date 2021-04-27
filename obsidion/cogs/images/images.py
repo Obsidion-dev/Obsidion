@@ -28,20 +28,24 @@ class Images(commands.Cog):
     async def achievement(
         self,
         ctx: Union[commands.Context, SlashContext],
-        block_name: str,
+        item_name: str,
         title: str,
         *,
         text: str,
     ) -> None:
         """Create your very own custom Minecraft achievements."""
         text = text.replace(" ", "%20")
+        async with self.bot.http_session.get(f"{get_settings().API_URL}/images/advancement?item={item_name}&title={title}&text={text}") as resp:
+            if resp.status == 500:
+                await ctx.send("That item is not available.")
+                return
         embed = discord.Embed(color=self.bot.color)
         embed.set_author(
             name=_("Obsidion Advancement Generator"), icon_url=self.bot.user.avatar_url
         )
         embed.set_image(
             url=(
-                f"{get_settings().API_URL}/images/advancement?item={block_name}&title={title}&text={text}"
+                f"{get_settings().API_URL}/images/advancement?item={item_name}&title={title}&text={text}"
             )
         )
         await ctx.send(embed=embed)
@@ -134,7 +138,7 @@ class Images(commands.Cog):
             )
         ],
     )
-    async def slash_skin(self: SlashContext, ctx, username: str = None) -> None:
+    async def slash_skin(self, ctx: SlashContext, username: str = None) -> None:
         """Renders a Minecraft players skin."""
         await ctx.defer()
         await self.skin(ctx, username)

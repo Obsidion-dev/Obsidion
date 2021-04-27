@@ -293,6 +293,14 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "discord-py-slash-command"
+version = "1.1.2"
+description = "A simple discord slash command handler for discord.py."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
 name = "discord.py"
 version = "1.7.0"
 description = "A Python wrapper for the Discord API"
@@ -1129,7 +1137,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "08011c8c8949eaf994baaad94a0b82495e62815be6a533453e768f95eac14041"
+content-hash = "621ac1fe410cfa4dd008889d2414981c5898b3b82a9e590e2b150b3bd50008c0"
 
 [metadata.files]
 aiodns = [
@@ -1319,6 +1327,10 @@ dataclasses = [
     {file = "dataclasses-0.6-py3-none-any.whl", hash = "sha256:454a69d788c7fda44efd71e259be79577822f5e3f53f029a22d08004e951dc9f"},
     {file = "dataclasses-0.6.tar.gz", hash = "sha256:6988bd2b895eef432d562370bb707d540f32f7360ab13da45340101bc2307d84"},
 ]
+discord-py-slash-command = [
+    {file = "discord-py-slash-command-1.1.2.tar.gz", hash = "sha256:ac2c7a83dc33ef253a9a11ab3f6abb085d5399ee85b5a05c5ec06e0b69fc1647"},
+    {file = "discord_py_slash_command-1.1.2-py3-none-any.whl", hash = "sha256:c65cf68c25de8b244f50938b9f5d2426a1726380c1103701cd764138a0c73b6b"},
+]
 "discord.py" = [
     {file = "discord.py-1.7.0-py3-none-any.whl", hash = "sha256:330edfa11e59c1d1eae31e68f02f8cfcea2702813439dfe58dd587018979e1c9"},
     {file = "discord.py-1.7.0.tar.gz", hash = "sha256:1b05150e767c4a18941d863d819844ecef8395b0ca3784055d78770b8fa70b68"},
@@ -1496,8 +1508,6 @@ lxml = [
     {file = "lxml-4.6.3-cp27-cp27m-win_amd64.whl", hash = "sha256:8157dadbb09a34a6bd95a50690595e1fa0af1a99445e2744110e3dca7831c4ee"},
     {file = "lxml-4.6.3-cp27-cp27mu-manylinux1_i686.whl", hash = "sha256:7728e05c35412ba36d3e9795ae8995e3c86958179c9770e65558ec3fdfd3724f"},
     {file = "lxml-4.6.3-cp27-cp27mu-manylinux1_x86_64.whl", hash = "sha256:4bff24dfeea62f2e56f5bab929b4428ae6caba2d1eea0c2d6eb618e30a71e6d4"},
-    {file = "lxml-4.6.3-cp35-cp35m-manylinux1_i686.whl", hash = "sha256:74f7d8d439b18fa4c385f3f5dfd11144bb87c1da034a466c5b5577d23a1d9b51"},
-    {file = "lxml-4.6.3-cp35-cp35m-manylinux1_x86_64.whl", hash = "sha256:f90ba11136bfdd25cae3951af8da2e95121c9b9b93727b1b896e3fa105b2f586"},
     {file = "lxml-4.6.3-cp35-cp35m-win32.whl", hash = "sha256:f2380a6376dfa090227b663f9678150ef27543483055cc327555fb592c5967e2"},
     {file = "lxml-4.6.3-cp35-cp35m-win_amd64.whl", hash = "sha256:c4f05c5a7c49d2fb70223d0d5bcfbe474cf928310ac9fa6a7c6dddc831d0b1d4"},
     {file = "lxml-4.6.3-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:d2e35d7bf1c1ac8c538f88d26b396e73dd81440d59c1ef8522e1ea77b345ede4"},

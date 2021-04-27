@@ -6,11 +6,13 @@ import inspect
 import logging
 import os
 import sys
-from typing import Optional
+from typing import List, Optional
 from typing import Union
 
 import discord
 from discord.ext import commands
+from discord.ext.commands.core import Command, Group, wrap_callback
+from discord.ext.commands.errors import CommandError
 from discord_slash import cog_ext
 from discord_slash import SlashContext
 from obsidion import __version__
@@ -32,7 +34,7 @@ _ = Translator("Core", __file__)
 class Core(commands.Cog):
     """Commands related to core functions."""
 
-    def __init__(self, bot):
+    def __init__(self, bot) -> None:
         """Init Core Commands."""
         self.bot = bot
 
@@ -151,7 +153,7 @@ class Core(commands.Cog):
     @commands.is_owner()
     async def leave_servers(self, ctx: commands.Context) -> None:
         """Lists and allows Obsidion to leave servers."""
-        guilds = sorted(self.bot.guilds, key=lambda s: s.name.lower())
+        guilds: List[discord.Guild] = sorted(self.bot.guilds, key=lambda s: s.name.lower())
         msg = ""
         responses = []
         for i, server in enumerate(guilds, 1):
@@ -172,6 +174,8 @@ class Core(commands.Cog):
             except discord.errors.NotFound:
                 pass
         else:
+            if not isinstance(pred.result, int):
+                return
             guild = guilds[pred.result]
             await ctx.send(
                 _("Are you sure you want me to leave {}? (yes/no)").format(guild.name)
@@ -241,16 +245,18 @@ class Core(commands.Cog):
         source_url = "https://github.com/Obsidion-dev/Obsidion"
         branch = "main"
         if command is None:
-            return await ctx.send(source_url)
-
+            await ctx.send(source_url)
+            return
+        filename: str
         if command == "help":
             src = type(self.bot.help_command)
             module = src.__module__
-            filename = inspect.getsourcefile(src)
+            filename = str(inspect.getsourcefile(src))
         else:
             obj = self.bot.get_command(command.replace(".", " "))
             if obj is None:
-                return await ctx.send("Could not find command.")
+                await ctx.send("Could not find command.")
+                return
 
             # since we found the command we're looking for, presumably anyway, let's
             # try to access the code itself
@@ -335,4 +341,42 @@ class Core(commands.Cog):
     @cog_ext.cog_slash(name="help")
     async def slash_help(self, ctx: SlashContext, command=None) -> None:
         await ctx.defer()
-        await ctx.send_help(command)
+        bot = self.bot
+        cmd = bot.help_command
+
+        cmd = cmd.copy()
+        cmd.context = ctx
+        if command == None:
+            await cmd.prepare_help_command(ctx, None)
+            mapping = cmd.get_bot_mapping()
+            injected = wrap_callback(cmd.send_bot_help)
+            try:
+                return await injected(mapping)
+            except CommandError as e:
+                await cmd.on_help_command_error(ctx, e)
+                return None
+        entity = command
+        if entity is None:
+            return None
+        if isinstance(entity, str):
+            entity = bot.get_cog(entity) or bot.get_command(entity)
+        try:
+            entity.qualified_name
+        except AttributeError:
+            # if we're here then it's not a cog, group, or command.
+            return None
+        await cmd.prepare_help_command(ctx, entity.qualified_name)
+        try:
+            if hasattr(entity, "__cog_commands__"):
+                injected = wrap_callback(cmd.send_cog_help)
+                return await injected(entity)
+            elif isinstance(entity, Group):
+                injected = wrap_callback(cmd.send_group_help)
+                return await injected(entity)
+            elif isinstance(entity, Command):
+                injected = wrap_callback(cmd.send_command_help)
+                return await injected(entity)
+            else:
+                return None
+        except CommandError as e:
+            await cmd.on_help_command_error(self, e)

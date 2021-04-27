@@ -3,7 +3,7 @@ import json
 import socket
 import sys
 from enum import IntEnum
-from typing import Optional
+from typing import Any, Coroutine, Dict, List, Optional
 
 import aiohttp
 import aioredis
@@ -25,35 +25,34 @@ from .settings_cache import PrefixManager
 
 class Obsidion(AutoShardedBot):
     """Main bot class."""
+    redis: aioredis.Redis
+    http_session: aiohttp.ClientSession
+    _connector: aiohttp.TCPConnector
+    _resolver: aiohttp.AsyncResolver
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs) -> None:
         """Initialise bot with args passed through."""
-
         self._shutdown_mode = ExitCodes.CRITICAL
         self.uptime = None
         color = get_settings().COLOR.as_rgb_tuple()
         self.color = discord.Color.from_rgb(color[0], color[1], color[2])
         self._last_exception = None
         self._invite = None
-        self.redis = None
         self.db = None
-        self.http_session = None
-        self._connector = None
-        self._resolver = None
 
         self._prefix_cache = PrefixManager(self)
         self._i18n_cache = I18nManager(self)
         self._account_cache = AccountManager(self)
         self._guild_cache = GuildManager(self)
 
-        async def prefix_manager(bot, message):
+        async def prefix_manager(bot, message: discord.Message) -> List[str]:
             prefixes = await self._prefix_cache.get_prefixes(message.guild)
             return when_mentioned_or(*prefixes)(bot, message)
 
         kwargs["command_prefix"] = prefix_manager
         super().__init__(*args, **kwargs)
 
-    async def pre_flight(self):
+    async def pre_flight(self) -> None:
         init_global_checks(self)
 
         self.redis = await aioredis.create_redis_pool(str(get_settings().REDIS))
@@ -133,7 +132,7 @@ class Obsidion(AutoShardedBot):
 
         return True
 
-    async def set_prefixes(self, guild: discord.Guild, prefix: Optional[str] = None):
+    async def set_prefixes(self, guild: discord.Guild, prefix: Optional[str] = None) -> None:
         """
         Set global/server prefixes.
 
@@ -158,7 +157,7 @@ class Obsidion(AutoShardedBot):
         """
         await self._prefix_cache.set_prefixes(guild=guild, prefix=prefix)
 
-    async def shutdown(self, *, restart: bool = False):
+    async def shutdown(self, *, restart: Optional[bool] = False) -> None:
         """Gracefully quit Obsidion.
 
         The program will exit with code :code:`0` by default.
@@ -180,26 +179,27 @@ class Obsidion(AutoShardedBot):
 
     async def mojang_player(
         self, user: discord.User, username: Optional[str] = None
-    ) -> str:
+    ) -> Dict[str, Any]:
         """Takes in an mc username and tries to convert it to a mc uuid.
 
         Args:
-        username (str): username of player which uuid will be from
-        bot (Obsidion): Obsidion bot
+            username (str): username of player which uuid will be from
+            bot (Obsidion): Obsidion bot
 
         Returns:
-        str: uuid of player
+            str: uuid of player
         """
         if username is None:
-            uuid = await self._account_cache.get_account(user)
+            uuid = str(await self._account_cache.get_account(user))
             if uuid is None:
                 raise PlayerNotExist()
         else:
             username_key = f"username_{username}"
             if await self.redis.exists(username_key):
-                uuid = (await self.redis.get(username_key)).decode("UTF-8")
+                uuid = str((await self.redis.get(username_key)).decode("UTF-8"))
             else:
-                uuid = username
+                uuid = str(username)
+        data: Optional[Dict[str, Any]]
         key = f"player_{str(uuid)}"
         if await self.redis.exists(key):
             data = json.loads(await self.redis.get(key))

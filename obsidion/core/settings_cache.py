@@ -124,7 +124,7 @@ class I18nManager:
         return regional
 
     async def set_regional_format(
-        self, guild: Union[discord.Guild, None], regional_format: Union[str, None]
+        self, guild: discord.Guild, regional_format: Union[str, None]
     ) -> None:
         """Set the regional format in the config and cache"""
         gid = guild.id
@@ -203,7 +203,7 @@ class GuildManager:
 
     async def set_server(
         self, guild: discord.Guild, server: Optional[str] = None
-    ) -> Union[str, None]:
+    ) -> None:
         gid = guild.id
         key = f"server_{gid}"
         if await self._bot.db.fetch("SELECT server FROM guild WHERE id = $1", gid):
@@ -233,7 +233,7 @@ class GuildManager:
         await self._bot.redis.set(key, json.dumps(server), expire=28800)
         return server
 
-    async def set_news(self, guild: discord.Guild, news: json = None) -> None:
+    async def set_news(self, guild: discord.Guild, news: Optional[str] = None) -> None:
         gid = guild.id
         str_news = json.dumps(news)
         key = f"news_{gid}"

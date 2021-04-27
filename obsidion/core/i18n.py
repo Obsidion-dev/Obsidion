@@ -7,7 +7,7 @@ import logging
 import os
 from contextvars import ContextVar
 from pathlib import Path
-from typing import Callable
+from typing import Callable, List
 from typing import Dict
 from typing import Optional
 from typing import Union
@@ -44,7 +44,7 @@ IN_MSGSTR = 4
 MSGID = 'msgid "'
 MSGSTR = 'msgstr "'
 
-_translators = []
+_translators: List[Translator] = []
 
 
 def get_locale() -> str:
@@ -144,7 +144,7 @@ async def set_contextual_locales_from_guild(
     set_contextual_regional_format(regional_format)
 
 
-def _parse(translation_file: io.TextIOWrapper) -> Dict[str, str]:
+def _parse(translation_file: io.TextIOWrapper) -> Dict[str, Dict[str,str]]:
     """
     Custom gettext parsing of translation files.
 
@@ -163,7 +163,7 @@ def _parse(translation_file: io.TextIOWrapper) -> Dict[str, str]:
     step = None
     untranslated = ""
     translated = ""
-    translations = {}
+    translations: Dict[str, Dict[str, str]] = {}
     locale = get_locale()
 
     translations[locale] = {}
@@ -219,7 +219,7 @@ def get_locale_path(cog_folder: Path, extension: str) -> Path:
     return cog_folder / "locales" / "{}.{}".format(get_locale(), extension)
 
 
-class Translator(Callable[[str], str]):
+class Translator():
     """Function to get translated strings at runtime."""
 
     def __init__(self, name: str, file_location: Union[str, Path, os.PathLike]):
@@ -237,7 +237,7 @@ class Translator(Callable[[str], str]):
         """
         self.cog_folder = Path(file_location).resolve().parent
         self.cog_name = name
-        self.translations = {}
+        self.translations: Dict[str, Dict[str, str]] = {}
 
         _translators.append(self)
 
@@ -352,7 +352,7 @@ def get_babel_regional_format(
 def cog_i18n(translator: Translator):
     """Get a class decorator to link the translator to this cog."""
 
-    def decorator(cog_class: type):
+    def decorator(cog_class: object):
         cog_class.__translator__ = translator
         for name, attr in cog_class.__dict__.items():
             if isinstance(attr, (commands.Group, commands.Command)):

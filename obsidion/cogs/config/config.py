@@ -1,7 +1,7 @@
 """Images cog."""
 import asyncio
 import logging
-from typing import Optional
+from typing import Dict, Optional
 from typing import Union
 
 import discord
@@ -215,7 +215,7 @@ class Config(commands.Cog):
     async def autopost_setup(self, ctx: commands.Context) -> None:
         """Autopost Minecraft News"""
         categories = ("release", "snapshot", "article", "outage")
-        cat = {}
+        cat: Dict[str, Optional[int]] = {}
 
         def channel_check(m: discord.Message):
             channel_mention = True
@@ -276,7 +276,6 @@ class Config(commands.Cog):
     async def autopost_edit(self, ctx: Union[commands.Context, SlashContext]) -> None:
         """Autopost Minecraft News"""
         categories = ("release", "snapshot", "article", "outage")
-        cat = {}
         await ctx.send("TODO")
 
     @autopost.group(name="settings")

@@ -378,7 +378,7 @@ class Hypixel(commands.Cog):
         await ctx.send(embed=embed)
 
     @cog_ext.cog_slash(name="guild")
-    async def slash_auctions(self, ctx, guildname=None):
+    async def slash_guild(self, ctx, guildname=None):
         """Get's guild info by guild name."""
         await ctx.defer()
         await self.guild(ctx, guildname)
@@ -429,7 +429,7 @@ class Hypixel(commands.Cog):
         await menu.open()
 
     @cog_ext.cog_slash(name="leaderboards")
-    async def slash_auctions(self, ctx):
+    async def slash_leaderboards(self, ctx):
         """Get's guild info by guild name."""
         await ctx.defer()
         await self.leaderboards(ctx)
