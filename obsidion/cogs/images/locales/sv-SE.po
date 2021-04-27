@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: obsidion\n"
 "POT-Creation-Date: 2021-04-28 00:02+1200\n"
-"PO-Revision-Date: 2021-04-27 12:08\n"
+"PO-Revision-Date: 2021-04-27 12:39\n"
 "Last-Translator: \n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -20,35 +20,35 @@ msgstr ""
 #: obsidion/cogs/images/images.py:36
 #, docstring
 msgid "Create your very own custom Minecraft achievements."
-msgstr ""
+msgstr "Skapa era egna anpassade Minecraft-landvinningar."
 
 #: obsidion/cogs/images/images.py:46
 msgid "Obsidion Advancement Generator"
-msgstr ""
+msgstr "Obsidion Förskottsgenereringsfunktion"
 
 #: obsidion/cogs/images/images.py:70
 msgid "Obsidion Sign Generator"
-msgstr ""
+msgstr "Obsidion Signera genereringsfunktion"
 
 #: obsidion/cogs/images/images.py:83
 #, docstring
 msgid "Renders a Minecraft players face."
-msgstr ""
+msgstr "Rengör en Minecraft-spelare."
 
 #: obsidion/cogs/images/images.py:106
 #, docstring
 msgid "Renders a Minecraft players skull."
-msgstr ""
+msgstr "Rengör en Minecraft-spelare skalle."
 
 #: obsidion/cogs/images/images.py:129
 #, docstring
 msgid "Renders a Minecraft players skin."
-msgstr ""
+msgstr "Rengör en Minecraft-spelare hud."
 
 #: obsidion/cogs/images/images.py:152
 #, docstring
 msgid "Renders a Minecraft players bust."
-msgstr ""
+msgstr "Rengör en Minecraft-spelare."
 
 #: obsidion/cogs/images/images.py:178
 #, docstring
@@ -56,13 +56,18 @@ msgid "Renders a Minecraft players skin in 6 different ways.\n\n"
 "        You can choose from these 6 render types: face,\n"
 "        front, full, head, bust & skin.\n"
 "        "
-msgstr ""
+msgstr "Rengör en Minecraft-spelare på 6 olika sätt.\n\n"
+"        Du kan välja mellan dessa 6 renderingstyper: ansikte,\n"
+"        framåt, full, huvud, tillslag och skinn.\n"
+"        "
 
 #: obsidion/cogs/images/images.py:187
 msgid "Please supply a render type. Your options are:\n"
 " `face`, `front`, `full`, `head`, `bust`, `skin` \n"
 " Type: ?render <render type> <username>"
-msgstr ""
+msgstr "Ange en renderingstyp. Alternativen är:\n"
+" \"ansikte\", \"front\", \"huvud\", \"byst\", \"skin\", \"skin\" \n"
+" Typ:? rendera <render type> <username>"
 
 #: obsidion/cogs/images/images.py:198
 msgid "Here is: `{username}`'s {render_type}! \n"
