@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: obsidion\n"
 "POT-Creation-Date: 2021-04-28 00:01+1200\n"
-"PO-Revision-Date: 2021-04-27 12:09\n"
+"PO-Revision-Date: 2021-04-27 12:39\n"
 "Last-Translator: \n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr "Pong."
 
 #: obsidion/core/core_commands.py:47
 msgid "Pong! ({latency}ms)"
-msgstr ""
+msgstr "Pong! ({latency}ms)"
 
 #: obsidion/core/core_commands.py:57
 #, docstring
@@ -46,7 +46,7 @@ msgstr "Den här boten är en förekomst av [ Obsidion, en öppen källkod ] ({ 
 
 #: obsidion/core/core_commands.py:94
 msgid "Bringing joy since the 2nd of April 2020 (over {} days ago!)"
-msgstr ""
+msgstr "Glädjedödare sedan 2 :a april 2020 (över { } dagar sedan!)"
 
 #: obsidion/core/core_commands.py:108
 #, docstring
@@ -77,12 +77,12 @@ msgstr "Sparar den aktuella servern."
 
 #: obsidion/core/core_commands.py:149
 msgid "Are you sure you want me to leave the current server? (yes/no)"
-msgstr ""
+msgstr "Är du säker på att du vill att jag ska lämna den aktuella servern? (ja/nej)"
 
 #: obsidion/core/core_commands.py:158
 #, docstring
 msgid "Lists and allows Obsidion to leave servers."
-msgstr ""
+msgstr "Listar och tillåter Obsidion att lämna servrar."
 
 #: obsidion/core/core_commands.py:171
 msgid "To leave a server, just type its number."
@@ -120,7 +120,8 @@ msgstr "\n"
 #: obsidion/core/core_commands.py:218
 msgid "This bot is an instance of the Obsidion Discord Bot.\n"
 "Obsidion is an open source application made available to the public and licensed under the GNU AGPL v3. The full text of this license is available to you at <https://github.com/Obsidion-dev/Obsidion/blob/main/LICENSE>"
-msgstr ""
+msgstr "Den här boten är en förekomst av Obsidion Discord Bot.\n"
+"Obsidion är en öppen källkod som görs tillgänglig för allmänheten och licensieras enligt GNU AGPL v3. Den fullständiga texten till licensen är tillgänglig för dig på <https://github.com/Obsidion-dev/Obsidion/blob/main/LICENSE>"
 
 #: obsidion/core/core_commands.py:244
 #, docstring
@@ -146,7 +147,10 @@ msgid "Attempts to restart Obsidion.\n\n"
 "        Makes Obsidion quit with exit code 26.\n"
 "        The restart is not guaranteed: it must be dealt\n"
 "        with by the process manager in use."
-msgstr ""
+msgstr "Försök att starta om Obsidion.\n\n"
+"        Gör Obsidion avsluta med exit-kod 26.\n"
+"        Omstarten är inte garanterad. Den måste behandlas\n"
+"        med den processhanterare som används."
 
 #: obsidion/core/core_commands.py:323
 #, docstring
@@ -305,15 +309,15 @@ msgstr "Viktiga bovar."
 
 #: obsidion/core/events.py:92
 msgid "Sorry, it looks like you don't have the **{fmt}** permissions I need to do that."
-msgstr ""
+msgstr "Tyvärr, det ser ut som om du inte har den ***{fmt}** behörigheter jag behöver för att göra det."
 
 #: obsidion/core/events.py:98
 msgid "Sorry, it looks like you don't have the **{fmt}** permission I need to do that."
-msgstr ""
+msgstr "Tyvärr, det ser ut som om du inte har den ***{fmt}** om jag behöver göra det."
 
 #: obsidion/core/events.py:119
 msgid "`{user_input}` is not a valid value for `{command}`"
-msgstr ""
+msgstr "\"{user_input}\" är inte ett giltigt värde för \"{command}\"."
 
 #: obsidion/core/events.py:136
 msgid "I require the {permission} permission to execute that command."
@@ -321,7 +325,7 @@ msgstr "Jag kräver {permission} -behörigheten att köra det kommandot."
 
 #: obsidion/core/events.py:140
 msgid "I require {permission_list} permissions to execute that command."
-msgstr ""
+msgstr "Jag kräver {permission_list} behörighet för att köra det kommandot."
 
 #: obsidion/core/events.py:157
 msgid "This command is on cooldown. Try again in {delay}."
@@ -357,9 +361,9 @@ msgstr "Det är för många som använder det här kommandot. Den kan endast anv
 
 #: obsidion/core/events.py:205
 msgid "The user does not exist, please check wether the username is correct."
-msgstr ""
+msgstr "Användaren finns inte. Kontrollera att användarnamnet är rätt."
 
 #: obsidion/core/events.py:215
 msgid "Error in command '{command}'. It has been recorded and should be fixed soon."
-msgstr ""
+msgstr "Fel i kommandot \"{command}\". Det har registrerats och bör fastställas snart."
 
