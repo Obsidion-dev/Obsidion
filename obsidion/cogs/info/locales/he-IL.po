@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: obsidion\n"
 "POT-Creation-Date: 2021-04-28 00:02+1200\n"
-"PO-Revision-Date: 2021-04-27 12:09\n"
+"PO-Revision-Date: 2021-04-27 12:40\n"
 "Last-Translator: \n"
 "Language-Team: Hebrew\n"
 "MIME-Version: 1.0\n"
@@ -20,20 +20,21 @@ msgstr ""
 #: obsidion/cogs/info/info.py:41
 #, docstring
 msgid "View a players Minecraft UUID, Username history and skin."
-msgstr ""
+msgstr "להציג שחקנים UUID של Minecraft, היסטוריה ועור של שם משתמש."
 
 #: obsidion/cogs/info/info.py:58
 msgid "**1.** `{original}` - First Username"
-msgstr ""
+msgstr "** 1. * *{original}-שם משתמש ראשון"
 
 #: obsidion/cogs/info/info.py:63
 msgid "Minecraft profile for {username}"
-msgstr ""
+msgstr "פרופיל מינימלי עבור {username}"
 
 #: obsidion/cogs/info/info.py:70
 msgid "Full UUID: `{uuid}`\n"
 "Short UUID: `{short}`"
-msgstr ""
+msgstr "UUID מלא:{uuid}`\n"
+"UUID קצר: `{short}`"
 
 #: obsidion/cogs/info/info.py:77
 msgid "Skin: [Open Skin](https://visage.surgeplay.com/bust/{uuid})\n"
@@ -46,124 +47,134 @@ msgstr ""
 
 #: obsidion/cogs/info/info.py:93 obsidion/cogs/info/info.py:493
 msgid "Information"
-msgstr ""
+msgstr "מידע"
 
 #: obsidion/cogs/info/info.py:95
 msgid "Username Changes: `{changes}`\n"
 "Namemc: [link]({namemc})\n"
 "Legacy: `{legacy}`\n"
 "Demo: `{demo}`"
-msgstr ""
+msgstr "שינויי שם משתמש: `{changes}`\n"
+"Namemc: [link]({namemc})\n"
+"Legacy:{legacy}`\n"
+"Demo:{demo}"
 
 #: obsidion/cogs/info/info.py:105
 msgid "Name History"
-msgstr ""
+msgstr "היסטוריית שמות"
 
 #: obsidion/cogs/info/info.py:146
 #, docstring
 msgid "Minecraft server info."
-msgstr ""
+msgstr "פרטי שרת מינקראפט."
 
 #: obsidion/cogs/info/info.py:151
 msgid "Please provide a server"
-msgstr ""
+msgstr "נא לציין שרת."
 
 #: obsidion/cogs/info/info.py:173
 msgid "server could not be reached."
-msgstr ""
+msgstr "לא ניתן להגיע לשרת."
 
 #: obsidion/cogs/info/info.py:176
 msgid "Java Server: {server_ip}"
-msgstr ""
+msgstr "שרת Java: {server_ip}"
 
 #: obsidion/cogs/info/info.py:179 obsidion/cogs/info/info.py:254
 msgid "Description"
-msgstr ""
+msgstr "תיאור"
 
 #: obsidion/cogs/info/info.py:183
 msgid "Online: `{online}` \n"
 " Maximum: `{maximum}`"
-msgstr ""
+msgstr "מקוון:{online}' \n"
+" מקסימום:{maximum}"
 
 #: obsidion/cogs/info/info.py:188 obsidion/cogs/info/info.py:263
 msgid "Version"
-msgstr ""
+msgstr "גרסה"
 
 #: obsidion/cogs/info/info.py:189
 msgid "Java Edition \n"
 " Running: `{version}` \n"
 "Protocol: `{protocol}`"
-msgstr ""
+msgstr "Java Edition \n"
+" רץ: `{version}פרוטוקול \n"
+"פרוטוקול:{protocol}"
 
 #: obsidion/cogs/info/info.py:251
 msgid "Bedrock Server: {address}"
-msgstr ""
+msgstr "שרת Bedrock: {address}"
 
 #: obsidion/cogs/info/info.py:257
 msgid "Players"
-msgstr ""
+msgstr "שחקנים"
 
 #: obsidion/cogs/info/info.py:258
 msgid "Online: `{player_count}` \n"
 " Maximum: `{player_max}`"
-msgstr ""
+msgstr "מקוון:{player_count}' \n"
+" מקסימום:{player_max}"
 
 #: obsidion/cogs/info/info.py:264
 msgid "Bedrock Edition \n"
 " Running: `{version}` \n"
 "Protocol: `{protocol}`"
-msgstr ""
+msgstr "Bedrock Edition \n"
+" רץ:{version}פרוטוקול \n"
+"פרוטוקול:{protocol}"
 
 #: obsidion/cogs/info/info.py:270
 msgid "Info"
-msgstr ""
+msgstr "מידע"
 
 #: obsidion/cogs/info/info.py:271
 msgid "Gamemode: `{gamemode}` \n"
 "Latency: `{latency}`"
-msgstr ""
+msgstr "Gamemode: `{gamemode}' \n"
+"אחרונה:{latency}"
 
 #: obsidion/cogs/info/info.py:302
 #, docstring
 msgid "Check the status of all the Mojang services."
-msgstr ""
+msgstr "בדקו את המצב של כל שירותי Mojang."
 
 #: obsidion/cogs/info/info.py:331
 msgid ":green_heart: - {service}: **This service is healthy.** \n"
-msgstr ""
+msgstr ":green_heart: - {service}: ** שירות זה בריא. * * \n"
 
 #: obsidion/cogs/info/info.py:335
 msgid ":heart: - {service}: **This service is offline.** \n"
-msgstr ""
+msgstr ":heart: - {service}: ** שירות זה הוא מחוץ לקו. * * \n"
 
 #: obsidion/cogs/info/info.py:338
 msgid "Minecraft Service Status"
-msgstr ""
+msgstr "מצב שירות Minecraft"
 
 #: obsidion/cogs/info/info.py:341
 msgid "Total Sales: **{total}** Last 24 Hours: **{last}**"
-msgstr ""
+msgstr "סה \" כ מכירות:{total}** 24 השעות האחרונות: **{last}**"
 
 #: obsidion/cogs/info/info.py:345
 msgid "Minecraft Services:"
-msgstr ""
+msgstr "שירותי מיינקראפט:"
 
 #: obsidion/cogs/info/info.py:358
 #, docstring
 msgid "Get an article from the minecraft wiki."
-msgstr ""
+msgstr "קבלת מאמר מהוויקי של המנקראפט."
 
 #: obsidion/cogs/info/info.py:406
 msgid "Information provided by Wikimedia"
-msgstr ""
+msgstr "מידע המסופק על ידי ויקימדיה"
 
 #: obsidion/cogs/info/info.py:412
 msgid "I'm sorry, I couldn't find \"{query}\" on fandom"
-msgstr ""
+msgstr "אני מצטער, אני לא יכול למצוא \"{query}\" על פדום"
 
 #: obsidion/cogs/info/info.py:443
 msgid "The bug {bug} was not found."
-msgstr ""
+msgstr "באג {bug} לא נמצא."
 
 #: obsidion/cogs/info/info.py:455
 msgid "Version: {version}\n"
@@ -176,38 +187,41 @@ msgstr ""
 
 #: obsidion/cogs/info/info.py:476
 msgid "Resolution: {resolution}\n"
-msgstr ""
+msgstr "פתרון: {resolution}\n"
 
 #: obsidion/cogs/info/info.py:481
 msgid "Affected: "
-msgstr ""
+msgstr "מושפע: "
 
 #: obsidion/cogs/info/info.py:487
 msgid "Fixed Version: {fixed} + "
-msgstr ""
+msgstr "גרסה קבועה: {fixed} + "
 
 #: obsidion/cogs/info/info.py:494
 msgid "Details"
-msgstr ""
+msgstr "פרטים"
 
 #: obsidion/cogs/info/info.py:526
 msgid "Version is invalid."
-msgstr ""
+msgstr "הגרסה אינה חוקית."
 
 #: obsidion/cogs/info/info.py:530
 msgid "Minecraft Java Edition {version}"
-msgstr ""
+msgstr "Minecraft Java Edition {version}"
 
 #: obsidion/cogs/info/info.py:539
 msgid "Type: `{type}`\n"
 "Release: `{released}`\n"
 "Package URL: [link]({package_url})\n"
 "Minecraft Wiki: [link]({wiki})"
-msgstr ""
+msgstr "הקלידו: `{type}`\n"
+"מהדורה:{released}`\n"
+"חבילת URL: [link]({package_url})\n"
+"ויקי של מיינקראפט: [link]({wiki})"
 
 #: obsidion/cogs/info/info.py:550
 msgid "Minecraft Java Edition Versions"
-msgstr ""
+msgstr "גרסאות של Java Edition גרסאות"
 
 #: obsidion/cogs/info/info.py:559
 msgid "Releases: `{releases}`\n"
@@ -215,5 +229,9 @@ msgid "Releases: `{releases}`\n"
 "ID: `{id}`\n"
 "Released: `{released}`\n"
 "Wiki: [link]({link})"
-msgstr ""
+msgstr "גירסאות:{releases}-\n"
+"** מהדורה אחרונה * *\n"
+"זיהוי:{id}שוחרר:\n"
+"שוחרר:{released}ויקי:\n"
+"ויקי: [link]({link})"
 
