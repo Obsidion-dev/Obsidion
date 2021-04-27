@@ -1,0 +1,147 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: obsidion\n"
+"POT-Creation-Date: 2021-04-28 00:01+1200\n"
+"PO-Revision-Date: 2021-04-27 12:41\n"
+"Last-Translator: \n"
+"Language-Team: Chinese Traditional\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: obsidion\n"
+"X-Crowdin-Project-ID: 437658\n"
+"X-Crowdin-Language: zh-TW\n"
+"X-Crowdin-File: /reformat/cogs/config/locales/messages.pot\n"
+"X-Crowdin-File-ID: 70\n"
+"Language: zh_TW\n"
+
+#: obsidion/cogs/config/config.py:37
+#, docstring
+msgid "Sets Obsidion's server prefix(es)."
+msgstr "設定 Obsidion的伺服器字首（ es）。"
+
+#: obsidion/cogs/config/config.py:40
+msgid "Guild prefixes have been reset."
+msgstr "已重設 Guild 字首。"
+
+#: obsidion/cogs/config/config.py:43
+msgid "Prefix set."
+msgstr "字首集。"
+
+#: obsidion/cogs/config/config.py:59
+#, docstring
+msgid "\n"
+"        Changes the bot's locale in this server.\n\n"
+"        `<language_code>` can be any language code with country code included,\n"
+"        e.g. `en-US`, `de-DE`, `fr-FR`, `pl-PL`, etc.\n\n\n"
+"        Use \"default\" to return to the bot's default set language.\n"
+"        To reset to English, use \"en-US\".\n"
+"        "
+msgstr "\n"
+"        變更此伺服器中的 bot的語言環境。\n\n"
+"        `<language_code>` 可以是包含國碼的任何語言碼，例如：\n"
+"        ，例如 `en-US`， `de-DE`， `fr-FR`， `pl-PL`，等等。\n\n\n"
+"        請使用「預設值」，回到 Bot 的預設設定語言。\n"
+"        要重設為英文，請使用 \"en-US\".\n"
+"        "
+
+#: obsidion/cogs/config/config.py:73
+msgid "Locale has been set to the default."
+msgstr "已將語言環境設為預設值。"
+
+#: obsidion/cogs/config/config.py:78 obsidion/cogs/config/config.py:131
+msgid "Invalid language code. Use format: `en-US`"
+msgstr "語言碼無效。 Use format： `en-US `"
+
+#: obsidion/cogs/config/config.py:82 obsidion/cogs/config/config.py:135
+msgid "Invalid format - language code has to include country code, e.g. `en-US`"
+msgstr "無效的格式 - 語言碼必須包括國家碼，例如 `en-US`"
+
+#: obsidion/cogs/config/config.py:91
+msgid "Locale has been set."
+msgstr "已設定語言環境。"
+
+#: obsidion/cogs/config/config.py:107
+#, docstring
+msgid "\n"
+"        Changes bot's regional format in this server. This\n"
+"        is used for formatting date, time and numbers.\n\n"
+"        `<language_code>` can be any language code with country code included,\n"
+"        e.g. `en-US`, `de-DE`, `fr-FR`, `pl-PL`, etc.\n\n"
+"        Leave `<language_code>` empty to base regional formatting on\n"
+"        bot's locale in this server.\n"
+"        "
+msgstr "\n"
+"        在此伺服器中變更 bot 的區域格式。 此\n"
+"        用於格式化日期、時間和數字。\n\n"
+"        `<language_code>` 可以是包含國碼的任何語言碼，例如：\n"
+"        ，例如 `en-US`， `de-DE`， `fr-FR`， `pl-PL`，等。\n\n"
+"        將 \"<language_code>\" 保留為這個伺服器中\n"
+"        bot的語言環境的基本區域格式。\n"
+"        "
+
+#: obsidion/cogs/config/config.py:121
+msgid "Regional formatting will now be based on bot's locale in this server."
+msgstr "區域格式化現在將以這部伺服器中的 bot的語言環境為基礎。"
+
+#: obsidion/cogs/config/config.py:147
+msgid "Regional formatting will now be based on `{language_code}` locale."
+msgstr "區域格式現在將以 `{language_code}` 語言環境為基礎。"
+
+#: obsidion/cogs/config/config.py:164 obsidion/cogs/config/config.py:208
+#, docstring
+msgid "Link Minecraft account to Discord account."
+msgstr "鏈結 Minecraft 帳戶至 Discord 帳戶。"
+
+#: obsidion/cogs/config/config.py:170
+#, docstring
+msgid "Link account to discord account."
+msgstr "鏈結帳戶至不和科目。"
+
+#: obsidion/cogs/config/config.py:180
+#, docstring
+msgid "Unlink minecraft account from discord account."
+msgstr "Unlink minecraft account from 不和 account."
+
+#: obsidion/cogs/config/config.py:188 obsidion/cogs/config/config.py:194
+#, docstring
+msgid "Link Minecraft server to Discord guild."
+msgstr "鏈結 Minecraft 伺服器到 Discord guilld。"
+
+#: obsidion/cogs/config/config.py:200
+#, docstring
+msgid "Unlink minecraft server from discord guild."
+msgstr "Unlink minecraft server from 不和 guilld."
+
+#: obsidion/cogs/config/config.py:214 obsidion/cogs/config/config.py:272
+#: obsidion/cogs/config/config.py:278 obsidion/cogs/config/config.py:297
+#, docstring
+msgid "Autopost Minecraft News"
+msgstr "Autoposst Minecraft News"
+
+#: obsidion/cogs/config/config.py:225 obsidion/cogs/config/config.py:281
+msgid "You have completed the automatic posting setup process. You can change these settings using /autopost edit"
+msgstr "您已完成自動張貼設定程序。 您可以使用 /autopost edit 來變更這些設定"
+
+#: obsidion/cogs/config/config.py:233
+msgid "Would you like automatic posts of new {category}?"
+msgstr "你想要新的 {category} 的自動貼嗎？"
+
+#: obsidion/cogs/config/config.py:240 obsidion/cogs/config/config.py:259
+msgid "Response timed out."
+msgstr "回應逾時。"
+
+#: obsidion/cogs/config/config.py:244
+msgid "Which channel would you like this to happen in? Mention the channel, for example #general"
+msgstr "你想讓這個頻道發生在哪個頻道？ 請提及通道，例如 #general"
+
+#: obsidion/cogs/config/config.py:264
+msgid "Ok."
+msgstr "好吧"
+
+#: obsidion/cogs/config/config.py:303
+msgid "Testing autopot of {category}."
+msgstr "測試自動駕駛 {category}"
+
