@@ -1,0 +1,42 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: obsidion\n"
+"POT-Creation-Date: 2021-04-28 00:02+1200\n"
+"PO-Revision-Date: 2021-04-27 12:37\n"
+"Last-Translator: \n"
+"Language-Team: Korean\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: obsidion\n"
+"X-Crowdin-Project-ID: 437658\n"
+"X-Crowdin-Language: ko\n"
+"X-Crowdin-File: /reformat/cogs/minecraft/locales/messages.pot\n"
+"X-Crowdin-File-ID: 78\n"
+"Language: ko_KR\n"
+
+#: obsidion/cogs/minecraft/minecraft.py:27
+#, docstring
+msgid "Convert seconds to tick."
+msgstr "초를 눈금으로 변환합니다."
+
+#: obsidion/cogs/minecraft/minecraft.py:37
+msgid "It takes {seconds} second for {ticks} to happen."
+msgstr "{ticks} 에서는 {seconds} 초가 소요됩니다."
+
+#: obsidion/cogs/minecraft/minecraft.py:61
+#, docstring
+msgid "Convert ticks to seconds."
+msgstr "눈금을 초로 변환합니다."
+
+#: obsidion/cogs/minecraft/minecraft.py:67
+msgid "There are {ticks} ticks in {seconds} seconds"
+msgstr "{seconds} 초에 {ticks} 의 눈금이 있습니다."
+
+#: obsidion/cogs/minecraft/minecraft.py:91
+#, docstring
+msgid "Convert text to minecraft numerical seed."
+msgstr "텍스트를 마인크래프트 숫자 시드로 변환합니다."
+
