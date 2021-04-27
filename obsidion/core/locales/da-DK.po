@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: obsidion\n"
 "POT-Creation-Date: 2021-04-28 00:01+1200\n"
-"PO-Revision-Date: 2021-04-27 12:10\n"
+"PO-Revision-Date: 2021-04-27 12:38\n"
 "Last-Translator: \n"
 "Language-Team: Danish\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr "Pong."
 
 #: obsidion/core/core_commands.py:47
 msgid "Pong! ({latency}ms)"
-msgstr ""
+msgstr "Pong! ({latency}ms)"
 
 #: obsidion/core/core_commands.py:57
 #, docstring
@@ -46,7 +46,7 @@ msgstr "Denne robot er en forekomst af [ Obsidion, en open source Discord bot ] 
 
 #: obsidion/core/core_commands.py:94
 msgid "Bringing joy since the 2nd of April 2020 (over {} days ago!)"
-msgstr ""
+msgstr "Bringer glæden siden 2. april 2020 (over { } dage siden!)"
 
 #: obsidion/core/core_commands.py:108
 #, docstring
@@ -77,12 +77,12 @@ msgstr "Efterlader den aktuelle server."
 
 #: obsidion/core/core_commands.py:149
 msgid "Are you sure you want me to leave the current server? (yes/no)"
-msgstr ""
+msgstr "Er du sikker på, at du vil have mig til at forlade den aktuelle server? (ja/nej)"
 
 #: obsidion/core/core_commands.py:158
 #, docstring
 msgid "Lists and allows Obsidion to leave servers."
-msgstr ""
+msgstr "Lister og tillader Obsidion at forlade servere."
 
 #: obsidion/core/core_commands.py:171
 msgid "To leave a server, just type its number."
@@ -120,7 +120,8 @@ msgstr "\n"
 #: obsidion/core/core_commands.py:218
 msgid "This bot is an instance of the Obsidion Discord Bot.\n"
 "Obsidion is an open source application made available to the public and licensed under the GNU AGPL v3. The full text of this license is available to you at <https://github.com/Obsidion-dev/Obsidion/blob/main/LICENSE>"
-msgstr ""
+msgstr "Denne bot er en forekomst af Obsidion Discord Bot.\n"
+"Obsidion er en åben kildeapplikation, der stilles til rådighed for offentligheden og licenseret i henhold til GNU-AGPL v3. Den fuldstændige tekst til denne licens er tilgængelig for dig på <https://github.com/Obsidion-dev/Obsidion/blob/main/LICENSE>"
 
 #: obsidion/core/core_commands.py:244
 #, docstring
@@ -146,7 +147,10 @@ msgid "Attempts to restart Obsidion.\n\n"
 "        Makes Obsidion quit with exit code 26.\n"
 "        The restart is not guaranteed: it must be dealt\n"
 "        with by the process manager in use."
-msgstr ""
+msgstr "Forsøg på at genstarte Obsidion.\n\n"
+"        giver Obsidion op med afsluttekode 26.\n"
+"        Genstart er ikke garanteret: Det skal behandles\n"
+"        med den processtyringsfunktion, der anvendes."
 
 #: obsidion/core/core_commands.py:323
 #, docstring
@@ -305,15 +309,15 @@ msgstr "Vigtige robotbegivenheder."
 
 #: obsidion/core/events.py:92
 msgid "Sorry, it looks like you don't have the **{fmt}** permissions I need to do that."
-msgstr ""
+msgstr "Undskyld, det ser ud som om du ikke har de **{fmt}** tilladelser jeg har brug for at gøre det."
 
 #: obsidion/core/events.py:98
 msgid "Sorry, it looks like you don't have the **{fmt}** permission I need to do that."
-msgstr ""
+msgstr "Undskyld, det ser ud som om, du ikke har den **{fmt}** tilladelse Jeg har brug for at gøre det."
 
 #: obsidion/core/events.py:119
 msgid "`{user_input}` is not a valid value for `{command}`"
-msgstr ""
+msgstr "`{user_input}` er ikke en gyldig værdi for `{command}`"
 
 #: obsidion/core/events.py:136
 msgid "I require the {permission} permission to execute that command."
@@ -321,7 +325,7 @@ msgstr "Jeg har brug for den {permission} tilladelse til at udføre denne komman
 
 #: obsidion/core/events.py:140
 msgid "I require {permission_list} permissions to execute that command."
-msgstr ""
+msgstr "Jeg kræver {permission_list} tilladelser til at udføre den kommando."
 
 #: obsidion/core/events.py:157
 msgid "This command is on cooldown. Try again in {delay}."
@@ -357,9 +361,9 @@ msgstr "Der er for mange, der bruger denne kommando. Den kan kun bruges én gang
 
 #: obsidion/core/events.py:205
 msgid "The user does not exist, please check wether the username is correct."
-msgstr ""
+msgstr "Brugeren findes ikke. Kontrollér, at brugernavnet er korrekt."
 
 #: obsidion/core/events.py:215
 msgid "Error in command '{command}'. It has been recorded and should be fixed soon."
-msgstr ""
+msgstr "Fejl i kommando '{command}'. Den er blevet optaget og bør snart fastsættes."
 
