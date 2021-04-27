@@ -28,7 +28,7 @@
   <a href="https://github.com/Obsidion-dev/Obsidion/actions?workflow=Tests">
   <img src="https://github.com/Obsidion-dev/Obsidion/workflows/Tests/badge.svg" alt="Test status" />
   </a>
-  <a href="https://discord.gg/rnAtymZnzH">
+  <a href="https://discord.gg/fWxtKFVmaW">
     <img alt="Discord" src="https://img.shields.io/discord/695008516590534758">
   </a>
    <img src="https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg" alt="Code of conduct" />
@@ -46,17 +46,19 @@
 
 ## ✨ Features
 
-- **Server Query.** Unlike other libraries Asyncpixel is fully asyncronous. This makes it perfect to use in your next discord bot or powerful website without having to worry about blocking.
+- **Server Query.** Be able to view the current players on a minecraft server or just view that cool server icon you just made for it. Obsidion can view all public details about any minecraft server.
 
 - **Hypixel.** Any and all hypixel, skyblock, stats commands, the most feature rich and amount of commands available on any discord bot
 
-- **RCON.** Control your minecraft server over discord using rcon.
+- **Profile Info.** View info on your Minecraft profile including past usernames and skin
 
-- **Profile Info.** View info on your minecraft profile including past usernames and skin
+- **Minecraft Image generation.** Generate cool and interesting Minecraft themed images like signs and advancements.
 
-- **Popular Minecraft server stats.** Asyncpixel is available on pypi meaning no building from source just use `pip install asyncpixel` to use it in your project.
+- **Fun.** Kill your friends in a fun and unique way right in your discord server, the next best thing from doing it in Minecraft.
 
-- **Minecraft Image generation.** Asyncpixel is available on pypi meaning no building from source just use `pip install asyncpixel` to use it in your project.
+- **Facts.** View facts and details about mobs, items, biome, blocks and all things Minecraft with up to date information.
+
+- **News.** Get the latest Minecraft news and releases delivered right to your server so you can be among the first to know.
 
 ## 🏁 Getting Started with Obsidion
 
@@ -64,7 +66,7 @@ To get started add the bot to your discord server.
 
 ### Adding to your server
 
-To add Obsidion to your discord server follow this link: [link](https://discord.gg/fWxtKFVmaW). The default prefix is `/` and you can view a list of commands by running `/help`
+To add Obsidion to your discord server follow this link: [link](https://discord.gg/fWxtKFVmaW). The default prefix is `mc?` and you can view a list of commands by running `mc?help`
 
 ## ❗ Code of Conduct
 
@@ -86,7 +88,7 @@ Obsidion is open-source. The library is licensed under the [GPL AGPL v3](https:/
 
 If you have a question or would like to talk with other Obsidion users, please hop over to [Github discussions](https://github.com/Obsidion-dev/Obsidion/discussions) or join our Discord server:
 
-[Discord chatroom](https://discord.gg/rnAtymZnzH)
+[Discord chatroom](https://discord.gg/fWxtKFVmaW)
 
 ![Discord Shield](https://discordapp.com/api/guilds/695008516590534758/widget.png?style=shield)
 
