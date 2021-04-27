@@ -1,0 +1,134 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: obsidion\n"
+"POT-Creation-Date: 2021-04-28 00:01+1200\n"
+"PO-Revision-Date: 2021-04-27 12:36\n"
+"Last-Translator: \n"
+"Language-Team: Serbian (Cyrillic)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Crowdin-Project: obsidion\n"
+"X-Crowdin-Project-ID: 437658\n"
+"X-Crowdin-Language: sr\n"
+"X-Crowdin-File: /reformat/cogs/config/locales/messages.pot\n"
+"X-Crowdin-File-ID: 70\n"
+"Language: sr_SP\n"
+
+#: obsidion/cogs/config/config.py:37
+#, docstring
+msgid "Sets Obsidion's server prefix(es)."
+msgstr ""
+
+#: obsidion/cogs/config/config.py:40
+msgid "Guild prefixes have been reset."
+msgstr ""
+
+#: obsidion/cogs/config/config.py:43
+msgid "Prefix set."
+msgstr ""
+
+#: obsidion/cogs/config/config.py:59
+#, docstring
+msgid "\n"
+"        Changes the bot's locale in this server.\n\n"
+"        `<language_code>` can be any language code with country code included,\n"
+"        e.g. `en-US`, `de-DE`, `fr-FR`, `pl-PL`, etc.\n\n\n"
+"        Use \"default\" to return to the bot's default set language.\n"
+"        To reset to English, use \"en-US\".\n"
+"        "
+msgstr ""
+
+#: obsidion/cogs/config/config.py:73
+msgid "Locale has been set to the default."
+msgstr ""
+
+#: obsidion/cogs/config/config.py:78 obsidion/cogs/config/config.py:131
+msgid "Invalid language code. Use format: `en-US`"
+msgstr ""
+
+#: obsidion/cogs/config/config.py:82 obsidion/cogs/config/config.py:135
+msgid "Invalid format - language code has to include country code, e.g. `en-US`"
+msgstr ""
+
+#: obsidion/cogs/config/config.py:91
+msgid "Locale has been set."
+msgstr ""
+
+#: obsidion/cogs/config/config.py:107
+#, docstring
+msgid "\n"
+"        Changes bot's regional format in this server. This\n"
+"        is used for formatting date, time and numbers.\n\n"
+"        `<language_code>` can be any language code with country code included,\n"
+"        e.g. `en-US`, `de-DE`, `fr-FR`, `pl-PL`, etc.\n\n"
+"        Leave `<language_code>` empty to base regional formatting on\n"
+"        bot's locale in this server.\n"
+"        "
+msgstr ""
+
+#: obsidion/cogs/config/config.py:121
+msgid "Regional formatting will now be based on bot's locale in this server."
+msgstr ""
+
+#: obsidion/cogs/config/config.py:147
+msgid "Regional formatting will now be based on `{language_code}` locale."
+msgstr ""
+
+#: obsidion/cogs/config/config.py:164 obsidion/cogs/config/config.py:208
+#, docstring
+msgid "Link Minecraft account to Discord account."
+msgstr ""
+
+#: obsidion/cogs/config/config.py:170
+#, docstring
+msgid "Link account to discord account."
+msgstr ""
+
+#: obsidion/cogs/config/config.py:180
+#, docstring
+msgid "Unlink minecraft account from discord account."
+msgstr ""
+
+#: obsidion/cogs/config/config.py:188 obsidion/cogs/config/config.py:194
+#, docstring
+msgid "Link Minecraft server to Discord guild."
+msgstr ""
+
+#: obsidion/cogs/config/config.py:200
+#, docstring
+msgid "Unlink minecraft server from discord guild."
+msgstr ""
+
+#: obsidion/cogs/config/config.py:214 obsidion/cogs/config/config.py:272
+#: obsidion/cogs/config/config.py:278 obsidion/cogs/config/config.py:297
+#, docstring
+msgid "Autopost Minecraft News"
+msgstr ""
+
+#: obsidion/cogs/config/config.py:225 obsidion/cogs/config/config.py:281
+msgid "You have completed the automatic posting setup process. You can change these settings using /autopost edit"
+msgstr ""
+
+#: obsidion/cogs/config/config.py:233
+msgid "Would you like automatic posts of new {category}?"
+msgstr ""
+
+#: obsidion/cogs/config/config.py:240 obsidion/cogs/config/config.py:259
+msgid "Response timed out."
+msgstr ""
+
+#: obsidion/cogs/config/config.py:244
+msgid "Which channel would you like this to happen in? Mention the channel, for example #general"
+msgstr ""
+
+#: obsidion/cogs/config/config.py:264
+msgid "Ok."
+msgstr ""
+
+#: obsidion/cogs/config/config.py:303
+msgid "Testing autopot of {category}."
+msgstr ""
+
