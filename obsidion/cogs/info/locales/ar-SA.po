@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: obsidion\n"
 "POT-Creation-Date: 2021-04-28 00:02+1200\n"
-"PO-Revision-Date: 2021-04-27 12:09\n"
+"PO-Revision-Date: 2021-04-27 12:40\n"
 "Last-Translator: \n"
 "Language-Team: Arabic\n"
 "MIME-Version: 1.0\n"
@@ -20,20 +20,21 @@ msgstr ""
 #: obsidion/cogs/info/info.py:41
 #, docstring
 msgid "View a players Minecraft UUID, Username history and skin."
-msgstr ""
+msgstr "مشاهدة اللاعبين Minraft UUID ، والسجل التاريخي لاسم المستخدم والشكل العام."
 
 #: obsidion/cogs/info/info.py:58
 msgid "**1.** `{original}` - First Username"
-msgstr ""
+msgstr "*1. * * *{original}'-اسم المستخدم الأول"
 
 #: obsidion/cogs/info/info.py:63
 msgid "Minecraft profile for {username}"
-msgstr ""
+msgstr "ملف مواصفات المركبات ل ـ {username}"
 
 #: obsidion/cogs/info/info.py:70
 msgid "Full UUID: `{uuid}`\n"
 "Short UUID: `{short}`"
-msgstr ""
+msgstr "UUID كامل : '{uuid}'\n"
+"Short UUID : '{short}'"
 
 #: obsidion/cogs/info/info.py:77
 msgid "Skin: [Open Skin](https://visage.surgeplay.com/bust/{uuid})\n"
@@ -42,128 +43,143 @@ msgid "Skin: [Open Skin](https://visage.surgeplay.com/bust/{uuid})\n"
 "Slim: `{slim}`\n"
 "Custom: `{custom}`\n"
 "Cape: `{cape}`"
-msgstr ""
+msgstr "Skin : [ Open Skin ] (https://visage.surgeplay.com/bust/{uuid})\n"
+"Skin Type : '{skin_type}'\n"
+"Skin History : [link]({skin_history})\n"
+"Slim : '{slim}'\n"
+"Custom : \"{custom}\"\n"
+"كيب : '{cape}'"
 
 #: obsidion/cogs/info/info.py:93 obsidion/cogs/info/info.py:493
 msgid "Information"
-msgstr ""
+msgstr "المعلومات"
 
 #: obsidion/cogs/info/info.py:95
 msgid "Username Changes: `{changes}`\n"
 "Namemc: [link]({namemc})\n"
 "Legacy: `{legacy}`\n"
 "Demo: `{demo}`"
-msgstr ""
+msgstr "تغييرات اسم المستخدم : \"{changes}'\n"
+"Namememc : [link]({namemc})\n"
+"Legacy : \"{legacy}\"\n"
+"Demo : \"{demo}\""
 
 #: obsidion/cogs/info/info.py:105
 msgid "Name History"
-msgstr ""
+msgstr "السجل التاريخي للاسم"
 
 #: obsidion/cogs/info/info.py:146
 #, docstring
 msgid "Minecraft server info."
-msgstr ""
+msgstr "معلومات وحدة خدمة Minraft."
 
 #: obsidion/cogs/info/info.py:151
 msgid "Please provide a server"
-msgstr ""
+msgstr "برجاء اتاحة وحدة خدمة"
 
 #: obsidion/cogs/info/info.py:173
 msgid "server could not be reached."
-msgstr ""
+msgstr "لا يمكن الوصول الى وحدة الخدمة."
 
 #: obsidion/cogs/info/info.py:176
 msgid "Java Server: {server_ip}"
-msgstr ""
+msgstr "وحدة خدمة Java : {server_ip}"
 
 #: obsidion/cogs/info/info.py:179 obsidion/cogs/info/info.py:254
 msgid "Description"
-msgstr ""
+msgstr "الوصف"
 
 #: obsidion/cogs/info/info.py:183
 msgid "Online: `{online}` \n"
 " Maximum: `{maximum}`"
-msgstr ""
+msgstr "Online : '{online}' \n"
+" الحد الأقصى : '{maximum}'"
 
 #: obsidion/cogs/info/info.py:188 obsidion/cogs/info/info.py:263
 msgid "Version"
-msgstr ""
+msgstr "النسخة"
 
 #: obsidion/cogs/info/info.py:189
 msgid "Java Edition \n"
 " Running: `{version}` \n"
 "Protocol: `{protocol}`"
-msgstr ""
+msgstr "تشغيل Java Edition \n"
+" Running : '{version}' \n"
+"البروتوكول : '{protocol}'"
 
 #: obsidion/cogs/info/info.py:251
 msgid "Bedrock Server: {address}"
-msgstr ""
+msgstr "وحدة خدمة Bedروك : {address}"
 
 #: obsidion/cogs/info/info.py:257
 msgid "Players"
-msgstr ""
+msgstr "لاعبين"
 
 #: obsidion/cogs/info/info.py:258
 msgid "Online: `{player_count}` \n"
 " Maximum: `{player_max}`"
-msgstr ""
+msgstr "Online : '{player_count}' \n"
+" الحد الأقصى : '{player_max}'"
 
 #: obsidion/cogs/info/info.py:264
 msgid "Bedrock Edition \n"
 " Running: `{version}` \n"
 "Protocol: `{protocol}`"
-msgstr ""
+msgstr "Bedروك Edition \n"
+" Running : '{version}' \n"
+"البروتوكول : '{protocol}'"
 
 #: obsidion/cogs/info/info.py:270
 msgid "Info"
-msgstr ""
+msgstr "المعلومات"
 
 #: obsidion/cogs/info/info.py:271
 msgid "Gamemode: `{gamemode}` \n"
 "Latency: `{latency}`"
-msgstr ""
+msgstr "Gamedde : \"{gamemode}\" \n"
+"لاتيني : '{latency}'"
 
 #: obsidion/cogs/info/info.py:302
 #, docstring
 msgid "Check the status of all the Mojang services."
-msgstr ""
+msgstr "تحقق من حالة كل خدمات Mojang."
 
 #: obsidion/cogs/info/info.py:331
 msgid ":green_heart: - {service}: **This service is healthy.** \n"
-msgstr ""
+msgstr ":green_heart: - {service}: ** هذه الخدمة صحية * * \n"
 
 #: obsidion/cogs/info/info.py:335
 msgid ":heart: - {service}: **This service is offline.** \n"
-msgstr ""
+msgstr ":heart: - {service}: ** هذه الخدمة غير lineline. * * \n"
 
 #: obsidion/cogs/info/info.py:338
 msgid "Minecraft Service Status"
-msgstr ""
+msgstr "حالة خدمة المركبات الفضائية"
 
 #: obsidion/cogs/info/info.py:341
 msgid "Total Sales: **{total}** Last 24 Hours: **{last}**"
-msgstr ""
+msgstr "اجمالي المبيعات : **{total}** أخير 24 ساعة : **{last}**"
 
 #: obsidion/cogs/info/info.py:345
 msgid "Minecraft Services:"
-msgstr ""
+msgstr "خدمات المركبات الفضائية :"
 
 #: obsidion/cogs/info/info.py:358
 #, docstring
 msgid "Get an article from the minecraft wiki."
-msgstr ""
+msgstr "الحصول على مقال من صفحة wiki الخاصة بالمركبات."
 
 #: obsidion/cogs/info/info.py:406
 msgid "Information provided by Wikimedia"
-msgstr ""
+msgstr "المعلومات المقدمة من فيكيميديا"
 
 #: obsidion/cogs/info/info.py:412
 msgid "I'm sorry, I couldn't find \"{query}\" on fandom"
-msgstr ""
+msgstr "أنا آسف ، أنا لا أستطيع أن أجد \"{query}\" على مصير"
 
 #: obsidion/cogs/info/info.py:443
 msgid "The bug {bug} was not found."
-msgstr ""
+msgstr "لم يتم ايجاد علة {bug}."
 
 #: obsidion/cogs/info/info.py:455
 msgid "Version: {version}\n"
@@ -176,38 +192,41 @@ msgstr ""
 
 #: obsidion/cogs/info/info.py:476
 msgid "Resolution: {resolution}\n"
-msgstr ""
+msgstr "القرار : {resolution}\n"
 
 #: obsidion/cogs/info/info.py:481
 msgid "Affected: "
-msgstr ""
+msgstr "متأثر : "
 
 #: obsidion/cogs/info/info.py:487
 msgid "Fixed Version: {fixed} + "
-msgstr ""
+msgstr "نسخة ثابتة : {fixed} + "
 
 #: obsidion/cogs/info/info.py:494
 msgid "Details"
-msgstr ""
+msgstr "التفاصيل"
 
 #: obsidion/cogs/info/info.py:526
 msgid "Version is invalid."
-msgstr ""
+msgstr "النسخة غير صحيحة."
 
 #: obsidion/cogs/info/info.py:530
 msgid "Minecraft Java Edition {version}"
-msgstr ""
+msgstr "Minالمركبات Java Edition {version}"
 
 #: obsidion/cogs/info/info.py:539
 msgid "Type: `{type}`\n"
 "Release: `{released}`\n"
 "Package URL: [link]({package_url})\n"
 "Minecraft Wiki: [link]({wiki})"
-msgstr ""
+msgstr "النوع : \"{type}'\n"
+"Release :'{released}'\n"
+"Package URL : [link]({package_url})\n"
+"Minraft Wiki : [link]({wiki})"
 
 #: obsidion/cogs/info/info.py:550
 msgid "Minecraft Java Edition Versions"
-msgstr ""
+msgstr "نسخ Java Edition Vaft"
 
 #: obsidion/cogs/info/info.py:559
 msgid "Releases: `{releases}`\n"
