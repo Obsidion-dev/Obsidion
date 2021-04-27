@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: obsidion\n"
 "POT-Creation-Date: 2021-04-28 00:02+1200\n"
-"PO-Revision-Date: 2021-04-27 12:09\n"
+"PO-Revision-Date: 2021-04-27 12:40\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -20,20 +20,21 @@ msgstr ""
 #: obsidion/cogs/info/info.py:41
 #, docstring
 msgid "View a players Minecraft UUID, Username history and skin."
-msgstr ""
+msgstr "プレイヤーの Minecraft UUID、ユーザー名の履歴、およびスキンを表示します。"
 
 #: obsidion/cogs/info/info.py:58
 msgid "**1.** `{original}` - First Username"
-msgstr ""
+msgstr "**1 .* ` * `{original}` - 最初のユーザー名"
 
 #: obsidion/cogs/info/info.py:63
 msgid "Minecraft profile for {username}"
-msgstr ""
+msgstr "ミミクラフトプロファイル ( {username} )"
 
 #: obsidion/cogs/info/info.py:70
 msgid "Full UUID: `{uuid}`\n"
 "Short UUID: `{short}`"
-msgstr ""
+msgstr "全 UUID: `{uuid}`\n"
+"ショート UUID: `{short}`"
 
 #: obsidion/cogs/info/info.py:77
 msgid "Skin: [Open Skin](https://visage.surgeplay.com/bust/{uuid})\n"
@@ -42,103 +43,118 @@ msgid "Skin: [Open Skin](https://visage.surgeplay.com/bust/{uuid})\n"
 "Slim: `{slim}`\n"
 "Custom: `{custom}`\n"
 "Cape: `{cape}`"
-msgstr ""
+msgstr "スキン: [開く ( Open Skin ) ] (https://visage.surgeplay.com/bust/{uuid})\n"
+"スキン・タイプ: `{skin_type}`\n"
+"Skin History: [link]({skin_history}) [\n"
+"] スリム: `{slim}`\n"
+"カスタム: `{custom}`\n"
+"ケープ: `{cape}'"
 
 #: obsidion/cogs/info/info.py:93 obsidion/cogs/info/info.py:493
 msgid "Information"
-msgstr ""
+msgstr "利用情報"
 
 #: obsidion/cogs/info/info.py:95
 msgid "Username Changes: `{changes}`\n"
 "Namemc: [link]({namemc})\n"
 "Legacy: `{legacy}`\n"
 "Demo: `{demo}`"
-msgstr ""
+msgstr "ユーザー名変更: `{changes}`\n"
+"Namemc: [link]({namemc})\n"
+"レガシー: `{legacy}`\n"
+"デモ: `{demo}'"
 
 #: obsidion/cogs/info/info.py:105
 msgid "Name History"
-msgstr ""
+msgstr "名前の履歴"
 
 #: obsidion/cogs/info/info.py:146
 #, docstring
 msgid "Minecraft server info."
-msgstr ""
+msgstr "Minecraft サーバー情報"
 
 #: obsidion/cogs/info/info.py:151
 msgid "Please provide a server"
-msgstr ""
+msgstr "サーバーを指定してください"
 
 #: obsidion/cogs/info/info.py:173
 msgid "server could not be reached."
-msgstr ""
+msgstr "サーバーに到達できませんでした。"
 
 #: obsidion/cogs/info/info.py:176
 msgid "Java Server: {server_ip}"
-msgstr ""
+msgstr "Java サーバー: {server_ip}"
 
 #: obsidion/cogs/info/info.py:179 obsidion/cogs/info/info.py:254
 msgid "Description"
-msgstr ""
+msgstr "解説"
 
 #: obsidion/cogs/info/info.py:183
 msgid "Online: `{online}` \n"
 " Maximum: `{maximum}`"
-msgstr ""
+msgstr "オンライン: `{online}` \n"
+" 最大: `{maximum}'"
 
 #: obsidion/cogs/info/info.py:188 obsidion/cogs/info/info.py:263
 msgid "Version"
-msgstr ""
+msgstr "バージョン"
 
 #: obsidion/cogs/info/info.py:189
 msgid "Java Edition \n"
 " Running: `{version}` \n"
 "Protocol: `{protocol}`"
-msgstr ""
+msgstr "Java Edition \n"
+" 「{version}` \n"
+"プロトコル: `{protocol} \" 」"
 
 #: obsidion/cogs/info/info.py:251
 msgid "Bedrock Server: {address}"
-msgstr ""
+msgstr "ベッドロック・サーバー : {address}"
 
 #: obsidion/cogs/info/info.py:257
 msgid "Players"
-msgstr ""
+msgstr "プレイヤー"
 
 #: obsidion/cogs/info/info.py:258
 msgid "Online: `{player_count}` \n"
 " Maximum: `{player_max}`"
-msgstr ""
+msgstr "オンライン: `{player_count}` \n"
+" 最大: `{player_max}'"
 
 #: obsidion/cogs/info/info.py:264
 msgid "Bedrock Edition \n"
 " Running: `{version}` \n"
 "Protocol: `{protocol}`"
-msgstr ""
+msgstr "ベドロック・エディション \n"
+" 「{version}` \n"
+"プロトコル: `{protocol} ` 」"
 
 #: obsidion/cogs/info/info.py:270
 msgid "Info"
-msgstr ""
+msgstr "情報"
 
 #: obsidion/cogs/info/info.py:271
 msgid "Gamemode: `{gamemode}` \n"
 "Latency: `{latency}`"
-msgstr ""
+msgstr "ゲームモード : 「{gamemode}」 \n"
+"レイテンシー: `{latency}'"
 
 #: obsidion/cogs/info/info.py:302
 #, docstring
 msgid "Check the status of all the Mojang services."
-msgstr ""
+msgstr "すべての Mojang サービスの状況を確認します。"
 
 #: obsidion/cogs/info/info.py:331
 msgid ":green_heart: - {service}: **This service is healthy.** \n"
-msgstr ""
+msgstr ":green_heart: - {service}: **このサービスは健全です。 ** \n"
 
 #: obsidion/cogs/info/info.py:335
 msgid ":heart: - {service}: **This service is offline.** \n"
-msgstr ""
+msgstr ":heart: - {service}: **このサービスはオフラインです。 ** \n"
 
 #: obsidion/cogs/info/info.py:338
 msgid "Minecraft Service Status"
-msgstr ""
+msgstr "Minecraft のサービス状況"
 
 #: obsidion/cogs/info/info.py:341
 msgid "Total Sales: **{total}** Last 24 Hours: **{last}**"
@@ -146,24 +162,24 @@ msgstr ""
 
 #: obsidion/cogs/info/info.py:345
 msgid "Minecraft Services:"
-msgstr ""
+msgstr "Minecraft サービス:"
 
 #: obsidion/cogs/info/info.py:358
 #, docstring
 msgid "Get an article from the minecraft wiki."
-msgstr ""
+msgstr "ミニクラフト wiki から記事を入手してください。"
 
 #: obsidion/cogs/info/info.py:406
 msgid "Information provided by Wikimedia"
-msgstr ""
+msgstr "ウィキメディアが提供する情報"
 
 #: obsidion/cogs/info/info.py:412
 msgid "I'm sorry, I couldn't find \"{query}\" on fandom"
-msgstr ""
+msgstr "申し訳ありませんが、私は見つからなかったんです。{query}\" ファンダム"
 
 #: obsidion/cogs/info/info.py:443
 msgid "The bug {bug} was not found."
-msgstr ""
+msgstr "バグ {bug} が見つかりませんでした。"
 
 #: obsidion/cogs/info/info.py:455
 msgid "Version: {version}\n"
@@ -176,38 +192,41 @@ msgstr ""
 
 #: obsidion/cogs/info/info.py:476
 msgid "Resolution: {resolution}\n"
-msgstr ""
+msgstr "解決策 : {resolution}\n"
 
 #: obsidion/cogs/info/info.py:481
 msgid "Affected: "
-msgstr ""
+msgstr "影響: "
 
 #: obsidion/cogs/info/info.py:487
 msgid "Fixed Version: {fixed} + "
-msgstr ""
+msgstr "固定バージョン: {fixed} + "
 
 #: obsidion/cogs/info/info.py:494
 msgid "Details"
-msgstr ""
+msgstr "経緯"
 
 #: obsidion/cogs/info/info.py:526
 msgid "Version is invalid."
-msgstr ""
+msgstr "バージョンが無効です。"
 
 #: obsidion/cogs/info/info.py:530
 msgid "Minecraft Java Edition {version}"
-msgstr ""
+msgstr "Minecraft Java Edition {version}"
 
 #: obsidion/cogs/info/info.py:539
 msgid "Type: `{type}`\n"
 "Release: `{released}`\n"
 "Package URL: [link]({package_url})\n"
 "Minecraft Wiki: [link]({wiki})"
-msgstr ""
+msgstr "タイプ: `{type}'\n"
+"リリース: `{released}`\n"
+"パッケージ URL: [link]({package_url})\n"
+"Minecraft Wiki Wiki: [link]({wiki})"
 
 #: obsidion/cogs/info/info.py:550
 msgid "Minecraft Java Edition Versions"
-msgstr ""
+msgstr "Minecraft Java エディションのバージョン"
 
 #: obsidion/cogs/info/info.py:559
 msgid "Releases: `{releases}`\n"
