@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: obsidion\n"
 "POT-Creation-Date: 2021-04-28 00:01+1200\n"
-"PO-Revision-Date: 2021-04-27 12:09\n"
+"PO-Revision-Date: 2021-04-27 12:41\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr "邦"
 
 #: obsidion/core/core_commands.py:47
 msgid "Pong! ({latency}ms)"
-msgstr ""
+msgstr "Pong！（{latency}毫秒）"
 
 #: obsidion/core/core_commands.py:57
 #, docstring
@@ -46,7 +46,7 @@ msgstr "此 bot 是由 [Darkflame72]（{}）所建立的 [Obsidion，開放原�
 
 #: obsidion/core/core_commands.py:94
 msgid "Bringing joy since the 2nd of April 2020 (over {} days ago!)"
-msgstr ""
+msgstr "從 2020 年 4 月 2 日開始帶來歡樂（超過 {} 天前！）"
 
 #: obsidion/core/core_commands.py:108
 #, docstring
@@ -77,12 +77,12 @@ msgstr "離開現行伺服器。"
 
 #: obsidion/core/core_commands.py:149
 msgid "Are you sure you want me to leave the current server? (yes/no)"
-msgstr ""
+msgstr "您確定要讓我離開現行伺服器嗎？ （是 / 否）"
 
 #: obsidion/core/core_commands.py:158
 #, docstring
 msgid "Lists and allows Obsidion to leave servers."
-msgstr ""
+msgstr "列出並容許 Obsidion 離開伺服器。"
 
 #: obsidion/core/core_commands.py:171
 msgid "To leave a server, just type its number."
@@ -120,7 +120,8 @@ msgstr "\n"
 #: obsidion/core/core_commands.py:218
 msgid "This bot is an instance of the Obsidion Discord Bot.\n"
 "Obsidion is an open source application made available to the public and licensed under the GNU AGPL v3. The full text of this license is available to you at <https://github.com/Obsidion-dev/Obsidion/blob/main/LICENSE>"
-msgstr ""
+msgstr "這個機器人是 Obsidion Discord Bot.\n"
+"Obsidion 的一個實例，它是一個開放原始碼的應用程式，供大眾使用，並授權在 GNU AGPL 第 3 版下授權。 您可以在 <https://github.com/Obsidion-dev/Obsidion/blob/main/LICENSE> 向您提供此授權的全文"
 
 #: obsidion/core/core_commands.py:244
 #, docstring
@@ -146,7 +147,10 @@ msgid "Attempts to restart Obsidion.\n\n"
 "        Makes Obsidion quit with exit code 26.\n"
 "        The restart is not guaranteed: it must be dealt\n"
 "        with by the process manager in use."
-msgstr ""
+msgstr "嘗試重新啟動 Obsidion.\n\n"
+"        讓 Obsidion 退出，結束碼 26。\n"
+"        未保證重新啟動：必須由處理程序管理程式在使用中處理\n"
+"。"
 
 #: obsidion/core/core_commands.py:323
 #, docstring
@@ -305,15 +309,15 @@ msgstr "重要的機器人活動"
 
 #: obsidion/core/events.py:92
 msgid "Sorry, it looks like you don't have the **{fmt}** permissions I need to do that."
-msgstr ""
+msgstr "很抱歉，看起來您沒有 **{fmt}** 許可權我需要執行此權限。"
 
 #: obsidion/core/events.py:98
 msgid "Sorry, it looks like you don't have the **{fmt}** permission I need to do that."
-msgstr ""
+msgstr "很抱歉，看起來您沒有 **{fmt}** 許可權我需要去做的。"
 
 #: obsidion/core/events.py:119
 msgid "`{user_input}` is not a valid value for `{command}`"
-msgstr ""
+msgstr "`{user_input}` 不是 `{command} ` 的有效值"
 
 #: obsidion/core/events.py:136
 msgid "I require the {permission} permission to execute that command."
@@ -321,7 +325,7 @@ msgstr "我需要 {permission} 許可權來執行這個指令。"
 
 #: obsidion/core/events.py:140
 msgid "I require {permission_list} permissions to execute that command."
-msgstr ""
+msgstr "我需要 {permission_list} 許可權來執行該指令。"
 
 #: obsidion/core/events.py:157
 msgid "This command is on cooldown. Try again in {delay}."
@@ -357,9 +361,9 @@ msgstr "使用此指令的人員太多。 每 {type} 同時使用一次只能使
 
 #: obsidion/core/events.py:205
 msgid "The user does not exist, please check wether the username is correct."
-msgstr ""
+msgstr "使用者不存在，請檢查使用者名稱是否正確。"
 
 #: obsidion/core/events.py:215
 msgid "Error in command '{command}'. It has been recorded and should be fixed soon."
-msgstr ""
+msgstr "指令中發生錯誤 '{command}'。 它已經被記錄了，應該很快就會修好。"
 
