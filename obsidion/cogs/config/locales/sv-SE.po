@@ -1,0 +1,147 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: obsidion\n"
+"POT-Creation-Date: 2021-04-28 00:01+1200\n"
+"PO-Revision-Date: 2021-04-27 12:36\n"
+"Last-Translator: \n"
+"Language-Team: Swedish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: obsidion\n"
+"X-Crowdin-Project-ID: 437658\n"
+"X-Crowdin-Language: sv-SE\n"
+"X-Crowdin-File: /reformat/cogs/config/locales/messages.pot\n"
+"X-Crowdin-File-ID: 70\n"
+"Language: sv_SE\n"
+
+#: obsidion/cogs/config/config.py:37
+#, docstring
+msgid "Sets Obsidion's server prefix(es)."
+msgstr "Ställer in Obsidions serverprefix (er)."
+
+#: obsidion/cogs/config/config.py:40
+msgid "Guild prefixes have been reset."
+msgstr "Föruträttningar har återställts."
+
+#: obsidion/cogs/config/config.py:43
+msgid "Prefix set."
+msgstr "Prefixuppsättning."
+
+#: obsidion/cogs/config/config.py:59
+#, docstring
+msgid "\n"
+"        Changes the bot's locale in this server.\n\n"
+"        `<language_code>` can be any language code with country code included,\n"
+"        e.g. `en-US`, `de-DE`, `fr-FR`, `pl-PL`, etc.\n\n\n"
+"        Use \"default\" to return to the bot's default set language.\n"
+"        To reset to English, use \"en-US\".\n"
+"        "
+msgstr "\n"
+"        Ändrar botens språkmiljö på den här servern.\n\n"
+"        \"<language_code>\" kan vara valfri språkkod med landsnummer,\n"
+"        , t.ex. \"en-US\", \"de-DE\", \"fr-FR\", \"pl-PL\", etc.\n\n\n"
+"        Använd \"default\" för att återgå till standardspråket för boten.\n"
+"        För att återgå till engelska, använd \"en-US\".\n"
+"        "
+
+#: obsidion/cogs/config/config.py:73
+msgid "Locale has been set to the default."
+msgstr "Språkmiljö har ställts in till standardvärdet."
+
+#: obsidion/cogs/config/config.py:78 obsidion/cogs/config/config.py:131
+msgid "Invalid language code. Use format: `en-US`"
+msgstr "Ogiltig språkkod. Använd format: \"en-US\""
+
+#: obsidion/cogs/config/config.py:82 obsidion/cogs/config/config.py:135
+msgid "Invalid format - language code has to include country code, e.g. `en-US`"
+msgstr "Ogiltig format-språkkod måste inkludera landskoden, t.ex. \"en-US\"."
+
+#: obsidion/cogs/config/config.py:91
+msgid "Locale has been set."
+msgstr "Språkmiljö har ställts in."
+
+#: obsidion/cogs/config/config.py:107
+#, docstring
+msgid "\n"
+"        Changes bot's regional format in this server. This\n"
+"        is used for formatting date, time and numbers.\n\n"
+"        `<language_code>` can be any language code with country code included,\n"
+"        e.g. `en-US`, `de-DE`, `fr-FR`, `pl-PL`, etc.\n\n"
+"        Leave `<language_code>` empty to base regional formatting on\n"
+"        bot's locale in this server.\n"
+"        "
+msgstr "\n"
+"        Ändrar robotens regionala format på den här servern. Den här\n"
+"        används för formatering av datum, tid och tal.\n\n"
+"        \"<language_code>\" kan vara valfri språkkod med landskoden,\n"
+"        , t.ex. \"en-US\", \"de-DE\", \"fr-FR\", \"pl-PL\", etc.\n\n"
+"        Lämna \"<language_code>\" utan att basera den regionala formateringen på\n"
+"        -botens språkmiljö på den här servern.\n"
+"        "
+
+#: obsidion/cogs/config/config.py:121
+msgid "Regional formatting will now be based on bot's locale in this server."
+msgstr "Regional formatering kommer nu att baseras på botens språkmiljö på den här servern."
+
+#: obsidion/cogs/config/config.py:147
+msgid "Regional formatting will now be based on `{language_code}` locale."
+msgstr "Regional formatering kommer nu att baseras på \"{language_code}\"."
+
+#: obsidion/cogs/config/config.py:164 obsidion/cogs/config/config.py:208
+#, docstring
+msgid "Link Minecraft account to Discord account."
+msgstr "Länka Minecraft-konto till Discord-kontot."
+
+#: obsidion/cogs/config/config.py:170
+#, docstring
+msgid "Link account to discord account."
+msgstr "Länk-konto för att ta bort kontot."
+
+#: obsidion/cogs/config/config.py:180
+#, docstring
+msgid "Unlink minecraft account from discord account."
+msgstr "Avlänka minecraft-kontot från oenighetskonto."
+
+#: obsidion/cogs/config/config.py:188 obsidion/cogs/config/config.py:194
+#, docstring
+msgid "Link Minecraft server to Discord guild."
+msgstr "Länka Minecraft-servern till Discord guild."
+
+#: obsidion/cogs/config/config.py:200
+#, docstring
+msgid "Unlink minecraft server from discord guild."
+msgstr "Olänka minecraft-servern från oordgillet."
+
+#: obsidion/cogs/config/config.py:214 obsidion/cogs/config/config.py:272
+#: obsidion/cogs/config/config.py:278 obsidion/cogs/config/config.py:297
+#, docstring
+msgid "Autopost Minecraft News"
+msgstr "Autopost Minecraft News"
+
+#: obsidion/cogs/config/config.py:225 obsidion/cogs/config/config.py:281
+msgid "You have completed the automatic posting setup process. You can change these settings using /autopost edit"
+msgstr "Du har slutfört den automatiska posteringsprocessen. Du kan ändra de här inställningarna med hjälp av redigering / autopost"
+
+#: obsidion/cogs/config/config.py:233
+msgid "Would you like automatic posts of new {category}?"
+msgstr "Vill du ha automatiska tjänster av ny {category}?"
+
+#: obsidion/cogs/config/config.py:240 obsidion/cogs/config/config.py:259
+msgid "Response timed out."
+msgstr "Tidsgräns överskreds."
+
+#: obsidion/cogs/config/config.py:244
+msgid "Which channel would you like this to happen in? Mention the channel, for example #general"
+msgstr "Vilken kanal vill du att det ska ske i? Mention av kanalen, till exempel #general"
+
+#: obsidion/cogs/config/config.py:264
+msgid "Ok."
+msgstr "-Okej."
+
+#: obsidion/cogs/config/config.py:303
+msgid "Testing autopot of {category}."
+msgstr "Testar autopot på {category}."
+
