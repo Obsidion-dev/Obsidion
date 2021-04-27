@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: obsidion\n"
 "POT-Creation-Date: 2021-04-28 00:02+1200\n"
-"PO-Revision-Date: 2021-04-27 12:09\n"
+"PO-Revision-Date: 2021-04-27 12:38\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -20,35 +20,35 @@ msgstr ""
 #: obsidion/cogs/images/images.py:36
 #, docstring
 msgid "Create your very own custom Minecraft achievements."
-msgstr ""
+msgstr "Créez vos propres réalisations Minecraft personnalisées."
 
 #: obsidion/cogs/images/images.py:46
 msgid "Obsidion Advancement Generator"
-msgstr ""
+msgstr "Générateur d'avancement Obsidion"
 
 #: obsidion/cogs/images/images.py:70
 msgid "Obsidion Sign Generator"
-msgstr ""
+msgstr "Générateur de signes Obsidion"
 
 #: obsidion/cogs/images/images.py:83
 #, docstring
 msgid "Renders a Minecraft players face."
-msgstr ""
+msgstr "Rend une face aux joueurs de Minecraft."
 
 #: obsidion/cogs/images/images.py:106
 #, docstring
 msgid "Renders a Minecraft players skull."
-msgstr ""
+msgstr "Rend un crâne des joueurs de Minecraft."
 
 #: obsidion/cogs/images/images.py:129
 #, docstring
 msgid "Renders a Minecraft players skin."
-msgstr ""
+msgstr "Rend une peau de joueur Minecraft."
 
 #: obsidion/cogs/images/images.py:152
 #, docstring
 msgid "Renders a Minecraft players bust."
-msgstr ""
+msgstr "Rend un buste de joueurs Minecraft."
 
 #: obsidion/cogs/images/images.py:178
 #, docstring
@@ -56,17 +56,24 @@ msgid "Renders a Minecraft players skin in 6 different ways.\n\n"
 "        You can choose from these 6 render types: face,\n"
 "        front, full, head, bust & skin.\n"
 "        "
-msgstr ""
+msgstr "Rend une peau de joueur de Minecraft de 6 façons différentes.\n\n"
+"        Vous pouvez choisir parmi ces 6 types de rendu: face,\n"
+"        front, full, head, bust & skin.\n"
+"        "
 
 #: obsidion/cogs/images/images.py:187
 msgid "Please supply a render type. Your options are:\n"
 " `face`, `front`, `full`, `head`, `bust`, `skin` \n"
 " Type: ?render <render type> <username>"
-msgstr ""
+msgstr "Indiquez un type de rendu. Your options are:\n"
+" ` front `, ` front `, ` full `, ` head `, ` bust `, ` skin ` \n"
+" Type:? render <render type> <username>"
 
 #: obsidion/cogs/images/images.py:198
 msgid "Here is: `{username}`'s {render_type}! \n"
 " **[DOWNLOAD](https://visage.surgeplay.com/{render_type}/512/{uuid}/512/{uuid})\n"
 "[RAW](https://visage.surgeplay.com/{render_type}/512/{uuid})**"
-msgstr ""
+msgstr "Voici le: `{username}`'s {render_type}! \n"
+" **[DOWNLOAD](https: //visage.surgeplay.com/{render_type}/512 /{uuid}/512 /{uuid})\n"
+"[RAW](https: //visage.surgeplay.com/{render_type}/512 /{uuid}) * *"
 
