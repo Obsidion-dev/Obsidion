@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: obsidion\n"
 "POT-Creation-Date: 2021-04-28 00:01+1200\n"
-"PO-Revision-Date: 2021-04-27 12:09\n"
+"PO-Revision-Date: 2021-04-27 12:38\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr "퐁."
 
 #: obsidion/core/core_commands.py:47
 msgid "Pong! ({latency}ms)"
-msgstr ""
+msgstr "퐁당 ({latency}ms)"
 
 #: obsidion/core/core_commands.py:57
 #, docstring
@@ -46,7 +46,7 @@ msgstr "이 봇은 [Darkflame72]({}) 와 [많이 개선된] ({}) 에 의해 작�
 
 #: obsidion/core/core_commands.py:94
 msgid "Bringing joy since the 2nd of April 2020 (over {} days ago!)"
-msgstr ""
+msgstr "기쁨을 느끼는 것은 2020년 4월 2일부터 시작되었다."
 
 #: obsidion/core/core_commands.py:108
 #, docstring
@@ -77,12 +77,12 @@ msgstr "현재 서버를 엽니다."
 
 #: obsidion/core/core_commands.py:149
 msgid "Are you sure you want me to leave the current server? (yes/no)"
-msgstr ""
+msgstr "제가 현재의 서버를 떠나길 원하시는 건가요? (예/아니오)"
 
 #: obsidion/core/core_commands.py:158
 #, docstring
 msgid "Lists and allows Obsidion to leave servers."
-msgstr ""
+msgstr "목록을 표시하고 옵시론이 서버를 떠나도록 합니다."
 
 #: obsidion/core/core_commands.py:171
 msgid "To leave a server, just type its number."
@@ -120,7 +120,8 @@ msgstr "\n"
 #: obsidion/core/core_commands.py:218
 msgid "This bot is an instance of the Obsidion Discord Bot.\n"
 "Obsidion is an open source application made available to the public and licensed under the GNU AGPL v3. The full text of this license is available to you at <https://github.com/Obsidion-dev/Obsidion/blob/main/LICENSE>"
-msgstr ""
+msgstr "이 봇은 Obsidion Discord Bot의 인스턴스입니다.\n"
+"Obsidion은 일반적으로 사용할 수 있으며 GNU AGPL v3하에 라이센스가 부여된 오픈 소스 애플리케이션입니다. 이 라이센스의 전체 텍스트는 <https://github.com/Obsidion-dev/Obsidion/blob/main/LICENSE>에서 사용할 수 있습니다."
 
 #: obsidion/core/core_commands.py:244
 #, docstring
@@ -146,7 +147,10 @@ msgid "Attempts to restart Obsidion.\n\n"
 "        Makes Obsidion quit with exit code 26.\n"
 "        The restart is not guaranteed: it must be dealt\n"
 "        with by the process manager in use."
-msgstr ""
+msgstr "Obsidion을 다시 시작하려고 시도합니다.\n\n"
+"        마크스 Obsidion을 종료 코드 26으로 종료합니다.\n"
+"        다시 시작이 보장되지 않습니다. 사용 중인 프로세스 관리자가\n"
+"        로 처리해야 합니다."
 
 #: obsidion/core/core_commands.py:323
 #, docstring
@@ -234,7 +238,22 @@ msgid "Execute asynchronous code.\n\n"
 "            commands - discord.ext.commands\n"
 "            _        - The result of the last dev command.\n"
 "        "
-msgstr ""
+msgstr "비동기 코드를 실행한다.\n\n"
+"        이 명령은 비동기 함수의 본문으로 코드를 랩핑한 후\n"
+"        호출하여 이를 대기합니다. 봇은\n"
+"        stdout에 인쇄된 모든 것과 기능의 리턴 값으로 응답할 것이다.\n\n"
+"        코드는 혼합되지 않고 올바르게 형식화되므로 코드 블록, 인라인 코드 내에 있거나 아니면\n"
+"        로 될 수 있습니다.\n\n"
+"        환경 변수:\n"
+"            ctx-command 호출 컨텍스트\n"
+"            봇-봇 객체\n"
+"            채널-현재 채널 오브젝트\n"
+"            메시지-명령 작성자의 멤버 오브젝트\n"
+"            메시지-명령의 메시지 오브젝트\n"
+"            불화-discord.py 라이브러리\n"
+"            명령-discord.ext.커맨드\n"
+"            _ - 마지막 dev 명령의 결과.\n"
+"        "
 
 #: obsidion/core/dev_commands.py:263
 #, docstring
@@ -305,15 +324,15 @@ msgstr "중요한 봇 이벤트"
 
 #: obsidion/core/events.py:92
 msgid "Sorry, it looks like you don't have the **{fmt}** permissions I need to do that."
-msgstr ""
+msgstr "죄송합니다. 이 작업을 수행해야 하는 **{fmt}** 권한이 없는 것 같습니다."
 
 #: obsidion/core/events.py:98
 msgid "Sorry, it looks like you don't have the **{fmt}** permission I need to do that."
-msgstr ""
+msgstr "죄송합니다. 이 작업을 수행해야 하는 **{fmt}** 권한이 없는 것 같습니다."
 
 #: obsidion/core/events.py:119
 msgid "`{user_input}` is not a valid value for `{command}`"
-msgstr ""
+msgstr "`{user_input}`는 `{command} `의 유효한 가치가 아니다."
 
 #: obsidion/core/events.py:136
 msgid "I require the {permission} permission to execute that command."
@@ -321,7 +340,7 @@ msgstr "이 명령을 실행하려면 {permission} 권한이 필요합니다."
 
 #: obsidion/core/events.py:140
 msgid "I require {permission_list} permissions to execute that command."
-msgstr ""
+msgstr "이 명령을 실행하려면 {permission_list} 권한이 필요합니다."
 
 #: obsidion/core/events.py:157
 msgid "This command is on cooldown. Try again in {delay}."
@@ -357,9 +376,9 @@ msgstr "이 명령을 사용하는 사용자가 너무 많습니다. {type} 에�
 
 #: obsidion/core/events.py:205
 msgid "The user does not exist, please check wether the username is correct."
-msgstr ""
+msgstr "사용자가 없습니다. 사용자 이름이 올바른지 확인하십시오."
 
 #: obsidion/core/events.py:215
 msgid "Error in command '{command}'. It has been recorded and should be fixed soon."
-msgstr ""
+msgstr "명령어 오류 발생하기{command}'. 그것은 녹음되었고 곧 고쳐져야 한다."
 
