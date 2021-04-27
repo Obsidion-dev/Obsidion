@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: obsidion\n"
 "POT-Creation-Date: 2021-01-27 06:57+1300\n"
-"PO-Revision-Date: 2021-01-26 18:02\n"
+"PO-Revision-Date: 2021-04-27 12:37\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -19,49 +19,49 @@ msgstr ""
 
 #: obsidion/core/utils/chat_formatting.py:511
 msgid "year"
-msgstr ""
+msgstr "年"
 
 #: obsidion/core/utils/chat_formatting.py:511
 msgid "years"
-msgstr ""
+msgstr "年"
 
 #: obsidion/core/utils/chat_formatting.py:512
 msgid "month"
-msgstr ""
+msgstr "月"
 
 #: obsidion/core/utils/chat_formatting.py:512
 msgid "months"
-msgstr ""
+msgstr "月"
 
 #: obsidion/core/utils/chat_formatting.py:513
 msgid "day"
-msgstr ""
+msgstr "日"
 
 #: obsidion/core/utils/chat_formatting.py:513
 msgid "days"
-msgstr ""
+msgstr "日"
 
 #: obsidion/core/utils/chat_formatting.py:514
 msgid "hour"
-msgstr ""
+msgstr "小时"
 
 #: obsidion/core/utils/chat_formatting.py:514
 msgid "hours"
-msgstr ""
+msgstr "小时"
 
 #: obsidion/core/utils/chat_formatting.py:515
 msgid "minute"
-msgstr ""
+msgstr "分钟"
 
 #: obsidion/core/utils/chat_formatting.py:515
 msgid "minutes"
-msgstr ""
+msgstr "分钟"
 
 #: obsidion/core/utils/chat_formatting.py:516
 msgid "second"
-msgstr ""
+msgstr "二"
 
 #: obsidion/core/utils/chat_formatting.py:516
 msgid "seconds"
-msgstr ""
+msgstr "秒"
 
