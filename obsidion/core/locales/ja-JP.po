@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: obsidion\n"
 "POT-Creation-Date: 2021-04-28 00:01+1200\n"
-"PO-Revision-Date: 2021-04-27 12:10\n"
+"PO-Revision-Date: 2021-04-27 12:38\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr "ポン・・・"
 
 #: obsidion/core/core_commands.py:47
 msgid "Pong! ({latency}ms)"
-msgstr ""
+msgstr "ポン! ({latency}ms)"
 
 #: obsidion/core/core_commands.py:57
 #, docstring
@@ -46,7 +46,7 @@ msgstr "このボットは、 [Darkflame72]({}) によって作成され、 [{ }
 
 #: obsidion/core/core_commands.py:94
 msgid "Bringing joy since the 2nd of April 2020 (over {} days ago!)"
-msgstr ""
+msgstr "2020 年 4 月 2 日 ( {} 日前!) 以降、喜びをお楽しみください。"
 
 #: obsidion/core/core_commands.py:108
 #, docstring
@@ -77,12 +77,12 @@ msgstr "現在のサーバーを保存します。"
 
 #: obsidion/core/core_commands.py:149
 msgid "Are you sure you want me to leave the current server? (yes/no)"
-msgstr ""
+msgstr "現在のサーバーをそのままにしてよろしいですか ? (yes/no)"
 
 #: obsidion/core/core_commands.py:158
 #, docstring
 msgid "Lists and allows Obsidion to leave servers."
-msgstr ""
+msgstr "Obsidion によるサーバーの終了をリストおよび許可します。"
 
 #: obsidion/core/core_commands.py:171
 msgid "To leave a server, just type its number."
@@ -120,7 +120,8 @@ msgstr "\n"
 #: obsidion/core/core_commands.py:218
 msgid "This bot is an instance of the Obsidion Discord Bot.\n"
 "Obsidion is an open source application made available to the public and licensed under the GNU AGPL v3. The full text of this license is available to you at <https://github.com/Obsidion-dev/Obsidion/blob/main/LICENSE>"
-msgstr ""
+msgstr "このボットは、\n"
+"Ob曜石のインスタンスであり、一般公開され、 GNU AGPL v3 でライセンスされたオープンソースのアプリケーションである。 このライセンスの全文は、 <https://github.com/Obsidion-dev/Obsidion/blob/main/LICENSE> までご利用いただけます。"
 
 #: obsidion/core/core_commands.py:244
 #, docstring
@@ -146,7 +147,10 @@ msgid "Attempts to restart Obsidion.\n\n"
 "        Makes Obsidion quit with exit code 26.\n"
 "        The restart is not guaranteed: it must be dealt\n"
 "        with by the process manager in use."
-msgstr ""
+msgstr "Ob曜石の再始動を試行します。\n\n"
+"        Ob曜石は終了コード 26 から終了します。\n"
+"        再始動は保証されていません。プロセス・マネージャーが使用中の\n"
+"        を処理する必要があります。"
 
 #: obsidion/core/core_commands.py:323
 #, docstring
@@ -214,7 +218,23 @@ msgid "Evaluate a statement of python code.\n\n"
 "            commands - discord.ext.commands\n"
 "            _        - The result of the last dev command.\n"
 "        "
-msgstr ""
+msgstr "python コードのステートメントを評価します。\n\n"
+"        ボットは、コードの戻り値で常に応答します。\n"
+"        コードの戻り値がコロティンである場合は、\n"
+"        というコードが待っており、その結果がボットの応答になります。\n\n"
+"        注: 評価できるのは 1 つのステートメントのみです。 特定の制限された\n"
+"        キーワード( 例えば、利回り) を使用すると、構文エラーが発生します。 複数の\n"
+"        行または非同期コードの場合は、 [p]repl または [p]の evalを参照してください。\n\n"
+"        環境変数:\n"
+"            ctx - コマンド呼び出しコンテキスト\n"
+"            ボット・ボット・オブジェクト\n"
+"            チャネル - 現在のチャネル・オブジェクト\n"
+"            作成者 - コマンド作成者のメンバー・オブジェクト\n"
+"            メッセージ - コマンドのメッセージ・オブジェクト\n"
+"            discord.py ライブラリー\n"
+"            コマンド - discord.ext.ext.command\n"
+"            _ - 最後の dev コマンドの結果。\n"
+"        "
 
 #: obsidion/core/dev_commands.py:196
 #, docstring
@@ -305,15 +325,15 @@ msgstr "重要なボット・イベント。"
 
 #: obsidion/core/events.py:92
 msgid "Sorry, it looks like you don't have the **{fmt}** permissions I need to do that."
-msgstr ""
+msgstr "申し訳ありません。 **{fmt}** の許可を持っていません。これを行う必要があります。"
 
 #: obsidion/core/events.py:98
 msgid "Sorry, it looks like you don't have the **{fmt}** permission I need to do that."
-msgstr ""
+msgstr "申し訳ありません。 **{fmt}** 許可を持っていません。これを行う必要があります。"
 
 #: obsidion/core/events.py:119
 msgid "`{user_input}` is not a valid value for `{command}`"
-msgstr ""
+msgstr "「{user_input}」は「{command} 」に有効な値ではありません。"
 
 #: obsidion/core/events.py:136
 msgid "I require the {permission} permission to execute that command."
@@ -321,7 +341,7 @@ msgstr "このコマンドを実行するには、 {permission} 許可が必要�
 
 #: obsidion/core/events.py:140
 msgid "I require {permission_list} permissions to execute that command."
-msgstr ""
+msgstr "そのコマンドを実行するには、 {permission_list} アクセス権が必要です。"
 
 #: obsidion/core/events.py:157
 msgid "This command is on cooldown. Try again in {delay}."
@@ -357,9 +377,9 @@ msgstr "このコマンドを使用する人が多すぎます これは、 {typ
 
 #: obsidion/core/events.py:205
 msgid "The user does not exist, please check wether the username is correct."
-msgstr ""
+msgstr "ユーザーが存在しません。ユーザー名が正しいことを確認してください。"
 
 #: obsidion/core/events.py:215
 msgid "Error in command '{command}'. It has been recorded and should be fixed soon."
-msgstr ""
+msgstr "コマンドのエラー '{command}' これは記録され、すぐに修正する必要があります。"
 
