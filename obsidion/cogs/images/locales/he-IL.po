@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: obsidion\n"
 "POT-Creation-Date: 2021-04-28 00:02+1200\n"
-"PO-Revision-Date: 2021-04-27 12:08\n"
+"PO-Revision-Date: 2021-04-27 12:39\n"
 "Last-Translator: \n"
 "Language-Team: Hebrew\n"
 "MIME-Version: 1.0\n"
@@ -20,35 +20,35 @@ msgstr ""
 #: obsidion/cogs/images/images.py:36
 #, docstring
 msgid "Create your very own custom Minecraft achievements."
-msgstr ""
+msgstr "צרו את הישגיו האישיים של \"מיינקראפט\"."
 
 #: obsidion/cogs/images/images.py:46
 msgid "Obsidion Advancement Generator"
-msgstr ""
+msgstr "גנרטור קידום Obsidion"
 
 #: obsidion/cogs/images/images.py:70
 msgid "Obsidion Sign Generator"
-msgstr ""
+msgstr "גנרטורים של אובסידיון"
 
 #: obsidion/cogs/images/images.py:83
 #, docstring
 msgid "Renders a Minecraft players face."
-msgstr ""
+msgstr "הצגת פנים של שחקני מיינקראפט."
 
 #: obsidion/cogs/images/images.py:106
 #, docstring
 msgid "Renders a Minecraft players skull."
-msgstr ""
+msgstr "מציג את הגולגולת של שחקני מיינקראפט."
 
 #: obsidion/cogs/images/images.py:129
 #, docstring
 msgid "Renders a Minecraft players skin."
-msgstr ""
+msgstr "מציג עור של שחקני מיינקראפט."
 
 #: obsidion/cogs/images/images.py:152
 #, docstring
 msgid "Renders a Minecraft players bust."
-msgstr ""
+msgstr "הצגת מעצר של שחקני מיינקראפט."
 
 #: obsidion/cogs/images/images.py:178
 #, docstring
@@ -56,7 +56,10 @@ msgid "Renders a Minecraft players skin in 6 different ways.\n\n"
 "        You can choose from these 6 render types: face,\n"
 "        front, full, head, bust & skin.\n"
 "        "
-msgstr ""
+msgstr "מציג עור של שחקני מיינקראפט ב-6 דרכים שונות.\n\n"
+"        אתם יכולים לבחור מתוך 6 סוגים אלה: פנים,\n"
+"        קדמי, מלא, ראש, חזה ועור.\n"
+"        "
 
 #: obsidion/cogs/images/images.py:187
 msgid "Please supply a render type. Your options are:\n"
@@ -68,5 +71,7 @@ msgstr ""
 msgid "Here is: `{username}`'s {render_type}! \n"
 " **[DOWNLOAD](https://visage.surgeplay.com/{render_type}/512/{uuid}/512/{uuid})\n"
 "[RAW](https://visage.surgeplay.com/{render_type}/512/{uuid})**"
-msgstr ""
+msgstr "הנה:{username}זה {render_type}! \n"
+" **[DOWNLOAD](https: //visage.surgeplay.com/{render_type}/512/{uuid}/512/{uuid})\n"
+"[RAW](https: //visage.surgeplay.com/{render_type}/{uuid}) * *"
 
