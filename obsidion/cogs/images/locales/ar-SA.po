@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: obsidion\n"
 "POT-Creation-Date: 2021-04-28 00:02+1200\n"
-"PO-Revision-Date: 2021-04-27 12:08\n"
+"PO-Revision-Date: 2021-04-27 12:38\n"
 "Last-Translator: \n"
 "Language-Team: Arabic\n"
 "MIME-Version: 1.0\n"
@@ -20,35 +20,35 @@ msgstr ""
 #: obsidion/cogs/images/images.py:36
 #, docstring
 msgid "Create your very own custom Minecraft achievements."
-msgstr ""
+msgstr "قم بتكوين إنجازات Minercraft الخاصة بك بنفسك."
 
 #: obsidion/cogs/images/images.py:46
 msgid "Obsidion Advancement Generator"
-msgstr ""
+msgstr "برنامج تكوين تقدم Obasion"
 
 #: obsidion/cogs/images/images.py:70
 msgid "Obsidion Sign Generator"
-msgstr ""
+msgstr "برنامج تكوين العلامة Obasion"
 
 #: obsidion/cogs/images/images.py:83
 #, docstring
 msgid "Renders a Minecraft players face."
-msgstr ""
+msgstr "يقوم بترجمة لاعبين من Minraft وجها لوجه."
 
 #: obsidion/cogs/images/images.py:106
 #, docstring
 msgid "Renders a Minecraft players skull."
-msgstr ""
+msgstr "يقوم بمرافضي جمجمة للاعبين من المركبات."
 
 #: obsidion/cogs/images/images.py:129
 #, docstring
 msgid "Renders a Minecraft players skin."
-msgstr ""
+msgstr "يقوم بترجمة عناصر Minraft للشكل العام."
 
 #: obsidion/cogs/images/images.py:152
 #, docstring
 msgid "Renders a Minecraft players bust."
-msgstr ""
+msgstr "ويستقل فريق من اللاعبين في تمثال نصفي له."
 
 #: obsidion/cogs/images/images.py:178
 #, docstring
@@ -56,17 +56,24 @@ msgid "Renders a Minecraft players skin in 6 different ways.\n\n"
 "        You can choose from these 6 render types: face,\n"
 "        front, full, head, bust & skin.\n"
 "        "
-msgstr ""
+msgstr "يقوم بترجمة عناصر Minraft الخاصة بهم الى 6 طرق مختلفة.\n\n"
+"        يمكنك الاختيار من بين أنواع التمثيل الستة هذه : الوجه ،\n"
+"        أمامية ، كاملة ، رأس ، تمثال نصفي & للشكل العام.\n"
+"        "
 
 #: obsidion/cogs/images/images.py:187
 msgid "Please supply a render type. Your options are:\n"
 " `face`, `front`, `full`, `head`, `bust`, `skin` \n"
 " Type: ?render <render type> <username>"
-msgstr ""
+msgstr "برجاء ادخال نوع التحويل البياني. اختياراتك هي :\n"
+" 'الوجه' ، 'الأمامى' ، 'كامل' ، 'rhead' ، 'kso' ، ' الشكل العام \n"
+" النوع : ? render <render type> <username>"
 
 #: obsidion/cogs/images/images.py:198
 msgid "Here is: `{username}`'s {render_type}! \n"
 " **[DOWNLOAD](https://visage.surgeplay.com/{render_type}/512/{uuid}/512/{uuid})\n"
 "[RAW](https://visage.surgeplay.com/{render_type}/512/{uuid})**"
-msgstr ""
+msgstr "وهنا هو : '{username}' هو {render_type}! \n"
+" **[DOWNLOAD](https : //visage.surgeplay.com/{render_type}/512 /{uuid}/215 /{uuid})\n"
+"[RAW](https : //visage.surgeplay.com/{render_type}/512 /{uuid}) * *"
 
