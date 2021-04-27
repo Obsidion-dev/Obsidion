@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: obsidion\n"
 "POT-Creation-Date: 2021-04-28 00:01+1200\n"
-"PO-Revision-Date: 2021-04-27 12:10\n"
+"PO-Revision-Date: 2021-04-27 12:38\n"
 "Last-Translator: \n"
 "Language-Team: Hebrew\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr "פונג."
 
 #: obsidion/core/core_commands.py:47
 msgid "Pong! ({latency}ms)"
-msgstr ""
+msgstr "פונג! ({latency}מילישניות)"
 
 #: obsidion/core/core_commands.py:57
 #, docstring
@@ -46,7 +46,7 @@ msgstr "רובוט זה הוא מופע של [Obsidion, בוט בקוד פתוח
 
 #: obsidion/core/core_commands.py:94
 msgid "Bringing joy since the 2nd of April 2020 (over {} days ago!)"
-msgstr ""
+msgstr "מביא שמחה מאז 2 באפריל 2020 (מעל {} ימים לפני!)"
 
 #: obsidion/core/core_commands.py:108
 #, docstring
@@ -77,12 +77,12 @@ msgstr "משאיר את השרת הנוכחי."
 
 #: obsidion/core/core_commands.py:149
 msgid "Are you sure you want me to leave the current server? (yes/no)"
-msgstr ""
+msgstr "אתם בטוחים שברצונכם לעזוב את השרת הנוכחי? (כן/לא)"
 
 #: obsidion/core/core_commands.py:158
 #, docstring
 msgid "Lists and allows Obsidion to leave servers."
-msgstr ""
+msgstr "מפרט ומאפשר Obsidion לעזוב את השרתים."
 
 #: obsidion/core/core_commands.py:171
 msgid "To leave a server, just type its number."
@@ -120,7 +120,8 @@ msgstr "\n"
 #: obsidion/core/core_commands.py:218
 msgid "This bot is an instance of the Obsidion Discord Bot.\n"
 "Obsidion is an open source application made available to the public and licensed under the GNU AGPL v3. The full text of this license is available to you at <https://github.com/Obsidion-dev/Obsidion/blob/main/LICENSE>"
-msgstr ""
+msgstr "רובוט זה הוא מופע של Obsidion Bot.\n"
+"Obsidion הוא יישום מקור פתוח אשר זמין לציבור ומורשה תחת ה-GNU AGPL v3. התמליל המלא של רשיון זה זמין לכם בכתובת <https://github.com/Obsidion-dev/Obsidion/blob/main/LICENSE>"
 
 #: obsidion/core/core_commands.py:244
 #, docstring
@@ -234,7 +235,23 @@ msgid "Execute asynchronous code.\n\n"
 "            commands - discord.ext.commands\n"
 "            _        - The result of the last dev command.\n"
 "        "
-msgstr ""
+msgstr "ביצוע קוד אסינכרוני.\n\n"
+"        קוד זה עוטף קוד לתוך גוף של פונקציה אסינק ולאחר מכן\n"
+"        שיחות וממתין לו. הרובוט יגיב עם כל דבר המודפס ל-\n"
+"        stdout, וכן את ערך ההחזר של הפונקציה.\n\n"
+"        הקוד יכול להיות בתוך קודקוד, קוד inline או לא, כאשר\n"
+"        כאשר הם אינם מעורבים והם מעוצבים כהלכה.\n\n"
+"        סביבת עבודה:\n"
+"            -הקשר הפעלת קוד\n"
+"            אובייקט רובוט\n"
+"            ערוץ-אובייקט הערוץ הנוכחי\n"
+"            אובייקט מחבר-\n"
+"            הודעה-אובייקט ההודעה 210-110-111-012 הודעת הפקודה\n"
+"            פקודות-הדיון\n"
+"            פקודות-ערך\n"
+"            פקודות-\n"
+" _ - התוצאה של פקודת dev האחרונה.\n"
+"        "
 
 #: obsidion/core/dev_commands.py:263
 #, docstring
@@ -305,15 +322,15 @@ msgstr "אירועים חשובים של בוט."
 
 #: obsidion/core/events.py:92
 msgid "Sorry, it looks like you don't have the **{fmt}** permissions I need to do that."
-msgstr ""
+msgstr "מצטער, זה נראה כאילו אין לך את ה{fmt}הרשאות אני צריך לעשות את זה."
 
 #: obsidion/core/events.py:98
 msgid "Sorry, it looks like you don't have the **{fmt}** permission I need to do that."
-msgstr ""
+msgstr "מצטער, זה נראה כאילו אין לך את ה{fmt}רשות אני צריך לעשות את זה."
 
 #: obsidion/core/events.py:119
 msgid "`{user_input}` is not a valid value for `{command}`"
-msgstr ""
+msgstr "{user_input}אינו ערך חוקי עבור `{command}`"
 
 #: obsidion/core/events.py:136
 msgid "I require the {permission} permission to execute that command."
@@ -321,7 +338,7 @@ msgstr "אני דורש את הרשות {permission} כדי לבצע את הפק
 
 #: obsidion/core/events.py:140
 msgid "I require {permission_list} permissions to execute that command."
-msgstr ""
+msgstr "אני דורש {permission_list} הרשאות לביצוע הפקודה ש."
 
 #: obsidion/core/events.py:157
 msgid "This command is on cooldown. Try again in {delay}."
@@ -357,9 +374,9 @@ msgstr "יותר מדי אנשים משתמשים בפקודה זו. ניתן ל
 
 #: obsidion/core/events.py:205
 msgid "The user does not exist, please check wether the username is correct."
-msgstr ""
+msgstr "המשתמש אינו קיים, נא לבדוק אם שם המשתמש נכון."
 
 #: obsidion/core/events.py:215
 msgid "Error in command '{command}'. It has been recorded and should be fixed soon."
-msgstr ""
+msgstr "שגיאה בפקודה '{command}'. היא הוקלטה ויש לתקן אותה בקרוב."
 
