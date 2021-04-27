@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: obsidion\n"
 "POT-Creation-Date: 2021-04-28 00:01+1200\n"
-"PO-Revision-Date: 2021-04-27 12:10\n"
+"PO-Revision-Date: 2021-04-27 12:38\n"
 "Last-Translator: \n"
 "Language-Team: Greek\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr "-Πονγκ."
 
 #: obsidion/core/core_commands.py:47
 msgid "Pong! ({latency}ms)"
-msgstr ""
+msgstr "Πονγκ ({latency}ms)"
 
 #: obsidion/core/core_commands.py:57
 #, docstring
@@ -46,7 +46,7 @@ msgstr "Αυτό το bot είναι μια χρήση του [Obsidion, ένα 
 
 #: obsidion/core/core_commands.py:94
 msgid "Bringing joy since the 2nd of April 2020 (over {} days ago!)"
-msgstr ""
+msgstr "Φέρνοντας χαρά από τις 2 Απριλίου 2020 (πριν από {} ημέρες!)"
 
 #: obsidion/core/core_commands.py:108
 #, docstring
@@ -77,12 +77,12 @@ msgstr "Αφήνει τον τρέχοντα διακομιστή."
 
 #: obsidion/core/core_commands.py:149
 msgid "Are you sure you want me to leave the current server? (yes/no)"
-msgstr ""
+msgstr "Είστε βέβαιοι ότι θέλετε να φύγω από τον τρέχοντα διακομιστή; ναι/όχι)"
 
 #: obsidion/core/core_commands.py:158
 #, docstring
 msgid "Lists and allows Obsidion to leave servers."
-msgstr ""
+msgstr "Εμφανίζει και επιτρέπει στον Obsidion να αφήνει τους εξυπηρετητές."
 
 #: obsidion/core/core_commands.py:171
 msgid "To leave a server, just type its number."
@@ -120,7 +120,8 @@ msgstr "\n"
 #: obsidion/core/core_commands.py:218
 msgid "This bot is an instance of the Obsidion Discord Bot.\n"
 "Obsidion is an open source application made available to the public and licensed under the GNU AGPL v3. The full text of this license is available to you at <https://github.com/Obsidion-dev/Obsidion/blob/main/LICENSE>"
-msgstr ""
+msgstr "Αυτό το bot είναι μια περίπτωση του Obsidion Discord Bot.\n"
+"Obsidion είναι μια εφαρμογή ανοικτού κώδικα που διατίθεται στο κοινό και έχει αδειοδοτηθεί στο GNU AGPL v3. Το πλήρες κείμενο αυτής της άδειας χρήσης είναι διαθέσιμο στο <https://github.com/Obsidion-dev/Obsidion/blob/main/LICENSE>"
 
 #: obsidion/core/core_commands.py:244
 #, docstring
@@ -146,7 +147,10 @@ msgid "Attempts to restart Obsidion.\n\n"
 "        Makes Obsidion quit with exit code 26.\n"
 "        The restart is not guaranteed: it must be dealt\n"
 "        with by the process manager in use."
-msgstr ""
+msgstr "Απόπειρες επανεκκίνησης του Obsidion.\n\n"
+"        Κάνει Obsidion παραιτείται με τον κωδικό εξόδου 26.\n"
+"        Η επανεκκίνηση δεν είναι εγγυημένη: πρέπει να μοιραστεί\n"
+"        με το διαχειριστή διεργασιών σε χρήση."
 
 #: obsidion/core/core_commands.py:323
 #, docstring
@@ -234,7 +238,22 @@ msgid "Execute asynchronous code.\n\n"
 "            commands - discord.ext.commands\n"
 "            _        - The result of the last dev command.\n"
 "        "
-msgstr ""
+msgstr "Εκτελέστε ασύγχρονο κώδικα.\n\n"
+"        Αυτή η εντολή τυλίγει τον κώδικα στο σώμα μιας συνάρτησης async και στη συνέχεια\n"
+"        κλήσεις και το περιμένει. Το bot θα ανταποκριθεί με οτιδήποτε τυπωμένο σε\n"
+"        stdout, καθώς και την επιστρεφόμενη αξία της λειτουργίας.\n\n"
+"        Ο κωδικός μπορεί να είναι μέσα σε ένα codeblock, inline code ή ούτε, όσο\n"
+"        , καθώς δεν αναμιγνύονται και σχηματοποιούνται σωστά.\n\n"
+"        Μεταβλητές περιβάλλοντος:\n"
+"            ctx-εντολής περιβάλλον κλήσης\n"
+"            bot-bot object\n"
+"            κανάλι-το τρέχον αντικείμενο καναλιού\n"
+"            Μήνυμα μέλους του συντάκτη-εντολή του συντάκτη της εντολής\n"
+"            μήνυμα-το αντικείμενο μηνύματος της εντολής\n"
+"            discord-discord.py library\n"
+"            εντολές-discord.ext.commands\n"
+"            _ - Το αποτέλεσμα της τελευταίας εντολής dev.\n"
+"        "
 
 #: obsidion/core/dev_commands.py:263
 #, docstring
@@ -305,7 +324,7 @@ msgstr "Σημαντικά γεγονότα bot."
 
 #: obsidion/core/events.py:92
 msgid "Sorry, it looks like you don't have the **{fmt}** permissions I need to do that."
-msgstr ""
+msgstr "Συγγνώμη, φαίνεται ότι δεν έχετε τα δικαιώματα **{fmt}** Πρέπει να το κάνω."
 
 #: obsidion/core/events.py:98
 msgid "Sorry, it looks like you don't have the **{fmt}** permission I need to do that."
@@ -313,7 +332,7 @@ msgstr ""
 
 #: obsidion/core/events.py:119
 msgid "`{user_input}` is not a valid value for `{command}`"
-msgstr ""
+msgstr "\"{user_input}\" δεν είναι έγκυρη τιμή για `{command}`"
 
 #: obsidion/core/events.py:136
 msgid "I require the {permission} permission to execute that command."
@@ -321,7 +340,7 @@ msgstr "Απαιτώ την άδεια {permission} για την εκτέλεσ
 
 #: obsidion/core/events.py:140
 msgid "I require {permission_list} permissions to execute that command."
-msgstr ""
+msgstr "Απαιτώ δικαιώματα {permission_list} για την εκτέλεση της εντολής."
 
 #: obsidion/core/events.py:157
 msgid "This command is on cooldown. Try again in {delay}."
@@ -357,9 +376,9 @@ msgstr "Πολλοί άνθρωποι χρησιμοποιούν αυτή την
 
 #: obsidion/core/events.py:205
 msgid "The user does not exist, please check wether the username is correct."
-msgstr ""
+msgstr "Ο χρήστης δεν υπάρχει. Ελέγξτε αν το όνομα χρήστη είναι σωστό."
 
 #: obsidion/core/events.py:215
 msgid "Error in command '{command}'. It has been recorded and should be fixed soon."
-msgstr ""
+msgstr "Σφάλμα στην εντολή '{command}\". Έχει καταγραφεί και πρέπει να διορθωθεί σύντομα."
 
