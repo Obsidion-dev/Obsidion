@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: obsidion\n"
 "POT-Creation-Date: 2021-04-28 00:01+1200\n"
-"PO-Revision-Date: 2021-04-27 12:10\n"
+"PO-Revision-Date: 2021-04-27 12:38\n"
 "Last-Translator: \n"
 "Language-Team: Italian\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr "Pong."
 
 #: obsidion/core/core_commands.py:47
 msgid "Pong! ({latency}ms)"
-msgstr ""
+msgstr "Pong! ({latency}ms)"
 
 #: obsidion/core/core_commands.py:57
 #, docstring
@@ -46,7 +46,7 @@ msgstr "Questo bot è un'istanza di [ Obsidion, un bot open source Discord] ({})
 
 #: obsidion/core/core_commands.py:94
 msgid "Bringing joy since the 2nd of April 2020 (over {} days ago!)"
-msgstr ""
+msgstr "Portando gioia dal 2 aprile 2020 (over {} giorni fa!)"
 
 #: obsidion/core/core_commands.py:108
 #, docstring
@@ -77,12 +77,12 @@ msgstr "Lascia il server corrente."
 
 #: obsidion/core/core_commands.py:149
 msgid "Are you sure you want me to leave the current server? (yes/no)"
-msgstr ""
+msgstr "Sei sicuro di volermi lasciare il server attuale? (sì/no)"
 
 #: obsidion/core/core_commands.py:158
 #, docstring
 msgid "Lists and allows Obsidion to leave servers."
-msgstr ""
+msgstr "Elenca e consente a Obsidion di lasciare server."
 
 #: obsidion/core/core_commands.py:171
 msgid "To leave a server, just type its number."
@@ -120,7 +120,8 @@ msgstr "\n"
 #: obsidion/core/core_commands.py:218
 msgid "This bot is an instance of the Obsidion Discord Bot.\n"
 "Obsidion is an open source application made available to the public and licensed under the GNU AGPL v3. The full text of this license is available to you at <https://github.com/Obsidion-dev/Obsidion/blob/main/LICENSE>"
-msgstr ""
+msgstr "Questo bot è un'istanza dell'Obsidion Discord Bot.\n"
+"Obsidion è un'applicazione open source messa a disposizione del pubblico e concessa in licenza ai sensi della GNU AGPL v3. Il testo completo di questa licenza è disponibile a <https://github.com/Obsidion-dev/Obsidion/blob/main/LICENSE>"
 
 #: obsidion/core/core_commands.py:244
 #, docstring
@@ -146,7 +147,10 @@ msgid "Attempts to restart Obsidion.\n\n"
 "        Makes Obsidion quit with exit code 26.\n"
 "        The restart is not guaranteed: it must be dealt\n"
 "        with by the process manager in use."
-msgstr ""
+msgstr "Tentativi di riavvio di Obsidion.\n\n"
+"        Maghi Obsidion mollato con codice di uscita 26.\n"
+"        Il riavvio non è garantito: deve essere affrontato il\n"
+"        con il gestore del processo in uso."
 
 #: obsidion/core/core_commands.py:323
 #, docstring
@@ -234,7 +238,22 @@ msgid "Execute asynchronous code.\n\n"
 "            commands - discord.ext.commands\n"
 "            _        - The result of the last dev command.\n"
 "        "
-msgstr ""
+msgstr "Eseguire codice asincrono.\n\n"
+"        Questo comando avvolge il codice nel corpo di una funzione async e poi\n"
+"        chiamate e lo attende. Il bot risponderà con qualsiasi cosa stampata a\n"
+"        stdout, nonché il valore di ritorno della funzione.\n\n"
+"        Il codice può essere all'interno di un codeblock, codice inline o nemmeno, a partire da\n"
+"        come non sono mescolati e sono formattati correttamente.\n\n"
+"        Ambiente Variabili:\n"
+"            ctx - comando di richiamo comando\n"
+"            bot - bot oggetto\n"
+"            canale - l'oggetto canale corrente\n"
+"            autore - comando autore oggetto\n"
+"            messaggio - il messaggio del comando oggetto\n"
+"            discord.py libreria\n"
+"            comandi - discord.ext.comandi\n"
+"            _ - Il risultato dell'ultimo comando dev.\n"
+"        "
 
 #: obsidion/core/dev_commands.py:263
 #, docstring
@@ -305,15 +324,15 @@ msgstr "Eventi bot importanti."
 
 #: obsidion/core/events.py:92
 msgid "Sorry, it looks like you don't have the **{fmt}** permissions I need to do that."
-msgstr ""
+msgstr "Spiacente, sembra che tu non abbia il **{fmt}** i permessi che ho bisogno di farlo."
 
 #: obsidion/core/events.py:98
 msgid "Sorry, it looks like you don't have the **{fmt}** permission I need to do that."
-msgstr ""
+msgstr "Spiacente, sembra che tu non abbia il permesso **{fmt}** Ho bisogno di farlo."
 
 #: obsidion/core/events.py:119
 msgid "`{user_input}` is not a valid value for `{command}`"
-msgstr ""
+msgstr "`{user_input}` non è un valore valido per `{command}`"
 
 #: obsidion/core/events.py:136
 msgid "I require the {permission} permission to execute that command."
@@ -321,7 +340,7 @@ msgstr "Richiedo il permesso del {permission} di eseguire quel comando."
 
 #: obsidion/core/events.py:140
 msgid "I require {permission_list} permissions to execute that command."
-msgstr ""
+msgstr "Richiedo {permission_list} autorizzazioni per eseguire quel comando."
 
 #: obsidion/core/events.py:157
 msgid "This command is on cooldown. Try again in {delay}."
@@ -357,9 +376,9 @@ msgstr "Troppe persone che usano questo comando. Può essere utilizzato solo una
 
 #: obsidion/core/events.py:205
 msgid "The user does not exist, please check wether the username is correct."
-msgstr ""
+msgstr "L'utente non esiste, si prega di controllare che l'username sia corretto."
 
 #: obsidion/core/events.py:215
 msgid "Error in command '{command}'. It has been recorded and should be fixed soon."
-msgstr ""
+msgstr "Errore nel comando '{command}\". È stato registrato e dovrebbe essere fissato a breve."
 
