@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: obsidion\n"
 "POT-Creation-Date: 2021-04-28 00:02+1200\n"
-"PO-Revision-Date: 2021-04-27 12:08\n"
+"PO-Revision-Date: 2021-04-27 12:39\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -20,35 +20,35 @@ msgstr ""
 #: obsidion/cogs/images/images.py:36
 #, docstring
 msgid "Create your very own custom Minecraft achievements."
-msgstr ""
+msgstr "创建您自己的定制 Minecraft 成就。"
 
 #: obsidion/cogs/images/images.py:46
 msgid "Obsidion Advancement Generator"
-msgstr ""
+msgstr "Obsidion 提高生成器"
 
 #: obsidion/cogs/images/images.py:70
 msgid "Obsidion Sign Generator"
-msgstr ""
+msgstr "Obsidion 符号生成器"
 
 #: obsidion/cogs/images/images.py:83
 #, docstring
 msgid "Renders a Minecraft players face."
-msgstr ""
+msgstr "呈现了 Minecraft 玩家的脸面。"
 
 #: obsidion/cogs/images/images.py:106
 #, docstring
 msgid "Renders a Minecraft players skull."
-msgstr ""
+msgstr "一个 Minecraft 玩家颅骨。"
 
 #: obsidion/cogs/images/images.py:129
 #, docstring
 msgid "Renders a Minecraft players skin."
-msgstr ""
+msgstr "渲染一个 Minecraft 玩家皮肤。"
 
 #: obsidion/cogs/images/images.py:152
 #, docstring
 msgid "Renders a Minecraft players bust."
-msgstr ""
+msgstr "让我的世界上的玩家都崩溃"
 
 #: obsidion/cogs/images/images.py:178
 #, docstring
@@ -56,17 +56,24 @@ msgid "Renders a Minecraft players skin in 6 different ways.\n\n"
 "        You can choose from these 6 render types: face,\n"
 "        front, full, head, bust & skin.\n"
 "        "
-msgstr ""
+msgstr "以 6 种不同的方式呈现 Minecraft 玩家的皮肤。\n\n"
+"        你可以从这 6 种渲染类型中选择 : 面部，\n"
+"        前，全，头，半身和皮肤。\n"
+"        "
 
 #: obsidion/cogs/images/images.py:187
 msgid "Please supply a render type. Your options are:\n"
 " `face`, `front`, `full`, `head`, `bust`, `skin` \n"
 " Type: ?render <render type> <username>"
-msgstr ""
+msgstr "请提供呈示类型。 你的选择是 :\n"
+" \"面\"， \"正面\"， \"全部\"， \"头\"， \"半身 \" ， \"皮肤\" \n"
+" 类型: ?渲染 <render type> <username>"
 
 #: obsidion/cogs/images/images.py:198
 msgid "Here is: `{username}`'s {render_type}! \n"
 " **[DOWNLOAD](https://visage.surgeplay.com/{render_type}/512/{uuid}/512/{uuid})\n"
 "[RAW](https://visage.surgeplay.com/{render_type}/512/{uuid})**"
-msgstr ""
+msgstr "这里是 : \"{username}\"的 {render_type}! \n"
+" **[DOWNLOAD](//visage.surgeplay.com/{render_type}/512/{uuid}/512/{uuid})\n"
+"[RAW](//visage.surgeplay.com/{render_type}/512/{uuid})**"
 
