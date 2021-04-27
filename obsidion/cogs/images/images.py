@@ -35,7 +35,9 @@ class Images(commands.Cog):
     ) -> None:
         """Create your very own custom Minecraft achievements."""
         text = text.replace(" ", "%20")
-        async with self.bot.http_session.get(f"{get_settings().API_URL}/images/advancement?item={item_name}&title={title}&text={text}") as resp:
+        async with self.bot.http_session.get(
+            f"{get_settings().API_URL}/images/advancement?item={item_name}&title={title}&text={text}"
+        ) as resp:
             if resp.status == 500:
                 await ctx.send("That item is not available.")
                 return

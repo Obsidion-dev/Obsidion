@@ -4,11 +4,11 @@ from pathlib import Path
 from textwrap import dedent
 
 import nox
-import nox_poetry.patch
-from nox.sessions import Session
+from nox_poetry import Session
+from nox_poetry import session
 
 
-package = "obsidiond"
+package = "obsidion"
 python_versions = ["3.8"]  # ,"3.9"] # soon when uvloop is fixed
 nox.options.sessions = (
     "pre-commit",
@@ -68,7 +68,7 @@ def activate_virtualenv_in_precommit_hooks(session: Session) -> None:
         hook.write_text("\n".join(lines))
 
 
-@nox.session(name="pre-commit", python="3.8")
+@session(name="pre-commit", python="3.8")
 def precommit(session: Session) -> None:
     """Lint using pre-commit.
 
@@ -95,15 +95,15 @@ def precommit(session: Session) -> None:
         activate_virtualenv_in_precommit_hooks(session)
 
 
-@nox.session(python="3.8")
+@session(python="3.8")
 def safety(session: Session) -> None:
     """Scan dependencies for insecure packages."""
-    requirements = nox_poetry.export_requirements(session)
+    requirements = session.poetry.export_requirements()
     session.install("safety")
     session.run("safety", "check", f"--file={requirements}", "--bare", "--ignore=36546")
 
 
-@nox.session(python=python_versions)
+@session(python=python_versions)
 def mypy(session: Session) -> None:
     """Type-check using mypy."""
     args = session.posargs or ["obsidion"]

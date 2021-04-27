@@ -9,7 +9,9 @@ import traceback
 import types
 from contextlib import redirect_stdout
 from copy import copy
-from typing import Any, Iterator, Optional
+from typing import Any
+from typing import Iterator
+from typing import Optional
 
 import aiohttp
 import discord
@@ -83,7 +85,7 @@ class Dev(commands.Cog):
             )
 
     @staticmethod
-    def async_compile(source, filename, mode:str) -> Any:
+    def async_compile(source, filename, mode: str) -> Any:
         """Async Compile."""
         return compile(
             source, filename, mode, flags=ast.PyCF_ALLOW_TOP_LEVEL_AWAIT, optimize=0
@@ -389,7 +391,9 @@ class Dev(commands.Cog):
 
     @commands.command()
     @commands.is_owner()
-    async def mock(self, ctx: commands.Context, user: discord.Member, *, command: str) -> None:
+    async def mock(
+        self, ctx: commands.Context, user: discord.Member, *, command: str
+    ) -> None:
         """Mock another user invoking a command.
 
         The prefix must not be entered.
@@ -402,7 +406,9 @@ class Dev(commands.Cog):
 
     @commands.command(name="mockmsg")
     @commands.is_owner()
-    async def mock_msg(self, ctx: commands.Context, user: discord.Member, *, content: str) -> None:
+    async def mock_msg(
+        self, ctx: commands.Context, user: discord.Member, *, content: str
+    ) -> None:
         """Dispatch a message event as if it were sent by a different user.
 
         Only reads the raw content of the message. Attachments, embeds etc. are

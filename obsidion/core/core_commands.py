@@ -6,12 +6,15 @@ import inspect
 import logging
 import os
 import sys
-from typing import List, Optional
+from typing import List
+from typing import Optional
 from typing import Union
 
 import discord
 from discord.ext import commands
-from discord.ext.commands.core import Command, Group, wrap_callback
+from discord.ext.commands.core import Command
+from discord.ext.commands.core import Group
+from discord.ext.commands.core import wrap_callback
 from discord.ext.commands.errors import CommandError
 from discord_slash import cog_ext
 from discord_slash import SlashContext
@@ -153,7 +156,9 @@ class Core(commands.Cog):
     @commands.is_owner()
     async def leave_servers(self, ctx: commands.Context) -> None:
         """Lists and allows Obsidion to leave servers."""
-        guilds: List[discord.Guild] = sorted(self.bot.guilds, key=lambda s: s.name.lower())
+        guilds: List[discord.Guild] = sorted(
+            self.bot.guilds, key=lambda s: s.name.lower()
+        )
         msg = ""
         responses = []
         for i, server in enumerate(guilds, 1):

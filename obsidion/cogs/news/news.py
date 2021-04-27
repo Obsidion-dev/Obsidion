@@ -3,7 +3,8 @@ import json
 import logging
 from datetime import datetime
 from time import mktime
-from typing import Dict, Union
+from typing import Dict
+from typing import Union
 
 import discord
 import feedparser

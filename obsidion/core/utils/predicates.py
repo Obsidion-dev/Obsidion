@@ -1,4 +1,5 @@
 import re
+from typing import Any
 from typing import Callable
 from typing import cast
 from typing import ClassVar
@@ -18,7 +19,7 @@ _CHAN_MENTION_RE = re.compile(r"<#([0-9]{15,21})>$")
 _ROLE_MENTION_RE = re.compile(r"<@&([0-9]{15,21})>$")
 
 
-class MessagePredicate():
+class MessagePredicate:
     """A simple collection of predicates for message events.
 
     These predicates intend to help simplify checks in message events
@@ -65,7 +66,7 @@ class MessagePredicate():
         self, predicate: Callable[["MessagePredicate", discord.Message], bool]
     ) -> None:
         self._pred: Callable[["MessagePredicate", discord.Message], bool] = predicate
-        self.result: Optional[Union[bool, int, float]] = None
+        self.result: Any = None
 
     def __call__(self, message: discord.Message) -> bool:
         return self._pred(self, message)
@@ -131,10 +132,13 @@ class MessagePredicate():
             The event predicate.
 
         """
-        same_context = cls.same_context(ctx, channel, user)
+        if ctx is None:
+            lambda self, m: (False)
+        _ctx: commands.Context = ctx
+        same_context = cls.same_context(_ctx, channel, user)
         return cls(
             lambda self, m: (
-                same_context(m) and m.content.lower() == f"{ctx.prefix}cancel"
+                same_context(m) and m.content.lower() == f"{_ctx.prefix}cancel"
             )
         )
 
@@ -483,13 +487,14 @@ class MessagePredicate():
                     "`MessagePredicate.has_role`."
                 )
             user = ctx.author
+        _user: discord.User = user
 
         def predicate(self: MessagePredicate, m: discord.Message) -> bool:
             if not same_context(m):
                 return False
 
             role = self._find_role(guild, m.content)
-            if role is None or role not in user.roles:
+            if role is None or role not in _user.roles:
                 return False
 
             self.result = role
@@ -841,7 +846,7 @@ class MessagePredicate():
             return user.guild
 
 
-class ReactionPredicate(Callable[[discord.Reaction, discord.abc.User], bool]):
+class ReactionPredicate:
     """A collection of predicates for reaction events.
 
     All checks are combined with :meth:`ReactionPredicate.same_context`.
@@ -920,12 +925,11 @@ class ReactionPredicate(Callable[[discord.Reaction, discord.abc.User], bool]):
         self._pred: Callable[
             ["ReactionPredicate", discord.Reaction, discord.abc.User], bool
         ] = predicate
-        self.result = None
+        self.result: Any = None
 
     def __call__(self, reaction: discord.Reaction, user: discord.abc.User) -> bool:
         return self._pred(self, reaction, user)
 
-    # noinspection PyUnusedLocal
     @classmethod
     def same_context(
         cls,
@@ -952,7 +956,8 @@ class ReactionPredicate(Callable[[discord.Reaction, discord.abc.User], bool]):
             The event predicate.
 
         """
-        # noinspection PyProtectedMember
+        if message is None:
+            return cls(lambda self, r, u: False)
         me_id = message._state.self_id
         return cls(
             lambda self, r, u: u.id != me_id

@@ -3,7 +3,11 @@ import json
 import socket
 import sys
 from enum import IntEnum
-from typing import Any, Coroutine, Dict, List, Optional
+from typing import Any
+from typing import Coroutine
+from typing import Dict
+from typing import List
+from typing import Optional
 
 import aiohttp
 import aioredis
@@ -25,6 +29,7 @@ from .settings_cache import PrefixManager
 
 class Obsidion(AutoShardedBot):
     """Main bot class."""
+
     redis: aioredis.Redis
     http_session: aiohttp.ClientSession
     _connector: aiohttp.TCPConnector
@@ -132,7 +137,9 @@ class Obsidion(AutoShardedBot):
 
         return True
 
-    async def set_prefixes(self, guild: discord.Guild, prefix: Optional[str] = None) -> None:
+    async def set_prefixes(
+        self, guild: discord.Guild, prefix: Optional[str] = None
+    ) -> None:
         """
         Set global/server prefixes.
 

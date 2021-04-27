@@ -10,7 +10,6 @@ import discord
 from .config import get_settings
 
 
-
 class PrefixManager:
     def __init__(self, bot) -> None:
         self._bot = bot

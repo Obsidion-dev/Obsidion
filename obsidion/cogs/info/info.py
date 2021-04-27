@@ -5,7 +5,9 @@ import json
 import logging
 from datetime import datetime
 from time import mktime
-from typing import Any, Dict, Optional
+from typing import Any
+from typing import Dict
+from typing import Optional
 from typing import Tuple
 from typing import Union
 
@@ -129,10 +131,10 @@ class Info(commands.Cog):
     def get_server(ip: str, port: Optional[int] = None) -> Tuple[str, Optional[int]]:
         """Returns the server icon."""
         if ":" in ip:  # deal with them providing port in string instead of separate
-            address, port = ip.split(":")
-            port = int(port)
+            address, _port = ip.split(":")
+            port = int(_port)
             return (address, port)
-        if port:
+        if port is not None:
             return (ip, port)
         return (ip, None)
 
@@ -584,7 +586,10 @@ class Info(commands.Cog):
         embed = discord.Embed(colour=self.bot.color)
         for post in data:
             format = "%d %m %Y"
-            time = datetime.strftime(datetime.fromtimestamp(mktime(post["published_parsed"]), pytz.utc), format)
+            time = datetime.strftime(
+                datetime.fromtimestamp(mktime(post["published_parsed"]), pytz.utc),
+                format,
+            )
             embed.add_field(
                 name=post["title"],
                 value=(

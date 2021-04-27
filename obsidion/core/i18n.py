@@ -7,8 +7,10 @@ import logging
 import os
 from contextvars import ContextVar
 from pathlib import Path
-from typing import Callable, List
+from typing import Any
+from typing import Callable
 from typing import Dict
+from typing import List
 from typing import Optional
 from typing import Union
 
@@ -16,6 +18,7 @@ import babel.localedata
 import discord
 from babel.core import Locale
 from discord.ext import commands
+from discord.ext.commands.context import Context
 
 
 __all__ = [
@@ -34,7 +37,9 @@ __all__ = [
 log = logging.getLogger("obsidion.i18n")
 
 _current_locale = ContextVar("_current_locale", default="en-US")
-_current_regional_format = ContextVar("_current_regional_format", default=None)
+_current_regional_format: ContextVar[Optional[str]] = ContextVar(
+    "_current_regional_format", default=None
+)
 
 WAITING_FOR_MSGID = 1
 IN_MSGID = 2
@@ -144,7 +149,7 @@ async def set_contextual_locales_from_guild(
     set_contextual_regional_format(regional_format)
 
 
-def _parse(translation_file: io.TextIOWrapper) -> Dict[str, Dict[str,str]]:
+def _parse(translation_file: io.TextIOWrapper) -> Dict[str, Dict[str, str]]:
     """
     Custom gettext parsing of translation files.
 
@@ -219,7 +224,7 @@ def get_locale_path(cog_folder: Path, extension: str) -> Path:
     return cog_folder / "locales" / "{}.{}".format(get_locale(), extension)
 
 
-class Translator():
+class Translator:
     """Function to get translated strings at runtime."""
 
     def __init__(self, name: str, file_location: Union[str, Path, os.PathLike]):
@@ -352,7 +357,7 @@ def get_babel_regional_format(
 def cog_i18n(translator: Translator):
     """Get a class decorator to link the translator to this cog."""
 
-    def decorator(cog_class: object):
+    def decorator(cog_class: Any):
         cog_class.__translator__ = translator
         for name, attr in cog_class.__dict__.items():
             if isinstance(attr, (commands.Group, commands.Command)):
