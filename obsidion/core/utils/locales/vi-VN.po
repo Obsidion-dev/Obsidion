@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: obsidion\n"
 "POT-Creation-Date: 2021-01-27 06:57+1300\n"
-"PO-Revision-Date: 2021-01-26 18:02\n"
+"PO-Revision-Date: 2021-04-27 12:40\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese\n"
 "MIME-Version: 1.0\n"
@@ -19,27 +19,27 @@ msgstr ""
 
 #: obsidion/core/utils/chat_formatting.py:511
 msgid "year"
-msgstr ""
+msgstr "năm"
 
 #: obsidion/core/utils/chat_formatting.py:511
 msgid "years"
-msgstr ""
+msgstr "năm"
 
 #: obsidion/core/utils/chat_formatting.py:512
 msgid "month"
-msgstr ""
+msgstr "tháng"
 
 #: obsidion/core/utils/chat_formatting.py:512
 msgid "months"
-msgstr ""
+msgstr "tháng"
 
 #: obsidion/core/utils/chat_formatting.py:513
 msgid "day"
-msgstr ""
+msgstr "ngày"
 
 #: obsidion/core/utils/chat_formatting.py:513
 msgid "days"
-msgstr ""
+msgstr "ngày"
 
 #: obsidion/core/utils/chat_formatting.py:514
 msgid "hour"
@@ -47,21 +47,21 @@ msgstr ""
 
 #: obsidion/core/utils/chat_formatting.py:514
 msgid "hours"
-msgstr ""
+msgstr "giơ ̀"
 
 #: obsidion/core/utils/chat_formatting.py:515
 msgid "minute"
-msgstr ""
+msgstr "phút"
 
 #: obsidion/core/utils/chat_formatting.py:515
 msgid "minutes"
-msgstr ""
+msgstr "phút"
 
 #: obsidion/core/utils/chat_formatting.py:516
 msgid "second"
-msgstr ""
+msgstr "giây"
 
 #: obsidion/core/utils/chat_formatting.py:516
 msgid "seconds"
-msgstr ""
+msgstr "giây"
 
