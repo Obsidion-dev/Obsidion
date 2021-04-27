@@ -6,7 +6,6 @@ from discord import ActivityType
 from discord import AllowedMentions
 from discord import Intents
 from discord_slash import SlashCommand
-from discord_slash import SlashContext
 from obsidion import _update_event_loop_policy
 from obsidion.core import get_settings
 from obsidion.core.bot import Obsidion
@@ -47,7 +46,7 @@ def main() -> None:
     obsidion = Obsidion(**args)
 
     log.info("Ready to go, building everything")
-    slash = SlashCommand(obsidion, sync_commands=True, sync_on_cog_reload=True)
+    SlashCommand(obsidion, sync_commands=True, sync_on_cog_reload=True)
     log.info("Initialised slash commands")
     obsidion.run(get_settings().DISCORD_TOKEN)
 

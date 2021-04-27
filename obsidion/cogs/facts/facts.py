@@ -147,13 +147,13 @@ class Facts(commands.Cog):
                 await ctx.send("Could not find biome")
                 return
 
-        def getRGBfromI(RGBint):
-            blue = RGBint & 255
-            green = (RGBint >> 8) & 255
-            red = (RGBint >> 16) & 255
+        def getrgbfromi(rgbint):
+            blue = rgbint & 255
+            green = (rgbint >> 8) & 255
+            red = (rgbint >> 16) & 255
             return red, green, blue
 
-        colour = getRGBfromI(data["color"])
+        colour = getrgbfromi(data["color"])
         embed = discord.Embed(
             colour=discord.Colour.from_rgb(colour[0], colour[1], colour[2])
         )

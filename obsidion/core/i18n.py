@@ -8,7 +8,6 @@ import os
 from contextvars import ContextVar
 from pathlib import Path
 from typing import Any
-from typing import Callable
 from typing import Dict
 from typing import List
 from typing import Optional
@@ -18,7 +17,6 @@ import babel.localedata
 import discord
 from babel.core import Locale
 from discord.ext import commands
-from discord.ext.commands.context import Context
 
 
 __all__ = [

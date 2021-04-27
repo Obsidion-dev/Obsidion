@@ -58,9 +58,7 @@ class Events(commands.Cog):
         self.bot.uptime = datetime.utcnow()
 
     @commands.Cog.listener("on_slash_command_error")
-    async def _on_slash_command_error(self, ctx, ex) -> None:
-        print(ex)
-        # print(ex.original)
+    async def on_slash_command_error(self, ctx, ex) -> None:
         await self.handle_check_failure(ctx, ex)
 
     @staticmethod

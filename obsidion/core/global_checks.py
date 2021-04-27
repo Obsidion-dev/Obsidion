@@ -1,12 +1,7 @@
 """The checks in this module run on every command."""
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 from discord.ext import commands
-
-if TYPE_CHECKING:
-    from obsidion.core.bot import Obsidion
 
 
 def init_global_checks(bot):

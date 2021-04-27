@@ -154,7 +154,7 @@ class Hypixel(commands.Cog):
 
         data = await self.hypixel.player_status(uuid)
 
-        if data.online == False:
+        if data.online is False:
             await ctx.send("That player is not currently online.")
             return
         else:
@@ -219,24 +219,24 @@ class Hypixel(commands.Cog):
 
         for i in range(len(data)):
             if str(data[i].uuid_receiver) == str(uuid):
-                friendUsername = await self.bot.mojang_player(
+                friendusername = await self.bot.mojang_player(
                     ctx.author, data[i].uuid_sender
                 )
             else:
-                friendUsername = await self.bot.mojang_player(
+                friendusername = await self.bot.mojang_player(
                     ctx.author, data[i].uuid_receiver
                 )
 
-            friendUsername = friendUsername["username"]
+            friendusername = friendusername["username"]
 
             delta = datetime.datetime.now(tz=datetime.timezone.utc) - data[i].started
-            friendStarted = humanize_timedelta(timedelta=delta)
-            friendStartedSplit = friendStarted.split(", ")
-            friendStarted = friendStartedSplit[0] + ", " + friendStartedSplit[1]
+            friendstarted = humanize_timedelta(timedelta=delta)
+            friendstartedsplit = friendstarted.split(", ")
+            friendstarted = friendstartedsplit[0] + ", " + friendstartedsplit[1]
 
             embed.add_field(
-                name=_(f"{friendUsername}"),
-                value=_(f"Been friends for {friendStarted}"),
+                name=_(f"{friendusername}"),
+                value=_(f"Been friends for {friendstarted}"),
             )
 
         await ctx.send(embed=embed)

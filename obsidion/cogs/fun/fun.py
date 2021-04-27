@@ -1,15 +1,10 @@
-"""Images cog."""
-import json
+"""Fun cog."""
 import logging
-from datetime import datetime
 from random import choice
 from typing import List
-from typing import Union
 
-import discord
 from discord.ext import commands
 from discord_slash import cog_ext
-from discord_slash import SlashContext
 from discord_slash.utils.manage_commands import create_choice
 from discord_slash.utils.manage_commands import create_option
 from obsidion.core.i18n import cog_i18n

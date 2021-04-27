@@ -4,7 +4,6 @@ import socket
 import sys
 from enum import IntEnum
 from typing import Any
-from typing import Coroutine
 from typing import Dict
 from typing import List
 from typing import Optional

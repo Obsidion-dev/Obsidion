@@ -1,6 +1,4 @@
-"""Images cog."""
-import base64
-import io
+"""Info cog."""
 import json
 import logging
 from datetime import datetime

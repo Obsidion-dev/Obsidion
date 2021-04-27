@@ -351,7 +351,7 @@ class Core(commands.Cog):
 
         cmd = cmd.copy()
         cmd.context = ctx
-        if command == None:
+        if command is None:
             await cmd.prepare_help_command(ctx, None)
             mapping = cmd.get_bot_mapping()
             injected = wrap_callback(cmd.send_bot_help)

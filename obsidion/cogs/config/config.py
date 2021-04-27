@@ -11,12 +11,9 @@ from babel import UnknownLocaleError
 from discord.ext import commands
 from discord_slash import cog_ext
 from discord_slash import SlashContext
-from discord_slash.utils.manage_commands import create_option
-from obsidion import __version__
 from obsidion.core import i18n
 from obsidion.core.i18n import cog_i18n
 from obsidion.core.i18n import Translator
-from obsidion.core.utils.chat_formatting import pagify
 from obsidion.core.utils.predicates import MessagePredicate
 
 
@@ -219,12 +216,9 @@ class Config(commands.Cog):
         cat: Dict[str, Optional[int]] = {}
 
         def channel_check(m: discord.Message):
-            channel_mention = True
             if m.author == ctx.author:
                 if len(m.channel_mentions) != 0:
                     return True
-                else:
-                    channel_mention = False
             return False
 
         embed = discord.Embed(colour=self.bot.color)
