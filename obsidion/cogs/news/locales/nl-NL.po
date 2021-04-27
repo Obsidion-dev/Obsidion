@@ -1,0 +1,71 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: obsidion\n"
+"POT-Creation-Date: 2021-04-28 00:02+1200\n"
+"PO-Revision-Date: 2021-04-27 12:37\n"
+"Last-Translator: \n"
+"Language-Team: Dutch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: obsidion\n"
+"X-Crowdin-Project-ID: 437658\n"
+"X-Crowdin-Language: nl\n"
+"X-Crowdin-File: /reformat/cogs/news/locales/messages.pot\n"
+"X-Crowdin-File-ID: 80\n"
+"Language: nl_NL\n"
+
+#: obsidion/cogs/news/news.py:51
+msgid "Downtime"
+msgstr "Downtime"
+
+#: obsidion/cogs/news/news.py:54
+msgid "Back Online"
+msgstr "Online terug"
+
+#: obsidion/cogs/news/news.py:93
+msgid "Category"
+msgstr "Categorie"
+
+#: obsidion/cogs/news/news.py:94
+msgid "Author"
+msgstr "Auteur"
+
+#: obsidion/cogs/news/news.py:96
+msgid "Publish Date"
+msgstr "Publicatiedatum"
+
+#: obsidion/cogs/news/news.py:101 obsidion/cogs/news/news.py:145
+msgid "Article Published"
+msgstr "Artikel gepubliceerd"
+
+#: obsidion/cogs/news/news.py:107
+msgid "New Article on Minecraft.net"
+msgstr "Nieuw artikel op Minecraft.net"
+
+#: obsidion/cogs/news/news.py:133
+msgid "Name"
+msgstr "Naam"
+
+#: obsidion/cogs/news/news.py:135
+msgid "Package URL"
+msgstr "URL van pakket"
+
+#: obsidion/cogs/news/news.py:136
+msgid "[Package URL]({url})"
+msgstr "[ Pakket-URL] ({url})"
+
+#: obsidion/cogs/news/news.py:139
+msgid "Minecraft Wiki"
+msgstr "Minecraft Wiki"
+
+#: obsidion/cogs/news/news.py:140
+msgid "[Minecraft Wiki](https://minecraft.fandom.com/Java_Edition_{id})"
+msgstr "[ Minecraft Wiki] (https://minecraft.fandom.com/Java_Edition_{id})"
+
+#: obsidion/cogs/news/news.py:150
+msgid "New Minecraft Java Edition Snapshot"
+msgstr "Nieuwe Minecraft Java Edition Snapshot"
+
