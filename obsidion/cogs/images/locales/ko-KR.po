@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: obsidion\n"
 "POT-Creation-Date: 2021-04-28 00:02+1200\n"
-"PO-Revision-Date: 2021-04-27 12:08\n"
+"PO-Revision-Date: 2021-04-27 12:38\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
 "MIME-Version: 1.0\n"
@@ -20,35 +20,35 @@ msgstr ""
 #: obsidion/cogs/images/images.py:36
 #, docstring
 msgid "Create your very own custom Minecraft achievements."
-msgstr ""
+msgstr "사용자 고유의 사용자 정의 마인크래프트 성과를 작성합니다."
 
 #: obsidion/cogs/images/images.py:46
 msgid "Obsidion Advancement Generator"
-msgstr ""
+msgstr "옵시디언 어드밴스 제너레이터"
 
 #: obsidion/cogs/images/images.py:70
 msgid "Obsidion Sign Generator"
-msgstr ""
+msgstr "Obsidion사인 생성기"
 
 #: obsidion/cogs/images/images.py:83
 #, docstring
 msgid "Renders a Minecraft players face."
-msgstr ""
+msgstr "마인크래프트 선수들의 얼굴을 렌더링합니다."
 
 #: obsidion/cogs/images/images.py:106
 #, docstring
 msgid "Renders a Minecraft players skull."
-msgstr ""
+msgstr "마인크래프트 선수들의 두개골을 렌더링합니다."
 
 #: obsidion/cogs/images/images.py:129
 #, docstring
 msgid "Renders a Minecraft players skin."
-msgstr ""
+msgstr "마인크래프트 선수들을 피부로 만들어 준다."
 
 #: obsidion/cogs/images/images.py:152
 #, docstring
 msgid "Renders a Minecraft players bust."
-msgstr ""
+msgstr "마인크래프트 선수들을 녹이게 만든다."
 
 #: obsidion/cogs/images/images.py:178
 #, docstring
@@ -56,17 +56,24 @@ msgid "Renders a Minecraft players skin in 6 different ways.\n\n"
 "        You can choose from these 6 render types: face,\n"
 "        front, full, head, bust & skin.\n"
 "        "
-msgstr ""
+msgstr "Min크래프트 선수들의 피부를 6가지 다른 방법으로 표현한다.\n\n"
+"        6개의 렌더링 유형: 면,\n"
+"        전면, 전면, 머리, 피부 및 피부를 선택할 수 있습니다.\n"
+"        "
 
 #: obsidion/cogs/images/images.py:187
 msgid "Please supply a render type. Your options are:\n"
 " `face`, `front`, `full`, `head`, `bust`, `skin` \n"
 " Type: ?render <render type> <username>"
-msgstr ""
+msgstr "렌더 유형을 제공하십시오. 옵션은 다음과 같습니다.\n"
+" \"face\", \"front\", \"full\", \"머리\", \"bust\", \"스킨\" \n"
+" 유형:? 렌더링 <render type> <username>"
 
 #: obsidion/cogs/images/images.py:198
 msgid "Here is: `{username}`'s {render_type}! \n"
 " **[DOWNLOAD](https://visage.surgeplay.com/{render_type}/512/{uuid}/512/{uuid})\n"
 "[RAW](https://visage.surgeplay.com/{render_type}/512/{uuid})**"
-msgstr ""
+msgstr "여기에 '{username}' 의 {render_type}가 있습니다! \n"
+" **[DOWNLOAD](https: //visage.surgeplay.com/{render_type}/512/{uuid}/512/{uuid})\n"
+"[RAW](https: //visage.surgeplay.com/{render_type}/512/{uuid}) * *"
 
