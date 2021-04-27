@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: obsidion\n"
 "POT-Creation-Date: 2021-04-28 00:01+1200\n"
-"PO-Revision-Date: 2021-04-27 12:10\n"
+"PO-Revision-Date: 2021-04-27 12:41\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr "Pong."
 
 #: obsidion/core/core_commands.py:47
 msgid "Pong! ({latency}ms)"
-msgstr ""
+msgstr "Pong! ({latency}ms)"
 
 #: obsidion/core/core_commands.py:57
 #, docstring
@@ -44,7 +44,7 @@ msgstr ""
 
 #: obsidion/core/core_commands.py:94
 msgid "Bringing joy since the 2nd of April 2020 (over {} days ago!)"
-msgstr ""
+msgstr "Mang lại niềm vui kể từ ngày 2 tháng 4 năm 2020 (hơn {} ngày trước!)"
 
 #: obsidion/core/core_commands.py:108
 #, docstring
@@ -75,12 +75,12 @@ msgstr "Rời khỏi máy chủ hiện thời."
 
 #: obsidion/core/core_commands.py:149
 msgid "Are you sure you want me to leave the current server? (yes/no)"
-msgstr ""
+msgstr "Bạn có chắc là muốn tôi để lại máy chủ hiện tại không? (có/không)"
 
 #: obsidion/core/core_commands.py:158
 #, docstring
 msgid "Lists and allows Obsidion to leave servers."
-msgstr ""
+msgstr "Danh sách và cho phép Obsidion rời khỏi máy chủ."
 
 #: obsidion/core/core_commands.py:171
 msgid "To leave a server, just type its number."
@@ -288,11 +288,11 @@ msgstr "Sự kiện robot quan trọng."
 
 #: obsidion/core/events.py:92
 msgid "Sorry, it looks like you don't have the **{fmt}** permissions I need to do that."
-msgstr ""
+msgstr "Xin lỗi, có vẻ như anh không có quyền hạn{fmt}mà tôi cần phải làm việc đó."
 
 #: obsidion/core/events.py:98
 msgid "Sorry, it looks like you don't have the **{fmt}** permission I need to do that."
-msgstr ""
+msgstr "Xin lỗi, có vẻ như anh không có sự cho phép của **{fmt}** tôi cần làm điều đó."
 
 #: obsidion/core/events.py:119
 msgid "`{user_input}` is not a valid value for `{command}`"
@@ -304,7 +304,7 @@ msgstr ""
 
 #: obsidion/core/events.py:140
 msgid "I require {permission_list} permissions to execute that command."
-msgstr ""
+msgstr "Tôi cần {permission_list} phép để thực hiện lệnh đó."
 
 #: obsidion/core/events.py:157
 msgid "This command is on cooldown. Try again in {delay}."
@@ -340,9 +340,9 @@ msgstr "Quá nhiều người dùng lệnh này. Nó chỉ có thể được s�
 
 #: obsidion/core/events.py:205
 msgid "The user does not exist, please check wether the username is correct."
-msgstr ""
+msgstr "Người dùng không tồn tại, vui lòng kiểm tra xem tên người dùng là đúng."
 
 #: obsidion/core/events.py:215
 msgid "Error in command '{command}'. It has been recorded and should be fixed soon."
-msgstr ""
+msgstr "Lỗi trong lệnh '{command}'. Nó đã được ghi lại và cần được cố định sớm."
 
