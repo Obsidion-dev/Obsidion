@@ -179,7 +179,7 @@ class Help(HelpCommand):
 
     def get_command_signature(self, command):
         return "%s%s %s" % (
-            self.clean_prefix,
+            self.prefix,
             command.qualified_name,
             command.signature,
         )
@@ -197,7 +197,7 @@ class Help(HelpCommand):
         return (
             "Use {0}{1} [command] for more info on a command.\n"
             "You can also use {0}{1} [category] for more info on a category.".format(
-                self.clean_prefix, command_name
+                self.prefix, command_name
             )
         )
 
@@ -229,7 +229,7 @@ class Help(HelpCommand):
             The command to show information of.
         """
         self.embed.add_field(
-            name=f"{self.clean_prefix}{command.qualified_name}",
+            name=f"{self.prefix}{command.qualified_name}",
             value=command.short_doc,
         )
 
@@ -254,6 +254,7 @@ class Help(HelpCommand):
 
     async def prepare_help_command(self, ctx, command):
         self.embed.color = ctx.bot.color
+        self.prefix = (await self.context.bot._prefix_cache.get_prefixes(self.context.guild))[0]
         await super().prepare_help_command(ctx, command)
 
     async def send_bot_help(self, mapping):
@@ -315,7 +316,7 @@ class Help(HelpCommand):
             self.embed.description = group.help
         self.embed.add_field(
             name="Usage",
-            value=f"`{self.clean_prefix}{group.qualified_name} {group.signature}`",
+            value=f"`{self.prefix}{group.qualified_name} {group.signature}`",
         )
         ending = self.get_ending_note()
         if ending:
@@ -336,7 +337,7 @@ class Help(HelpCommand):
             self.embed.description = command.help
         self.embed.add_field(
             name="Usage",
-            value=f"`{self.clean_prefix}{command.qualified_name} {command.signature}`",
+            value=f"`{self.prefix}{command.qualified_name} {command.signature}`",
         )
         ending = self.get_ending_note()
         if ending:
