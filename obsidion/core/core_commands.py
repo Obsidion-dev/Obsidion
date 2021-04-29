@@ -344,7 +344,7 @@ class Core(commands.Cog):
             await ctx.send(_("No exception has occurred yet."))
 
     @cog_ext.cog_slash(name="help")
-    async def slash_help(self, ctx: SlashContext, command=None) -> None:
+    async def slash_help(self, ctx: SlashContext, command=None) -> None:  # noqa: C901
         await ctx.defer()
         bot = self.bot
         cmd = bot.help_command

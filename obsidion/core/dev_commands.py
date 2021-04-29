@@ -259,7 +259,7 @@ class Dev(commands.Cog):
 
     @commands.group(invoke_without_command=True)
     @commands.is_owner()
-    async def repl(self, ctx: commands.Context) -> None:
+    async def repl(self, ctx: commands.Context) -> None:  # noqa: C901
         """Open an interactive REPL.
 
         The REPL will only recognise code as messages which start with a

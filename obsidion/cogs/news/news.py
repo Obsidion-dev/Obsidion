@@ -164,41 +164,27 @@ class News(commands.Cog):
             n = json.loads(server["news"])
             for key in n.keys():
                 if n[key] is not None:
-                    if key in channels:
-
-                        channels[key] = n[key]
-                    else:
-                        channels[key] = [n[key]]
+                    channels[key] = n[key] if key in channels else [n[key]]
 
         release_embed = await self.get_java_releases()
         article_embed = await self.get_media()
         status_embed = await self.get_status()
         if release_embed is not None and "release" in channels:
-            # send embed
             for _channel in channels["release"]:
                 channel = self.bot.get_channel(_channel)
                 message = await channel.send(embed=release_embed)
-                try:
-                    await message.publish()
-                except discord.errors.Forbidden:
-                    pass
+                await message.publish()
         if article_embed is not None and "article" in channels:
             for _channel in channels["article"]:
                 channel = self.bot.get_channel(_channel)
                 message = await channel.send(embed=article_embed)
-                try:
-                    await message.publish()
-                except discord.errors.Forbidden:
-                    pass
+                await message.publish()
 
         if status_embed is not None and "status" in channels:
             for _channel in channels["status"]:
                 channel = self.bot.get_channel(_channel)
                 message = await channel.send(embed=status_embed)
-                try:
-                    await message.publish()
-                except discord.errors.Forbidden:
-                    pass
+                await message.publish()
 
     def cog_unload(self) -> None:
         """Stop news posting tasks on cog unload."""

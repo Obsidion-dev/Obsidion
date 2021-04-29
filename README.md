@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://obsidion-dev.com.com">
+  <a href="https://obsidion-dev.com">
     <img alt="Obsidion-dev" src="https://discord.obsidion-dev.com/img/Bot%20Profile.png" width="60" />
   </a>
 </p>

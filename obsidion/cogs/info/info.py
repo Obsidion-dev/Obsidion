@@ -75,7 +75,7 @@ class Info(commands.Cog):
             name="Textures",
             inline=True,
             value=_(
-                "Skin: [Open Skin](https://visage.surgeplay.com/bust/{uuid})\nSkin Type: `{skin_type}`\nSkin History: [link]({skin_history})\nSlim: `{slim}`\nCustom: `{custom}`\nCape: `{cape}`"
+                "Skin: [Open Skin](https://visage.surgeplay.com/skin/512/{uuid})\nSkin Type: `{skin_type}`\nSkin History: [link]({skin_history})\nSlim: `{slim}`\nCustom: `{custom}`\nCape: `{cape}`"
             ).format(
                 uuid=uuid,
                 skin_type=skin_type,
@@ -235,6 +235,7 @@ class Info(commands.Cog):
         address: str,
         port: Optional[int] = None,
     ) -> None:
+        """Get information from a Minecraft Bedrock server."""
         await ctx.channel.trigger_typing()
         params: Dict[str, Union[str, int]] = (
             {"server": address} if port is None else {"server": address, "port": port}

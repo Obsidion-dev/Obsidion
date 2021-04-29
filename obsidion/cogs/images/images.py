@@ -187,7 +187,7 @@ class Images(commands.Cog):
                 _(
                     "Please supply a render type. Your "
                     "options are:\n `face`, `front`, `full`, `head`, `bust`, "
-                    "`skin` \n Type: ?render <render type> <username>"
+                    "`skin` \n Type: render <render type> <username>"
                 )
             )
             return
@@ -198,7 +198,7 @@ class Images(commands.Cog):
             description=_(
                 "Here is: `{username}`'s {render_type}! \n "
                 "**[DOWNLOAD](https://visage.surgeplay.com/{render_type}/512/{uuid}"
-                "/512/{uuid})\n[RAW](https://visage.surgeplay.com/{render_type}/512/{uuid})**"
+                "/512/{uuid})\n[RAW](https://visage.surgeplay.com/skin/512/{uuid})**"
             ).format(
                 username=username,
                 render_type=render_type.capitalize(),
@@ -215,11 +215,17 @@ class Images(commands.Cog):
         name="render",
         options=[
             create_option(
+                name="render_type",
+                description="Username of account defaults to linked account.",
+                option_type=3,
+                required=True,
+            ),
+            create_option(
                 name="username",
                 description="Username of account defaults to linked account.",
                 option_type=3,
                 required=False,
-            )
+            ),
         ],
     )
     async def slash_render(

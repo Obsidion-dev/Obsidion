@@ -53,7 +53,10 @@ class Facts(commands.Cog):
         embed.add_field(name=_("emitLight"), value=data["emitLight"])
         embed.add_field(name=_("material"), value=data["material"])
         embed.add_field(name=_("resistance"), value=data["resistance"])
-        embed.add_field(name=_("harvestTools"), value="\n".join(data["harvestTools"]))
+        if "harvestTools" in data:
+            embed.add_field(
+                name=_("harvestTools"), value="\n".join(data["harvestTools"])
+            )
         await ctx.send(embed=embed)
 
     @cog_ext.cog_slash(

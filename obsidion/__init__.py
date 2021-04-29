@@ -1,11 +1,12 @@
 """Obsidion Minecraft Discord Bot."""
 import logging
-import os
 import sys as _sys
+
+from obsidion.core.config import get_settings
 
 # Start logging
 
-logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
+logging.basicConfig(level=get_settings().LOGLEVEL)
 
 log = logging.getLogger("obsidion")
 

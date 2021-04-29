@@ -1,6 +1,7 @@
 """Settings management for the bot."""
 import logging
 from functools import lru_cache
+from typing import Optional
 from uuid import UUID
 
 from pydantic import BaseSettings
@@ -32,6 +33,14 @@ class Settings(BaseSettings):
     REDIS: RedisDsn
     DEV: bool = False
     COLOR: Color = Color("0x00FF00")
+    LOGLEVEL: Optional[str] = "INFO"
+    BOTLIST_POSTING: bool = False
+    DBL_TOKEN: Optional[str]
+    DISCORDBOTLIST_TOKEN: Optional[str]
+    BOTSFORDISCORD_TOKEN: Optional[str]
+    DISCORDBOATS_TOKEN: Optional[str]
+    DISCORDLABS_TOKEN: Optional[str]
+    BOTSONDISCORD_TOKEN: Optional[str]
 
     class Config:
         """Config for pydantic."""

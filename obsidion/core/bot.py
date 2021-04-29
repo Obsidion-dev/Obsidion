@@ -92,6 +92,9 @@ class Obsidion(AutoShardedBot):
         self.load_extension("obsidion.cogs.facts")
         self.load_extension("obsidion.cogs.servers")
 
+        if get_settings().BOTLIST_POSTING:
+            self.load_extension("obsidion.cogs.botlist")
+
     async def start(self, *args, **kwargs):
         """
         Overridden start which ensures cog load and other
