@@ -254,7 +254,9 @@ class Help(HelpCommand):
 
     async def prepare_help_command(self, ctx, command):
         self.embed.color = ctx.bot.color
-        self.prefix = (await self.context.bot._prefix_cache.get_prefixes(self.context.guild))[0]
+        self.prefix = (
+            await self.context.bot._prefix_cache.get_prefixes(self.context.guild)
+        )[0]
         await super().prepare_help_command(ctx, command)
 
     async def send_bot_help(self, mapping):

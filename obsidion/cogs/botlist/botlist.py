@@ -1,13 +1,13 @@
 """Botlist."""
-from obsidion.core import get_settings
 import logging
 
-
-from discord.ext import commands
 import dbl
+from discord.ext import commands
 from discord.ext import tasks
+from obsidion.core import get_settings
 
 log = logging.getLogger(__name__)
+
 
 class Botlist(commands.Cog):
     def __init__(self, bot) -> None:
@@ -20,7 +20,9 @@ class Botlist(commands.Cog):
     async def post_stats(self):
         await self.bot.wait_until_ready()
         if self.dblpy is None:
-            self.dblpy = dbl.DBLClient(self.bot, get_settings().DBL_TOKEN, autopost=True)
+            self.dblpy = dbl.DBLClient(
+                self.bot, get_settings().DBL_TOKEN, autopost=True
+            )
         await self.post_discordbotlist()
         await self.post_botsfordiscord()
         await self.post_discordboats()
@@ -35,7 +37,11 @@ class Botlist(commands.Cog):
             "Authorization": get_settings().DISCORDBOTLIST_TOKEN,
         }
         json = {"server_count": len(self.bot.guilds)}
-        await self.bot.http_session.post(f"https://discordbotlist.com/api/v1/bots/{self.bot.user.id}/stats", headers=headers, json=json)
+        await self.bot.http_session.post(
+            f"https://discordbotlist.com/api/v1/bots/{self.bot.user.id}/stats",
+            headers=headers,
+            json=json,
+        )
 
     async def post_botsfordiscord(self):
         headers = {

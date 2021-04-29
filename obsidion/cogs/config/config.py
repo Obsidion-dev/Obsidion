@@ -267,12 +267,6 @@ class Config(commands.Cog):
         await self.bot._guild_cache.set_news(ctx.guild, cat)
         await ctx.send(embed=embed)
 
-    @autopost.group(name="edit")
-    async def autopost_edit(self, ctx: Union[commands.Context, SlashContext]) -> None:
-        """Autopost Minecraft News"""
-        # categories = ("release", "snapshot", "article", "outage")
-        await ctx.send("TODO")
-
     @autopost.group(name="settings")
     async def autopost_settings(self, ctx: commands.Context) -> None:
         """Autopost Minecraft News"""
