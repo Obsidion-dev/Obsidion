@@ -54,7 +54,13 @@ class Info(commands.Cog):
 
         name_list = ""
         for name in names[1:]:
-            name_list += f"**{names.index(name)+1}.** `{name['username']}` - {(datetime.strptime(name['changed_at'], '%Y-%m-%dT%H:%M:%S.000Z')).strftime('%b %d, %Y')}\n"
+            name_list += ("**{number}.** `{username}` - {date}\n").format(
+                number=names.index(name) + 1,
+                username=name["username"],
+                date=(
+                    datetime.strptime(name["changed_at"], "%Y-%m-%dT%H:%M:%S.000Z")
+                ).strftime("%b %d, %Y"),
+            )
         name_list += _("**1.** `{original}` - First Username").format(
             original=names[0]["username"]
         )
@@ -75,7 +81,10 @@ class Info(commands.Cog):
             name="Textures",
             inline=True,
             value=_(
-                "Skin: [Open Skin](https://visage.surgeplay.com/skin/512/{uuid})\nSkin Type: `{skin_type}`\nSkin History: [link]({skin_history})\nSlim: `{slim}`\nCustom: `{custom}`\nCape: `{cape}`"
+                "Skin: [Open Skin](https://visage.surgeplay.com/skin/512/"
+                "{uuid})\nSkin Type: `{skin_type}`\nSkin History: [link]"
+                "({skin_history})\nSlim: `{slim}`\nCustom: `{custom}`"
+                "\nCape: `{cape}`"
             ).format(
                 uuid=uuid,
                 skin_type=skin_type,
@@ -93,7 +102,8 @@ class Info(commands.Cog):
             name=_("Information"),
             inline=True,
             value=_(
-                "Username Changes: `{changes}`\nNamemc: [link]({namemc})\nLegacy: `{legacy}`\nDemo: `{demo}`"
+                "Username Changes: `{changes}`\nNamemc: [link]({namemc})"
+                "\nLegacy: `{legacy}`\nDemo: `{demo}`"
             ).format(
                 changes=len(names) - 1,
                 namemc=f"https://namemc.com/profile/{uuid}",
@@ -532,13 +542,15 @@ class Info(commands.Cog):
                 url=f"https://minecraft.fandom.com/Java_Edition_{version}",
                 icon_url=(
                     "https://www.minecraft.net/etc.clientlibs/minecraft"
-                    "/clientlibs/main/resources/img/menu/menu-buy--reversed.gif"
+                    "/clientlibs/main/resources/img/menu/menu-buy--reversed"
+                    ".gif"
                 ),
             )
             embed.add_field(
                 name=version,
                 value=_(
-                    "Type: `{type}`\nRelease: `{released}`\nPackage URL: [link]({package_url})\nMinecraft Wiki: [link]({wiki})"
+                    "Type: `{type}`\nRelease: `{released}`\nPackage URL: [link"
+                    "]({package_url})\nMinecraft Wiki: [link]({wiki})"
                 ).format(
                     type=version_data["type"],
                     released=datetime.strptime(version_data["releaseTime"], format),

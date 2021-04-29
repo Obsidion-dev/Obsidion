@@ -36,7 +36,8 @@ class Images(commands.Cog):
         """Create your very own custom Minecraft achievements."""
         text = text.replace(" ", "%20")
         async with self.bot.http_session.get(
-            f"{get_settings().API_URL}/images/advancement?item={item_name}&title={title}&text={text}"
+            f"{get_settings().API_URL}/images/advancement?item={item_name}&tit"
+            f"le={title}&text={text}"
         ) as resp:
             if resp.status == 500:
                 await ctx.send("That item is not available.")
@@ -47,7 +48,8 @@ class Images(commands.Cog):
         )
         embed.set_image(
             url=(
-                f"{get_settings().API_URL}/images/advancement?item={item_name}&title={title}&text={text}"
+                f"{get_settings().API_URL}/images/advancement?item={item_name}"
+                f"&title={title}&text={text}"
             )
         )
         await ctx.send(embed=embed)
@@ -71,7 +73,8 @@ class Images(commands.Cog):
         )
         embed.set_image(
             url=(
-                f"{get_settings().API_URL}/images/sign?line1={line1}&line2={line2}&line3={line3}&line4={line4}"
+                f"{get_settings().API_URL}/images/sign?line1={line1}"
+                f"&line2={line2}&line3={line3}&line4={line4}"
             )
         )
         await ctx.send(embed=embed)

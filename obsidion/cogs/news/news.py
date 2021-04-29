@@ -75,7 +75,10 @@ class News(commands.Cog):
         async with self.bot.http_session.get(latest_post["id"]) as resp:
             text = await resp.text()
         soup = BeautifulSoup(text, "lxml")
-        author_image = f"https://www.minecraft.net{soup.find('img', id='author-avatar').get('src')}"
+        author_image = (
+            f"https://www.minecraft.net"
+            f"{soup.find('img', id='author-avatar').get('src')}"
+        )
         author = soup.find("dl", class_="attribution__details").dd.string
         text = soup.find("div", class_="end-with-block").p.text
 

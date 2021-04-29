@@ -351,7 +351,9 @@ class Hypixel(commands.Cog):
                 pageauctions.add_field(
                     name=_(name),
                     value=_(
-                        "Item Category: {category} \n Item Tier: {tier} \n Starting Bid: {start_bid} \n Item Won: {won} \n Highest Bid: {highest_bid}"
+                        "Item Category: {category} \n Item Tier: {tier} \n "
+                        "Starting Bid: {start_bid} \n Item Won: {won} \n "
+                        "Highest Bid: {highest_bid}"
                     ).format(
                         category=category,
                         tier=tier,

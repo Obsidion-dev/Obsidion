@@ -742,7 +742,8 @@ class MessagePredicate:
         channel: Optional[discord.TextChannel] = None,
         user: Optional[discord.abc.User] = None,
     ) -> "MessagePredicate":
-        """Same as :meth:`contained_in`, but the response is set to lowercase before matching.
+        """Same as :meth:`contained_in`, but the response is set to lowercase b
+        efore matching.
 
         Parameters
         ----------

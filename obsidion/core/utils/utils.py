@@ -71,6 +71,6 @@ async def send_interactive(
     return ret
 
 
-def divide_array(l, n):
-    for i in range(0, len(l), n):
-        yield l[i : i + n]
+def divide_array(array, numb):
+    for i in range(0, len(array), numb):
+        yield array[i : i + numb]
