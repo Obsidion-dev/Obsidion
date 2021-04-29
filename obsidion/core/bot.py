@@ -199,9 +199,10 @@ class Obsidion(AutoShardedBot):
             str: uuid of player
         """
         if username is None:
-            uuid = await self._account_cache.get_account(user)
-            if uuid is None:
+            _uuid = await self._account_cache.get_account(user)
+            if _uuid is None:
                 raise PlayerNotExist()
+            uuid = str(_uuid)
         else:
             username_key = f"username_{username}"
             if await self.redis.exists(username_key):
