@@ -3,6 +3,7 @@
 [INVITE LINK](https://discord.com/oauth2/authorize?client_id=691589447074054224&scope=bot+applications.commands&permissions=19520&response_type=code&redirect_uri=https%3A%2F%2Fdiscord.obsidion-dev.com) | [SUPPORT SERVER](https://discord.gg/fWxtKFVmaW) | [WEBSITE](https://discord.obsidion-dev.com)
 
 ## About
+
 Obsidion is an advanced Minecraft themed discord bot with a ton of features.
 
 ## ✨ Features

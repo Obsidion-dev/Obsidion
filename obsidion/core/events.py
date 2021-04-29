@@ -90,13 +90,15 @@ class Events(commands.Cog):
             if len(missing) > 1:
                 await ctx.send(
                     _(
-                        "Sorry, it looks like you don't have the **{fmt}** permissions I need to do that."
+                        "Sorry, it looks like you don't have the **{fmt}** perm"
+                        "missions I need to do that."
                     ).format(fmt=fmt)
                 )
             else:
                 await ctx.send(
                     _(
-                        "Sorry, it looks like you don't have the **{fmt}** permission I need to do that."
+                        "Sorry, it looks like you don't have the **{fmt}** per"
+                        "missions I need to do that."
                     ).format(fmt=fmt)
                 )
 
@@ -203,7 +205,8 @@ class Events(commands.Cog):
             elif isinstance(error.original, PlayerNotExist):
                 await ctx.reply(
                     _(
-                        "The user does not exist, please check wether the username is correct."
+                        "The user does not exist, please check wether the user"
+                        "name is correct."
                     ).format(author=ctx.message.author.mention)
                 )
                 return
@@ -251,7 +254,8 @@ class Events(commands.Cog):
                     await destination.send(box(page, lang="py"))
                 except discord.HTTPException:
                     log.warning(
-                        "Could not send traceback to traceback channel use /traceback to get the most recent error"
+                        "Could not send traceback to traceback channel use /tr"
+                        "aceback to get the most recent error"
                     )
                     return
         else:

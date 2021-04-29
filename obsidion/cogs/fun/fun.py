@@ -260,7 +260,8 @@ class Fun(commands.Cog):
         elif c_choice == user_choice:
             await ctx.send(
                 _(
-                    "You chose {user_choice}, I chose {c_choice} looks like we have a tie."
+                    "You chose {user_choice}, I chose {c_choice} looks like we"
+                    " have a tie."
                 ).format(user_choice=user_choice, c_choice=c_choice)
             )
         else:

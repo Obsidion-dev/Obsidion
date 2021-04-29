@@ -298,7 +298,7 @@ class Hypixel(commands.Cog):
                 sellprice = round(split[bazaarloop][item].quick_status.sell_price)
                 buyprice = round(split[bazaarloop][item].quick_status.buy_price)
                 pagebazaar.add_field(
-                    name=_(name),
+                    name=name,
                     value=_("Sell Price: {sellprice} \n Buy Price: {buyprice}").format(
                         sellprice=sellprice, buyprice=buyprice
                     ),
@@ -391,13 +391,13 @@ class Hypixel(commands.Cog):
         embed.set_thumbnail(
             url="https://hypixel.net/styles/hypixel-v2/images/header-logo.png"
         )
-        embed.add_field(name=_("Guild Name: "), value=_(data.id))
-        embed.add_field(name=_("Guild Name: "), value=_(data.name))
-        embed.add_field(name=_("Guild Description: "), value=_(data.description))
-        embed.add_field(name=_("Guild Tag: "), value=_(data.tag))
-        embed.add_field(name=_("Guild Experience Points: "), value=_(data.exp))
-        embed.add_field(name=_("Joinable: "), value=_(data.joinable))
-        embed.add_field(name=_("Public: "), value=_(data.publicly_listed))
+        embed.add_field(name=_("Guild Name: "), value=data.id)
+        embed.add_field(name=_("Guild Name: "), value=data.name)
+        embed.add_field(name=_("Guild Description: "), value=data.description)
+        embed.add_field(name=_("Guild Tag: "), value=data.tag)
+        embed.add_field(name=_("Guild Experience Points: "), value=data.exp)
+        embed.add_field(name=_("Joinable: "), value=data.joinable)
+        embed.add_field(name=_("Public: "), value=data.publicly_listed)
 
         await ctx.send(embed=embed)
 

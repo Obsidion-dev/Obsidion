@@ -270,7 +270,7 @@ class Config(commands.Cog):
     @autopost.group(name="edit")
     async def autopost_edit(self, ctx: Union[commands.Context, SlashContext]) -> None:
         """Autopost Minecraft News"""
-        categories = ("release", "snapshot", "article", "outage")
+        # categories = ("release", "snapshot", "article", "outage")
         await ctx.send("TODO")
 
     @autopost.group(name="settings")
