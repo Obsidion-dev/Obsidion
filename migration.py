@@ -2,13 +2,13 @@
 import logging
 
 import asyncpg
+import discord
 from discord import Activity
 from discord import ActivityType
 from discord import Intents
 from obsidion.core.config import get_settings
 
 log = logging.getLogger("obsidion")
-import discord
 
 
 # We don't need many mentions so this is the bare minimum we eed
