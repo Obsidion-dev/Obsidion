@@ -187,8 +187,8 @@ class Images(commands.Cog):
                 _(
                     "Please supply a render type. Your "
                     "options are:\n `face`, `front`, `full`, `head`, `bust`, "
-                    "`skin` \n Type: render <render type> <username>"
-                )
+                    "`skin` \n Type: {prefix}render <render type> <username>"
+                ).format(prefix=ctx.prefix)
             )
             return
         player_data = await self.bot.mojang_player(ctx.author, username)
