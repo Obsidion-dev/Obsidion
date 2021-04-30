@@ -30,6 +30,7 @@ class Obsidion(AutoShardedBot):
     """Main bot class."""
 
     redis: aioredis.Redis
+    db: asyncpg.Pool
     http_session: aiohttp.ClientSession
     _connector: aiohttp.TCPConnector
     _resolver: aiohttp.AsyncResolver
@@ -184,6 +185,11 @@ class Obsidion(AutoShardedBot):
             self._shutdown_mode = ExitCodes.RESTART
 
         await self.close()
+        if self.db is not None:
+            await self.db.close()
+        if self.redis is not None:
+            await self.db.close()
+        await self.http_session.close()
         sys.exit(self._shutdown_mode)
 
     async def mojang_player(

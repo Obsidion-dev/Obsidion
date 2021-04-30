@@ -38,7 +38,7 @@ async def on_ready():
         log.info("Setting %s to default prefix of /", guild.id)
     log.info("Finished Migration")
     db.close()
-    client.logout()
+    client.close()
 
 
 client.run(get_settings().DISCORD_TOKEN)

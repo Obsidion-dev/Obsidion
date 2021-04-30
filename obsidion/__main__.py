@@ -27,7 +27,7 @@ def main() -> None:
     intents.guilds = True
     intents.reactions = True
 
-    activity = activity = Activity(
+    activity = Activity(
         name=get_settings().ACTIVITY,
         type=ActivityType.watching,
     )
