@@ -1,5 +1,7 @@
-from .hypixel import hypixel
+"""Setup hypixel."""
+from .hypixel import Hypixel
 
 
-def setup(bot):
-    bot.add_cog(hypixel(bot))
+def setup(bot) -> None:
+    """Setup."""
+    bot.add_cog(Hypixel(bot))

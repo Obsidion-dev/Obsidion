@@ -61,11 +61,10 @@ ENV/
 .vagrant
 
 # Logfiles
-log.*
-
-# Custom user configuration
-config.yaml
+*.log
 
 # Mac OS .DS_Store, which is a file that stores custom attributes of its containing folder
 .DS_Store
-config.yaml
+
+# Translations
+*.mo

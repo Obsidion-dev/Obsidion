@@ -1,0 +1,54 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "LeeSpork",
+      "name": "LeeSpork",
+      "avatar_url": "https://avatars.githubusercontent.com/u/24984194?v=4",
+      "profile": "https://github.com/LeeSpork",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "talle117",
+      "name": "Tj",
+      "avatar_url": "https://avatars.githubusercontent.com/u/36730086?v=4",
+      "profile": "https://crafty.gg",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "AjayACST",
+      "name": "AjayACST",
+      "avatar_url": "https://avatars.githubusercontent.com/u/35202521?v=4",
+      "profile": "https://quirky.codes/",
+      "contributions": [
+        "maintenance",
+        "code",
+        "bug"
+      ]
+    },
+    {
+      "login": "Cubicdd",
+      "name": "Cubicdd",
+      "avatar_url": "https://avatars.githubusercontent.com/u/55968409?v=4",
+      "profile": "https://github.com/Cubicdd",
+      "contributions": [
+        "content",
+        "test"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "Obsidion",
+  "projectOwner": "Obsidion-dev",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}

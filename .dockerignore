@@ -1,6 +1,9 @@
 __pycache__
 .github
-.cache
+.vscode
+.nox
+.git
+.pytest_cache
 .gitignore
+.mypy_cache
 *.log
-docker

@@ -1,0 +1,11 @@
+#Global
+@Darkflame72
+
+/obsidion/cogs/hypixel/* @AjayACST
+/obsidion/cogs/servers/* @AjayACST
+
+#fun text files
+/obsidion/cogs/fun/resources/* @Cubicdd
+
+*.po
+@AbhishekACST

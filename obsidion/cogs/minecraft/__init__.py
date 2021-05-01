@@ -1,5 +1,7 @@
-from .minecraft import minecraft
+"""Minecraft."""
+from .minecraft import Minecraft
 
 
-def setup(bot):
-    bot.add_cog(minecraft(bot))
+def setup(bot) -> None:
+    """Setup."""
+    bot.add_cog(Minecraft(bot))

@@ -1,5 +1,7 @@
-from .images import images
+"""Setup images."""
+from .images import Images
 
 
-def setup(bot):
-    bot.add_cog(images(bot))
+def setup(bot) -> None:
+    """Setup."""
+    bot.add_cog(Images(bot))

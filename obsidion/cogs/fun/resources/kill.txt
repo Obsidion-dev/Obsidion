@@ -7,9 +7,9 @@ member was squashed by a falling block.
 member was killed by gravity.
 member failed at killing a creeper.
 member had one to many speed potions.
-member was ripped apart by a spider jockey.
 member fell in lava.
 member tried to swim in lava.
+member was ripped apart by a spider jockey.
 member died whilst fighting a drowned army.
 member was massacred by a horde of zombies.
 member lost an arm-wrestling match with an iron golem.

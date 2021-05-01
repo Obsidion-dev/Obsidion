@@ -1,9 +1,21 @@
+"""Fun cog."""
 import logging
 from random import choice
+from typing import List
 
 from discord.ext import commands
+from discord_slash import cog_ext
+from discord_slash.utils.manage_commands import create_choice
+from discord_slash.utils.manage_commands import create_option
+from obsidion.core.i18n import cog_i18n
+from obsidion.core.i18n import Translator
 
-minecraft = [
+
+log = logging.getLogger(__name__)
+
+_ = Translator("Fun", __file__)
+
+minecraft = (
     "ᔑ",
     "ʖ",
     "ᓵ",
@@ -43,55 +55,154 @@ minecraft = [
     "VIII",
     "IX",
     "X",
-]
+)
 alphabet = "abcdefghijklmnopqrstuvwxyz123456789"
 
-log = logging.getLogger(__name__)
 
-
-def load_from_file(file):
-    """load a file"""
-    with open(f"obsidion/cogs/fun/resources/{file}.txt") as f:
-        content = f.readlines()
-    return [x.strip() for x in content]
-
-
-class fun(commands.Cog):
-    """commands that are bot related"""
-
-    def __init__(self, bot):
+@cog_i18n(_)
+class Fun(commands.Cog):
+    def __init__(self, bot) -> None:
+        """Init."""
         self.bot = bot
-        self.pvp_mes = load_from_file("pvp")
-        self.kill_mes = load_from_file("kill")
-        self.build_ideas_mes = load_from_file("build_ideas")
+        self.pvp_mes = self.load_from_file("pvp")
+        self.kill_mes = self.load_from_file("kill")
+        self.build_ideas_mes = self.load_from_file("build_ideas")
+
+    @staticmethod
+    def load_from_file(file: str) -> List[str]:
+        """Load text from file.
+        Args:
+            file (str): file name
+        Returns:
+            List[str]: list of input
+        """
+        with open(f"obsidion/cogs/fun/resources/{file}.txt") as f:
+            content = f.readlines()
+        return [x.strip() for x in content]
+
+    @commands.command(aliases=["idea", "bidea"])
+    async def buildidea(self, ctx) -> None:
+        """Get an idea for a new idea."""
+        await ctx.send(
+            _("Here is something cool to build: {b_idea}.").format(
+                b_idea=choice(self.build_ideas_mes)
+            )
+        )
+
+    @commands.command(aliases=["slay"])
+    async def kill(self, ctx, member) -> None:
+        """Kill that pesky friend in a fun and stylish way."""
+        await ctx.send(choice(self.kill_mes).replace("member", member))
+
+    @commands.command(aliases=["battle"])
+    async def pvp(
+        self,
+        ctx,
+        member1,
+        member2=None,
+    ) -> None:
+        """Duel someone."""
+        if not member2:
+            member2 = ctx.message.author.mention
+
+        await ctx.send(
+            choice(self.pvp_mes).replace("member1", member1).replace("member2", member2)
+        )
 
     @commands.command(aliases=["villagerspeak", "villagerspeech", "hmm"])
-    @commands.cooldown(rate=1, per=1.0, type=commands.BucketType.user)
-    async def villager(self, ctx: commands.Context, *, speech: str):
-        """Convert english to Villager speech hmm."""
-        split = speech.split(" ")
+    async def villager(self, ctx, *, speech: str) -> None:
+        """Hmm hm hmmm Hm hmmm hmm."""
+        last_was_alpha = False  # Used to detect the start of a word
+        last_was_h = False  # Used to prevent 'H's without 'm's
+        last_was_lower_m = False  # Used to make "HmmHmm" instead of "HmmMmm"
         sentence = ""
-        for _ in split:
-            sentence += " hmm"
-        response = sentence.strip()
-        await ctx.send(f"{ctx.message.author.mention}, `{response}`")
+
+        for char in speech:
+
+            if char.isalpha():  # Alphabetical letter -- Replace with 'Hmm'
+
+                if not last_was_alpha:  # First letter of alphabetical string
+                    sentence += "H" if char.isupper() else "h"
+                    last_was_h = True
+                    last_was_lower_m = False
+
+                else:  # Non-first letter
+                    if not char.isupper():
+                        sentence += "m"
+                        last_was_lower_m = True
+                        last_was_h = False
+                    else:
+                        # Use an 'H' instead to allow CamelCase 'HmmHmm's
+                        if last_was_lower_m:
+                            sentence += "H"
+                            last_was_h = True
+                        else:
+                            sentence += "M"
+                            last_was_h = False
+                        last_was_lower_m = False
+
+                last_was_alpha = True  # Remember for next potential 'M'
+
+            else:  # Non-alphabetical letters -- Do not replace
+                # Add an m after 'H's without 'm's
+                if last_was_h:
+                    sentence += "m"
+                    last_was_h = False
+                # Add non-letter character without changing it
+                sentence += char
+                last_was_alpha = False
+
+        # If the laster character is an H, add a final 'm'
+        if last_was_h:
+            sentence += "m"
+
+        # Done
+        await ctx.send(sentence)
+
+    @cog_ext.cog_slash(
+        name="villager",
+        options=[
+            create_option(
+                name="text",
+                description="Text to translate.",
+                option_type=3,
+                required=True,
+            )
+        ],
+    )
+    async def slash_villager(self, ctx, *, speech: str):
+        await ctx.defer()
+        await self.villager(ctx, speech)
 
     @commands.command()
-    @commands.cooldown(rate=1, per=1.0, type=commands.BucketType.user)
-    async def enchant(self, ctx: commands.Context, *, msg: str):
-        """Enchant a message"""
+    async def enchant(self, ctx, *, msg: str) -> None:
+        """Enchant a message."""
         response = ""
         for letter in msg:
             if letter in alphabet:
                 response += minecraft[alphabet.index(letter)]
             else:
                 response += letter
-        await ctx.send(f"{ctx.message.author.mention}, `{response}`")
+        await ctx.send(response)
+
+    @cog_ext.cog_slash(
+        name="enchant",
+        options=[
+            create_option(
+                name="text",
+                description="Text to enchant.",
+                option_type=3,
+                required=True,
+            )
+        ],
+    )
+    async def slash_enchant(self, ctx, *, msg: str):
+        await ctx.defer()
+        await self.enchant(ctx, msg)
 
     @commands.command()
-    @commands.cooldown(rate=1, per=1.0, type=commands.BucketType.user)
-    async def unenchant(self, ctx: commands.Context, *, msg: str):
-        """Disenchant a message"""
+    async def unenchant(self, ctx, *, msg: str) -> None:
+        """Disenchant a message."""
         response = ""
         for letter in msg:
             if letter in minecraft:
@@ -100,70 +211,83 @@ class fun(commands.Cog):
                 response += letter
         await ctx.send(f"{ctx.message.author.mention}, `{response}`")
 
+    @cog_ext.cog_slash(
+        name="unenchant",
+        options=[
+            create_option(
+                name="text",
+                description="Text to unenchant.",
+                option_type=3,
+                required=True,
+            )
+        ],
+    )
+    async def slash_unenchant(self, ctx, *, msg: str):
+        """Disenchant a message."""
+        await ctx.defer()
+        await self.unenchant(ctx, msg)
+
     @commands.command()
-    @commands.cooldown(rate=1, per=1.0, type=commands.BucketType.user)
-    async def creeper(self, ctx):
-        """Aw man"""
+    async def creeper(self, ctx) -> None:
+        """Aw man."""
         await ctx.send("Aw man")
 
-    @commands.command(aliases=["idea", "bidea"])
-    @commands.cooldown(rate=1, per=1.0, type=commands.BucketType.user)
-    async def buildidea(self, ctx: commands.Context):
-        """Get an idea for a new idea"""
-        # await ctx.send(self.build_ideas)
-        await ctx.send(
-            f"Here is something cool to build: {choice(self.build_ideas_mes)}."
-        )
-
-    @commands.command(aliases=["slay"])
-    @commands.cooldown(rate=1, per=1.0, type=commands.BucketType.user)
-    async def kill(self, ctx, member=None):
-        """Kill that pesky friend in a fun and stylish way"""
-        if (
-            not member
-            or str(member) == f"<@{self.bot.owner_id}>"
-            or str(member) == f"<@!{self.bot.owner_id}>"
-            or str(member) == "<@691589447074054224>"
-            or str(member) == "<@!691589447074054224>"
-        ):
-            # this included some protection for the owners and the bot itself
-            await ctx.send("Good Try!")
-            member = ctx.message.author.mention
-
-        await ctx.send(choice(self.kill_mes).replace("member", member))
-
-    @commands.command(aliases=["battle"])
-    @commands.cooldown(rate=1, per=1.0, type=commands.BucketType.user)
-    async def pvp(self, ctx, member1=None, member2=None):
-        """Duel someone"""
-        if member1:
-            if not member2:
-                member2 = ctx.message.author.mention
-
-            await ctx.send(
-                choice(self.pvp_mes)
-                .replace("member1", member1)
-                .replace("member2", member2)
-            )
-        else:
-            await ctx.send("Please provide 2 people to fight")
+    @cog_ext.cog_slash(name="creeper")
+    async def slash_creeper(self, ctx):
+        """Aw man."""
+        await ctx.defer()
+        await self.creeper(ctx)
 
     @commands.command()
-    @commands.cooldown(rate=1, per=1.0, type=commands.BucketType.user)
-    async def rps(self, ctx, user_choice=None):
-        """play Rock Paper Shears"""
+    async def rps(self, ctx, user_choice: str = None) -> None:
+        """Play Rock Paper Shears."""
         options = ["rock", "paper", "shears"]
-        if user_choice and user_choice in options:
-            c_choice = choice(options)
-            if user_choice == options[options.index(user_choice) - 1]:
-                await ctx.send(f"You chose {user_choice}, I chose {c_choice} I win.")
-            elif c_choice == user_choice:
-                await ctx.send(
-                    f"You chose {user_choice}, I chose {c_choice} looks like we have a tie."
+        if not user_choice or user_choice not in options:
+            await ctx.send(
+                _(
+                    "That is an invalid option can you please choose from "
+                    "rock, paper or shears"
                 )
-            else:
-                await ctx.send(f"You chose {user_choice}, I chose {c_choice} you win.")
+            )
+            return
+        c_choice = choice(options)
+        if user_choice == options[options.index(user_choice) - 1]:
+            await ctx.send(
+                _("You chose {user_choice}, I chose {c_choice} I win.").format(
+                    user_choice=user_choice, c_choice=c_choice
+                )
+            )
+        elif c_choice == user_choice:
+            await ctx.send(
+                _(
+                    "You chose {user_choice}, I chose {c_choice} looks like we"
+                    " have a tie."
+                ).format(user_choice=user_choice, c_choice=c_choice)
+            )
         else:
             await ctx.send(
-                "That is an invalid option can you please choose from rock, paper or shears"
+                _("You chose {user_choice}, I chose {c_choice} you win.").format(
+                    user_choice=user_choice, c_choice=c_choice
+                )
             )
+
+    @cog_ext.cog_slash(
+        name="rps",
+        options=[
+            create_option(
+                name="choice",
+                description="Rock paper or shears",
+                option_type=3,
+                required=True,
+                choices=[
+                    create_choice(name="Rock", value="rock"),
+                    create_choice(name="Paper", value="paper"),
+                    create_choice(name="Shears", value="shears"),
+                ],
+            )
+        ],
+    )
+    async def slash_rps(self, ctx, user_choice: str):
+        """Play Rock Paper Shears"""
+        await ctx.defer()
+        await self.rps(ctx, user_choice)

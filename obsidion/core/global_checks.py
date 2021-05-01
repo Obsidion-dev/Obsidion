@@ -1,19 +1,13 @@
-# these are checks to run on every command
-from discord.ext.commands import Context
+"""The checks in this module run on every command."""
+from __future__ import annotations
+
+from discord.ext import commands
 
 
 def init_global_checks(bot):
-    @bot.check_once
-    def minimum_bot_perms(ctx: Context) -> bool:
-        """
-        Too many 403, 401, and 429 Errors can cause bots to get global'd
-
-        It's reasonable to assume the below as a minimum amount of perms for
-        commands.
-        """
-        return ctx.channel.permissions_for(ctx.me).send_messages
+    """Initiate global checks."""
 
     @bot.check_once
-    def bots(ctx: Context) -> bool:
-        """Check the user is not another bot."""
-        return not ctx.author.bot
+    async def check_message_is_eligible_as_command(ctx: commands.Context) -> bool:
+        """Check wether message is eligible."""
+        return await ctx.bot.message_eligible_as_command(ctx.message)

@@ -1,5 +1,7 @@
-from .info import info
+"""Info."""
+from .info import Info
 
 
-def setup(bot):
-    bot.add_cog(info(bot))
+def setup(bot) -> None:
+    """Setup."""
+    bot.add_cog(Info(bot))

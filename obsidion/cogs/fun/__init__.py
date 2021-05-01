@@ -1,5 +1,7 @@
-from .fun import fun
+"""Fun."""
+from .fun import Fun
 
 
-def setup(bot):
-    bot.add_cog(fun(bot))
+def setup(bot) -> None:
+    """Setup."""
+    bot.add_cog(Fun(bot))

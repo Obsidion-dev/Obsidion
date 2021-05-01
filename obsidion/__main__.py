@@ -1,65 +1,60 @@
-#!/usr/bin/env python
-
+"""Initialise and run the bot."""
 import logging
 
-import discord
-from discord.ext.commands import when_mentioned_or
-
-# Set the event loop policies here so any subsequent `new_event_loop()`
-# calls, in particular those as a result of the following imports,
-# return the correct loop object.
-from obsidion import _update_event_loop_policy, constants
-from obsidion.bot import Obsidion
+from discord import Activity
+from discord import ActivityType
+from discord import AllowedMentions
+from discord import Intents
+from discord_slash import SlashCommand
+from obsidion import _update_event_loop_policy
+from obsidion.core import get_settings
+from obsidion.core.bot import Obsidion
+from obsidion.core.help import Help
 
 _update_event_loop_policy()
 
+log = logging.getLogger("obsidion")
 
-log = logging.getLogger("obsidion.main")
 
-# set activity
-activity = discord.Activity(
-    name=constants.Bot.status,
-    type=discord.ActivityType.watching,
-)
+def main() -> None:
+    """Main initialisation script."""
+    # So no one can abuse the bot to mass mention
+    allowed_mentions = AllowedMentions(everyone=False, roles=False, users=True)
 
-intents = discord.Intents.none()
-intents.messages = True
-intents.guilds = True
+    # We don't need many mentions so this is the bare minimum we eed
+    intents = Intents.none()
+    intents.messages = True
+    intents.guilds = True
+    intents.reactions = True
 
-mentions = discord.AllowedMentions(
-    everyone=False,
-)
+    activity = Activity(
+        name=get_settings().ACTIVITY,
+        type=ActivityType.watching,
+    )
 
-bot = Obsidion(
-    case_insensitive=True,
-    activity=activity,
-    command_prefix=when_mentioned_or(constants.Bot.default_prefix),
-    allowed_mentions=mentions,
-    intents=intents,
-)
+    args = {
+        "case_insensitive": True,
+        "description": "",
+        "self_bot": False,
+        "help_command": Help(),
+        "owner_ids": [],
+        "activity": activity,
+        "intents": intents,
+        "allowed_mentions": allowed_mentions,
+    }
 
-# Load all required cogs
+    obsidion = Obsidion(**args)
 
-# core cogs
-bot.load_extension("obsidion.core.development")
-bot.load_extension("obsidion.core.help")
-bot.load_extension("obsidion.core.error_handler")
+    log.info("Ready to go, building everything")
+    SlashCommand(obsidion, sync_commands=True, sync_on_cog_reload=True)
+    log.info("Initialised slash commands")
+    obsidion.run(get_settings().DISCORD_TOKEN)
 
-# extensions and main features
-bot.load_extension("obsidion.cogs.fun")
-bot.load_extension("obsidion.cogs.hypixel")
-bot.load_extension("obsidion.cogs.images")
-bot.load_extension("obsidion.cogs.info")
-bot.load_extension("obsidion.cogs.misc")
-# bot.load_extension("obsidion.cogs.rcon")
-bot.load_extension("obsidion.cogs.redstone")
-bot.load_extension("obsidion.cogs.servers")
-bot.load_extension("obsidion.cogs.events")
-bot.load_extension("obsidion.cogs.config")
-# bot.load_extension("obsidion.cogs.minecraft")
+    log.info("Obsidion shutting down, cleaning up")
 
-if constants.Discord_bot_list.voting_enabled:
-    bot.load_extension("cogs.botlist")
+    log.info("Cleanup complete")
 
-# run bot
-bot.run(constants.Bot.discord_token)
+
+if __name__ == "__main__":
+    """Run the bot."""
+    main()

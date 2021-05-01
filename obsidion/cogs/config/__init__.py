@@ -1,5 +1,7 @@
-from .config import config
+"""Config."""
+from .config import Config
 
 
-def setup(bot):
-    bot.add_cog(config(bot))
+def setup(bot) -> None:
+    """Setup."""
+    bot.add_cog(Config(bot))

@@ -1,101 +1,81 @@
+"""Botlist."""
 import logging
 
 import dbl
-
-from discord.ext import tasks, commands
-from obsidion import constants
-from obsidion.bot import Obsidion
+from discord.ext import commands
+from discord.ext import tasks
+from obsidion.core import get_settings
 
 log = logging.getLogger(__name__)
 
 
-class botlist(commands.Cog):
-    """commands that are bot related."""
-
-    def __init__(self, bot: Obsidion):
+class Botlist(commands.Cog):
+    def __init__(self, bot) -> None:
+        """Init."""
         self.bot = bot
-        self.session = bot.http_session
-
-        # bot lists
-        self.dblpy = dbl.DBLClient(
-            self.bot,
-            constants.Discord_bot_list.dbl_token,
-            autopost=True,
-            webhook_path="/dblwebhook",
-            webhook_auth="password",
-            webhook_port=5000,
-        )
-
-        self.botsfordiscord.start()
-        self.discord_boats.start()
-        self.discord_bot_list.start()
-        self.discord_labs.start()
-        self.bots_on_discord.start()
+        self.dblpy = None
+        self.post_stats.start()
 
     @tasks.loop(minutes=30.0)
-    async def botsfordiscord(self):
+    async def post_stats(self):
+        await self.bot.wait_until_ready()
+        if self.dblpy is None:
+            self.dblpy = dbl.DBLClient(
+                self.bot, get_settings().DBL_TOKEN, autopost=True
+            )
+        await self.post_discordbotlist()
+        await self.post_botsfordiscord()
+        await self.post_discordboats()
+        await self.post_discordlabs()
+
+    async def on_guild_post(self):
+        log.info("Top.gg guild count posted.")
+
+    async def post_discordbotlist(self):
         headers = {
             "Content-Type": "application/json",
-            "Authorization": constants.Discord_bot_list.bots4discord_token,
+            "Authorization": get_settings().DISCORDBOTLIST_TOKEN,
+        }
+        json = {"server_count": len(self.bot.guilds)}
+        await self.bot.http_session.post(
+            f"https://discordbotlist.com/api/v1/bots/{self.bot.user.id}/stats",
+            headers=headers,
+            json=json,
+        )
+
+    async def post_botsfordiscord(self):
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": get_settings().BOTSFORDISCORD_TOKEN,
         }
         json = {"server_count": len(self.bot.guilds)}
 
-        await self.session.post(
-            f"https://botsfordiscord.com/api/bot/{constants.Bot.clientid}",
+        await self.bot.http_session.post(
+            f"https://botsfordiscord.com/api/bot/{self.bot.user.id}",
             headers=headers,
             json=json,
         )
 
-    @tasks.loop(minutes=30.0)
-    async def discord_boats(self):
+    async def post_discordboats(self):
         headers = {
-            "Authorization": constants.Discord_bot_list.discordboats_token,
+            "Authorization": get_settings().DISCORDBOATS_TOKEN,
         }
         json = {"server_count": len(self.bot.guilds)}
 
-        await self.session.post(
-            f"https://discord.boats/api/bot/{constants.Bot.clientid}",
+        await self.bot.http_session.post(
+            f"https://discord.boats/api/bot/{self.bot.user.id}",
             headers=headers,
             json=json,
         )
 
-    @tasks.loop(minutes=30.0)
-    async def discord_bot_list(self):
+    async def post_discordlabs(self):
         headers = {
-            "Content-Type": "application/json",
-            "Authorization": constants.Discord_bot_list.discordbotlist_token,
-        }
-        json = {"guilds": len(self.bot.guilds)}
-
-        await self.session.post(
-            f"https://discordbotlist.com/api/v1/bots/{constants.Bot.clientid}/stats",
-            headers=headers,
-            json=json,
-        )
-
-    @tasks.loop(minutes=30.0)
-    async def discord_labs(self):
-        headers = {
-            "token": constants.Discord_bot_list.discodlabs_token,
+            "token": get_settings().DISCORDLABS_TOKEN,
         }
         json = {"server_count": len(self.bot.guilds)}
 
-        await self.session.post(
-            f"https://bots.discordlabs.org/v2/bot/{constants.Bot.clientid}/stats",
-            headers=headers,
-            json=json,
-        )
-
-    @tasks.loop(minutes=30.0)
-    async def bots_on_discord(self):
-        headers = {
-            "Content-Type": "application/json",
-            "Authorization": constants.Discord_bot_list.botsondiscord_token,
-        }
-        json = {"guildCount": len(self.bot.guilds)}
-
-        await self.session.post(
-            f"https://bots.ondiscord.xyz/bot-api/bots/{constants.Bot.clientid}",
+        await self.bot.http_session.post(
+            f"https://bots.discordlabs.org/v2/bot/{self.bot.user.id}/stats",
             headers=headers,
             json=json,
         )

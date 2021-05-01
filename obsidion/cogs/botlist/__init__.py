@@ -1,5 +1,6 @@
-from .botlist import botlist
+from .botlist import Botlist
 
 
-def setup(bot):
-    bot.add_cog(botlist(bot))
+def setup(bot) -> None:
+    """Setup."""
+    bot.add_cog(Botlist(bot))
