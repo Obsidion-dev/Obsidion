@@ -39,26 +39,32 @@ class Minecraft(commands.Cog):
             )
         )
 
-    @cog_ext.cog_slash(
-        name="tick2second",
-        options=[
-            create_option(
-                name="ticks",
-                description="Amount of seconds in that amount of ticks.",
-                option_type=4,
-                required=True,
-            )
-        ],
-    )
-    async def slash_tick2second(self, ctx: SlashContext, ticks: int) -> None:
-        await ctx.defer()
-        await self.tick2second(ctx, ticks)
+    @commands.group()
+    async def convert(self, ctx: Union[commands.Context, SlashContext]) -> None:
+        """Convert Minecraft values."""
+        if ctx.invoked_subcommand is None:
+            await ctx.send_help(ctx.command)
 
-    @commands.command()
-    async def second2tick(
-        self, ctx: Union[commands.Context, SlashContext], seconds: float
-    ) -> None:
+    @convert.command()
+    async def second(self, ctx: Union[commands.Context, SlashContext], ticks: int):
         """Convert ticks to seconds."""
+        if ticks <= 0:
+            await ctx.send("Input must be greater then 0")
+            return
+        try:
+            seconds = ticks / 20
+        except OverflowError:
+            await ctx.send("Input too big.")
+            return
+        await ctx.send(
+            _("It takes {seconds} seconds for {ticks} ticks to happen.").format(
+                seconds=seconds, ticks=ticks
+            )
+        )
+
+    @convert.command()
+    async def tick(self, ctx: Union[commands.Context, SlashContext], seconds: float):
+        """Convert seconds to tick."""
         if seconds <= 0:
             await ctx.send("Input must be greater then 0")
             return
@@ -68,21 +74,6 @@ class Minecraft(commands.Cog):
                 ticks=ticks, seconds=seconds
             )
         )
-
-    @cog_ext.cog_slash(
-        name="second2tick",
-        options=[
-            create_option(
-                name="seconds",
-                description="Amount of ticks in that amount of seconds.",
-                option_type=4,
-                required=True,
-            )
-        ],
-    )
-    async def slash_second2tick(self, ctx: SlashContext, seconds: float) -> None:
-        await ctx.defer()
-        await self.second2tick(ctx, seconds)
 
     @commands.command()
     async def seed(
