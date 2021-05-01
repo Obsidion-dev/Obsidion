@@ -25,6 +25,5 @@ services:
     image: redis:alpine
     restart: on-failure
 
-
 volumes:
   postgresdb:
