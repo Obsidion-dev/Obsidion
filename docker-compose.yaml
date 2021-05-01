@@ -16,7 +16,7 @@ services:
       - postgresdb:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: discord
-      POSTGRES_PASSWORD: hunter12
+      POSTGRES_PASSWORD: m9ku4LtYcfVKj5u
       POSTGRES_USER: discord
     ports:
       - "5432"
@@ -25,17 +25,6 @@ services:
     image: redis:alpine
     restart: on-failure
 
-  pgadmin:
-    container_name: pgadmin
-    image: dpage/pgadmin4
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=pgadmin4@pgadmin.org
-      - PGADMIN_DEFAULT_PASSWORD=hunter12
-    ports:
-      - "5050:80"
-    depends_on:
-      - db
-    restart: on-failure
 
 volumes:
   postgresdb:
