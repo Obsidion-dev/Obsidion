@@ -316,15 +316,16 @@ class Help(HelpCommand):
     async def send_group_help(self, group):
         if group.help:
             self.embed.description = group.help
+        filtered = await self.filter_commands(group.commands, sort=self.sort_commands)
+        list_filter_name = "|".join(f.qualified_name.split(" ")[-1] for f in filtered)
         self.embed.add_field(
             name="Usage",
-            value=f"`{self.prefix}{group.qualified_name} {group.signature}`",
+            value=f"`{self.prefix}{group.qualified_name} <{list_filter_name}>`",
         )
         ending = self.get_ending_note()
         if ending:
             self.embed.set_footer(text=ending)
         self.add_command_formatting(group)
-        filtered = await self.filter_commands(group.commands, sort=self.sort_commands)
         if filtered:
             for command in filtered:
                 self.add_subcommand_formatting(command)
