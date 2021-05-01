@@ -1,0 +1,161 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: obsidion\n"
+"POT-Creation-Date: 2021-04-28 00:02+1200\n"
+"PO-Revision-Date: 2021-04-27 12:36\n"
+"Last-Translator: \n"
+"Language-Team: Russian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+"Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
+"X-Crowdin-Project: obsidion\n"
+"X-Crowdin-Project-ID: 437658\n"
+"X-Crowdin-Language: ru\n"
+"X-Crowdin-File: /reformat/cogs/hypixel/locales/messages.pot\n"
+"X-Crowdin-File-ID: 76\n"
+"Language: ru_RU\n"
+
+#: obsidion/cogs/hypixel/hypixel.py:34
+#, docstring
+msgid "Get the current watchdog statistics."
+msgstr "Получить текущую статистику Watchdog."
+
+#: obsidion/cogs/hypixel/hypixel.py:37
+msgid "Watchdog Stats"
+msgstr "Статистика Watchdog"
+
+#: obsidion/cogs/hypixel/hypixel.py:39
+msgid "Total Bans"
+msgstr "Всего запретов"
+
+#: obsidion/cogs/hypixel/hypixel.py:42
+msgid "Watchdog Rolling Daily"
+msgstr "Watchdoing Daily"
+
+#: obsidion/cogs/hypixel/hypixel.py:44
+msgid "Staff Total"
+msgstr "Итого, персонал"
+
+#: obsidion/cogs/hypixel/hypixel.py:46
+msgid "Staff Rolling Daily"
+msgstr "Ежедневные сотрудники"
+
+#: obsidion/cogs/hypixel/hypixel.py:59
+#, docstring
+msgid "Get the current boosters online."
+msgstr "Получить текущие ускорители онлайн."
+
+#: obsidion/cogs/hypixel/hypixel.py:63
+msgid "Boosters"
+msgstr "Ускорители"
+
+#: obsidion/cogs/hypixel/hypixel.py:68 obsidion/cogs/hypixel/hypixel.py:96
+#: obsidion/cogs/hypixel/hypixel.py:124 obsidion/cogs/hypixel/hypixel.py:167
+#: obsidion/cogs/hypixel/hypixel.py:213 obsidion/cogs/hypixel/hypixel.py:277
+#: obsidion/cogs/hypixel/hypixel.py:321 obsidion/cogs/hypixel/hypixel.py:363
+#: obsidion/cogs/hypixel/hypixel.py:404
+msgid "Hypixel"
+msgstr "Гигаль"
+
+#: obsidion/cogs/hypixel/hypixel.py:87
+#, docstring
+msgid "Get the current players online."
+msgstr "Подключится к текущим игрокам."
+
+#: obsidion/cogs/hypixel/hypixel.py:91
+msgid "Players Online"
+msgstr "Игроки онлайн"
+
+#: obsidion/cogs/hypixel/hypixel.py:115
+#, docstring
+msgid "Get current news for skyblock."
+msgstr "Получать новости за \"Скайблок\"."
+
+#: obsidion/cogs/hypixel/hypixel.py:119
+msgid "Skyblock News"
+msgstr "Скайблочные новости"
+
+#: obsidion/cogs/hypixel/hypixel.py:149
+#, docstring
+msgid "Get the current status of an online player."
+msgstr "Получить текущее состояние онлайн-проигрывателя."
+
+#: obsidion/cogs/hypixel/hypixel.py:162
+msgid "Player Status"
+msgstr "Состояние игрока"
+
+#: obsidion/cogs/hypixel/hypixel.py:174
+msgid "Current game: "
+msgstr "Текущая игра: "
+
+#: obsidion/cogs/hypixel/hypixel.py:176
+msgid "Current game mode: "
+msgstr "Текущий режим игры: "
+
+#: obsidion/cogs/hypixel/hypixel.py:200
+#, docstring
+msgid "Get the current friends of a player."
+msgstr "Принесете друзей игрока."
+
+#: obsidion/cogs/hypixel/hypixel.py:208
+msgid "Player Friends"
+msgstr "Друзья-игроки"
+
+#: obsidion/cogs/hypixel/hypixel.py:262
+#, docstring
+msgid "Get Bazaar NPC stats."
+msgstr "Получите статистику Bazaar NPC."
+
+#: obsidion/cogs/hypixel/hypixel.py:272
+msgid "Bazaar NPC Stats"
+msgstr "Статистика NPC Bazaar"
+
+#: obsidion/cogs/hypixel/hypixel.py:305
+#, docstring
+msgid "Get the first 30 auctions."
+msgstr "Получите первые 30 аукционов."
+
+#: obsidion/cogs/hypixel/hypixel.py:316
+msgid "Current Auctions"
+msgstr "Текущие аукционы"
+
+#: obsidion/cogs/hypixel/hypixel.py:353
+#, docstring
+msgid "Get's guild info by guild name."
+msgstr "Получить информацию гильдии по имени гильдии."
+
+#: obsidion/cogs/hypixel/hypixel.py:358
+msgid "Guild Info"
+msgstr "Информация о Гильдии"
+
+#: obsidion/cogs/hypixel/hypixel.py:370 obsidion/cogs/hypixel/hypixel.py:371
+msgid "Guild Name: "
+msgstr "Имя Гильдии: "
+
+#: obsidion/cogs/hypixel/hypixel.py:372
+msgid "Guild Description: "
+msgstr "Описание гильдии: "
+
+#: obsidion/cogs/hypixel/hypixel.py:373
+msgid "Guild Tag: "
+msgstr "Тег гильдии: "
+
+#: obsidion/cogs/hypixel/hypixel.py:374
+msgid "Guild Experience Points: "
+msgstr "Очки Опыт Гильдии: "
+
+#: obsidion/cogs/hypixel/hypixel.py:375
+msgid "Joinable: "
+msgstr "Объединение: "
+
+#: obsidion/cogs/hypixel/hypixel.py:376
+msgid "Public: "
+msgstr "Общедоступный: "
+
+#: obsidion/cogs/hypixel/hypixel.py:388
+#, docstring
+msgid "Get current hypixel leaderboards"
+msgstr "Получить руководящие доски для текущего гигапикселя"
+

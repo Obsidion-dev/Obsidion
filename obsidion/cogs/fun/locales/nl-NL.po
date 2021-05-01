@@ -1,0 +1,79 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: obsidion\n"
+"POT-Creation-Date: 2021-04-28 00:02+1200\n"
+"PO-Revision-Date: 2021-04-27 12:37\n"
+"Last-Translator: \n"
+"Language-Team: Dutch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: obsidion\n"
+"X-Crowdin-Project-ID: 437658\n"
+"X-Crowdin-Language: nl\n"
+"X-Crowdin-File: /reformat/cogs/fun/locales/messages.pot\n"
+"X-Crowdin-File-ID: 74\n"
+"Language: nl_NL\n"
+
+#: obsidion/cogs/fun/fun.py:85
+#, docstring
+msgid "Get an idea for a new idea."
+msgstr "Krijg een idee voor een nieuw idee."
+
+#: obsidion/cogs/fun/fun.py:87
+msgid "Here is something cool to build: {b_idea}."
+msgstr "Hier is iets cool te bouwen: {b_idea}."
+
+#: obsidion/cogs/fun/fun.py:94
+#, docstring
+msgid "Kill that pesky friend in a fun and stylish way."
+msgstr "Dood die vervelende vriend op een leuke en stijlvolle manier."
+
+#: obsidion/cogs/fun/fun.py:104
+#, docstring
+msgid "Duel someone."
+msgstr "Een duel tegen iemand."
+
+#: obsidion/cogs/fun/fun.py:114
+#, docstring
+msgid "Hmm hm hmmm Hm hmmm hmm."
+msgstr "Hmm hmmm Hm hmmm hmm."
+
+#: obsidion/cogs/fun/fun.py:179
+#, docstring
+msgid "Enchant a message."
+msgstr "Een bericht betoveren."
+
+#: obsidion/cogs/fun/fun.py:205
+#, docstring
+msgid "Disenchant a message."
+msgstr "Een bericht uitschrijven."
+
+#: obsidion/cogs/fun/fun.py:232
+#, docstring
+msgid "Aw man."
+msgstr "Aw man."
+
+#: obsidion/cogs/fun/fun.py:243
+#, docstring
+msgid "Play Rock Paper Shears."
+msgstr "Speel Rock Paper Shears."
+
+#: obsidion/cogs/fun/fun.py:247
+msgid "That is an invalid option can you please choose from rock, paper or shears"
+msgstr "Dat is een ongeldige optie kunt u kiezen uit steen, papier of schaar"
+
+#: obsidion/cogs/fun/fun.py:256
+msgid "You chose {user_choice}, I chose {c_choice} I win."
+msgstr "Je koos voor {user_choice}, Ik koos voor {c_choice} Ik win."
+
+#: obsidion/cogs/fun/fun.py:262
+msgid "You chose {user_choice}, I chose {c_choice} looks like we have a tie."
+msgstr "Je koos voor {user_choice}, Ik koos {c_choice} lijkt erop dat we een stropdas hebben."
+
+#: obsidion/cogs/fun/fun.py:268
+msgid "You chose {user_choice}, I chose {c_choice} you win."
+msgstr "Je koos voor {user_choice}, Ik koos voor {c_choice} je wint."
+

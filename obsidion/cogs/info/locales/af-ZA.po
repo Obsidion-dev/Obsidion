@@ -1,0 +1,219 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: obsidion\n"
+"POT-Creation-Date: 2021-04-28 00:02+1200\n"
+"PO-Revision-Date: 2021-04-27 12:09\n"
+"Last-Translator: \n"
+"Language-Team: Afrikaans\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: obsidion\n"
+"X-Crowdin-Project-ID: 437658\n"
+"X-Crowdin-Language: af\n"
+"X-Crowdin-File: /reformat/cogs/info/locales/messages.pot\n"
+"X-Crowdin-File-ID: 42\n"
+"Language: af_ZA\n"
+
+#: obsidion/cogs/info/info.py:41
+#, docstring
+msgid "View a players Minecraft UUID, Username history and skin."
+msgstr ""
+
+#: obsidion/cogs/info/info.py:58
+msgid "**1.** `{original}` - First Username"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:63
+msgid "Minecraft profile for {username}"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:70
+msgid "Full UUID: `{uuid}`\n"
+"Short UUID: `{short}`"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:77
+msgid "Skin: [Open Skin](https://visage.surgeplay.com/bust/{uuid})\n"
+"Skin Type: `{skin_type}`\n"
+"Skin History: [link]({skin_history})\n"
+"Slim: `{slim}`\n"
+"Custom: `{custom}`\n"
+"Cape: `{cape}`"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:93 obsidion/cogs/info/info.py:493
+msgid "Information"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:95
+msgid "Username Changes: `{changes}`\n"
+"Namemc: [link]({namemc})\n"
+"Legacy: `{legacy}`\n"
+"Demo: `{demo}`"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:105
+msgid "Name History"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:146
+#, docstring
+msgid "Minecraft server info."
+msgstr ""
+
+#: obsidion/cogs/info/info.py:151
+msgid "Please provide a server"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:173
+msgid "server could not be reached."
+msgstr ""
+
+#: obsidion/cogs/info/info.py:176
+msgid "Java Server: {server_ip}"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:179 obsidion/cogs/info/info.py:254
+msgid "Description"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:183
+msgid "Online: `{online}` \n"
+" Maximum: `{maximum}`"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:188 obsidion/cogs/info/info.py:263
+msgid "Version"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:189
+msgid "Java Edition \n"
+" Running: `{version}` \n"
+"Protocol: `{protocol}`"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:251
+msgid "Bedrock Server: {address}"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:257
+msgid "Players"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:258
+msgid "Online: `{player_count}` \n"
+" Maximum: `{player_max}`"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:264
+msgid "Bedrock Edition \n"
+" Running: `{version}` \n"
+"Protocol: `{protocol}`"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:270
+msgid "Info"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:271
+msgid "Gamemode: `{gamemode}` \n"
+"Latency: `{latency}`"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:302
+#, docstring
+msgid "Check the status of all the Mojang services."
+msgstr ""
+
+#: obsidion/cogs/info/info.py:331
+msgid ":green_heart: - {service}: **This service is healthy.** \n"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:335
+msgid ":heart: - {service}: **This service is offline.** \n"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:338
+msgid "Minecraft Service Status"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:341
+msgid "Total Sales: **{total}** Last 24 Hours: **{last}**"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:345
+msgid "Minecraft Services:"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:358
+#, docstring
+msgid "Get an article from the minecraft wiki."
+msgstr ""
+
+#: obsidion/cogs/info/info.py:406
+msgid "Information provided by Wikimedia"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:412
+msgid "I'm sorry, I couldn't find \"{query}\" on fandom"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:443
+msgid "The bug {bug} was not found."
+msgstr ""
+
+#: obsidion/cogs/info/info.py:455
+msgid "Version: {version}\n"
+"Reporter: {reporter}\n"
+"Created: {created}\n"
+"Votes: {votes}\n"
+"Updates: {updates}\n"
+"Watchers: {watched}"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:476
+msgid "Resolution: {resolution}\n"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:481
+msgid "Affected: "
+msgstr ""
+
+#: obsidion/cogs/info/info.py:487
+msgid "Fixed Version: {fixed} + "
+msgstr ""
+
+#: obsidion/cogs/info/info.py:494
+msgid "Details"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:526
+msgid "Version is invalid."
+msgstr ""
+
+#: obsidion/cogs/info/info.py:530
+msgid "Minecraft Java Edition {version}"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:539
+msgid "Type: `{type}`\n"
+"Release: `{released}`\n"
+"Package URL: [link]({package_url})\n"
+"Minecraft Wiki: [link]({wiki})"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:550
+msgid "Minecraft Java Edition Versions"
+msgstr ""
+
+#: obsidion/cogs/info/info.py:559
+msgid "Releases: `{releases}`\n"
+"**Latest Version**\n"
+"ID: `{id}`\n"
+"Released: `{released}`\n"
+"Wiki: [link]({link})"
+msgstr ""
+

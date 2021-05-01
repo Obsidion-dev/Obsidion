@@ -1,0 +1,67 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: obsidion\n"
+"POT-Creation-Date: 2021-01-27 06:57+1300\n"
+"PO-Revision-Date: 2021-04-27 12:37\n"
+"Last-Translator: \n"
+"Language-Team: Chinese Simplified\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: obsidion\n"
+"X-Crowdin-Project-ID: 437658\n"
+"X-Crowdin-Language: zh-CN\n"
+"X-Crowdin-File: /reformat/core/utils/locales/messages.pot\n"
+"X-Crowdin-File-ID: 28\n"
+"Language: zh_CN\n"
+
+#: obsidion/core/utils/chat_formatting.py:511
+msgid "year"
+msgstr "年"
+
+#: obsidion/core/utils/chat_formatting.py:511
+msgid "years"
+msgstr "年"
+
+#: obsidion/core/utils/chat_formatting.py:512
+msgid "month"
+msgstr "月"
+
+#: obsidion/core/utils/chat_formatting.py:512
+msgid "months"
+msgstr "月"
+
+#: obsidion/core/utils/chat_formatting.py:513
+msgid "day"
+msgstr "日"
+
+#: obsidion/core/utils/chat_formatting.py:513
+msgid "days"
+msgstr "日"
+
+#: obsidion/core/utils/chat_formatting.py:514
+msgid "hour"
+msgstr "小时"
+
+#: obsidion/core/utils/chat_formatting.py:514
+msgid "hours"
+msgstr "小时"
+
+#: obsidion/core/utils/chat_formatting.py:515
+msgid "minute"
+msgstr "分钟"
+
+#: obsidion/core/utils/chat_formatting.py:515
+msgid "minutes"
+msgstr "分钟"
+
+#: obsidion/core/utils/chat_formatting.py:516
+msgid "second"
+msgstr "二"
+
+#: obsidion/core/utils/chat_formatting.py:516
+msgid "seconds"
+msgstr "秒"
+

@@ -1,0 +1,161 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: obsidion\n"
+"POT-Creation-Date: 2021-04-28 00:02+1200\n"
+"PO-Revision-Date: 2021-04-27 12:40\n"
+"Last-Translator: \n"
+"Language-Team: Chinese Traditional\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: obsidion\n"
+"X-Crowdin-Project-ID: 437658\n"
+"X-Crowdin-Language: zh-TW\n"
+"X-Crowdin-File: /reformat/cogs/hypixel/locales/messages.pot\n"
+"X-Crowdin-File-ID: 76\n"
+"Language: zh_TW\n"
+
+#: obsidion/cogs/hypixel/hypixel.py:34
+#, docstring
+msgid "Get the current watchdog statistics."
+msgstr "取得現行監視器統計資料。"
+
+#: obsidion/cogs/hypixel/hypixel.py:37
+msgid "Watchdog Stats"
+msgstr "監視器統計資料"
+
+#: obsidion/cogs/hypixel/hypixel.py:39
+msgid "Total Bans"
+msgstr "Bans 總計"
+
+#: obsidion/cogs/hypixel/hypixel.py:42
+msgid "Watchdog Rolling Daily"
+msgstr "每日滾動監視器"
+
+#: obsidion/cogs/hypixel/hypixel.py:44
+msgid "Staff Total"
+msgstr "工作人員共計"
+
+#: obsidion/cogs/hypixel/hypixel.py:46
+msgid "Staff Rolling Daily"
+msgstr "每日工作人員滾動"
+
+#: obsidion/cogs/hypixel/hypixel.py:59
+#, docstring
+msgid "Get the current boosters online."
+msgstr "在線上取得現行啟動人員。"
+
+#: obsidion/cogs/hypixel/hypixel.py:63
+msgid "Boosters"
+msgstr "Boosters"
+
+#: obsidion/cogs/hypixel/hypixel.py:68 obsidion/cogs/hypixel/hypixel.py:96
+#: obsidion/cogs/hypixel/hypixel.py:124 obsidion/cogs/hypixel/hypixel.py:167
+#: obsidion/cogs/hypixel/hypixel.py:213 obsidion/cogs/hypixel/hypixel.py:277
+#: obsidion/cogs/hypixel/hypixel.py:321 obsidion/cogs/hypixel/hypixel.py:363
+#: obsidion/cogs/hypixel/hypixel.py:404
+msgid "Hypixel"
+msgstr "海畫素"
+
+#: obsidion/cogs/hypixel/hypixel.py:87
+#, docstring
+msgid "Get the current players online."
+msgstr "讓現在的玩家上線"
+
+#: obsidion/cogs/hypixel/hypixel.py:91
+msgid "Players Online"
+msgstr "線上玩家"
+
+#: obsidion/cogs/hypixel/hypixel.py:115
+#, docstring
+msgid "Get current news for skyblock."
+msgstr "取得 skype 的現行新聞。"
+
+#: obsidion/cogs/hypixel/hypixel.py:119
+msgid "Skyblock News"
+msgstr "天際新聞"
+
+#: obsidion/cogs/hypixel/hypixel.py:149
+#, docstring
+msgid "Get the current status of an online player."
+msgstr "取得線上播放程式的現行狀態。"
+
+#: obsidion/cogs/hypixel/hypixel.py:162
+msgid "Player Status"
+msgstr "播放程式狀態"
+
+#: obsidion/cogs/hypixel/hypixel.py:174
+msgid "Current game: "
+msgstr "當前遊戲： "
+
+#: obsidion/cogs/hypixel/hypixel.py:176
+msgid "Current game mode: "
+msgstr "現行遊戲模式： "
+
+#: obsidion/cogs/hypixel/hypixel.py:200
+#, docstring
+msgid "Get the current friends of a player."
+msgstr "把現在的朋友都帶過來"
+
+#: obsidion/cogs/hypixel/hypixel.py:208
+msgid "Player Friends"
+msgstr "球員朋友"
+
+#: obsidion/cogs/hypixel/hypixel.py:262
+#, docstring
+msgid "Get Bazaar NPC stats."
+msgstr "給 Bazaar NPC 的資料"
+
+#: obsidion/cogs/hypixel/hypixel.py:272
+msgid "Bazaar NPC Stats"
+msgstr "巴扎議會"
+
+#: obsidion/cogs/hypixel/hypixel.py:305
+#, docstring
+msgid "Get the first 30 auctions."
+msgstr "取得前 30 個競標。"
+
+#: obsidion/cogs/hypixel/hypixel.py:316
+msgid "Current Auctions"
+msgstr "現行競標"
+
+#: obsidion/cogs/hypixel/hypixel.py:353
+#, docstring
+msgid "Get's guild info by guild name."
+msgstr "依公會名稱取得公會資訊。"
+
+#: obsidion/cogs/hypixel/hypixel.py:358
+msgid "Guild Info"
+msgstr "公會資訊"
+
+#: obsidion/cogs/hypixel/hypixel.py:370 obsidion/cogs/hypixel/hypixel.py:371
+msgid "Guild Name: "
+msgstr "公會名稱： "
+
+#: obsidion/cogs/hypixel/hypixel.py:372
+msgid "Guild Description: "
+msgstr "公會說明： "
+
+#: obsidion/cogs/hypixel/hypixel.py:373
+msgid "Guild Tag: "
+msgstr "有罪標籤： "
+
+#: obsidion/cogs/hypixel/hypixel.py:374
+msgid "Guild Experience Points: "
+msgstr "Guild 體驗點： "
+
+#: obsidion/cogs/hypixel/hypixel.py:375
+msgid "Joinable: "
+msgstr "Joinable： "
+
+#: obsidion/cogs/hypixel/hypixel.py:376
+msgid "Public: "
+msgstr "公用： "
+
+#: obsidion/cogs/hypixel/hypixel.py:388
+#, docstring
+msgid "Get current hypixel leaderboards"
+msgstr "取得現行低像素前置板"
+

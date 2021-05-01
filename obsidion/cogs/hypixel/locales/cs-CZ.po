@@ -1,0 +1,161 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: obsidion\n"
+"POT-Creation-Date: 2021-04-28 00:02+1200\n"
+"PO-Revision-Date: 2021-04-27 12:37\n"
+"Last-Translator: \n"
+"Language-Team: Czech\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+"Plural-Forms: nplurals=4; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 3;\n"
+"X-Crowdin-Project: obsidion\n"
+"X-Crowdin-Project-ID: 437658\n"
+"X-Crowdin-Language: cs\n"
+"X-Crowdin-File: /reformat/cogs/hypixel/locales/messages.pot\n"
+"X-Crowdin-File-ID: 76\n"
+"Language: cs_CZ\n"
+
+#: obsidion/cogs/hypixel/hypixel.py:34
+#, docstring
+msgid "Get the current watchdog statistics."
+msgstr "Získat aktuální statistiku sledovacího zařízení."
+
+#: obsidion/cogs/hypixel/hypixel.py:37
+msgid "Watchdog Stats"
+msgstr "Statistika sledovacího"
+
+#: obsidion/cogs/hypixel/hypixel.py:39
+msgid "Total Bans"
+msgstr "Celkem Bans"
+
+#: obsidion/cogs/hypixel/hypixel.py:42
+msgid "Watchdog Rolling Daily"
+msgstr "Denní sledovací zařízení denně"
+
+#: obsidion/cogs/hypixel/hypixel.py:44
+msgid "Staff Total"
+msgstr "Celkový počet personálu"
+
+#: obsidion/cogs/hypixel/hypixel.py:46
+msgid "Staff Rolling Daily"
+msgstr "Denní přesun personálu"
+
+#: obsidion/cogs/hypixel/hypixel.py:59
+#, docstring
+msgid "Get the current boosters online."
+msgstr "Sežeňte aktuální bootsters online."
+
+#: obsidion/cogs/hypixel/hypixel.py:63
+msgid "Boosters"
+msgstr "Podpisy"
+
+#: obsidion/cogs/hypixel/hypixel.py:68 obsidion/cogs/hypixel/hypixel.py:96
+#: obsidion/cogs/hypixel/hypixel.py:124 obsidion/cogs/hypixel/hypixel.py:167
+#: obsidion/cogs/hypixel/hypixel.py:213 obsidion/cogs/hypixel/hypixel.py:277
+#: obsidion/cogs/hypixel/hypixel.py:321 obsidion/cogs/hypixel/hypixel.py:363
+#: obsidion/cogs/hypixel/hypixel.py:404
+msgid "Hypixel"
+msgstr "Hypexel"
+
+#: obsidion/cogs/hypixel/hypixel.py:87
+#, docstring
+msgid "Get the current players online."
+msgstr "Získejte aktuální hráče online."
+
+#: obsidion/cogs/hypixel/hypixel.py:91
+msgid "Players Online"
+msgstr "Hráči online"
+
+#: obsidion/cogs/hypixel/hypixel.py:115
+#, docstring
+msgid "Get current news for skyblock."
+msgstr "Sežeňte aktuální zprávy o Skyblocku."
+
+#: obsidion/cogs/hypixel/hypixel.py:119
+msgid "Skyblock News"
+msgstr "Zprávy Skyblock"
+
+#: obsidion/cogs/hypixel/hypixel.py:149
+#, docstring
+msgid "Get the current status of an online player."
+msgstr "Získat aktuální stav online přehrávače."
+
+#: obsidion/cogs/hypixel/hypixel.py:162
+msgid "Player Status"
+msgstr "Stav přehrávače"
+
+#: obsidion/cogs/hypixel/hypixel.py:174
+msgid "Current game: "
+msgstr "Aktuální hra: "
+
+#: obsidion/cogs/hypixel/hypixel.py:176
+msgid "Current game mode: "
+msgstr "Aktuální režim hry: "
+
+#: obsidion/cogs/hypixel/hypixel.py:200
+#, docstring
+msgid "Get the current friends of a player."
+msgstr "Získat aktuální přátele hráče."
+
+#: obsidion/cogs/hypixel/hypixel.py:208
+msgid "Player Friends"
+msgstr "Hráči hráčů"
+
+#: obsidion/cogs/hypixel/hypixel.py:262
+#, docstring
+msgid "Get Bazaar NPC stats."
+msgstr "Získejte Bazaar NPC stats."
+
+#: obsidion/cogs/hypixel/hypixel.py:272
+msgid "Bazaar NPC Stats"
+msgstr "Sestava Bazaar NPC"
+
+#: obsidion/cogs/hypixel/hypixel.py:305
+#, docstring
+msgid "Get the first 30 auctions."
+msgstr "Získejte prvních 30 aukcí."
+
+#: obsidion/cogs/hypixel/hypixel.py:316
+msgid "Current Auctions"
+msgstr "Current Auctions"
+
+#: obsidion/cogs/hypixel/hypixel.py:353
+#, docstring
+msgid "Get's guild info by guild name."
+msgstr "Získejte guld info podle guild name."
+
+#: obsidion/cogs/hypixel/hypixel.py:358
+msgid "Guild Info"
+msgstr "Informace o guině"
+
+#: obsidion/cogs/hypixel/hypixel.py:370 obsidion/cogs/hypixel/hypixel.py:371
+msgid "Guild Name: "
+msgstr "Název Guild: "
+
+#: obsidion/cogs/hypixel/hypixel.py:372
+msgid "Guild Description: "
+msgstr "Popis Guild: "
+
+#: obsidion/cogs/hypixel/hypixel.py:373
+msgid "Guild Tag: "
+msgstr "Značka guld: "
+
+#: obsidion/cogs/hypixel/hypixel.py:374
+msgid "Guild Experience Points: "
+msgstr "Guild Experience Points: "
+
+#: obsidion/cogs/hypixel/hypixel.py:375
+msgid "Joinable: "
+msgstr "Joinable: "
+
+#: obsidion/cogs/hypixel/hypixel.py:376
+msgid "Public: "
+msgstr "Veřejné: "
+
+#: obsidion/cogs/hypixel/hypixel.py:388
+#, docstring
+msgid "Get current hypixel leaderboards"
+msgstr "Získat aktuální žebříčcích bodů s hypxilem"
+

@@ -1,0 +1,67 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: obsidion\n"
+"POT-Creation-Date: 2021-01-27 06:57+1300\n"
+"PO-Revision-Date: 2021-04-27 12:38\n"
+"Last-Translator: \n"
+"Language-Team: Romanian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100>0 && n%100<20)) ? 1 : 2);\n"
+"X-Crowdin-Project: obsidion\n"
+"X-Crowdin-Project-ID: 437658\n"
+"X-Crowdin-Language: ro\n"
+"X-Crowdin-File: /reformat/core/utils/locales/messages.pot\n"
+"X-Crowdin-File-ID: 28\n"
+"Language: ro_RO\n"
+
+#: obsidion/core/utils/chat_formatting.py:511
+msgid "year"
+msgstr "an"
+
+#: obsidion/core/utils/chat_formatting.py:511
+msgid "years"
+msgstr "ani"
+
+#: obsidion/core/utils/chat_formatting.py:512
+msgid "month"
+msgstr "lună"
+
+#: obsidion/core/utils/chat_formatting.py:512
+msgid "months"
+msgstr "luni"
+
+#: obsidion/core/utils/chat_formatting.py:513
+msgid "day"
+msgstr "zi"
+
+#: obsidion/core/utils/chat_formatting.py:513
+msgid "days"
+msgstr "zile"
+
+#: obsidion/core/utils/chat_formatting.py:514
+msgid "hour"
+msgstr "oră"
+
+#: obsidion/core/utils/chat_formatting.py:514
+msgid "hours"
+msgstr "ore"
+
+#: obsidion/core/utils/chat_formatting.py:515
+msgid "minute"
+msgstr "minut"
+
+#: obsidion/core/utils/chat_formatting.py:515
+msgid "minutes"
+msgstr "minute"
+
+#: obsidion/core/utils/chat_formatting.py:516
+msgid "second"
+msgstr "secundă"
+
+#: obsidion/core/utils/chat_formatting.py:516
+msgid "seconds"
+msgstr "secunde"
+

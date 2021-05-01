@@ -1,0 +1,161 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: obsidion\n"
+"POT-Creation-Date: 2021-04-28 00:02+1200\n"
+"PO-Revision-Date: 2021-04-27 12:36\n"
+"Last-Translator: \n"
+"Language-Team: Japanese\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: obsidion\n"
+"X-Crowdin-Project-ID: 437658\n"
+"X-Crowdin-Language: ja\n"
+"X-Crowdin-File: /reformat/cogs/hypixel/locales/messages.pot\n"
+"X-Crowdin-File-ID: 76\n"
+"Language: ja_JP\n"
+
+#: obsidion/cogs/hypixel/hypixel.py:34
+#, docstring
+msgid "Get the current watchdog statistics."
+msgstr "現在のウォッチドッグ統計を取得"
+
+#: obsidion/cogs/hypixel/hypixel.py:37
+msgid "Watchdog Stats"
+msgstr "ウォッチドッグスタッツ"
+
+#: obsidion/cogs/hypixel/hypixel.py:39
+msgid "Total Bans"
+msgstr "合計 Bans"
+
+#: obsidion/cogs/hypixel/hypixel.py:42
+msgid "Watchdog Rolling Daily"
+msgstr "ワッチドッグ・ローリング・デイリー"
+
+#: obsidion/cogs/hypixel/hypixel.py:44
+msgid "Staff Total"
+msgstr "スタッフの合計"
+
+#: obsidion/cogs/hypixel/hypixel.py:46
+msgid "Staff Rolling Daily"
+msgstr "スタッフ・ローリング・デイリー"
+
+#: obsidion/cogs/hypixel/hypixel.py:59
+#, docstring
+msgid "Get the current boosters online."
+msgstr "現在のブースターをオンラインにします。"
+
+#: obsidion/cogs/hypixel/hypixel.py:63
+msgid "Boosters"
+msgstr "ブースター"
+
+#: obsidion/cogs/hypixel/hypixel.py:68 obsidion/cogs/hypixel/hypixel.py:96
+#: obsidion/cogs/hypixel/hypixel.py:124 obsidion/cogs/hypixel/hypixel.py:167
+#: obsidion/cogs/hypixel/hypixel.py:213 obsidion/cogs/hypixel/hypixel.py:277
+#: obsidion/cogs/hypixel/hypixel.py:321 obsidion/cogs/hypixel/hypixel.py:363
+#: obsidion/cogs/hypixel/hypixel.py:404
+msgid "Hypixel"
+msgstr "ヒプキセル"
+
+#: obsidion/cogs/hypixel/hypixel.py:87
+#, docstring
+msgid "Get the current players online."
+msgstr "現在の選手をオンラインで"
+
+#: obsidion/cogs/hypixel/hypixel.py:91
+msgid "Players Online"
+msgstr "プレイヤーズオンライン"
+
+#: obsidion/cogs/hypixel/hypixel.py:115
+#, docstring
+msgid "Get current news for skyblock."
+msgstr "スカイブロックのための最新ニュースを"
+
+#: obsidion/cogs/hypixel/hypixel.py:119
+msgid "Skyblock News"
+msgstr "スカイブロック・ニュース"
+
+#: obsidion/cogs/hypixel/hypixel.py:149
+#, docstring
+msgid "Get the current status of an online player."
+msgstr "オンライン・プレイヤーの現在の状況を取得します。"
+
+#: obsidion/cogs/hypixel/hypixel.py:162
+msgid "Player Status"
+msgstr "プレイヤー状況"
+
+#: obsidion/cogs/hypixel/hypixel.py:174
+msgid "Current game: "
+msgstr "現在のゲーム: "
+
+#: obsidion/cogs/hypixel/hypixel.py:176
+msgid "Current game mode: "
+msgstr "現行ゲームモード: "
+
+#: obsidion/cogs/hypixel/hypixel.py:200
+#, docstring
+msgid "Get the current friends of a player."
+msgstr "プレイヤーの現在の友人を取得します。"
+
+#: obsidion/cogs/hypixel/hypixel.py:208
+msgid "Player Friends"
+msgstr "プレイヤー・フレンズ"
+
+#: obsidion/cogs/hypixel/hypixel.py:262
+#, docstring
+msgid "Get Bazaar NPC stats."
+msgstr "Bazaar NPC 統計を取得します。"
+
+#: obsidion/cogs/hypixel/hypixel.py:272
+msgid "Bazaar NPC Stats"
+msgstr "バザール・ NPC ステーツ"
+
+#: obsidion/cogs/hypixel/hypixel.py:305
+#, docstring
+msgid "Get the first 30 auctions."
+msgstr "最初の 30 のオークションを取得します。"
+
+#: obsidion/cogs/hypixel/hypixel.py:316
+msgid "Current Auctions"
+msgstr "現在のオークション"
+
+#: obsidion/cogs/hypixel/hypixel.py:353
+#, docstring
+msgid "Get's guild info by guild name."
+msgstr "ギルド・ネームのギルド情報を入手してください。"
+
+#: obsidion/cogs/hypixel/hypixel.py:358
+msgid "Guild Info"
+msgstr "ギルド情報"
+
+#: obsidion/cogs/hypixel/hypixel.py:370 obsidion/cogs/hypixel/hypixel.py:371
+msgid "Guild Name: "
+msgstr "ギルド名: "
+
+#: obsidion/cogs/hypixel/hypixel.py:372
+msgid "Guild Description: "
+msgstr "ガイドの説明: "
+
+#: obsidion/cogs/hypixel/hypixel.py:373
+msgid "Guild Tag: "
+msgstr "ギルド・タグ: "
+
+#: obsidion/cogs/hypixel/hypixel.py:374
+msgid "Guild Experience Points: "
+msgstr "Guild エクスペリエンス・ポイント: "
+
+#: obsidion/cogs/hypixel/hypixel.py:375
+msgid "Joinable: "
+msgstr "Joinable: "
+
+#: obsidion/cogs/hypixel/hypixel.py:376
+msgid "Public: "
+msgstr "パブリック: "
+
+#: obsidion/cogs/hypixel/hypixel.py:388
+#, docstring
+msgid "Get current hypixel leaderboards"
+msgstr "現在のハイキセル・リード・ボードの取得"
+

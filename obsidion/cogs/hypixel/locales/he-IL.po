@@ -1,0 +1,161 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: obsidion\n"
+"POT-Creation-Date: 2021-04-28 00:02+1200\n"
+"PO-Revision-Date: 2021-04-27 12:34\n"
+"Last-Translator: \n"
+"Language-Team: Hebrew\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3;\n"
+"X-Crowdin-Project: obsidion\n"
+"X-Crowdin-Project-ID: 437658\n"
+"X-Crowdin-Language: he\n"
+"X-Crowdin-File: /reformat/cogs/hypixel/locales/messages.pot\n"
+"X-Crowdin-File-ID: 76\n"
+"Language: he_IL\n"
+
+#: obsidion/cogs/hypixel/hypixel.py:34
+#, docstring
+msgid "Get the current watchdog statistics."
+msgstr "תשיג את הסטטיסטיקות של כלבי השמירה."
+
+#: obsidion/cogs/hypixel/hypixel.py:37
+msgid "Watchdog Stats"
+msgstr "סטאטי כלב שמירה"
+
+#: obsidion/cogs/hypixel/hypixel.py:39
+msgid "Total Bans"
+msgstr "סך הכל Bans"
+
+#: obsidion/cogs/hypixel/hypixel.py:42
+msgid "Watchdog Rolling Daily"
+msgstr "כלב שמירה רולינג יומי"
+
+#: obsidion/cogs/hypixel/hypixel.py:44
+msgid "Staff Total"
+msgstr "סך הכל צוות"
+
+#: obsidion/cogs/hypixel/hypixel.py:46
+msgid "Staff Rolling Daily"
+msgstr "צוות מתגלגל יומי"
+
+#: obsidion/cogs/hypixel/hypixel.py:59
+#, docstring
+msgid "Get the current boosters online."
+msgstr "קבלו את התומכים הנוכחיים במצב מקוון."
+
+#: obsidion/cogs/hypixel/hypixel.py:63
+msgid "Boosters"
+msgstr "בוסטרים"
+
+#: obsidion/cogs/hypixel/hypixel.py:68 obsidion/cogs/hypixel/hypixel.py:96
+#: obsidion/cogs/hypixel/hypixel.py:124 obsidion/cogs/hypixel/hypixel.py:167
+#: obsidion/cogs/hypixel/hypixel.py:213 obsidion/cogs/hypixel/hypixel.py:277
+#: obsidion/cogs/hypixel/hypixel.py:321 obsidion/cogs/hypixel/hypixel.py:363
+#: obsidion/cogs/hypixel/hypixel.py:404
+msgid "Hypixel"
+msgstr "היפיקסל"
+
+#: obsidion/cogs/hypixel/hypixel.py:87
+#, docstring
+msgid "Get the current players online."
+msgstr "קבל את השחקנים הנוכחיים באינטרנט."
+
+#: obsidion/cogs/hypixel/hypixel.py:91
+msgid "Players Online"
+msgstr "שחקנים מקוונים"
+
+#: obsidion/cogs/hypixel/hypixel.py:115
+#, docstring
+msgid "Get current news for skyblock."
+msgstr "קבלו את החדשות הנוכחיות עבור קו הרקיע."
+
+#: obsidion/cogs/hypixel/hypixel.py:119
+msgid "Skyblock News"
+msgstr "חדשות בסקייפ"
+
+#: obsidion/cogs/hypixel/hypixel.py:149
+#, docstring
+msgid "Get the current status of an online player."
+msgstr "קבלו את הסטאטוס הנוכחי של שחקן מקוון."
+
+#: obsidion/cogs/hypixel/hypixel.py:162
+msgid "Player Status"
+msgstr "סטטוס פלייר"
+
+#: obsidion/cogs/hypixel/hypixel.py:174
+msgid "Current game: "
+msgstr "משחק נוכחי: "
+
+#: obsidion/cogs/hypixel/hypixel.py:176
+msgid "Current game mode: "
+msgstr "מצב משחק נוכחי: "
+
+#: obsidion/cogs/hypixel/hypixel.py:200
+#, docstring
+msgid "Get the current friends of a player."
+msgstr "קבל את החברים הנוכחיים של שחקן."
+
+#: obsidion/cogs/hypixel/hypixel.py:208
+msgid "Player Friends"
+msgstr "פלייר חברים"
+
+#: obsidion/cogs/hypixel/hypixel.py:262
+#, docstring
+msgid "Get Bazaar NPC stats."
+msgstr "תשיג את הנתונים הסטטיסטיים של בזאר."
+
+#: obsidion/cogs/hypixel/hypixel.py:272
+msgid "Bazaar NPC Stats"
+msgstr "Stats של Bazaar NPC"
+
+#: obsidion/cogs/hypixel/hypixel.py:305
+#, docstring
+msgid "Get the first 30 auctions."
+msgstr "תשיג את 30 המכירות הפומביות הראשונות."
+
+#: obsidion/cogs/hypixel/hypixel.py:316
+msgid "Current Auctions"
+msgstr "מכירות נוכחיות"
+
+#: obsidion/cogs/hypixel/hypixel.py:353
+#, docstring
+msgid "Get's guild info by guild name."
+msgstr "קבל מידע גילדה על ידי שם גילדה."
+
+#: obsidion/cogs/hypixel/hypixel.py:358
+msgid "Guild Info"
+msgstr "מידע גילדת"
+
+#: obsidion/cogs/hypixel/hypixel.py:370 obsidion/cogs/hypixel/hypixel.py:371
+msgid "Guild Name: "
+msgstr "שם איגוד: "
+
+#: obsidion/cogs/hypixel/hypixel.py:372
+msgid "Guild Description: "
+msgstr "תיאור איגוד: "
+
+#: obsidion/cogs/hypixel/hypixel.py:373
+msgid "Guild Tag: "
+msgstr "תג איגוד: "
+
+#: obsidion/cogs/hypixel/hypixel.py:374
+msgid "Guild Experience Points: "
+msgstr "נקודות ניסיון של איגוד: "
+
+#: obsidion/cogs/hypixel/hypixel.py:375
+msgid "Joinable: "
+msgstr "ג ' ואי: "
+
+#: obsidion/cogs/hypixel/hypixel.py:376
+msgid "Public: "
+msgstr "ציבורי: "
+
+#: obsidion/cogs/hypixel/hypixel.py:388
+#, docstring
+msgid "Get current hypixel leaderboards"
+msgstr "קבלת leaderבלוחות hyפיקסל הנוכחי"
+

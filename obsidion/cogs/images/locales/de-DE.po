@@ -1,0 +1,79 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: obsidion\n"
+"POT-Creation-Date: 2021-04-28 00:02+1200\n"
+"PO-Revision-Date: 2021-04-27 12:38\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: obsidion\n"
+"X-Crowdin-Project-ID: 437658\n"
+"X-Crowdin-Language: de\n"
+"X-Crowdin-File: /reformat/cogs/images/locales/messages.pot\n"
+"X-Crowdin-File-ID: 36\n"
+"Language: de_DE\n"
+
+#: obsidion/cogs/images/images.py:36
+#, docstring
+msgid "Create your very own custom Minecraft achievements."
+msgstr "Erstellen Sie Ihre ganz eigenen Minecraft Leistungen."
+
+#: obsidion/cogs/images/images.py:46
+msgid "Obsidion Advancement Generator"
+msgstr "Obsidion Vorschub Generator"
+
+#: obsidion/cogs/images/images.py:70
+msgid "Obsidion Sign Generator"
+msgstr "Obsidion Sign Generator"
+
+#: obsidion/cogs/images/images.py:83
+#, docstring
+msgid "Renders a Minecraft players face."
+msgstr "Macht ein Minecraft-Spieler-Gesicht."
+
+#: obsidion/cogs/images/images.py:106
+#, docstring
+msgid "Renders a Minecraft players skull."
+msgstr "Macht einen Minecraft-Spieler Schädel."
+
+#: obsidion/cogs/images/images.py:129
+#, docstring
+msgid "Renders a Minecraft players skin."
+msgstr "Macht eine Minecraft-Spieler-Haut."
+
+#: obsidion/cogs/images/images.py:152
+#, docstring
+msgid "Renders a Minecraft players bust."
+msgstr "Macht eine Minecraft-Spieler-Pleite."
+
+#: obsidion/cogs/images/images.py:178
+#, docstring
+msgid "Renders a Minecraft players skin in 6 different ways.\n\n"
+"        You can choose from these 6 render types: face,\n"
+"        front, full, head, bust & skin.\n"
+"        "
+msgstr "Macht eine Minecraft-Spieler-Haut auf 6 verschiedene Arten.\n\n"
+"        Sie können aus diesen 6 Darstellungstypen wählen: Gesicht,\n"
+"        vorne, voll, Kopf, Büste & Haut.\n"
+"        "
+
+#: obsidion/cogs/images/images.py:187
+msgid "Please supply a render type. Your options are:\n"
+" `face`, `front`, `full`, `head`, `bust`, `skin` \n"
+" Type: ?render <render type> <username>"
+msgstr "Geben Sie einen Darstellungstyp an. Ihre Optionen sind:\n"
+" ` face `, ` front `, ` full `, ` head `, ` bust `, ` skin ` \n"
+" Typ:? render <render type> <username>"
+
+#: obsidion/cogs/images/images.py:198
+msgid "Here is: `{username}`'s {render_type}! \n"
+" **[DOWNLOAD](https://visage.surgeplay.com/{render_type}/512/{uuid}/512/{uuid})\n"
+"[RAW](https://visage.surgeplay.com/{render_type}/512/{uuid})**"
+msgstr "Hier ist: `{username}`'s {render_type}! \n"
+" **[DOWNLOAD](https: //visage.surgeplay.com/{render_type}/512/{uuid}/512/{uuid})\n"
+"[RAW](https: //visage.surgeplay.com/{render_type}/512/{uuid}) * *"
+

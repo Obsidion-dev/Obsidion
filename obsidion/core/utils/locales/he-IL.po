@@ -1,0 +1,67 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: obsidion\n"
+"POT-Creation-Date: 2021-01-27 06:57+1300\n"
+"PO-Revision-Date: 2021-04-27 12:37\n"
+"Last-Translator: \n"
+"Language-Team: Hebrew\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3;\n"
+"X-Crowdin-Project: obsidion\n"
+"X-Crowdin-Project-ID: 437658\n"
+"X-Crowdin-Language: he\n"
+"X-Crowdin-File: /reformat/core/utils/locales/messages.pot\n"
+"X-Crowdin-File-ID: 28\n"
+"Language: he_IL\n"
+
+#: obsidion/core/utils/chat_formatting.py:511
+msgid "year"
+msgstr "שנה"
+
+#: obsidion/core/utils/chat_formatting.py:511
+msgid "years"
+msgstr "שנים"
+
+#: obsidion/core/utils/chat_formatting.py:512
+msgid "month"
+msgstr "חודש"
+
+#: obsidion/core/utils/chat_formatting.py:512
+msgid "months"
+msgstr "חודשים"
+
+#: obsidion/core/utils/chat_formatting.py:513
+msgid "day"
+msgstr "יום"
+
+#: obsidion/core/utils/chat_formatting.py:513
+msgid "days"
+msgstr "ימים"
+
+#: obsidion/core/utils/chat_formatting.py:514
+msgid "hour"
+msgstr "שעה"
+
+#: obsidion/core/utils/chat_formatting.py:514
+msgid "hours"
+msgstr "שעות"
+
+#: obsidion/core/utils/chat_formatting.py:515
+msgid "minute"
+msgstr "דקה"
+
+#: obsidion/core/utils/chat_formatting.py:515
+msgid "minutes"
+msgstr "דקות"
+
+#: obsidion/core/utils/chat_formatting.py:516
+msgid "second"
+msgstr "שנייה"
+
+#: obsidion/core/utils/chat_formatting.py:516
+msgid "seconds"
+msgstr "שניות"
+

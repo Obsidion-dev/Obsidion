@@ -1,0 +1,247 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: obsidion\n"
+"POT-Creation-Date: 2021-04-28 00:02+1200\n"
+"PO-Revision-Date: 2021-04-27 12:39\n"
+"Last-Translator: \n"
+"Language-Team: Turkish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: obsidion\n"
+"X-Crowdin-Project-ID: 437658\n"
+"X-Crowdin-Language: tr\n"
+"X-Crowdin-File: /reformat/cogs/info/locales/messages.pot\n"
+"X-Crowdin-File-ID: 42\n"
+"Language: tr_TR\n"
+
+#: obsidion/cogs/info/info.py:41
+#, docstring
+msgid "View a players Minecraft UUID, Username history and skin."
+msgstr "Bir oyuncu Minecraft UUID 'si, Kullanıcı adı geçmişi ve dışyüzü görüntüleyin."
+
+#: obsidion/cogs/info/info.py:58
+msgid "**1.** `{original}` - First Username"
+msgstr "** 1. * * `{original}`-İlk Kullanıcı Adı"
+
+#: obsidion/cogs/info/info.py:63
+msgid "Minecraft profile for {username}"
+msgstr "{username} için minecraft profili"
+
+#: obsidion/cogs/info/info.py:70
+msgid "Full UUID: `{uuid}`\n"
+"Short UUID: `{short}`"
+msgstr "Tam UUID: `{uuid}`\n"
+"Kısa UUID: `{short}`"
+
+#: obsidion/cogs/info/info.py:77
+msgid "Skin: [Open Skin](https://visage.surgeplay.com/bust/{uuid})\n"
+"Skin Type: `{skin_type}`\n"
+"Skin History: [link]({skin_history})\n"
+"Slim: `{slim}`\n"
+"Custom: `{custom}`\n"
+"Cape: `{cape}`"
+msgstr "Cilt: [ Açık Dışyüz] (https://visage.surgeplay.com/bust/{uuid})\n"
+"Dışyüz Türü: `{skin_type}`\n"
+"Dışyüz Tarihi: [link]({skin_history})\n"
+"Slim: `{slim}`\n"
+"Custom: `{custom}`\n"
+"Cape: `{cape}`"
+
+#: obsidion/cogs/info/info.py:93 obsidion/cogs/info/info.py:493
+msgid "Information"
+msgstr "Bilgi"
+
+#: obsidion/cogs/info/info.py:95
+msgid "Username Changes: `{changes}`\n"
+"Namemc: [link]({namemc})\n"
+"Legacy: `{legacy}`\n"
+"Demo: `{demo}`"
+msgstr "Kullanıcı Adı Değişiklikleri: `{changes}`\n"
+"Namemc: [link]({namemc})\n"
+"Legacy: `{legacy}`\n"
+"Gösterim: `{demo}`"
+
+#: obsidion/cogs/info/info.py:105
+msgid "Name History"
+msgstr "Ad Geçmişi"
+
+#: obsidion/cogs/info/info.py:146
+#, docstring
+msgid "Minecraft server info."
+msgstr "Minecraft sunucusu bilgileri."
+
+#: obsidion/cogs/info/info.py:151
+msgid "Please provide a server"
+msgstr "Lütfen bir sunucu sağlayın"
+
+#: obsidion/cogs/info/info.py:173
+msgid "server could not be reached."
+msgstr "sunucuya ulaşılamadı."
+
+#: obsidion/cogs/info/info.py:176
+msgid "Java Server: {server_ip}"
+msgstr "Java Sunucusu: {server_ip}"
+
+#: obsidion/cogs/info/info.py:179 obsidion/cogs/info/info.py:254
+msgid "Description"
+msgstr "Açıklama"
+
+#: obsidion/cogs/info/info.py:183
+msgid "Online: `{online}` \n"
+" Maximum: `{maximum}`"
+msgstr "Online: `{online}` \n"
+" En çok: `{maximum}`"
+
+#: obsidion/cogs/info/info.py:188 obsidion/cogs/info/info.py:263
+msgid "Version"
+msgstr "Sürüm"
+
+#: obsidion/cogs/info/info.py:189
+msgid "Java Edition \n"
+" Running: `{version}` \n"
+"Protocol: `{protocol}`"
+msgstr "Java Edition \n"
+" Çalışıyor: `{version}` \n"
+"Protokol: `{protocol}`"
+
+#: obsidion/cogs/info/info.py:251
+msgid "Bedrock Server: {address}"
+msgstr "Bedrock Server: {address}"
+
+#: obsidion/cogs/info/info.py:257
+msgid "Players"
+msgstr "Oyuncular"
+
+#: obsidion/cogs/info/info.py:258
+msgid "Online: `{player_count}` \n"
+" Maximum: `{player_max}`"
+msgstr "Online: `{player_count}` \n"
+" En çok: `{player_max}`"
+
+#: obsidion/cogs/info/info.py:264
+msgid "Bedrock Edition \n"
+" Running: `{version}` \n"
+"Protocol: `{protocol}`"
+msgstr "Bedrock Edition \n"
+" Çalışıyor: `{version}` \n"
+"Protokol: `{protocol}`"
+
+#: obsidion/cogs/info/info.py:270
+msgid "Info"
+msgstr "Bilgi"
+
+#: obsidion/cogs/info/info.py:271
+msgid "Gamemode: `{gamemode}` \n"
+"Latency: `{latency}`"
+msgstr "Gamomode: `{gamemode}` \n"
+"Latency: `{latency}`"
+
+#: obsidion/cogs/info/info.py:302
+#, docstring
+msgid "Check the status of all the Mojang services."
+msgstr "Tüm Mojang servislerinin durumunu kontrol et."
+
+#: obsidion/cogs/info/info.py:331
+msgid ":green_heart: - {service}: **This service is healthy.** \n"
+msgstr ":green_heart: - {service}: ** bu hizmet healthy. * * \n"
+
+#: obsidion/cogs/info/info.py:335
+msgid ":heart: - {service}: **This service is offline.** \n"
+msgstr ":heart: - {service}: ** bu hizmet offline. * * \n"
+
+#: obsidion/cogs/info/info.py:338
+msgid "Minecraft Service Status"
+msgstr "Minecraft Hizmet Durumu"
+
+#: obsidion/cogs/info/info.py:341
+msgid "Total Sales: **{total}** Last 24 Hours: **{last}**"
+msgstr "Toplam Satış: **{total}** Son 24 Saat: **{last}**"
+
+#: obsidion/cogs/info/info.py:345
+msgid "Minecraft Services:"
+msgstr "Minecraft Hizmetleri:"
+
+#: obsidion/cogs/info/info.py:358
+#, docstring
+msgid "Get an article from the minecraft wiki."
+msgstr "minecraft wiki ' den bir makale alın."
+
+#: obsidion/cogs/info/info.py:406
+msgid "Information provided by Wikimedia"
+msgstr "Wikimedia tarafından sağlanan bilgiler"
+
+#: obsidion/cogs/info/info.py:412
+msgid "I'm sorry, I couldn't find \"{query}\" on fandom"
+msgstr "Özür dilerim, bulamadım.{query}\" Fandom üzerine"
+
+#: obsidion/cogs/info/info.py:443
+msgid "The bug {bug} was not found."
+msgstr "Hata {bug} bulunamadı."
+
+#: obsidion/cogs/info/info.py:455
+msgid "Version: {version}\n"
+"Reporter: {reporter}\n"
+"Created: {created}\n"
+"Votes: {votes}\n"
+"Updates: {updates}\n"
+"Watchers: {watched}"
+msgstr "Sürüm: {version}\n"
+"Reporter: {reporter}\n"
+"Yaratılan: {created}\n"
+"Oylar: {votes}\n"
+"Güncellemeler: {updates}\n"
+"Waters: {watched}"
+
+#: obsidion/cogs/info/info.py:476
+msgid "Resolution: {resolution}\n"
+msgstr "Çözünürlük: {resolution}\n"
+
+#: obsidion/cogs/info/info.py:481
+msgid "Affected: "
+msgstr "Etkilenen: "
+
+#: obsidion/cogs/info/info.py:487
+msgid "Fixed Version: {fixed} + "
+msgstr "Sabit Sürüm: {fixed} + "
+
+#: obsidion/cogs/info/info.py:494
+msgid "Details"
+msgstr "Ayrıntılar"
+
+#: obsidion/cogs/info/info.py:526
+msgid "Version is invalid."
+msgstr "Sürüm geçersiz."
+
+#: obsidion/cogs/info/info.py:530
+msgid "Minecraft Java Edition {version}"
+msgstr "Minecraft Java Edition {version}"
+
+#: obsidion/cogs/info/info.py:539
+msgid "Type: `{type}`\n"
+"Release: `{released}`\n"
+"Package URL: [link]({package_url})\n"
+"Minecraft Wiki: [link]({wiki})"
+msgstr "Tip: `{type}`\n"
+"Yayın Düzeyi: `{released}`\n"
+"Paket URL 'si: [link]({package_url})\n"
+"Minecraft Wiki: [link]({wiki})"
+
+#: obsidion/cogs/info/info.py:550
+msgid "Minecraft Java Edition Versions"
+msgstr "Minecraft Java Edition Sürümleri"
+
+#: obsidion/cogs/info/info.py:559
+msgid "Releases: `{releases}`\n"
+"**Latest Version**\n"
+"ID: `{id}`\n"
+"Released: `{released}`\n"
+"Wiki: [link]({link})"
+msgstr "Yayınlar: `{releases}`\n"
+"** En Son Sürüm * *\n"
+"Tanıtıcı: `{id}`\n"
+"Yayınlandı: `{released}`\n"
+"Vikisi: [link]({link})"
+

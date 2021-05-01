@@ -1,0 +1,105 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: obsidion\n"
+"POT-Creation-Date: 2021-04-28 00:02+1200\n"
+"PO-Revision-Date: 2021-04-27 12:37\n"
+"Last-Translator: \n"
+"Language-Team: Korean\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: obsidion\n"
+"X-Crowdin-Project-ID: 437658\n"
+"X-Crowdin-Language: ko\n"
+"X-Crowdin-File: /reformat/cogs/facts/locales/messages.pot\n"
+"X-Crowdin-File-ID: 72\n"
+"Language: ko_KR\n"
+
+#: obsidion/cogs/facts/facts.py:46 obsidion/cogs/facts/facts.py:102
+#: obsidion/cogs/facts/facts.py:163 obsidion/cogs/facts/facts.py:217
+msgid "Display Name"
+msgstr "디스플레이명"
+
+#: obsidion/cogs/facts/facts.py:47 obsidion/cogs/facts/facts.py:103
+#: obsidion/cogs/facts/facts.py:166 obsidion/cogs/facts/facts.py:218
+msgid "ID"
+msgstr "ID"
+
+#: obsidion/cogs/facts/facts.py:48
+msgid "Stack Size"
+msgstr "스택 크기"
+
+#: obsidion/cogs/facts/facts.py:49
+msgid "hardness"
+msgstr "경도의"
+
+#: obsidion/cogs/facts/facts.py:50
+msgid "diggable"
+msgstr "잠수할 수 있는"
+
+#: obsidion/cogs/facts/facts.py:51
+msgid "transparent"
+msgstr "투명한"
+
+#: obsidion/cogs/facts/facts.py:52
+msgid "filterLight"
+msgstr "필터라이트"
+
+#: obsidion/cogs/facts/facts.py:53
+msgid "emitLight"
+msgstr "빛의 빛"
+
+#: obsidion/cogs/facts/facts.py:54
+msgid "material"
+msgstr "재료"
+
+#: obsidion/cogs/facts/facts.py:55
+msgid "resistance"
+msgstr "저항"
+
+#: obsidion/cogs/facts/facts.py:56
+msgid "harvestTools"
+msgstr "수확 도구"
+
+#: obsidion/cogs/facts/facts.py:104
+msgid "width"
+msgstr "폭"
+
+#: obsidion/cogs/facts/facts.py:105
+msgid "height"
+msgstr "높이"
+
+#: obsidion/cogs/facts/facts.py:106 obsidion/cogs/facts/facts.py:219
+msgid "type"
+msgstr "유형"
+
+#: obsidion/cogs/facts/facts.py:107
+msgid "category"
+msgstr "범주"
+
+#: obsidion/cogs/facts/facts.py:164
+msgid "Category"
+msgstr "카테고리"
+
+#: obsidion/cogs/facts/facts.py:165
+msgid "Dimension"
+msgstr "차원"
+
+#: obsidion/cogs/facts/facts.py:167
+msgid "Temperature"
+msgstr "온도"
+
+#: obsidion/cogs/facts/facts.py:168
+msgid "Colour"
+msgstr "색깔"
+
+#: obsidion/cogs/facts/facts.py:169
+msgid "Rainfall"
+msgstr "라보모"
+
+#: obsidion/cogs/facts/facts.py:170
+msgid "Precipitation"
+msgstr "정제"
+

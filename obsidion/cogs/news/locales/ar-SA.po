@@ -1,0 +1,71 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: obsidion\n"
+"POT-Creation-Date: 2021-04-28 00:02+1200\n"
+"PO-Revision-Date: 2021-04-27 12:35\n"
+"Last-Translator: \n"
+"Language-Team: Arabic\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+"X-Crowdin-Project: obsidion\n"
+"X-Crowdin-Project-ID: 437658\n"
+"X-Crowdin-Language: ar\n"
+"X-Crowdin-File: /reformat/cogs/news/locales/messages.pot\n"
+"X-Crowdin-File-ID: 80\n"
+"Language: ar_SA\n"
+
+#: obsidion/cogs/news/news.py:51
+msgid "Downtime"
+msgstr "وقت التوقف"
+
+#: obsidion/cogs/news/news.py:54
+msgid "Back Online"
+msgstr "للخلف"
+
+#: obsidion/cogs/news/news.py:93
+msgid "Category"
+msgstr "الفئة"
+
+#: obsidion/cogs/news/news.py:94
+msgid "Author"
+msgstr "المؤلف"
+
+#: obsidion/cogs/news/news.py:96
+msgid "Publish Date"
+msgstr "تاريخ النشر"
+
+#: obsidion/cogs/news/news.py:101 obsidion/cogs/news/news.py:145
+msgid "Article Published"
+msgstr "المادة المنشورة"
+
+#: obsidion/cogs/news/news.py:107
+msgid "New Article on Minecraft.net"
+msgstr "المادة الجديدة المتعلقة ب Minecraft.net"
+
+#: obsidion/cogs/news/news.py:133
+msgid "Name"
+msgstr "الاسم"
+
+#: obsidion/cogs/news/news.py:135
+msgid "Package URL"
+msgstr "عنوان URL مجموعة البرامج"
+
+#: obsidion/cogs/news/news.py:136
+msgid "[Package URL]({url})"
+msgstr "[ عنوان URL لمجموعة البرامج ] ({url})"
+
+#: obsidion/cogs/news/news.py:139
+msgid "Minecraft Wiki"
+msgstr "صفحة Wiki لمركبة"
+
+#: obsidion/cogs/news/news.py:140
+msgid "[Minecraft Wiki](https://minecraft.fandom.com/Java_Edition_{id})"
+msgstr "[ المركبات الفضائية ويكي ] (https://minecraft.fandom.com/Java_Edition_{id})"
+
+#: obsidion/cogs/news/news.py:150
+msgid "New Minecraft Java Edition Snapshot"
+msgstr "لقطة الى Minraft Java Edition Snapshot"
+

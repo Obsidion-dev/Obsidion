@@ -1,0 +1,369 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: obsidion\n"
+"POT-Creation-Date: 2021-04-28 00:01+1200\n"
+"PO-Revision-Date: 2021-04-27 12:41\n"
+"Last-Translator: \n"
+"Language-Team: Chinese Traditional\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: obsidion\n"
+"X-Crowdin-Project-ID: 437658\n"
+"X-Crowdin-Language: zh-TW\n"
+"X-Crowdin-File: /reformat/core/locales/messages.pot\n"
+"X-Crowdin-File-ID: 24\n"
+"Language: zh_TW\n"
+
+#: obsidion/core/core_commands.py:38
+#, docstring
+msgid "Commands related to core functions."
+msgstr "與核心功能相關的指令。"
+
+#: obsidion/core/core_commands.py:46
+#, docstring
+msgid "Pong."
+msgstr "邦"
+
+#: obsidion/core/core_commands.py:47
+msgid "Pong! ({latency}ms)"
+msgstr "Pong！（{latency}毫秒）"
+
+#: obsidion/core/core_commands.py:57
+#, docstring
+msgid "Shows info about Obsidion."
+msgstr "顯示關於 Obsidion的資訊。"
+
+#: obsidion/core/core_commands.py:77
+msgid "This bot is an instance of [Obsidion, an open source Discord bot]({}) created by [Darkflame72]({}) and [improved by many]({}).\n\n"
+"Obsidion is backed by a passionate community who contributes and creates content for everyone to enjoy. [Join us today]({}) and help us improve!\n\n"
+"(c) Obsidion-dev"
+msgstr "此 bot 是由 [Darkflame72]（{}）所建立的 [Obsidion，開放原始碼 Discord bot]（{}）的實例，且 [改良過許多]（{}）。\n\n"
+"Obsidion 由熱心的社區支持，為每個人貢獻並創造內容，讓大家享受。 [ 加入我們今天]（{}）並協助我們改善！\n\n"
+"（c） Obsidion-dev"
+
+#: obsidion/core/core_commands.py:94
+msgid "Bringing joy since the 2nd of April 2020 (over {} days ago!)"
+msgstr "從 2020 年 4 月 2 日開始帶來歡樂（超過 {} 天前！）"
+
+#: obsidion/core/core_commands.py:108
+#, docstring
+msgid "Shows Obsidion's uptime."
+msgstr "顯示 Obsidion的執行時間。"
+
+#: obsidion/core/core_commands.py:111
+msgid "Less than one second"
+msgstr "不到一秒"
+
+#: obsidion/core/core_commands.py:113
+msgid "Been up for: **{time_quantity}** (since {timestamp} UTC)"
+msgstr "for up for： **{time_quantity}** （以 {timestamp} UTC）"
+
+#: obsidion/core/core_commands.py:126
+#, docstring
+msgid "Invite the bot to your server."
+msgstr "邀請 bot to your server。"
+
+#: obsidion/core/core_commands.py:128
+msgid "You can invite {name} to your Discord server by [clicking here]({invite})."
+msgstr "您可以 [按一下這裡]（{invite} ），邀請 {name} 到您的 Dishd 伺服器。"
+
+#: obsidion/core/core_commands.py:147
+#, docstring
+msgid "Leaves the current server."
+msgstr "離開現行伺服器。"
+
+#: obsidion/core/core_commands.py:149
+msgid "Are you sure you want me to leave the current server? (yes/no)"
+msgstr "您確定要讓我離開現行伺服器嗎？ （是 / 否）"
+
+#: obsidion/core/core_commands.py:158
+#, docstring
+msgid "Lists and allows Obsidion to leave servers."
+msgstr "列出並容許 Obsidion 離開伺服器。"
+
+#: obsidion/core/core_commands.py:171
+msgid "To leave a server, just type its number."
+msgstr "如果要離開伺服器，請鍵入其號碼。"
+
+#: obsidion/core/core_commands.py:186
+msgid "Are you sure you want me to leave {}? (yes/no)"
+msgstr "您確定要讓我離開 {}？ （是 / 否）"
+
+#: obsidion/core/core_commands.py:195
+msgid "Response timed out."
+msgstr "回應逾時。"
+
+#: obsidion/core/core_commands.py:199
+msgid "Alright. Bye :wave:"
+msgstr "好吧 再見 :wave:"
+
+#: obsidion/core/core_commands.py:200
+msgid "Leaving guild '{}'"
+msgstr "正在離開公會 '{}'"
+
+#: obsidion/core/core_commands.py:203
+msgid "Alright, I'll stay then. :)"
+msgstr "好吧，那我留下來 ：）"
+
+#: obsidion/core/core_commands.py:213
+#, docstring
+msgid "\n"
+"        Get info about Obsidion's licenses.\n"
+"        "
+msgstr "\n"
+"        取得 Obsidion 授權的相關資訊。\n"
+"        "
+
+#: obsidion/core/core_commands.py:218
+msgid "This bot is an instance of the Obsidion Discord Bot.\n"
+"Obsidion is an open source application made available to the public and licensed under the GNU AGPL v3. The full text of this license is available to you at <https://github.com/Obsidion-dev/Obsidion/blob/main/LICENSE>"
+msgstr "這個機器人是 Obsidion Discord Bot.\n"
+"Obsidion 的一個實例，它是一個開放原始碼的應用程式，供大眾使用，並授權在 GNU AGPL 第 3 版下授權。 您可以在 <https://github.com/Obsidion-dev/Obsidion/blob/main/LICENSE> 向您提供此授權的全文"
+
+#: obsidion/core/core_commands.py:244
+#, docstring
+msgid "Displays my full source code or for a specific command.\n\n"
+"        To display the source code of a subcommand you can separate it by\n"
+"        periods, e.g. account.link for the link subcommand of the account command\n"
+"        or by spaces.\n"
+"        "
+msgstr "顯示我的完整來源碼或特定指令。\n\n"
+"        若要顯示次指令的原始碼，您可以將它分隔為\n"
+"        期間，例如帳戶指令\n"
+"        之鏈結次指令的 account.link 或以空格區隔。\n"
+"        "
+
+#: obsidion/core/core_commands.py:299
+#, docstring
+msgid "Shuts down the bot."
+msgstr "把機器人放下"
+
+#: obsidion/core/core_commands.py:310
+#, docstring
+msgid "Attempts to restart Obsidion.\n\n"
+"        Makes Obsidion quit with exit code 26.\n"
+"        The restart is not guaranteed: it must be dealt\n"
+"        with by the process manager in use."
+msgstr "嘗試重新啟動 Obsidion.\n\n"
+"        讓 Obsidion 退出，結束碼 26。\n"
+"        未保證重新啟動：必須由處理程序管理程式在使用中處理\n"
+"。"
+
+#: obsidion/core/core_commands.py:323
+#, docstring
+msgid "Sends to the owner the last command exception that has occurred.\n\n"
+"        If public (yes is specified), it will be sent to the chat instead."
+msgstr "傳送給擁有者，發生了最後一個指令異常狀況。\n\n"
+"        如果公開（已指定是），則會改為傳送至會談。"
+
+#: obsidion/core/core_commands.py:337
+msgid "I couldn't send the traceback message to you in DM. Either you blocked me or you disabled DMs in this server."
+msgstr "在 DM中，我無法將追溯訊息傳送給您。 在此伺服器中，您已封鎖我或您已停用的 DMs 。"
+
+#: obsidion/core/core_commands.py:344
+msgid "No exception has occurred yet."
+msgstr "尚未發生異常狀況。"
+
+#: obsidion/core/dev_commands.py:34
+#, docstring
+msgid "Development Commands."
+msgstr "開發指令。"
+
+#: obsidion/core/dev_commands.py:45
+#, docstring
+msgid "Loads a module."
+msgstr "載入模組。"
+
+#: obsidion/core/dev_commands.py:52
+msgid "The cog `{module}` has been succesfully loaded"
+msgstr "已順利載入 cg `{module}`"
+
+#: obsidion/core/dev_commands.py:60
+#, docstring
+msgid "Unloads a module."
+msgstr "卸載模組。"
+
+#: obsidion/core/dev_commands.py:67
+msgid "The cog `{module}` has been succesfully unloaded"
+msgstr "已順利卸載 cogg `{module}`"
+
+#: obsidion/core/dev_commands.py:75
+#, docstring
+msgid "Reloads a module."
+msgstr "重新載入模組。"
+
+#: obsidion/core/dev_commands.py:82
+msgid "The cog `{module}` has been succesfully reloaded"
+msgstr "已順利重新載入 cg `{module}`"
+
+#: obsidion/core/dev_commands.py:141
+#, docstring
+msgid "Evaluate a statement of python code.\n\n"
+"        The bot will always respond with the return value of the code.\n"
+"        If the return value of the code is a coroutine, it will be awaited,\n"
+"        and the result of that will be the bot's response.\n\n"
+"        Note: Only one statement may be evaluated. Using certain restricted\n"
+"        keywords, e.g. yield, will result in a syntax error. For multiple\n"
+"        lines or asynchronous code, see [p]repl or [p]eval.\n\n"
+"        Environment Variables:\n"
+"            ctx      - command invocation context\n"
+"            bot      - bot object\n"
+"            channel  - the current channel object\n"
+"            author   - command author's member object\n"
+"            message  - the command's message object\n"
+"            discord  - discord.py library\n"
+"            commands - discord.ext.commands\n"
+"            _        - The result of the last dev command.\n"
+"        "
+msgstr ""
+
+#: obsidion/core/dev_commands.py:196
+#, docstring
+msgid "Execute asynchronous code.\n\n"
+"        This command wraps code into the body of an async function and then\n"
+"        calls and awaits it. The bot will respond with anything printed to\n"
+"        stdout, as well as the return value of the function.\n\n"
+"        The code can be within a codeblock, inline code or neither, as long\n"
+"        as they are not mixed and they are formatted correctly.\n\n"
+"        Environment Variables:\n"
+"            ctx      - command invocation context\n"
+"            bot      - bot object\n"
+"            channel  - the current channel object\n"
+"            author   - command author's member object\n"
+"            message  - the command's message object\n"
+"            discord  - discord.py library\n"
+"            commands - discord.ext.commands\n"
+"            _        - The result of the last dev command.\n"
+"        "
+msgstr ""
+
+#: obsidion/core/dev_commands.py:263
+#, docstring
+msgid "Open an interactive REPL.\n\n"
+"        The REPL will only recognise code as messages which start with a\n"
+"        backtick. This includes codeblocks, and as such multiple lines can be\n"
+"        evaluated.\n"
+"        "
+msgstr "開啟互動式 REPL。\n\n"
+"        REPL 只會將程式碼識別為以\n"
+"        回應開頭的訊息。 這包括程式碼鎖定，且如此多行可以評估為\n"
+"        。\n"
+"        "
+
+#: obsidion/core/dev_commands.py:283
+msgid "Already running a REPL session in this channel. Exit it with `quit`."
+msgstr "已在此通道中執行 REPL 階段作業。 請以 `quit` 結束它。"
+
+#: obsidion/core/dev_commands.py:290
+msgid "Already running a REPL session in this channel. Resume the REPL with `{}repl resume`."
+msgstr "已在此通道中執行 REPL 階段作業。 以 `{}repl resume ` 回復 REPL 。"
+
+#: obsidion/core/dev_commands.py:299
+msgid "Enter code to execute or evaluate. `exit()` or `quit` to exit. `{}repl pause` to pause."
+msgstr "輸入用來執行或評估的程式碼。 `exit（）` 或 `quit` 將結束。 `{}repl pause ` to pause."
+
+#: obsidion/core/dev_commands.py:376
+#, docstring
+msgid "Pauses/resumes the REPL running in the current channel"
+msgstr "暫停/回復正在現行通道中執行的 REPL"
+
+#: obsidion/core/dev_commands.py:379
+msgid "There is no currently running REPL session in this channel."
+msgstr "在此通道中目前沒有執行中的 REPL 階段作業。"
+
+#: obsidion/core/dev_commands.py:388
+msgid "The REPL session in this channel has been resumed."
+msgstr "此通道中的 REPL 階段作業已回復。"
+
+#: obsidion/core/dev_commands.py:390
+msgid "The REPL session in this channel is now paused."
+msgstr "此通道中的 REPL 階段作業現在已暫停。"
+
+#: obsidion/core/dev_commands.py:397
+#, docstring
+msgid "Mock another user invoking a command.\n\n"
+"        The prefix must not be entered.\n"
+"        "
+msgstr "模擬另一個使用者呼叫指令。\n\n"
+"        不能輸入字首。\n"
+"        "
+
+#: obsidion/core/dev_commands.py:412
+#, docstring
+msgid "Dispatch a message event as if it were sent by a different user.\n\n"
+"        Only reads the raw content of the message. Attachments, embeds etc. are\n"
+"        ignored.\n"
+"        "
+msgstr "分派訊息事件，就像它是由不同的使用者傳送一樣。\n\n"
+"        僅讀取訊息的原始內容。 附件、em牀等為\n"
+"        忽略。\n"
+"        "
+
+#: obsidion/core/events.py:27
+#, docstring
+msgid "Important bot events."
+msgstr "重要的機器人活動"
+
+#: obsidion/core/events.py:92
+msgid "Sorry, it looks like you don't have the **{fmt}** permissions I need to do that."
+msgstr "很抱歉，看起來您沒有 **{fmt}** 許可權我需要執行此權限。"
+
+#: obsidion/core/events.py:98
+msgid "Sorry, it looks like you don't have the **{fmt}** permission I need to do that."
+msgstr "很抱歉，看起來您沒有 **{fmt}** 許可權我需要去做的。"
+
+#: obsidion/core/events.py:119
+msgid "`{user_input}` is not a valid value for `{command}`"
+msgstr "`{user_input}` 不是 `{command} ` 的有效值"
+
+#: obsidion/core/events.py:136
+msgid "I require the {permission} permission to execute that command."
+msgstr "我需要 {permission} 許可權來執行這個指令。"
+
+#: obsidion/core/events.py:140
+msgid "I require {permission_list} permissions to execute that command."
+msgstr "我需要 {permission_list} 許可權來執行該指令。"
+
+#: obsidion/core/events.py:157
+msgid "This command is on cooldown. Try again in {delay}."
+msgstr "此指令已冷卻。 請在 {delay} 重試。"
+
+#: obsidion/core/events.py:161
+msgid "This command is on cooldown. Try again in 1 second."
+msgstr "此指令已冷卻。 請在 1 秒內重試。"
+
+#: obsidion/core/events.py:166
+msgid "Too many people using this command. It can only be used {number} times concurrently."
+msgstr "使用此指令的人員太多。 它只能同時使用 {number} 次。"
+
+#: obsidion/core/events.py:171
+msgid "Too many people using this command. It can only be used once concurrently."
+msgstr "使用此指令的人員太多。 它只能同時使用一次。"
+
+#: obsidion/core/events.py:177
+msgid "That command is still completing, it can only be used {number} times per {type} concurrently."
+msgstr "該指令仍在完成，只能在每 {type} 的同時使用 {number} 次。"
+
+#: obsidion/core/events.py:182
+msgid "That command is still completing, it can only be used once per {type} concurrently."
+msgstr "該指令仍在完成，僅可同時使用一次 {type} 一次。"
+
+#: obsidion/core/events.py:188
+msgid "Too many people using this command. It can only be used {number} times per {type} concurrently."
+msgstr "使用此指令的人員太多。 每 {type} 之間，只能同時使用 {number} 次。"
+
+#: obsidion/core/events.py:193
+msgid "Too many people using this command. It can only be used once per {type} concurrently."
+msgstr "使用此指令的人員太多。 每 {type} 同時使用一次只能使用一次。"
+
+#: obsidion/core/events.py:205
+msgid "The user does not exist, please check wether the username is correct."
+msgstr "使用者不存在，請檢查使用者名稱是否正確。"
+
+#: obsidion/core/events.py:215
+msgid "Error in command '{command}'. It has been recorded and should be fixed soon."
+msgstr "指令中發生錯誤 '{command}'。 它已經被記錄了，應該很快就會修好。"
+

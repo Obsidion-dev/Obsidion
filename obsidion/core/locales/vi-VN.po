@@ -1,0 +1,348 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: obsidion\n"
+"POT-Creation-Date: 2021-04-28 00:01+1200\n"
+"PO-Revision-Date: 2021-04-27 12:41\n"
+"Last-Translator: \n"
+"Language-Team: Vietnamese\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: obsidion\n"
+"X-Crowdin-Project-ID: 437658\n"
+"X-Crowdin-Language: vi\n"
+"X-Crowdin-File: /reformat/core/locales/messages.pot\n"
+"X-Crowdin-File-ID: 24\n"
+"Language: vi_VN\n"
+
+#: obsidion/core/core_commands.py:38
+#, docstring
+msgid "Commands related to core functions."
+msgstr "Các lệnh liên quan đến các hàm lõi."
+
+#: obsidion/core/core_commands.py:46
+#, docstring
+msgid "Pong."
+msgstr "Pong."
+
+#: obsidion/core/core_commands.py:47
+msgid "Pong! ({latency}ms)"
+msgstr "Pong! ({latency}ms)"
+
+#: obsidion/core/core_commands.py:57
+#, docstring
+msgid "Shows info about Obsidion."
+msgstr "Hiển thị thông tin về Obsidion."
+
+#: obsidion/core/core_commands.py:77
+msgid "This bot is an instance of [Obsidion, an open source Discord bot]({}) created by [Darkflame72]({}) and [improved by many]({}).\n\n"
+"Obsidion is backed by a passionate community who contributes and creates content for everyone to enjoy. [Join us today]({}) and help us improve!\n\n"
+"(c) Obsidion-dev"
+msgstr ""
+
+#: obsidion/core/core_commands.py:94
+msgid "Bringing joy since the 2nd of April 2020 (over {} days ago!)"
+msgstr "Mang lại niềm vui kể từ ngày 2 tháng 4 năm 2020 (hơn {} ngày trước!)"
+
+#: obsidion/core/core_commands.py:108
+#, docstring
+msgid "Shows Obsidion's uptime."
+msgstr "Đó là thời khắc của Obsidion."
+
+#: obsidion/core/core_commands.py:111
+msgid "Less than one second"
+msgstr "Ít hơn một giây"
+
+#: obsidion/core/core_commands.py:113
+msgid "Been up for: **{time_quantity}** (since {timestamp} UTC)"
+msgstr ""
+
+#: obsidion/core/core_commands.py:126
+#, docstring
+msgid "Invite the bot to your server."
+msgstr "Mời bot đến máy chủ của bạn."
+
+#: obsidion/core/core_commands.py:128
+msgid "You can invite {name} to your Discord server by [clicking here]({invite})."
+msgstr ""
+
+#: obsidion/core/core_commands.py:147
+#, docstring
+msgid "Leaves the current server."
+msgstr "Rời khỏi máy chủ hiện thời."
+
+#: obsidion/core/core_commands.py:149
+msgid "Are you sure you want me to leave the current server? (yes/no)"
+msgstr "Bạn có chắc là muốn tôi để lại máy chủ hiện tại không? (có/không)"
+
+#: obsidion/core/core_commands.py:158
+#, docstring
+msgid "Lists and allows Obsidion to leave servers."
+msgstr "Danh sách và cho phép Obsidion rời khỏi máy chủ."
+
+#: obsidion/core/core_commands.py:171
+msgid "To leave a server, just type its number."
+msgstr "Để rời khỏi máy chủ, hãy gõ số của nó."
+
+#: obsidion/core/core_commands.py:186
+msgid "Are you sure you want me to leave {}? (yes/no)"
+msgstr "Anh có chắc là muốn tôi rời khỏi đây không? (có/không)"
+
+#: obsidion/core/core_commands.py:195
+msgid "Response timed out."
+msgstr "Hết thời gian phản hồi."
+
+#: obsidion/core/core_commands.py:199
+msgid "Alright. Bye :wave:"
+msgstr "Được rồi. Bye :wave:"
+
+#: obsidion/core/core_commands.py:200
+msgid "Leaving guild '{}'"
+msgstr "Để lại guild '{}'"
+
+#: obsidion/core/core_commands.py:203
+msgid "Alright, I'll stay then. :)"
+msgstr "Được rồi, tôi sẽ ở lại. :)"
+
+#: obsidion/core/core_commands.py:213
+#, docstring
+msgid "\n"
+"        Get info about Obsidion's licenses.\n"
+"        "
+msgstr ""
+
+#: obsidion/core/core_commands.py:218
+msgid "This bot is an instance of the Obsidion Discord Bot.\n"
+"Obsidion is an open source application made available to the public and licensed under the GNU AGPL v3. The full text of this license is available to you at <https://github.com/Obsidion-dev/Obsidion/blob/main/LICENSE>"
+msgstr ""
+
+#: obsidion/core/core_commands.py:244
+#, docstring
+msgid "Displays my full source code or for a specific command.\n\n"
+"        To display the source code of a subcommand you can separate it by\n"
+"        periods, e.g. account.link for the link subcommand of the account command\n"
+"        or by spaces.\n"
+"        "
+msgstr ""
+
+#: obsidion/core/core_commands.py:299
+#, docstring
+msgid "Shuts down the bot."
+msgstr "Tắt robot đi."
+
+#: obsidion/core/core_commands.py:310
+#, docstring
+msgid "Attempts to restart Obsidion.\n\n"
+"        Makes Obsidion quit with exit code 26.\n"
+"        The restart is not guaranteed: it must be dealt\n"
+"        with by the process manager in use."
+msgstr ""
+
+#: obsidion/core/core_commands.py:323
+#, docstring
+msgid "Sends to the owner the last command exception that has occurred.\n\n"
+"        If public (yes is specified), it will be sent to the chat instead."
+msgstr "Gửi cho chủ sở hữu ngoại lệ lệnh cuối cùng đã xảy ra.\n\n"
+"        Nếu công chúng (có được chỉ định), nó sẽ được gửi đến trò chuyện thay thế."
+
+#: obsidion/core/core_commands.py:337
+msgid "I couldn't send the traceback message to you in DM. Either you blocked me or you disabled DMs in this server."
+msgstr "Tôi không thể gửi tin nhắn theo dõi cho cô ở DM. Hoặc bạn đã chặn tôi hoặc tắt các DMs trong máy chủ này."
+
+#: obsidion/core/core_commands.py:344
+msgid "No exception has occurred yet."
+msgstr "Chưa có ngoại lệ nào xảy ra."
+
+#: obsidion/core/dev_commands.py:34
+#, docstring
+msgid "Development Commands."
+msgstr "Lệnh phát triển."
+
+#: obsidion/core/dev_commands.py:45
+#, docstring
+msgid "Loads a module."
+msgstr "Tải một mô đun."
+
+#: obsidion/core/dev_commands.py:52
+msgid "The cog `{module}` has been succesfully loaded"
+msgstr "Cog `{module}` đã được nạp đầy đủ"
+
+#: obsidion/core/dev_commands.py:60
+#, docstring
+msgid "Unloads a module."
+msgstr "Không tải mô-đun."
+
+#: obsidion/core/dev_commands.py:67
+msgid "The cog `{module}` has been succesfully unloaded"
+msgstr "Cog `{module}` đã được tiếp nối không tải"
+
+#: obsidion/core/dev_commands.py:75
+#, docstring
+msgid "Reloads a module."
+msgstr "Nạp lại mô-đun."
+
+#: obsidion/core/dev_commands.py:82
+msgid "The cog `{module}` has been succesfully reloaded"
+msgstr "Cog `{module}` đã được tải lại đầy đủ"
+
+#: obsidion/core/dev_commands.py:141
+#, docstring
+msgid "Evaluate a statement of python code.\n\n"
+"        The bot will always respond with the return value of the code.\n"
+"        If the return value of the code is a coroutine, it will be awaited,\n"
+"        and the result of that will be the bot's response.\n\n"
+"        Note: Only one statement may be evaluated. Using certain restricted\n"
+"        keywords, e.g. yield, will result in a syntax error. For multiple\n"
+"        lines or asynchronous code, see [p]repl or [p]eval.\n\n"
+"        Environment Variables:\n"
+"            ctx      - command invocation context\n"
+"            bot      - bot object\n"
+"            channel  - the current channel object\n"
+"            author   - command author's member object\n"
+"            message  - the command's message object\n"
+"            discord  - discord.py library\n"
+"            commands - discord.ext.commands\n"
+"            _        - The result of the last dev command.\n"
+"        "
+msgstr ""
+
+#: obsidion/core/dev_commands.py:196
+#, docstring
+msgid "Execute asynchronous code.\n\n"
+"        This command wraps code into the body of an async function and then\n"
+"        calls and awaits it. The bot will respond with anything printed to\n"
+"        stdout, as well as the return value of the function.\n\n"
+"        The code can be within a codeblock, inline code or neither, as long\n"
+"        as they are not mixed and they are formatted correctly.\n\n"
+"        Environment Variables:\n"
+"            ctx      - command invocation context\n"
+"            bot      - bot object\n"
+"            channel  - the current channel object\n"
+"            author   - command author's member object\n"
+"            message  - the command's message object\n"
+"            discord  - discord.py library\n"
+"            commands - discord.ext.commands\n"
+"            _        - The result of the last dev command.\n"
+"        "
+msgstr ""
+
+#: obsidion/core/dev_commands.py:263
+#, docstring
+msgid "Open an interactive REPL.\n\n"
+"        The REPL will only recognise code as messages which start with a\n"
+"        backtick. This includes codeblocks, and as such multiple lines can be\n"
+"        evaluated.\n"
+"        "
+msgstr ""
+
+#: obsidion/core/dev_commands.py:283
+msgid "Already running a REPL session in this channel. Exit it with `quit`."
+msgstr "Đã chạy phiên chạy REPL trong kênh này. Thoát khỏi nó với 'bỏ'."
+
+#: obsidion/core/dev_commands.py:290
+msgid "Already running a REPL session in this channel. Resume the REPL with `{}repl resume`."
+msgstr "Đã chạy phiên chạy REPL trong kênh này. Tiếp tục lại REPL với ` {} repl resume `."
+
+#: obsidion/core/dev_commands.py:299
+msgid "Enter code to execute or evaluate. `exit()` or `quit` to exit. `{}repl pause` to pause."
+msgstr "Nhập mã để thực thi hoặc đánh giá. ` thoát () ` hoặc ` thoát ` để thoát. ` {} repl pause ` to pause."
+
+#: obsidion/core/dev_commands.py:376
+#, docstring
+msgid "Pauses/resumes the REPL running in the current channel"
+msgstr "Tạm dừng/tiếp tục chạy REPL trong kênh hiện tại"
+
+#: obsidion/core/dev_commands.py:379
+msgid "There is no currently running REPL session in this channel."
+msgstr "Hiện không có phiên chạy REPL trong kênh này."
+
+#: obsidion/core/dev_commands.py:388
+msgid "The REPL session in this channel has been resumed."
+msgstr "Phiên chạy REPL trong kênh này đã được nối lại."
+
+#: obsidion/core/dev_commands.py:390
+msgid "The REPL session in this channel is now paused."
+msgstr "Phiên chạy REPL trong kênh này hiện đang tạm dừng."
+
+#: obsidion/core/dev_commands.py:397
+#, docstring
+msgid "Mock another user invoking a command.\n\n"
+"        The prefix must not be entered.\n"
+"        "
+msgstr ""
+
+#: obsidion/core/dev_commands.py:412
+#, docstring
+msgid "Dispatch a message event as if it were sent by a different user.\n\n"
+"        Only reads the raw content of the message. Attachments, embeds etc. are\n"
+"        ignored.\n"
+"        "
+msgstr ""
+
+#: obsidion/core/events.py:27
+#, docstring
+msgid "Important bot events."
+msgstr "Sự kiện robot quan trọng."
+
+#: obsidion/core/events.py:92
+msgid "Sorry, it looks like you don't have the **{fmt}** permissions I need to do that."
+msgstr "Xin lỗi, có vẻ như anh không có quyền hạn{fmt}mà tôi cần phải làm việc đó."
+
+#: obsidion/core/events.py:98
+msgid "Sorry, it looks like you don't have the **{fmt}** permission I need to do that."
+msgstr "Xin lỗi, có vẻ như anh không có sự cho phép của **{fmt}** tôi cần làm điều đó."
+
+#: obsidion/core/events.py:119
+msgid "`{user_input}` is not a valid value for `{command}`"
+msgstr ""
+
+#: obsidion/core/events.py:136
+msgid "I require the {permission} permission to execute that command."
+msgstr ""
+
+#: obsidion/core/events.py:140
+msgid "I require {permission_list} permissions to execute that command."
+msgstr "Tôi cần {permission_list} phép để thực hiện lệnh đó."
+
+#: obsidion/core/events.py:157
+msgid "This command is on cooldown. Try again in {delay}."
+msgstr "Lệnh này là bình tĩnh. Thử lại trong {delay}."
+
+#: obsidion/core/events.py:161
+msgid "This command is on cooldown. Try again in 1 second."
+msgstr "Lệnh này là bình tĩnh. Thử lại trong 1 giây nữa."
+
+#: obsidion/core/events.py:166
+msgid "Too many people using this command. It can only be used {number} times concurrently."
+msgstr "Quá nhiều người dùng lệnh này. Nó chỉ có thể sử dụng đồng thời {number} lần."
+
+#: obsidion/core/events.py:171
+msgid "Too many people using this command. It can only be used once concurrently."
+msgstr "Quá nhiều người dùng lệnh này. Nó chỉ có thể được sử dụng một lần đồng thời."
+
+#: obsidion/core/events.py:177
+msgid "That command is still completing, it can only be used {number} times per {type} concurrently."
+msgstr ""
+
+#: obsidion/core/events.py:182
+msgid "That command is still completing, it can only be used once per {type} concurrently."
+msgstr "Lệnh này vẫn đang hoàn thành, nó chỉ có thể được sử dụng một lần trên {type} đồng thời."
+
+#: obsidion/core/events.py:188
+msgid "Too many people using this command. It can only be used {number} times per {type} concurrently."
+msgstr ""
+
+#: obsidion/core/events.py:193
+msgid "Too many people using this command. It can only be used once per {type} concurrently."
+msgstr "Quá nhiều người dùng lệnh này. Nó chỉ có thể được sử dụng một lần trên {type} đồng thời."
+
+#: obsidion/core/events.py:205
+msgid "The user does not exist, please check wether the username is correct."
+msgstr "Người dùng không tồn tại, vui lòng kiểm tra xem tên người dùng là đúng."
+
+#: obsidion/core/events.py:215
+msgid "Error in command '{command}'. It has been recorded and should be fixed soon."
+msgstr "Lỗi trong lệnh '{command}'. Nó đã được ghi lại và cần được cố định sớm."
+

@@ -1,0 +1,79 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: obsidion\n"
+"POT-Creation-Date: 2021-04-28 00:02+1200\n"
+"PO-Revision-Date: 2021-04-27 12:41\n"
+"Last-Translator: \n"
+"Language-Team: Chinese Traditional\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: obsidion\n"
+"X-Crowdin-Project-ID: 437658\n"
+"X-Crowdin-Language: zh-TW\n"
+"X-Crowdin-File: /reformat/cogs/images/locales/messages.pot\n"
+"X-Crowdin-File-ID: 36\n"
+"Language: zh_TW\n"
+
+#: obsidion/cogs/images/images.py:36
+#, docstring
+msgid "Create your very own custom Minecraft achievements."
+msgstr "建立您專屬的自訂 Minecraft 成就。"
+
+#: obsidion/cogs/images/images.py:46
+msgid "Obsidion Advancement Generator"
+msgstr "Obsidion 提高產生器"
+
+#: obsidion/cogs/images/images.py:70
+msgid "Obsidion Sign Generator"
+msgstr "Obsidion 符號產生器"
+
+#: obsidion/cogs/images/images.py:83
+#, docstring
+msgid "Renders a Minecraft players face."
+msgstr "讓我的選手面對的是我的世界"
+
+#: obsidion/cogs/images/images.py:106
+#, docstring
+msgid "Renders a Minecraft players skull."
+msgstr "放人的是我的世界選手的頭骨"
+
+#: obsidion/cogs/images/images.py:129
+#, docstring
+msgid "Renders a Minecraft players skin."
+msgstr "Renders 是 Minecraft 球員的皮膚。"
+
+#: obsidion/cogs/images/images.py:152
+#, docstring
+msgid "Renders a Minecraft players bust."
+msgstr "讓我的 < 我的世界 > 球員破產"
+
+#: obsidion/cogs/images/images.py:178
+#, docstring
+msgid "Renders a Minecraft players skin in 6 different ways.\n\n"
+"        You can choose from these 6 render types: face,\n"
+"        front, full, head, bust & skin.\n"
+"        "
+msgstr "以 6 種不同的方式呈現 Minecraft 玩家肌膚。\n\n"
+"        您可以從這 6 個呈現類型中選擇：臉部，\n"
+"        正面，完整，頭部，胸圍與皮膚。\n"
+"        "
+
+#: obsidion/cogs/images/images.py:187
+msgid "Please supply a render type. Your options are:\n"
+" `face`, `front`, `full`, `head`, `bust`, `skin` \n"
+" Type: ?render <render type> <username>"
+msgstr "請提供呈現類型。 您的選項如下：\n"
+" `bad`， `front`， `full`， `bust `， `bust`， `肌膚` \n"
+" 類型：？render <render type> <username>"
+
+#: obsidion/cogs/images/images.py:198
+msgid "Here is: `{username}`'s {render_type}! \n"
+" **[DOWNLOAD](https://visage.surgeplay.com/{render_type}/512/{uuid}/512/{uuid})\n"
+"[RAW](https://visage.surgeplay.com/{render_type}/512/{uuid})**"
+msgstr "這裡是： `{username}` 的 {render_type}！ \n"
+" **[DOWNLOAD]（https：//visage.surgeplay.com/{render_type}/512/{uuid}/512/{uuid}）\n"
+"[RAW]（https：//visage.surgeplay.com/{render_type}/512/{uuid}）**"
+

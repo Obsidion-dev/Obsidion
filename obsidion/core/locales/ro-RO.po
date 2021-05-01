@@ -1,0 +1,384 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: obsidion\n"
+"POT-Creation-Date: 2021-04-28 00:01+1200\n"
+"PO-Revision-Date: 2021-04-27 12:34\n"
+"Last-Translator: \n"
+"Language-Team: Romanian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100>0 && n%100<20)) ? 1 : 2);\n"
+"X-Crowdin-Project: obsidion\n"
+"X-Crowdin-Project-ID: 437658\n"
+"X-Crowdin-Language: ro\n"
+"X-Crowdin-File: /reformat/core/locales/messages.pot\n"
+"X-Crowdin-File-ID: 24\n"
+"Language: ro_RO\n"
+
+#: obsidion/core/core_commands.py:38
+#, docstring
+msgid "Commands related to core functions."
+msgstr "Comenzi legate de funcţiile nucleu."
+
+#: obsidion/core/core_commands.py:46
+#, docstring
+msgid "Pong."
+msgstr "Pong."
+
+#: obsidion/core/core_commands.py:47
+msgid "Pong! ({latency}ms)"
+msgstr "Pong! ({latency}ms)"
+
+#: obsidion/core/core_commands.py:57
+#, docstring
+msgid "Shows info about Obsidion."
+msgstr "Afişează informaţii despre Obsidion."
+
+#: obsidion/core/core_commands.py:77
+msgid "This bot is an instance of [Obsidion, an open source Discord bot]({}) created by [Darkflame72]({}) and [improved by many]({}).\n\n"
+"Obsidion is backed by a passionate community who contributes and creates content for everyone to enjoy. [Join us today]({}) and help us improve!\n\n"
+"(c) Obsidion-dev"
+msgstr "Acest bot este o instanţă a [ Obsidion, un bot de eliminare sursă deschisă] ({ }) creat de [Darkflame72]({ }) şi [ îmbunătăţit de mulţi] ({ }).\n\n"
+"Obsidion este susţinut de o comunitate pasionată care contribuie şi creează conţinut pentru ca toată lumea să se bucure. [ Alăturaţi-vă astăzi] ({ }) şi ajutaţi-ne să ne îmbunătăţim!\n\n"
+"(c) Obsidion-dev"
+
+#: obsidion/core/core_commands.py:94
+msgid "Bringing joy since the 2nd of April 2020 (over {} days ago!)"
+msgstr "Aducând bucurie încă din data de 2 aprilie 2020 (peste { } zile în urmă!)"
+
+#: obsidion/core/core_commands.py:108
+#, docstring
+msgid "Shows Obsidion's uptime."
+msgstr "Arată timpul lui Obsidion."
+
+#: obsidion/core/core_commands.py:111
+msgid "Less than one second"
+msgstr "Mai puţin de o secundă"
+
+#: obsidion/core/core_commands.py:113
+msgid "Been up for: **{time_quantity}** (since {timestamp} UTC)"
+msgstr "S-a ridicat pentru: **{time_quantity}** (de la {timestamp} UTC)"
+
+#: obsidion/core/core_commands.py:126
+#, docstring
+msgid "Invite the bot to your server."
+msgstr "Invitare bot la serverul dumneavoastră."
+
+#: obsidion/core/core_commands.py:128
+msgid "You can invite {name} to your Discord server by [clicking here]({invite})."
+msgstr "Puteţi invita {name} la serverul dumneavoastră de eliminare prin [ clic aici] ({invite})."
+
+#: obsidion/core/core_commands.py:147
+#, docstring
+msgid "Leaves the current server."
+msgstr "Părăseşte serverul curent."
+
+#: obsidion/core/core_commands.py:149
+msgid "Are you sure you want me to leave the current server? (yes/no)"
+msgstr "Sunteţi sigur că vreţi să părăsiţi serverul curent? (da/nu)"
+
+#: obsidion/core/core_commands.py:158
+#, docstring
+msgid "Lists and allows Obsidion to leave servers."
+msgstr "Listează şi permite Obsidion să părăsească serverele."
+
+#: obsidion/core/core_commands.py:171
+msgid "To leave a server, just type its number."
+msgstr "Pentru a părăsi un server, doar tastaţi numărul său."
+
+#: obsidion/core/core_commands.py:186
+msgid "Are you sure you want me to leave {}? (yes/no)"
+msgstr "Sunteţi sigur că vreţi să părăsiţi { }? (da/nu)"
+
+#: obsidion/core/core_commands.py:195
+msgid "Response timed out."
+msgstr "Răspunsul a expirat."
+
+#: obsidion/core/core_commands.py:199
+msgid "Alright. Bye :wave:"
+msgstr "Bine. Bye :wave:"
+
+#: obsidion/core/core_commands.py:200
+msgid "Leaving guild '{}'"
+msgstr "Părăsire bresd '{ }'"
+
+#: obsidion/core/core_commands.py:203
+msgid "Alright, I'll stay then. :)"
+msgstr "În regulă, voi rămâne atunci. :)"
+
+#: obsidion/core/core_commands.py:213
+#, docstring
+msgid "\n"
+"        Get info about Obsidion's licenses.\n"
+"        "
+msgstr "\n"
+"        Obţine informaţii despre licenţele lui Obsidion.\n"
+"        "
+
+#: obsidion/core/core_commands.py:218
+msgid "This bot is an instance of the Obsidion Discord Bot.\n"
+"Obsidion is an open source application made available to the public and licensed under the GNU AGPL v3. The full text of this license is available to you at <https://github.com/Obsidion-dev/Obsidion/blob/main/LICENSE>"
+msgstr "Acest bot este o instanţă a Obsidion Discordia Bot.\n"
+"Obsidion este o aplicaţie open source pusă la dispoziţia publicului şi licenţiată sub GNU AGPL v3. Textul integral al acestei licente este disponibil la dvs. la <https://github.com/Obsidion-dev/Obsidion/blob/main/LICENSE>"
+
+#: obsidion/core/core_commands.py:244
+#, docstring
+msgid "Displays my full source code or for a specific command.\n\n"
+"        To display the source code of a subcommand you can separate it by\n"
+"        periods, e.g. account.link for the link subcommand of the account command\n"
+"        or by spaces.\n"
+"        "
+msgstr "Afişează codul sursă complet sau pentru o anumită comandă.\n\n"
+"        Pentru a afişa codul sursă al unei subcomenzi, îl puteţi separa de\n"
+"        perioade, de ex. account.link pentru subcomanda de legătură a comenzii de cont\n"
+"        sau prin spaţii.\n"
+"        "
+
+#: obsidion/core/core_commands.py:299
+#, docstring
+msgid "Shuts down the bot."
+msgstr "Închide bot-ul."
+
+#: obsidion/core/core_commands.py:310
+#, docstring
+msgid "Attempts to restart Obsidion.\n\n"
+"        Makes Obsidion quit with exit code 26.\n"
+"        The restart is not guaranteed: it must be dealt\n"
+"        with by the process manager in use."
+msgstr "Încercările de a reporni Obsidion.\n\n"
+"        Face Obsidion să renunţe la codul de ieşire 26.\n"
+"        Repornirea nu este garantată: trebuie să fie tratată cu\n"
+"        cu managerul de proces în utilizare."
+
+#: obsidion/core/core_commands.py:323
+#, docstring
+msgid "Sends to the owner the last command exception that has occurred.\n\n"
+"        If public (yes is specified), it will be sent to the chat instead."
+msgstr "Trimite la proprietar ultima excepţie de comandă care a apărut.\n\n"
+"        Daca public (da este specificat), va fi trimis in schimb la chat."
+
+#: obsidion/core/core_commands.py:337
+msgid "I couldn't send the traceback message to you in DM. Either you blocked me or you disabled DMs in this server."
+msgstr "Nu am putut trimite mesajul de traceback la tine în DM. Fie m-aţi blocat, fie aţi dezactivat DMS în acest server."
+
+#: obsidion/core/core_commands.py:344
+msgid "No exception has occurred yet."
+msgstr "Nu s-a produs încă o excepţie."
+
+#: obsidion/core/dev_commands.py:34
+#, docstring
+msgid "Development Commands."
+msgstr "Comenzi de dezvoltare."
+
+#: obsidion/core/dev_commands.py:45
+#, docstring
+msgid "Loads a module."
+msgstr "Încarcă un modul."
+
+#: obsidion/core/dev_commands.py:52
+msgid "The cog `{module}` has been succesfully loaded"
+msgstr "Cog `{module}` a fost succinat încărcat"
+
+#: obsidion/core/dev_commands.py:60
+#, docstring
+msgid "Unloads a module."
+msgstr "Descarcă un modul."
+
+#: obsidion/core/dev_commands.py:67
+msgid "The cog `{module}` has been succesfully unloaded"
+msgstr "Cog `{module}` a fost succint descărcat"
+
+#: obsidion/core/dev_commands.py:75
+#, docstring
+msgid "Reloads a module."
+msgstr "Reîncarcă un modul."
+
+#: obsidion/core/dev_commands.py:82
+msgid "The cog `{module}` has been succesfully reloaded"
+msgstr "Cog `{module}` a fost succinat reîncărcat"
+
+#: obsidion/core/dev_commands.py:141
+#, docstring
+msgid "Evaluate a statement of python code.\n\n"
+"        The bot will always respond with the return value of the code.\n"
+"        If the return value of the code is a coroutine, it will be awaited,\n"
+"        and the result of that will be the bot's response.\n\n"
+"        Note: Only one statement may be evaluated. Using certain restricted\n"
+"        keywords, e.g. yield, will result in a syntax error. For multiple\n"
+"        lines or asynchronous code, see [p]repl or [p]eval.\n\n"
+"        Environment Variables:\n"
+"            ctx      - command invocation context\n"
+"            bot      - bot object\n"
+"            channel  - the current channel object\n"
+"            author   - command author's member object\n"
+"            message  - the command's message object\n"
+"            discord  - discord.py library\n"
+"            commands - discord.ext.commands\n"
+"            _        - The result of the last dev command.\n"
+"        "
+msgstr ""
+
+#: obsidion/core/dev_commands.py:196
+#, docstring
+msgid "Execute asynchronous code.\n\n"
+"        This command wraps code into the body of an async function and then\n"
+"        calls and awaits it. The bot will respond with anything printed to\n"
+"        stdout, as well as the return value of the function.\n\n"
+"        The code can be within a codeblock, inline code or neither, as long\n"
+"        as they are not mixed and they are formatted correctly.\n\n"
+"        Environment Variables:\n"
+"            ctx      - command invocation context\n"
+"            bot      - bot object\n"
+"            channel  - the current channel object\n"
+"            author   - command author's member object\n"
+"            message  - the command's message object\n"
+"            discord  - discord.py library\n"
+"            commands - discord.ext.commands\n"
+"            _        - The result of the last dev command.\n"
+"        "
+msgstr "Executare cod asincron.\n\n"
+"        Această comandă înfăşoară codul în corpul unei funcţii async şi apoi\n"
+"        apelează şi îl aşteaptă. Bot-ul va raspunde cu orice imprimat la\n"
+"        stdout, precum si la valoarea de retur a functiei.\n\n"
+"        Codul poate fi în interiorul unui cod de codeblock, inline sau nu, atâta timp de\n"
+"        , deoarece acestea nu sunt amestecate şi sunt formatate corect.\n\n"
+"        Variabile de mediu:\n"
+"            ctx-context de invocare context\n"
+"            bot-bot obiect\n"
+"            canal-obiectul de canal curent\n"
+"            autor-comandă autor obiect\n"
+"            mesaj-obiectul de mesaj al comenzii\n"
+"            discordie-discord.py biblioteca\n"
+"            comenzi-discord.ext.commands\n"
+"            _-Rezultatul ultimei comenzi dev.\n"
+"        "
+
+#: obsidion/core/dev_commands.py:263
+#, docstring
+msgid "Open an interactive REPL.\n\n"
+"        The REPL will only recognise code as messages which start with a\n"
+"        backtick. This includes codeblocks, and as such multiple lines can be\n"
+"        evaluated.\n"
+"        "
+msgstr "Deschideţi un REPL interactiv.\n\n"
+"        REPL va recunoaşte doar codul ca mesaje care încep cu un backbick de\n"
+"        . Aceasta include codeblocks şi, deoarece astfel de linii multiple pot fi de\n"
+"        evaluate.\n"
+"        "
+
+#: obsidion/core/dev_commands.py:283
+msgid "Already running a REPL session in this channel. Exit it with `quit`."
+msgstr "Rulează deja o sesiune REPL în acest canal. Ieşiţi din el cu \" quit `."
+
+#: obsidion/core/dev_commands.py:290
+msgid "Already running a REPL session in this channel. Resume the REPL with `{}repl resume`."
+msgstr "Rulează deja o sesiune REPL în acest canal. Reluaţi REPL cu ' { } repl ref `."
+
+#: obsidion/core/dev_commands.py:299
+msgid "Enter code to execute or evaluate. `exit()` or `quit` to exit. `{}repl pause` to pause."
+msgstr "Introduceţi codul pentru execuţie sau evaluare. \"exit ()\" sau \" quit ` to exit. ` { } repl pauză ` pentru a face pauză."
+
+#: obsidion/core/dev_commands.py:376
+#, docstring
+msgid "Pauses/resumes the REPL running in the current channel"
+msgstr "Întreruperi/reia REPL care rulează în canalul curent"
+
+#: obsidion/core/dev_commands.py:379
+msgid "There is no currently running REPL session in this channel."
+msgstr "Nu există nici o sesiune REPL care să ruleze în acest canal."
+
+#: obsidion/core/dev_commands.py:388
+msgid "The REPL session in this channel has been resumed."
+msgstr "Sesiunea REPL din acest canal a fost reluată."
+
+#: obsidion/core/dev_commands.py:390
+msgid "The REPL session in this channel is now paused."
+msgstr "Sesiunea REPL din acest canal este acum în pauză."
+
+#: obsidion/core/dev_commands.py:397
+#, docstring
+msgid "Mock another user invoking a command.\n\n"
+"        The prefix must not be entered.\n"
+"        "
+msgstr "Bate joc de un alt utilizator care invocă o comandă.\n\n"
+"        Prefixul nu trebuie să fie introdus.\n"
+"        "
+
+#: obsidion/core/dev_commands.py:412
+#, docstring
+msgid "Dispatch a message event as if it were sent by a different user.\n\n"
+"        Only reads the raw content of the message. Attachments, embeds etc. are\n"
+"        ignored.\n"
+"        "
+msgstr "Dispeceriţi un eveniment mesaj ca şi cum ar fi fost trimis de un utilizator diferit.\n\n"
+"        Doar citeşte conţinutul brut al mesajului. Ataşamentele, emapatele etc. sunt de\n"
+"        ignorate.\n"
+"        "
+
+#: obsidion/core/events.py:27
+#, docstring
+msgid "Important bot events."
+msgstr "Importante evenimente bot."
+
+#: obsidion/core/events.py:92
+msgid "Sorry, it looks like you don't have the **{fmt}** permissions I need to do that."
+msgstr "Ne pare rau, se pare ca nu ai permisiunile **{fmt}** eu trebuie sa fac asta."
+
+#: obsidion/core/events.py:98
+msgid "Sorry, it looks like you don't have the **{fmt}** permission I need to do that."
+msgstr "Ne pare rau, se pare ca nu ai **{fmt}** permisiunea de care am nevoie pentru a face asta."
+
+#: obsidion/core/events.py:119
+msgid "`{user_input}` is not a valid value for `{command}`"
+msgstr "`{user_input}` nu este o valoare validă pentru `{command}`"
+
+#: obsidion/core/events.py:136
+msgid "I require the {permission} permission to execute that command."
+msgstr "Am nevoie de permisiunea de {permission} pentru a executa acea comandă."
+
+#: obsidion/core/events.py:140
+msgid "I require {permission_list} permissions to execute that command."
+msgstr "Am nevoie de {permission_list} permisiuni pentru a executa acea comandă."
+
+#: obsidion/core/events.py:157
+msgid "This command is on cooldown. Try again in {delay}."
+msgstr "Această comandă este pe răcoare. Încercaţi din nou în {delay}."
+
+#: obsidion/core/events.py:161
+msgid "This command is on cooldown. Try again in 1 second."
+msgstr "Această comandă este pe răcoare. Încercaţi din nou în 1 secundă."
+
+#: obsidion/core/events.py:166
+msgid "Too many people using this command. It can only be used {number} times concurrently."
+msgstr "Prea mulţi oameni care folosesc această comandă. Poate fi folosit doar de {number} ori concurent."
+
+#: obsidion/core/events.py:171
+msgid "Too many people using this command. It can only be used once concurrently."
+msgstr "Prea mulţi oameni care folosesc această comandă. Acesta poate fi folosit doar o dată în mod concurent."
+
+#: obsidion/core/events.py:177
+msgid "That command is still completing, it can only be used {number} times per {type} concurrently."
+msgstr "Acea comandă este în continuare finalizată, poate fi folosită doar de {number} ori pe {type} în mod concurent."
+
+#: obsidion/core/events.py:182
+msgid "That command is still completing, it can only be used once per {type} concurrently."
+msgstr "Acea comandă este încă finalizată, poate fi folosită o singură dată la {type} în mod concurent."
+
+#: obsidion/core/events.py:188
+msgid "Too many people using this command. It can only be used {number} times per {type} concurrently."
+msgstr "Prea mulţi oameni care folosesc această comandă. Poate fi folosit doar de {number} ori pe {type} in mod concurent."
+
+#: obsidion/core/events.py:193
+msgid "Too many people using this command. It can only be used once per {type} concurrently."
+msgstr "Prea mulţi oameni care folosesc această comandă. Poate fi folosit doar o dată pe {type} în mod concurent."
+
+#: obsidion/core/events.py:205
+msgid "The user does not exist, please check wether the username is correct."
+msgstr "Utilizatorul nu există, vă rugăm să verificaţi dacă numele de utilizator este corect."
+
+#: obsidion/core/events.py:215
+msgid "Error in command '{command}'. It has been recorded and should be fixed soon."
+msgstr "Eroare la comandă '{command}'. Acesta a fost înregistrat și ar trebui să fie stabilit în curând."
+

@@ -1,0 +1,67 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: obsidion\n"
+"POT-Creation-Date: 2021-01-27 06:57+1300\n"
+"PO-Revision-Date: 2021-04-27 12:38\n"
+"Last-Translator: \n"
+"Language-Team: Greek\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: obsidion\n"
+"X-Crowdin-Project-ID: 437658\n"
+"X-Crowdin-Language: el\n"
+"X-Crowdin-File: /reformat/core/utils/locales/messages.pot\n"
+"X-Crowdin-File-ID: 28\n"
+"Language: el_GR\n"
+
+#: obsidion/core/utils/chat_formatting.py:511
+msgid "year"
+msgstr "' έτος"
+
+#: obsidion/core/utils/chat_formatting.py:511
+msgid "years"
+msgstr "έτη."
+
+#: obsidion/core/utils/chat_formatting.py:512
+msgid "month"
+msgstr "'"
+
+#: obsidion/core/utils/chat_formatting.py:512
+msgid "months"
+msgstr "-μήνες"
+
+#: obsidion/core/utils/chat_formatting.py:513
+msgid "day"
+msgstr "ημέρα:"
+
+#: obsidion/core/utils/chat_formatting.py:513
+msgid "days"
+msgstr "ημέρες."
+
+#: obsidion/core/utils/chat_formatting.py:514
+msgid "hour"
+msgstr "'"
+
+#: obsidion/core/utils/chat_formatting.py:514
+msgid "hours"
+msgstr "ώρες."
+
+#: obsidion/core/utils/chat_formatting.py:515
+msgid "minute"
+msgstr "λεπτό."
+
+#: obsidion/core/utils/chat_formatting.py:515
+msgid "minutes"
+msgstr "λεπτά."
+
+#: obsidion/core/utils/chat_formatting.py:516
+msgid "second"
+msgstr "-"
+
+#: obsidion/core/utils/chat_formatting.py:516
+msgid "seconds"
+msgstr "δευτερόλεπτα."
+

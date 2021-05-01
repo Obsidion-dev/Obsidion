@@ -1,0 +1,72 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: obsidion\n"
+"POT-Creation-Date: 2021-04-28 00:02+1200\n"
+"PO-Revision-Date: 2021-04-27 12:08\n"
+"Last-Translator: \n"
+"Language-Team: Serbian (Cyrillic)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Crowdin-Project: obsidion\n"
+"X-Crowdin-Project-ID: 437658\n"
+"X-Crowdin-Language: sr\n"
+"X-Crowdin-File: /reformat/cogs/images/locales/messages.pot\n"
+"X-Crowdin-File-ID: 36\n"
+"Language: sr_SP\n"
+
+#: obsidion/cogs/images/images.py:36
+#, docstring
+msgid "Create your very own custom Minecraft achievements."
+msgstr ""
+
+#: obsidion/cogs/images/images.py:46
+msgid "Obsidion Advancement Generator"
+msgstr ""
+
+#: obsidion/cogs/images/images.py:70
+msgid "Obsidion Sign Generator"
+msgstr ""
+
+#: obsidion/cogs/images/images.py:83
+#, docstring
+msgid "Renders a Minecraft players face."
+msgstr ""
+
+#: obsidion/cogs/images/images.py:106
+#, docstring
+msgid "Renders a Minecraft players skull."
+msgstr ""
+
+#: obsidion/cogs/images/images.py:129
+#, docstring
+msgid "Renders a Minecraft players skin."
+msgstr ""
+
+#: obsidion/cogs/images/images.py:152
+#, docstring
+msgid "Renders a Minecraft players bust."
+msgstr ""
+
+#: obsidion/cogs/images/images.py:178
+#, docstring
+msgid "Renders a Minecraft players skin in 6 different ways.\n\n"
+"        You can choose from these 6 render types: face,\n"
+"        front, full, head, bust & skin.\n"
+"        "
+msgstr ""
+
+#: obsidion/cogs/images/images.py:187
+msgid "Please supply a render type. Your options are:\n"
+" `face`, `front`, `full`, `head`, `bust`, `skin` \n"
+" Type: ?render <render type> <username>"
+msgstr ""
+
+#: obsidion/cogs/images/images.py:198
+msgid "Here is: `{username}`'s {render_type}! \n"
+" **[DOWNLOAD](https://visage.surgeplay.com/{render_type}/512/{uuid}/512/{uuid})\n"
+"[RAW](https://visage.surgeplay.com/{render_type}/512/{uuid})**"
+msgstr ""
+
