@@ -473,7 +473,7 @@ def format_perms_list(perms: discord.Permissions) -> str:
 def humanize_timedelta(
     *,
     timedelta: Optional[datetime.timedelta] = None,
-    seconds: Optional[SupportsInt] = None,
+    seconds: Optional[int] = None,
 ) -> str:
     """
     Get a locale aware human timedelta representation.
@@ -487,7 +487,7 @@ def humanize_timedelta(
     ----------
     timedelta: Optional[datetime.timedelta]
         A timedelta object
-    seconds: Optional[SupportsInt]
+    seconds: Optional[int]
         A number of seconds
 
     Returns
@@ -501,7 +501,7 @@ def humanize_timedelta(
         The function was called with neither a number of seconds nor a timedelta object
     """
 
-    if timedelta is None or seconds is None:
+    if timedelta is None and seconds is None:
         raise ValueError("You must provide either a timedelta or a number of seconds")
     obj = seconds if seconds is not None else timedelta.total_seconds()
 
