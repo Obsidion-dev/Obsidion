@@ -501,9 +501,12 @@ def humanize_timedelta(
         The function was called with neither a number of seconds nor a timedelta object
     """
 
-    if timedelta is None or seconds is None:
+    if seconds is not None:
+        obj = seconds
+    elif timedelta is not None:
+        obj = timedelta.total_seconds()
+    else:
         raise ValueError("You must provide either a timedelta or a number of seconds")
-    obj = seconds if seconds is not None else timedelta.total_seconds()
 
     seconds = int(obj)
     periods = [
