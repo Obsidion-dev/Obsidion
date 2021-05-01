@@ -65,6 +65,5 @@ COPY ./obsidion /app/obsidion/
 COPY alembic.ini /app/alembic.ini
 COPY start.sh /app/start.sh
 COPY ./migrations /app/migrations
-COPY migration.py /app/migration.py
 WORKDIR /app
 CMD ["./start.sh"]
