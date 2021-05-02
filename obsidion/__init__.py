@@ -2,6 +2,7 @@
 import logging
 import sys as _sys
 
+import sentry_sdk
 from obsidion.core.config import get_settings
 
 # Start logging
@@ -9,6 +10,14 @@ from obsidion.core.config import get_settings
 logging.basicConfig(level=get_settings().LOGLEVEL)
 
 log = logging.getLogger("obsidion")
+
+sentry_sdk.init(
+    "https://cffd178fe41f46eeb652b691af9af56a@o404225.ingest.sentry.io/5267607",
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production.
+    traces_sample_rate=1.0,
+)
 
 
 MIN_PYTHON_VERSION = (3, 8, 1)
