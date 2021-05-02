@@ -140,7 +140,6 @@ class Info(commands.Cog):
         """Returns the server icon."""
         if ":" in ip:  # deal with them providing port in string instead of separate
             address, _port = ip.split(":")
-            port = int(_port)
             return (address, port)
         if port is not None:
             return (ip, port)
@@ -159,6 +158,9 @@ class Info(commands.Cog):
             address = await self.bot._guild_cache.get_server(ctx.guild)
         if address is None:
             await ctx.send(_("Please provide a server"))
+            return
+        if len(address.split(":")) > 2:
+            await ctx.send(_("Please provide a valid address"))
             return
         server_ip, _port = self.get_server(address, port)
         port = _port if _port else port
@@ -247,6 +249,10 @@ class Info(commands.Cog):
     ) -> None:
         """Get information from a Minecraft Bedrock server."""
         await ctx.channel.trigger_typing()
+        if len(address.split(":")) > 2:
+            await ctx.send(_("Please provide a valid address"))
+            return
+        address, port = self.get_server(address, port)
         params: Dict[str, Union[str, int]] = (
             {"server": address} if port is None else {"server": address, "port": port}
         )
