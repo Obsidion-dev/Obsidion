@@ -21,7 +21,7 @@ minecraft = (
     "ʖ",
     "ᓵ",
     "↸",
-    "e",
+    "ᒷ",
     "⎓",
     "⊣",
     "⍑",
@@ -36,43 +36,15 @@ minecraft = (
     "ᑑ",
     "∷",
     "ᓭ",
-    "ℸ ̣",
+    "ℸ",
     "⚍",
     "⍊",
     "∴",
-    "/",
+    " ̇",
     "||",
     "⨅",
-
 )
-alphabet = (
-    "a",
-    "b",
-    "c",
-    "d",
-    "e",
-    "f",
-    "g",
-    "h",
-    "i",
-    "j",
-    "k",
-    "l",
-    "m",
-    "n",
-    "o",
-    "p",
-    "q",
-    "r",
-    "s",
-    "t",
-    "u",
-    "v",
-    "w",
-    "x",
-    "y",
-    "z",
-)
+alphabet = "abcdefghijklmnopqrstuvwxyz"
 
 
 @cog_i18n(_)
@@ -193,32 +165,19 @@ class Fun(commands.Cog):
     @commands.command()
     async def enchant(self, ctx, *, msg: str) -> None:
         """Enchant a message."""
-        response = msg
-
-        for letter in response:
-            if letter == "|":
-                pass
-            elif letter == "!":
-                pass
-            elif letter == "¡":
-                pass
-            elif letter == "ℸ":
-                pass
-            elif any(letter in i for i in minecraft):
-                letter_replace = alphabet[minecraft.index(letter)]
-                response = re.sub(letter, letter_replace, response)
-            elif any(letter in i for i in alphabet):
-                letter_replace = minecraft[alphabet.index(letter)]
-                response = re.sub(letter, letter_replace, response)
-
-        if "|" in letter:
-            response = response.replace("||", "y")
-        
-        if "¡" in letter:
-            response = response.replace("!¡", "p")
-
-        if "ℸ" in letter:
-            response = response.replace("ℸ","t")
+        response = ""
+        letter_pos = 0
+        while letter_pos < len(msg):
+            letter = msg[letter_pos:letter_pos+2] if msg[letter_pos:letter_pos+2] in minecraft else msg[letter_pos]
+            if letter in alphabet:
+                response += minecraft[alphabet.index(letter)]
+            elif letter in minecraft:
+                response += alphabet[minecraft.index(letter)]
+                if len(letter) == 2:
+                    letter_pos += 1
+            else:
+                response += letter
+            letter_pos += 1
         await ctx.send(response)
 
 
@@ -227,7 +186,7 @@ class Fun(commands.Cog):
         options=[
             create_option(
                 name="text",
-                description="Text to enchant.",
+                description="Text to enchant or unenchant.",
                 option_type=3,
                 required=True,
             )
@@ -236,33 +195,6 @@ class Fun(commands.Cog):
     async def slash_enchant(self, ctx, *, msg: str):
         await ctx.defer()
         await self.enchant(ctx, msg)
-
-    @commands.command()
-    async def unenchant(self, ctx, *, msg: str) -> None:
-        """Disenchant a message."""
-        response = ""
-        for letter in msg:
-            if letter in minecraft:
-                response += alphabet[minecraft.index(letter)]
-            else:
-                response += letter
-        await ctx.send(f"{ctx.message.author.mention}, `{response}`")
-
-    @cog_ext.cog_slash(
-        name="unenchant",
-        options=[
-            create_option(
-                name="text",
-                description="Text to unenchant.",
-                option_type=3,
-                required=True,
-            )
-        ],
-    )
-    async def slash_unenchant(self, ctx, *, msg: str):
-        """Disenchant a message."""
-        await ctx.defer()
-        await self.unenchant(ctx, msg)
 
     @commands.command()
     async def creeper(self, ctx) -> None:
