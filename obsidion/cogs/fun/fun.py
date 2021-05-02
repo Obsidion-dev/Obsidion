@@ -2,7 +2,6 @@
 import logging
 from random import choice
 from typing import List
-import re
 
 from discord.ext import commands
 from discord_slash import cog_ext
@@ -168,7 +167,12 @@ class Fun(commands.Cog):
         response = ""
         letter_pos = 0
         while letter_pos < len(msg):
-            letter = msg[letter_pos:letter_pos+2] if msg[letter_pos:letter_pos+2] in minecraft else msg[letter_pos]
+            letter = (
+                msg[letter_pos : letter_pos + 2]
+                if msg[letter_pos : letter_pos + 2] in minecraft
+                else msg[letter_pos]
+            )
+            letter = letter.lower()
             if letter in alphabet:
                 response += minecraft[alphabet.index(letter)]
             elif letter in minecraft:
@@ -179,7 +183,6 @@ class Fun(commands.Cog):
                 response += letter
             letter_pos += 1
         await ctx.send(response)
-
 
     @cog_ext.cog_slash(
         name="enchant",
