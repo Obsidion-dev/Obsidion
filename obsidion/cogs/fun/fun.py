@@ -2,6 +2,7 @@
 import logging
 from random import choice
 from typing import List
+import re
 
 from discord.ext import commands
 from discord_slash import cog_ext
@@ -20,7 +21,7 @@ minecraft = (
     "ʖ",
     "ᓵ",
     "↸",
-    "ᒷ",
+    "e",
     "⎓",
     "⊣",
     "⍑",
@@ -31,32 +32,47 @@ minecraft = (
     "ᒲ",
     "リ",
     "𝙹",
-    "!",
-    "¡",
+    "!¡",
     "ᑑ",
     "∷",
     "ᓭ",
-    "ℸ",
-    " ̣",
+    "ℸ ̣",
     "⚍",
     "⍊",
     "∴",
-    " ̇",
-    "|",
-    "|",
+    "/",
+    "||",
     "⨅",
-    "I",
-    "II",
-    "III",
-    "IV",
-    "V",
-    "VI",
-    "VII",
-    "VIII",
-    "IX",
-    "X",
+
 )
-alphabet = "abcdefghijklmnopqrstuvwxyz123456789"
+alphabet = (
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+)
 
 
 @cog_i18n(_)
@@ -177,13 +193,34 @@ class Fun(commands.Cog):
     @commands.command()
     async def enchant(self, ctx, *, msg: str) -> None:
         """Enchant a message."""
-        response = ""
-        for letter in msg:
-            if letter in alphabet:
-                response += minecraft[alphabet.index(letter)]
-            else:
-                response += letter
+        response = msg
+
+        for letter in response:
+            if letter == "|":
+                pass
+            elif letter == "!":
+                pass
+            elif letter == "¡":
+                pass
+            elif letter == "ℸ":
+                pass
+            elif any(letter in i for i in minecraft):
+                letter_replace = alphabet[minecraft.index(letter)]
+                response = re.sub(letter, letter_replace, response)
+            elif any(letter in i for i in alphabet):
+                letter_replace = minecraft[alphabet.index(letter)]
+                response = re.sub(letter, letter_replace, response)
+
+        if "|" in letter:
+            response = response.replace("||", "y")
+        
+        if "¡" in letter:
+            response = response.replace("!¡", "p")
+
+        if "ℸ" in letter:
+            response = response.replace("ℸ","t")
         await ctx.send(response)
+
 
     @cog_ext.cog_slash(
         name="enchant",
