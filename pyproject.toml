@@ -31,7 +31,7 @@ discord-py-slash-command = "^1.1.2"
 dblpy = "^0.4.0"
 
 [tool.poetry.dev-dependencies]
-Pygments = "^2.7.2"
+Pygments = "^2.9.0"
 black = "^21.5b0"
 flake8 = "^3.8.4"
 mypy = "^0.812"
