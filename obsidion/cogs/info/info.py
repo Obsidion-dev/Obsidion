@@ -154,7 +154,7 @@ class Info(commands.Cog):
     ):
         """Minecraft server info."""
         await ctx.channel.trigger_typing()
-        if address is None:
+        if address is None and ctx.guild is not None:
             address = await self.bot._guild_cache.get_server(ctx.guild)
         if address is None:
             await ctx.send(_("Please provide a server"))
@@ -168,7 +168,7 @@ class Info(commands.Cog):
         if await self.bot.redis.exists(key):
             data = json.loads(await self.bot.redis.get(key))
         else:
-            params = (
+            params: Dict[str, Union[str, int]] = (
                 {"server": address}
                 if port is None
                 else {"server": address, "port": port}
