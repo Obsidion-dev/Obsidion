@@ -169,7 +169,7 @@ class Info(commands.Cog):
         if await self.bot.redis.exists(key):
             data = json.loads(await self.bot.redis.get(key))
         else:
-            params = (
+            params: Dict[str, Union[str, int]] = (
                 {"server": address}
                 if port is None
                 else {"server": address, "port": port}
