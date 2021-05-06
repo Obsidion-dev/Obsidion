@@ -154,7 +154,7 @@ class Info(commands.Cog):
     ):
         """Minecraft server info."""
         await ctx.channel.trigger_typing()
-        if address is None:
+        if address is None and ctx.guild is not None:
             address = await self.bot._guild_cache.get_server(ctx.guild)
         if address is None:
             await ctx.send(_("Please provide a server"))
