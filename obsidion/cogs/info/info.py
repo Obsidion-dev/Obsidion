@@ -58,7 +58,7 @@ class Info(commands.Cog):
                 number=names.index(name) + 1,
                 username=name["username"],
                 date=(
-                    datetime.strptime(name["changed_at"], "%Y-%m-%dT%H:%M:%S.000Z")
+                    datetime.strptime(name["changed_at"], "%Y-%m-%dT%X.%fZ")
                 ).strftime("%b %d, %Y"),
             )
         name_list += _("**1.** `{original}` - First Username").format(
