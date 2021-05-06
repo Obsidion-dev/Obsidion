@@ -140,6 +140,7 @@ class Info(commands.Cog):
         """Returns the server icon."""
         if ":" in ip:  # deal with them providing port in string instead of separate
             address, _port = ip.split(":")
+            port = int(_port)
             return (address, port)
         if port is not None:
             return (ip, port)
