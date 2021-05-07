@@ -8,6 +8,8 @@ services:
     env_file:
       - .env
     restart: on-failure
+    volumes:
+      - ./obsidion:/app/obsidion
   db:
     image: postgres:12-alpine
     volumes:
@@ -21,6 +23,18 @@ services:
     restart: on-failure
   redis:
     image: redis:alpine
+    restart: on-failure
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=pgadmin4@pgadmin.org
+      - PGADMIN_DEFAULT_PASSWORD=hunter12
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
     restart: on-failure
 
 volumes:
